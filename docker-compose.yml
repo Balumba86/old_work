@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  php:
+    image: builded_php
+    restart: always
+    volumes:
+      - './src:/var/www/html'
+    ports:
+      - '80:80'
+
+  postgres:
+    image: postgres:11-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./dumps:/dumps
+    ports:
+      - '5432:5432'
+
+  phppgadmin:
+    image: 'docker.io/bitnami/phppgadmin:7-debian-10'
+    ports:
+      - '8085:8080'
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
