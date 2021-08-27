@@ -10,7 +10,8 @@
                 <div class="col-lg-4 col-12">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{$count_requests}}</h3>
+{{--                            <h3>{{$count_requests}}</h3>--}}
+                            <h3>100</h3>
                             <p>Заявки</p>
                         </div>
                         <div class="icon">
@@ -21,7 +22,8 @@
                 <div class="col-lg-4 col-12">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{$count_orders}}</h3>
+{{--                            <h3>{{$count_orders}}</h3>--}}
+                            <h3>200</h3>
                             <p>Заказы</p>
                         </div>
                         <div class="icon">
@@ -32,7 +34,8 @@
                 <div class="col-lg-4 col-12">
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{$count_clients}}</h3>
+{{--                            <h3>{{$count_clients}}</h3>--}}
+                            <h3>300</h3>
                             <p>Клиентов</p>
                         </div>
                         <div class="icon">
@@ -41,21 +44,21 @@
                     </div>
                 </div>
             </div>
-            <form action="{{route('dashboard-save-email')}}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-lg-10 col-12">
-                        <div class="form-group">
-                            <input class="form-control" type="email" name="email_by_request" placeholder="E-mail для отправки заявок" value="{{$email_request->email ?? ''}}" required>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-12">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-info ">Сохранить</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+{{--            <form action="{{route('dashboard-save-email')}}" method="post">--}}
+{{--                @csrf--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-lg-10 col-12">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <input class="form-control" type="email" name="email_by_request" placeholder="E-mail для отправки заявок" value="{{$email_request->email ?? ''}}" required>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-2 col-12">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <button type="submit" class="btn btn-block btn-info ">Сохранить</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </form>--}}
         </div>
         <div class="card-footer">
 
