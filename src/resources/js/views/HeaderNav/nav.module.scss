@@ -32,13 +32,19 @@
 
 .nav-link:focus, .nav-link:active {
   outline: none;
+  color: var(--bgr-white);
+  text-decoration: none;
   background-color: rgba(#fff, 0.1);
 }
 
 .nav-link:hover {
+  color: var(--bgr-white);
+  text-decoration: none;
   background-color: rgba(#fff, 0.1);
 }
 
 .nav-link_active {
+  color: var(--bgr-white);
+  text-decoration: none;
   background-color: rgba(#fff, 0.2);
 }
