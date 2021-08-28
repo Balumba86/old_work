@@ -1,0 +1,367 @@
+/* eslint-disable no-underscore-dangle */
+import BaseApi from '@garpix/base-api'
+import qs from 'query-string'
+import { getCookie, setCookie, removeCookie } from '../utils'
+import {
+  filtersSerializer,
+  selectOptionsSerializer,
+  servicesSerializer,
+  tariffAddOrUpdateSerializer,
+  tariffTypeOptionsSerializer,
+  tariffUnitOptionsSerializer,
+  changingDataOfModel
+} from './serializers'
+
+class Api extends BaseApi {
+  constructor(url) {
+    super()
+    this.url = url
+    this.REFRESH_TOKEN_KEY = 'refresh_token'
+
+    this.getServicesList = this.getServicesList.bind(this)
+    this.getHistoryList = this.getHistoryList.bind(this)
+    this.getLineBussinessOptions = this.getLineBussinessOptions.bind(this)
+
+    this.getLineServices = this.getLineServices.bind(this)
+    this.getServices = this.getServices.bind(this)
+    this.getServiceElement = this.getServiceElement.bind(this)
+    this.getTariffs = this.getTariffs.bind(this)
+    this.getTariffType = this.getTariffType.bind(this)
+    this.getElementTariff = this.getElementTariff.bind(this)
+    this.getUnitTariff = this.getUnitTariff.bind(this)
+
+    this.getFiltersList = this.getFiltersList.bind(this)
+    this.downloadExcel = this.downloadExcel.bind(this)
+    this.setSettingsList = this.setSettingsList.bind(this)
+
+    this.getAuthToken = this.getAuthToken.bind(this)
+    this.setAuthToken = this.setAuthToken.bind(this)
+    this.setRefreshToken = this.setRefreshToken.bind(this)
+    this.getRefreshToken = this.getRefreshToken.bind(this)
+  }
+
+  accessToken = null
+
+  refreshToken = null
+
+  axiosOverride = axios => {
+    const axs = axios
+    const Token = this.accessToken
+    if(Token) {
+      axs.defaults.headers.common.Authorization = `Bearer ${Token}`;
+    }
+
+    this.useAxiosInstance(axios)
+    return axs
+  };
+
+  useAxiosInstance = axios => {
+    const instance = axios.create({
+      baseURL: this.url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    instance.interceptors.request.use(
+      (conf) => {
+        const config = conf
+        const token = this.accessToken;
+        if (token) {
+          config.headers['x-access-token'] = token;
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+
+    instance.interceptors.response.use(
+      (res) => {
+        return res;
+      },
+      async (err) => {
+        const originalConfig = err.config;
+        if (originalConfig.url !== '/api/auth/login/' && err.response) {
+          if (err.response.status === 401 && !originalConfig._retry) {
+            originalConfig._retry = true;
+
+            try {
+              const token = this.getRefreshToken()
+              const rs = await instance.post('/api/auth/refresh/', {
+                refresh_token: token,
+              });
+
+              this.accessToken = rs?.data?.access_token
+
+              return instance(originalConfig);
+            } catch (_error) {
+              return Promise.reject(_error);
+            }
+          }
+        }
+
+        return Promise.reject(err);
+      }
+    );
+  }
+
+  getRefreshToken() {
+    if(!this.refreshToken) {
+      this.refreshToken = getCookie(this.REFRESH_TOKEN_KEY);
+    }
+    return this.refreshToken
+  }
+
+  setRefreshToken(refresh) {
+    this.refreshToken = refresh
+    return setCookie(this.REFRESH_TOKEN_KEY, refresh)
+  }
+
+  async loginUser(params) {
+    const res = await this.post('/api/auth/login/', params)
+    this.accessToken = res?.data?.access_token
+    this.setRefreshToken(res?.data?.refresh_token)
+    return res.data
+  }
+
+  async refresh() {
+    const token = this.getRefreshToken();
+    const res = await this.post('/api/auth/refresh/', { refresh_token: token })
+    this.accessToken = res?.data?.access_token
+    return res.data
+  }
+
+  async checkUser(params) {
+    const res = await this.get('/api/userdata/', params)
+    return res.data
+  }
+
+  async logoutUser() {
+    const res = await this.post('/api/auth/logout/')
+    console.log(res)
+    try {
+    removeCookie(this.AUTH_ACCESS_TOKEN_KEY)
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async setSettingsList(params) {
+    const res = await this.post('/api/table_settings/', { 'settings': params })
+    return res.data
+  }
+
+  async getServicesList({ page = 1, pageSize = 30, search = '', ...params }) {
+    const res = await this.get(
+      '/api/tariffs/',
+      {
+        page,
+        page_size: pageSize,
+        search,
+        ...params,
+      },
+      {
+        paramsSerializer: (obj) => {
+          return qs.stringify(obj, { arrayFormat: 'comma' })
+        },
+      },
+    )
+    return servicesSerializer(res.data)
+  }
+
+  async getHistoryList({ page = 1, pageSize = 30, search = '', ...params }) {
+    const res = await this.get('/api/logs/', {
+      page,
+      page_size: pageSize,
+      search,
+      ...params,
+    })
+    res.data.results = res.data.results.map(item => changingDataOfModel(item))
+    return res.data
+  }
+
+  async createTariff(params) {
+    const tariff = tariffAddOrUpdateSerializer(params)
+    const res = await this.post('/api/tariffs/', tariff)
+    return res.data
+  }
+
+  async updateService(id, params) {
+    const tariff = tariffAddOrUpdateSerializer(params)
+    const res = await this.put(`/api/tariffs/${id}/`, tariff)
+    return res.data
+  }
+
+  async deleteServices(params) {
+    const res = await this.delete('/api/tariffs/delete/', params)
+    return res
+  }
+
+  async archiveTariff(params) {
+    const res = await this.put('/api/tariffs/to_archive/', params)
+    return res
+  }
+
+  // filters
+  async getFiltersList(params) {
+    const res = await this.get('/api/filter/', {...params})
+    return filtersSerializer(res.data)
+  }
+  
+  // selects
+  async getLineBussinessOptions(fp = {}) {
+    const res = await this.get('/api/service_business/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  async getLineServices(fp = {}) {
+    const res = await this.get('/api/service_line/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  async getServices(fp = {}) {
+    const res = await this.get('/api/service/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  async getServiceElement(fp = {}) {
+    const res = await this.get('/api/service_element/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  async getTariffs(fp = {}) {
+    const res = await this.get('/api/tariff_short/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  async getTariffType(fp = {}) {
+    const res = await this.get('/api/charge_type/', fp)
+    return tariffTypeOptionsSerializer(res.data)
+  }
+
+  async getUnitTariff(fp = {}) {
+    const res = await this.get('/api/unit/', fp)
+    return tariffUnitOptionsSerializer(res.data)
+  }
+
+  async getElementTariff(fp = {}) {
+    const res = await this.get('/api/tariff_element/', fp)
+    return selectOptionsSerializer(res.data)
+  }
+
+  // create options tariff
+  async createLineBussiness(values) {
+    const res = await this.post('/api/service_business/', values)
+    return res.data;
+  }
+
+  async createLineServices(values) {
+    const res = await this.post('/api/service_line/', values)
+    return res.data;
+  }
+
+  async createServiceElement(values) {
+    const res = await this.post('/api/service_element/', values)
+    return res.data
+  }
+
+  async createService(values) {
+    const res = await this.post('/api/service/', values)
+    return res.data;
+  }
+
+  async createTariffType(values) {
+    const res = await this.post('/api/charge_type/', values)
+    return res.data
+  }
+
+  async createUnitTariff(values) {
+    const res = await this.post('/api/unit/', values)
+    return res.data
+  }
+
+  async createElementTariff(values) {
+    const res = await this.post('/api/tariff_element/', values)
+    return res.data
+  }
+
+  async downloadExcel(params = {}) {
+    const res = await this.get('/api/excel/', params, {
+      responseType: 'blob',
+    })
+    return res
+  }
+
+}
+
+export const MAIN_URL = process.env.REACT_APP_API_URL
+export const EXPORT_TABLE_URL = process.env.REACT_APP_API_EXPORT_TABLE
+const api = new Api(`${MAIN_URL}`)
+export default api
+
+
+import React, { useEffect } from 'react'
+import { useStoreon } from 'storeon/react'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import { AuthPage, ServicesClassifier, HistoryTable } from './pages'
+import { ModalLogout } from './components/Modal'
+import { PATHS } from './const'
+import api from './api'
+
+function App() {
+  const {
+    currentUser,
+    dispatch
+  } = useStoreon('currentUser')
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!currentUser) {
+      history.push(PATHS.auth.path)
+    }
+  }, [currentUser])
+
+  useEffect(() => {
+    if (history.location.pathname !== PATHS.auth.path) {
+      api.checkUser()
+        .then(res => {
+        dispatch('user/update', {
+          ...currentUser,
+          ...res,
+        });
+      })
+      .catch(({ response }) => dispatch('catch/api', response));
+    }
+  }, [])
+
+  return (
+    <>
+      <Switch>
+        <Route
+          strict
+          path={PATHS.services_classifier.path}
+          exact={PATHS.services_classifier.exact}
+          component={ServicesClassifier}
+        />
+        <Route
+          path={PATHS.history_table.path}
+          exact={PATHS.history_table.exact}
+          component={HistoryTable}
+        />
+        <Route
+          path={PATHS.auth.path}
+          exact={PATHS.auth.exact}
+          component={AuthPage}
+        />
+        
+        <Route component={() => <>Not Found</>} />
+      </Switch>
+      <ModalLogout />
+    </>
+  )
+}
+
+export default App
