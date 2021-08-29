@@ -22,29 +22,7 @@
 
                 <li class="nav-item"><a href="{{route('admin-dashboard')}}" class="nav-link {{ request()->is('admin') ? 'active' : null }}"><i class="fas fa-home nav-icon"></i><p>Главная</p></a></li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Арендаторы
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Категории</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Магазины</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a href="{{route('admin-news')}}" class="nav-link {{ request()->is('admin/news*') ? 'active' : null }}"><i class="fas fa-th nav-icon"></i><p>Новости</p></a></li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">

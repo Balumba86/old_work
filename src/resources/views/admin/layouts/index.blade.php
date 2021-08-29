@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin/adminlte.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @stack('styles')
 </head>
 <body class="hold-transition dark-mode sidebar-mini">
 <div class="wrapper">
@@ -50,6 +51,6 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/admin/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/admin/demo.js') }}"></script>
-@yield('custom_scripts')
+@stack('scripts')
 </body>
 </html>

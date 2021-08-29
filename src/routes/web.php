@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,13 +60,13 @@ Route::
 //        Route::put('/update/{id}', [AdminBooks::class, 'update'])->name('admin-radio-points-update');
 //        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-radio-points-delete');
     });
-    Route::prefix('litres')->group(function () {
-//        Route::get('/', [AdminBooks::class, 'index'])->name('admin-litres');
-//        Route::get('/add', [AdminBooks::class, 'add'])->name('admin-litres-add');
-//        Route::post('/create', [AdminBooks::class, 'create'])->name('admin-litres-create');
-//        Route::get('/edit/{id}', [AdminBooks::class, 'edit'])->name('admin-litres-edit');
-//        Route::put('/update/{id}', [AdminBooks::class, 'update'])->name('admin-litres-update');
-//        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-litres-delete');
+    Route::prefix('news')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('admin-news');
+        Route::get('/add', [NewsController::class, 'add'])->name('admin-news-add');
+        Route::post('/create', [NewsController::class, 'create'])->name('admin-news-create');
+        Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('admin-news-edit');
+        Route::put('/update/{id}', [NewsController::class, 'update'])->name('admin-news-update');
+        Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('admin-news-delete');
     });
 
 });

@@ -15,6 +15,12 @@ class CreateRestaurantCategoriesTable extends Migration
     {
         Schema::create('restaurant_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
+            $table->string('meta_title');
+            $table->string('meta_keywords');
+            $table->string('meta_description');
             $table->timestamps();
         });
     }
