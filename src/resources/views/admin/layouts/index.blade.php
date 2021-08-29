@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/adminlte.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -41,15 +41,15 @@
         <div class="float-right d-none d-sm-block">
 
         </div>
-        <strong>Copyright &copy; {{date('Y')}} | "{{ config('app.name', 'Laravel') }}"</strong>
+        <strong>Copyright &copy; {{date('Y')}} | {{ config('app.name', 'Laravel') }}</strong>
     </footer>
     <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>
 
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('js/adminlte.min.js') }}"></script>
-<script src="{{ asset('js/demo.js') }}"></script>
+<script src="{{ asset('js/admin/adminlte.min.js') }}"></script>
+<script src="{{ asset('js/admin/demo.js') }}"></script>
 @yield('custom_scripts')
 </body>
 </html>
