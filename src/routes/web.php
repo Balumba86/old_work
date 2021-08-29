@@ -75,5 +75,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/{query}', function() {
-    return view('app');
+    return view('welcome');
 })->where('query', '^((?!api|admin).)*$');
