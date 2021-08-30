@@ -1,8 +1,21 @@
 import HeaderNav from '../HeaderNav'
-import { logoNav } from '../../images'
 import style from './header.module.scss'
+const classNames = require('classnames')
 
 const Header = () => {
+  const vkClasses = classNames({
+    [style['header-social__link']]: true,
+    [style['link-vk']]: true
+  })
+  const instClasses = classNames({
+    [style['header-social__link']]: true,
+    [style['link-instagram']]: true
+  })
+  const okClasses = classNames({
+    [style['header-social__link']]: true,
+    [style['link-ok']]: true
+  })
+
   return (
     <header className={style.header}>
       <div className={style['header-top']}>
@@ -15,15 +28,15 @@ const Header = () => {
           <div className={style['header-contacts__address']}>г. Иваново, пр. Ленина, 57А</div>
         </div>
         <div className={style['header-top__right']}>
-          <ul className={style['header-contacts__social']}>
-            <li>
-              <a>VK</a>
+          <ul className={style['header-social']}>
+            <li className={style['header-social__item']}>
+              <a href='#' className={vkClasses} />
             </li>
-            <li>
-              <a>Instagram</a>
+            <li className={style['header-social__item']}>
+              <a href='#' className={instClasses} />
             </li>
-            <li>
-              <a>OK</a>
+            <li className={style['header-social__item']}>
+              <a href='#' className={okClasses} />
             </li>
           </ul>
         </div>

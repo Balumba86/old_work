@@ -8,6 +8,7 @@
   background-color: var(--bgr-white);
   font-size: 16px;
   line-height: 1;
+  z-index: 100;
 }
 
 .header-top {
@@ -24,15 +25,8 @@
   width: 85px;
   height: 85px;
   margin-right: 20px;
-  background: url(../../images/logo_nav.svg) no-repeat center;
+  background: url(../../images/logo_nav.svg) no-repeat left top;
   background-size: cover;
-}
-
-.header-contacts__social {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .header-top__left {
@@ -45,6 +39,7 @@
 .header-top__right {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   flex-grow: 1;
 }
 
@@ -64,4 +59,43 @@
   outline: none;
   color: rgba(#437F4A, 0.8);
   text-decoration: underline;
+}
+
+.header-social {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header-social__item {
+  margin-left: 5px;
+}
+
+.header-social__link {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: grayscale(1);
+  transition: 0.2s;
+}
+
+.header-social__link:hover {
+  filter: grayscale(0);
+}
+
+.link-vk {
+  background-image: url(../../images/social/vk_logo.svg);
+}
+
+.link-ok {
+  background-image: url(../../images/social/ok_logo.svg);
+}
+
+.link-instagram {
+  background-image: url(../../images/social/instagram_logo.svg);
 }

@@ -1,0 +1,43 @@
+.partners-section {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+.partners-title {
+  margin-bottom: 35px;
+  font-size: 35px;
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.partners-list {
+  display: grid;
+  padding: 0 80px;
+  margin: 0 auto;
+  list-style: none;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.partners-list__item {
+  width: 150px;
+  height: 100%;
+  padding: 5px;
+  transition: 0.2s;
+  filter: grayscale(1);
+}
+
+.partners-list__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.partners-list__item:hover {
+  filter: grayscale(0);
+
+}
