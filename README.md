@@ -12,14 +12,6 @@ docker-compose exec php yarn
 ```
 После успешного выполнения команд, выполнить команды для миграций и генерации ключей
 
-ВАЖНО!
-
-На ранних этапах разработки нужно выполнить только одну команду
-
-`docker-compose exec php php artisan key:generate`
-
-Следующие две пока выполнять не нужно
-
 ```
 docker-compose exec php php artisan migrate
 docker-compose exec php php artisan key:generate
