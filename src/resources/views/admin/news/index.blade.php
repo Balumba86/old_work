@@ -66,7 +66,7 @@
                             </td>
                         </tr>
                         @empty
-                            <tr><td colspan="4" style="text-align: center">Список пуст</td></tr>
+                            <tr><td colspan="5" style="text-align: center">Список пуст</td></tr>
                         @endforelse
                         </tbody>
                     </table>
