@@ -1,7 +1,10 @@
 :root {
-  --active-color: #007846;
+  --active-color: #437F4A;
+  --active-color-hover: hsla(127, 31%, 38%, 0.9);
+  --active-color-active: hsla(127, 31%, 38%, 0.8);
   --bgr-white: #fdfdfd;
   --text-color: #000;
+  --bgr-grey: #403f3f;
 }
 
 @font-face {
@@ -228,6 +231,8 @@
   padding: 0;
   margin: 0;
   font-family: Gilroy, sans-serif;
+  font-size: 16px;
+  line-height: 1;
 }
 
 body {
@@ -241,6 +246,7 @@ a:focus,
 a[href='#']:active
 a[href='#']:focus {
   outline: none;
+  text-decoration: none;
 }
 
 .link {
@@ -252,5 +258,6 @@ a[href='#']:focus {
 }
 
 .link:hover {
+  color: #007846;
   text-decoration: underline;
 }
