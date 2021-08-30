@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\ShopCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +28,15 @@ Route::
     })->name('admin-dashboard');
 
 
-    Route::prefix('categories')->group(function () {
-//        Route::get('/', [AdminCategories::class, 'index'])->name('admin-category');
-//        Route::get('/add', [AdminCategories::class, 'add'])->name('admin-category-add');
-//        Route::post('/create', [AdminCategories::class, 'create'])->name('admin-category-create');
-//        Route::get('/edit/{id}', [AdminCategories::class, 'edit'])->name('admin-category-edit');
-//        Route::put('/update/{id}', [AdminCategories::class, 'update'])->name('admin-category-update');
-//        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-category-delete');
+    Route::prefix('shop-categories')->group(function () {
+        Route::get('/', [ShopCategoryController::class, 'index'])->name('admin-shop-category');
+        Route::get('/add', [ShopCategoryController::class, 'add'])->name('admin-shop-category-add');
+        Route::post('/create', [ShopCategoryController::class, 'create'])->name('admin-shop-category-create');
+        Route::get('/edit/{id}', [ShopCategoryController::class, 'edit'])->name('admin-shop-category-edit');
+        Route::put('/update/{id}', [ShopCategoryController::class, 'update'])->name('admin-shop-category-update');
+        Route::delete('/delete/{id}', [ShopCategoryController::class, 'delete'])->name('admin-shop-category-delete');
     });
-    Route::prefix('books')->group(function () {
+    Route::prefix('shops')->group(function () {
 //        Route::get('/', [AdminBooks::class, 'index'])->name('admin-books');
 //        Route::get('/add', [AdminBooks::class, 'add'])->name('admin-books-add');
 //        Route::post('/create', [AdminBooks::class, 'create'])->name('admin-books-create');
