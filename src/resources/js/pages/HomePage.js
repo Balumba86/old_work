@@ -1,4 +1,4 @@
-import { HomeBanner, Layout, NewsBlock, ParnersBlock } from '../views'
+import { HomeBanner, Layout, NewsBlock, ShopsBlock, Subscription } from '../views'
 
 const HomePage = () => {
   return (
@@ -6,7 +6,8 @@ const HomePage = () => {
       <h1 style={{width: '0px', height: '0px', visibility: 'hidden', opacity: '0'}}>ТЦ “НИКОЛЬСКИЙ”</h1>
       <HomeBanner />
       <NewsBlock />
-      <ParnersBlock />
+      <Subscription />
+      <ShopsBlock />
     </Layout>
   )
 }

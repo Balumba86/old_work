@@ -50,14 +50,14 @@
 }
 
 .header-contacts__link:hover {
-  color: #437F4A;
+  color: var(--active-color);
   text-decoration: underline;
 }
 
 .header-contacts__link:active,
 .header-contacts__link:focus {
   outline: none;
-  color: rgba(#437F4A, 0.8);
+  color: rgba(var(--active-color), 0.8);
   text-decoration: underline;
 }
 

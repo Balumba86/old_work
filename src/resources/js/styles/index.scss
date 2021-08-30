@@ -1,7 +1,10 @@
 :root {
-  --active-color: #007846;
+  --active-color: #437F4A;
+  --active-color-hover: hsla(127, 31%, 38%, 0.9);
+  --active-color-active: hsla(127, 31%, 38%, 0.8);
   --bgr-white: #fdfdfd;
   --text-color: #000;
+  --bgr-grey: #403f3f;
 }
 
 @font-face {
