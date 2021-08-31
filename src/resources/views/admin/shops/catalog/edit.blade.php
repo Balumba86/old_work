@@ -20,8 +20,8 @@
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{$shop->slug}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Категория</label>
-                            <select class="form-control" name="category">
+                            <label for="">Категория*</label>
+                            <select class="form-control" name="category" required>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}" @if($category->id === $shop->category) selected @endif>{{$category->title}}</option>
                                 @endforeach
