@@ -43,8 +43,8 @@ ADD ./conf/php/uploads.ini /usr/local/etc/php/conf.d/
 
 ### Фронт
 RUN apk add --no-cache nodejs npm yarn
-RUN yarn \
-&&  yarn dev \
+#RUN yarn \
+#&&  yarn dev \
 #&&  rm -rf node_modules \
 #&&  rm -rf package-lock.json \
 &&  npm install

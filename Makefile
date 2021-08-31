@@ -24,8 +24,8 @@ build:
 #
 	docker-compose -f docker-compose-build.yml build
 	docker-compose -f docker-compose-build.yml up -d
-	docker cp builded_php:/var/www/html/vendor ./src/
-	docker cp builded_php:/var/www/html/node_modules ./src/
+# 	docker cp builded_php:/var/www/html/vendor ./src/
+# 	docker cp builded_php:/var/www/html/node_modules ./src/
 	docker-compose -f docker-compose-build.yml down
 
 dev:
