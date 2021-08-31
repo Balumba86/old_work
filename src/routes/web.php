@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ShopCategoryController;
+use App\Http\Controllers\Admin\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::
     })->name('admin-dashboard');
 
 
-    Route::prefix('shop-categories')->group(function () {
+    Route::prefix('shop-category')->group(function () {
         Route::get('/', [ShopCategoryController::class, 'index'])->name('admin-shop-category');
         Route::get('/add', [ShopCategoryController::class, 'add'])->name('admin-shop-category-add');
         Route::post('/create', [ShopCategoryController::class, 'create'])->name('admin-shop-category-create');
@@ -37,12 +38,12 @@ Route::
         Route::delete('/delete/{id}', [ShopCategoryController::class, 'delete'])->name('admin-shop-category-delete');
     });
     Route::prefix('shops')->group(function () {
-//        Route::get('/', [AdminBooks::class, 'index'])->name('admin-books');
-//        Route::get('/add', [AdminBooks::class, 'add'])->name('admin-books-add');
-//        Route::post('/create', [AdminBooks::class, 'create'])->name('admin-books-create');
-//        Route::get('/edit/{id}', [AdminBooks::class, 'edit'])->name('admin-books-edit');
-//        Route::put('/update/{id}', [AdminBooks::class, 'update'])->name('admin-books-update');
-//        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-category-delete');
+        Route::get('/', [ShopController::class, 'index'])->name('admin-shop');
+        Route::get('/add', [ShopController::class, 'add'])->name('admin-shop-add');
+        Route::post('/create', [ShopController::class, 'create'])->name('admin-shop-create');
+        Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('admin-shop-edit');
+        Route::put('/update/{id}', [ShopController::class, 'update'])->name('admin-shop-update');
+        Route::delete('/delete/{id}', [ShopController::class, 'delete'])->name('admin-shop-delete');
     });
     ;
     Route::prefix('articles')->group(function () {

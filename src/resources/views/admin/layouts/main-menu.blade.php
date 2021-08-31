@@ -11,7 +11,7 @@
 
                 <li class="nav-item"><a href="{{route('admin-news')}}" class="nav-link {{ request()->is('admin/news*') ? 'active' : null }}"><i class="fas fa-newspaper nav-icon"></i><p>Новости</p></a></li>
 
-                <li class="nav-item {{ request()->is('admin/shop-categories*') || request()->is('admin/shops*') ? 'menu-open' : null }}">
+                <li class="nav-item {{ request()->is('admin/shop-category*') || request()->is('admin/shops*') ? 'menu-open' : null }}">
                     <a href="#" class="nav-link">
                         <i class="fas fa-shopping-bag nav-icon"></i>
                         <p>
@@ -21,13 +21,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin-shop-category')}}" class="nav-link {{ request()->is('admin/shop-categories*') ? 'active' : null }}">
+                            <a href="{{route('admin-shop-category')}}" class="nav-link {{ request()->is('admin/shop-category*') ? 'active' : null }}">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Категории</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin-shop')}}" class="nav-link {{ request()->is('admin/shops*') ? 'active' : null }}">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Каталог</p>
                             </a>

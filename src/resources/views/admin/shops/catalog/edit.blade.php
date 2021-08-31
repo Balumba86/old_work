@@ -1,45 +1,91 @@
 @extends('admin.layouts.index')
-@section('title-page')Редактирование новости@endsection
+@section('title-page')Редактирование магазина@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Редактирование новости</h3>
+            <h3 class="card-title">Редактирование магазина</h3>
         </div>
         <div class="card-body table-responsive p-0">
-            <form action="{{route('admin-news-update', $post->id )}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin-shop-update', $shop->id )}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="card">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Основная информация</h3>
+                    </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">Заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="title" required value="{{ $post->title }}">
-                            <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{ $post->slug }}">
+                            <label for="">Название*</label>
+                            <input class="form-control" type="text" placeholder="" name="title" required value="{{$shop->title}}">
+                            <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{$shop->slug}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Текст статьи*</label>
-                            <textarea id="editor" class="form-control" name="text" required>{{ $post->text }}</textarea>
+                            <label for="">Категория</label>
+                            <select class="form-control" name="category">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}" @if($category->id === $shop->category) selected @endif>{{$category->title}}</option>
+                                @endforeach
+                            </select>
                         </div>
-
+                        <div class="form-group">
+                            <label for="customFile">Логотип сагазина* <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="logo_shop" name="logo">
+                                <label class="custom-file-label" for="logo_shop">Изменить файл</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Описание</label>
+                            <textarea class="form-control" name="description">{{$shop->description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Часы работы*</label>
+                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work" required value="{{$shop->hours_work}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Телнфон</label>
+                            <input class="form-control" type="text" placeholder="+7(4932)55-55-55" name="phone" value="{{$shop->phone}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Вебсайт</label>
+                            <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{$shop->website}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Настройки</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                <input type="hidden" name="show_main" value="0">
+                                <input type="checkbox" class="custom-control-input" id="show_main" name="show_main" value="1" @if($shop->show_main) checked @endif>
+                                <label class="custom-control-label" for="show_main">Выводить на главной странице</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Сортировка*</label>
+                            <input class="form-control" type="text" placeholder="" name="sort" required value="{{$shop->sort}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">SEO</h3>
+                    </div>
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="">Мета-заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{ $post->meta_title }}">
+                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{$shop->meta_title}}">
                         </div>
                         <div class="form-group">
                             <label for="">Ключевые слова*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{ $post->meta_keywords }}">
+                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{$shop->meta_keywords}}">
                         </div>
                         <div class="form-group">
                             <label for="">Мета-описание*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{ $post->meta_description }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Опубликовать</label>
-                            <select class="form-control" name="published">
-                                <option value="1" @if($post->published) selected @endif>Да</option>
-                                <option value="0" @if(!$post->published) selected @endif>Нет</option>
-                            </select>
+                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{$shop->meta_description}}">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -51,19 +97,4 @@
         </div>
     </div>
 @endsection
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-@endpush
 
-@push('scripts')
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('plugins/summernote/lang/summernote-ru-RU.min.js') }}"></script>
-    <script>
-        $(function () {
-            $('#editor').summernote({
-                height: 200,
-                lang: 'ru-RU'
-            })
-        })
-    </script>
-@endpush

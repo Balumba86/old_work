@@ -23,6 +23,11 @@ class ShopCategoryService
         return $categories;
     }
 
+    public function adminAll()
+    {
+        return ShopCategory::select('id', 'title')->get()->all();
+    }
+
     public function adminCreate($data)
     {
         return ShopCategory::create($data);
