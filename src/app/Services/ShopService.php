@@ -62,4 +62,9 @@ class ShopService
 
         return $shop->delete();
     }
+
+    public function adminCount():int
+    {
+        return Shop::all()->count();
+    }
 }

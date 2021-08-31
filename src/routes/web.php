@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
@@ -24,9 +25,7 @@ Route::
 //        middleware(['auth:sanctum', 'verified'])->
         prefix('admin')->group(function () {
 
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin-dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
 
 
     Route::prefix('shop-category')->group(function () {
