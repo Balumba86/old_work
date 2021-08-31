@@ -1,11 +1,13 @@
 import Footer from '../Footer'
 import Header from '../Header'
 
-const Layout = ({children = null}) => {
+import style from './layout.module.scss'
+
+const Layout = ({ children = null }) => {
   return (
     <>
       <Header />
-      <main>
+      <main className={style['layout']}>
         {children}
       </main>
       <Footer />

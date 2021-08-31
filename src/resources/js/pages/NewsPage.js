@@ -1,13 +1,12 @@
+import NewsList from '../components/NewsList'
 import { Layout } from '../views'
 
 const NewsPage = () => {
   return (
     <Layout>
-      <main>
-        <section>
-
-        </section>
-      </main>
+      <section className='section'>
+        <NewsList />
+      </section>
     </Layout>
   )
 }
