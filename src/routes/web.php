@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::
-//        middleware(['auth:sanctum', 'verified'])->
+        middleware(['auth:sanctum', 'verified'])->
         prefix('admin')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
