@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-3 col-12">
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-gradient-info">
                         <div class="inner">
                             <h3>{{$count_shops}}</h3>
                             <p>Магазины</p>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-gradient-success">
                         <div class="inner">
                             <h3>{{$count_cafe}}</h3>
                             <p>Кафе и рестораны</p>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-gradient-pink">
                         <div class="inner">
                             <h3>{{$count_services}}</h3>
                             <p>Сервисы и услуги</p>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-gradient-danger">
                         <div class="inner">
                             <h3>{{$count_requests}}</h3>
                             <p>Заявки на аренду</p>
