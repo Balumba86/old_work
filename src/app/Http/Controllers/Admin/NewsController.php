@@ -14,6 +14,7 @@ class NewsController extends Controller
         NewsService $newsService
     ) {
         $this->newsService = $newsService;
+        $this->middleware('auth');
     }
 
     /**

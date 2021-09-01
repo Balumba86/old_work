@@ -19,6 +19,7 @@ class DashboardController extends Controller
     {
         $this->shopService = $shopService;
         $this->restaurantService = $restaurantService;
+        $this->middleware('auth');
     }
 
     public function index()
