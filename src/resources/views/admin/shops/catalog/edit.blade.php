@@ -28,7 +28,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип сагазина* <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
+                            <label for="customFile">Логотип магазина* <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Изменить файл</label>
