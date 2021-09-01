@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип сагазина*</label>
+                            <label for="customFile">Логотип заведения*</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
