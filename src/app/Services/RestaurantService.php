@@ -10,18 +10,18 @@ class RestaurantService
 {
     public function adminIndex(Request $request)
     {
-        $shops = Restaurant::query();
+        $restaurants = Restaurant::query();
 
         $search = $request->get('search');
 
         if (!is_null($search)) {
             $search = trim($search);
-            $shops->where('title', 'like', "%$search%");
+            $restaurants->where('title', 'like', "%$search%");
         }
 
-        $shops = $shops->orderBy('id', 'desc')->paginate(10);
+        $restaurants = $restaurants->orderBy('id', 'desc')->paginate(10);
 
-        return $shops;
+        return $restaurants;
     }
 
     public function adminCreate(Request $request)
@@ -43,7 +43,7 @@ class RestaurantService
 
     public function adminUpdate(Request $request, int $id)
     {
-        $shop = Restaurant::where('id', $id)->first();
+        $restaurant = Restaurant::where('id', $id)->first();
 
         $data = $request->all();
 
@@ -53,16 +53,16 @@ class RestaurantService
             $data['logo'] = $logo_path;
         }
 
-        return $shop->update($data);
+        return $restaurant->update($data);
     }
 
     public function adminDelete(int $id)
     {
-        $shop = Restaurant::where('id', $id)->first();
+        $restaurant = Restaurant::where('id', $id)->first();
 
-        Storage::delete($shop->logo);
+        Storage::delete($restaurant->logo);
 
-        return $shop->delete();
+        return $restaurant->delete();
     }
 
     public function adminCount():int
