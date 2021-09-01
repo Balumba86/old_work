@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\RestaurantCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,23 +45,24 @@ Route::
         Route::put('/update/{id}', [ShopController::class, 'update'])->name('admin-shop-update');
         Route::delete('/delete/{id}', [ShopController::class, 'delete'])->name('admin-shop-delete');
     });
-    ;
-    Route::prefix('articles')->group(function () {
-//        Route::get('/', [AdminBooks::class, 'index'])->name('admin-articles');
-//        Route::get('/add', [AdminBooks::class, 'add'])->name('admin-articles-add');
-//        Route::post('/create', [AdminBooks::class, 'create'])->name('admin-articles-create');
-//        Route::get('/edit/{id}', [AdminBooks::class, 'edit'])->name('admin-articles-edit');
-//        Route::put('/update/{id}', [AdminBooks::class, 'update'])->name('admin-articles-update');
-//        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-articles-delete');
+
+    Route::prefix('restaurant-category')->group(function () {
+        Route::get('/', [RestaurantCategoryController::class, 'index'])->name('admin-restaurant-category');
+        Route::get('/add', [RestaurantCategoryController::class, 'add'])->name('admin-restaurant-category-add');
+        Route::post('/create', [RestaurantCategoryController::class, 'create'])->name('admin-restaurant-category-create');
+        Route::get('/edit/{id}', [RestaurantCategoryController::class, 'edit'])->name('admin-restaurant-category-edit');
+        Route::put('/update/{id}', [RestaurantCategoryController::class, 'update'])->name('admin-restaurant-category-update');
+        Route::delete('/delete/{id}', [RestaurantCategoryController::class, 'delete'])->name('admin-restaurant-category-delete');
     });
-    Route::prefix('radio-points')->group(function () {
-//        Route::get('/', [AdminBooks::class, 'index'])->name('admin-radio-points');
-//        Route::get('/add', [AdminBooks::class, 'add'])->name('admin-radio-points-add');
-//        Route::post('/create', [AdminBooks::class, 'create'])->name('admin-radio-points-create');
-//        Route::get('/edit/{id}', [AdminBooks::class, 'edit'])->name('admin-radio-points-edit');
-//        Route::put('/update/{id}', [AdminBooks::class, 'update'])->name('admin-radio-points-update');
-//        Route::delete('/delete/{id}', [AdminCategories::class, 'delete'])->name('admin-radio-points-delete');
-    });
+//    Route::prefix('shops')->group(function () {
+//        Route::get('/', [ShopController::class, 'index'])->name('admin-shop');
+//        Route::get('/add', [ShopController::class, 'add'])->name('admin-shop-add');
+//        Route::post('/create', [ShopController::class, 'create'])->name('admin-shop-create');
+//        Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('admin-shop-edit');
+//        Route::put('/update/{id}', [ShopController::class, 'update'])->name('admin-shop-update');
+//        Route::delete('/delete/{id}', [ShopController::class, 'delete'])->name('admin-shop-delete');
+//    });
+
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('admin-news');
         Route::get('/add', [NewsController::class, 'add'])->name('admin-news-add');

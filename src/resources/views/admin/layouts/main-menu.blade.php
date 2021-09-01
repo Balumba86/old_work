@@ -35,29 +35,29 @@
                     </ul>
                 </li>
 
-{{--                <li class="nav-item">--}}
-{{--                    <a href="#" class="nav-link">--}}
-{{--                        <i class="fas fa-utensils nav-icon"></i>--}}
-{{--                        <p>--}}
-{{--                            Кафе и рестораны--}}
-{{--                            <i class="fas fa-angle-left right"></i>--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-treeview">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Категории</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Каталог</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
+                <li class="nav-item {{ request()->is('admin/restaurant-category*') || request()->is('admin/restaurants*') ? 'menu-open' : null }}">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-utensils nav-icon"></i>
+                        <p>
+                            Кафе и рестораны
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin-restaurant-category')}}" class="nav-link {{ request()->is('admin/restaurant-category*') ? 'active' : null }}">
+                                <i class="fas fa-angle-right nav-icon"></i>
+                                <p>Категории</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-angle-right nav-icon"></i>
+                                <p>Каталог</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 {{--                <li class="nav-item">--}}
 {{--                    <a href="#" class="nav-link">--}}
