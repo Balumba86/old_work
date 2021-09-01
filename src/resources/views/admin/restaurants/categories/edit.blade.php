@@ -1,12 +1,12 @@
 @extends('admin.layouts.index')
-@section('title-page')Редактирование категории магазина@endsection
+@section('title-page')Редактирование категории кафе/ресторана@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Редактирование категории магазина</h3>
+            <h3 class="card-title">Редактирование категории кафе/ресторана</h3>
         </div>
         <div class="card-body table-responsive p-0">
-            <form action="{{route('admin-shop-category-update', $category->id )}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin-restaurant-category-update', $category->id )}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\RestaurantCategoryController;
+use App\Http\Controllers\Admin\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,14 +55,14 @@ Route::
         Route::put('/update/{id}', [RestaurantCategoryController::class, 'update'])->name('admin-restaurant-category-update');
         Route::delete('/delete/{id}', [RestaurantCategoryController::class, 'delete'])->name('admin-restaurant-category-delete');
     });
-//    Route::prefix('shops')->group(function () {
-//        Route::get('/', [ShopController::class, 'index'])->name('admin-shop');
-//        Route::get('/add', [ShopController::class, 'add'])->name('admin-shop-add');
-//        Route::post('/create', [ShopController::class, 'create'])->name('admin-shop-create');
-//        Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('admin-shop-edit');
-//        Route::put('/update/{id}', [ShopController::class, 'update'])->name('admin-shop-update');
-//        Route::delete('/delete/{id}', [ShopController::class, 'delete'])->name('admin-shop-delete');
-//    });
+    Route::prefix('restaurants')->group(function () {
+        Route::get('/', [RestaurantController::class, 'index'])->name('admin-restaurant');
+        Route::get('/add', [RestaurantController::class, 'add'])->name('admin-restaurant-add');
+        Route::post('/create', [RestaurantController::class, 'create'])->name('admin-restaurant-create');
+        Route::get('/edit/{id}', [RestaurantController::class, 'edit'])->name('admin-restaurant-edit');
+        Route::put('/update/{id}', [RestaurantController::class, 'update'])->name('admin-restaurant-update');
+        Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('admin-restaurant-delete');
+    });
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('admin-news');

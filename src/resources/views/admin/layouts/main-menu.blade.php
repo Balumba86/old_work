@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin-restaurant')}}" class="nav-link {{ request()->is('admin/restaurants*') ? 'active' : null }}">
                                 <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Каталог</p>
                             </a>
