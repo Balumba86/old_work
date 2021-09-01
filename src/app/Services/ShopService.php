@@ -60,6 +60,8 @@ class ShopService
     {
         $shop = Shop::where('id', $id)->first();
 
+        Storage::delete($shop->logo);
+
         return $shop->delete();
     }
 
