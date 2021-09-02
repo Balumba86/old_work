@@ -16,6 +16,7 @@
                         <div class="icon">
                             <i class="fas fa-shopping-bag"></i>
                         </div>
+                        <a href="{{route('admin-shop')}}" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
@@ -27,6 +28,7 @@
                         <div class="icon">
                             <i class="fas fa-utensils"></i>
                         </div>
+                        <a href="{{route('admin-restaurant')}}" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
@@ -38,6 +40,7 @@
                         <div class="icon">
                             <i class="fas fa-icons"></i>
                         </div>
+                        <a href="{{route('admin-service')}}" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
@@ -49,6 +52,7 @@
                         <div class="icon">
                             <i class="fas fa-bullhorn"></i>
                         </div>
+                        <a href="#" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
             </div>
