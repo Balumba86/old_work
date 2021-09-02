@@ -7,58 +7,55 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-4 col-12">
-                    <div class="small-box bg-info">
+                <div class="col-lg-3 col-12">
+                    <div class="small-box bg-gradient-info">
                         <div class="inner">
-{{--                            <h3>{{$count_requests}}</h3>--}}
-                            <h3>100</h3>
-                            <p>Заявки</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-{{--                            <h3>{{$count_orders}}</h3>--}}
-                            <h3>200</h3>
-                            <p>Заказы</p>
+                            <h3>{{$count_shops}}</h3>
+                            <p>Магазины</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-shopping-bag"></i>
                         </div>
+                        <a href="{{route('admin-shop')}}" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-12">
-                    <div class="small-box bg-warning">
+                <div class="col-lg-3 col-12">
+                    <div class="small-box bg-gradient-success">
                         <div class="inner">
-{{--                            <h3>{{$count_clients}}</h3>--}}
-                            <h3>300</h3>
-                            <p>Клиентов</p>
+                            <h3>{{$count_cafe}}</h3>
+                            <p>Кафе и рестораны</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-user-alt"></i>
+                            <i class="fas fa-utensils"></i>
                         </div>
+                        <a href="{{route('admin-restaurant')}}" class="small-box-footer">Перейти к списку</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <div class="small-box bg-gradient-pink">
+                        <div class="inner">
+                            <h3>{{$count_services}}</h3>
+                            <p>Сервисы и услуги</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-icons"></i>
+                        </div>
+                        <a href="{{route('admin-service')}}" class="small-box-footer">Перейти к списку</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <div class="small-box bg-gradient-danger">
+                        <div class="inner">
+                            <h3>{{$count_requests}}</h3>
+                            <p>Заявки на аренду</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
             </div>
-{{--            <form action="{{route('dashboard-save-email')}}" method="post">--}}
-{{--                @csrf--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-lg-10 col-12">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <input class="form-control" type="email" name="email_by_request" placeholder="E-mail для отправки заявок" value="{{$email_request->email ?? ''}}" required>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-lg-2 col-12">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <button type="submit" class="btn btn-block btn-info ">Сохранить</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </form>--}}
         </div>
         <div class="card-footer">
 

@@ -17,6 +17,13 @@
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{ $post->slug }}">
                         </div>
                         <div class="form-group">
+                            <label for="customFile">Главное изображение* <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="logo_shop" name="main_img">
+                                <label class="custom-file-label" for="logo_shop">Изменить файл</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="">Текст статьи*</label>
                             <textarea id="editor" class="form-control" name="text" required>{{ $post->text }}</textarea>
                         </div>

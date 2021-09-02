@@ -1,12 +1,12 @@
 @extends('admin.layouts.index')
-@section('title-page')Каталог магазинов@endsection
+@section('title-page')Каталог сервисов и услуг@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Каталог магазинов</h3>
+            <h3 class="card-title">Каталог сервисов и услуг</h3>
         </div>
         <div class="card-header">
-            <form action="{{route('admin-shop')}}" method="GET">
+            <form action="{{route('admin-service')}}" method="GET">
                 <div class="row">
                     <div class="col-sm-11">
                         <div class="form-group">
@@ -30,29 +30,29 @@
                             <th class="text-center">Телефон</th>
                             <th class="text-center">Добавлена</th>
                             <th class="text-center">Категория</th>
-                            <th><a href="{{route('admin-shop-add')}}" class="btn btn-outline-success btn-sm"><i class="fas fa-plus"></i></a></th>
+                            <th><a href="{{route('admin-service-add')}}" class="btn btn-outline-success btn-sm"><i class="fas fa-plus"></i></a></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($shops as $shop)
+                        @forelse($services as $service)
                         <tr>
-                            <td>{{$shop->title}}</td>
-                            <td class="text-center">@if($shop->show_main) <i class="fas fa-check"></i> @else <i class="fas fa-times"></i> @endif</td>
-                            <td class="text-center">{{$shop->hours_work}}</td>
-                            <td class="text-center">{{$shop->phone ?? '---'}}</td>
-                            <td class="text-center">{{date('d.m.Y H:i', strtotime($shop->created_at))}}</td>
+                            <td>{{$service->title}}</td>
+                            <td class="text-center">@if($service->show_main) <i class="fas fa-check"></i> @else <i class="fas fa-times"></i> @endif</td>
+                            <td class="text-center">{{$service->hours_work}}</td>
+                            <td class="text-center">{{$service->phone ?? '---'}}</td>
+                            <td class="text-center">{{date('d.m.Y H:i', strtotime($service->created_at))}}</td>
                             <td class="text-center">
                                 @foreach($categories as $cat)
-                                    @if($cat->id === $shop->category){{$cat->title}}@endif
+                                    @if($cat->id === $service->category){{$cat->title}}@endif
                                 @endforeach
                             </td>
                             <td>
-                                <a href="{{route('admin-shop-edit', $shop->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                <span data-target="#drop_post_{{$shop->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>
-                                <form onsubmit="true" action="{{route('admin-shop-delete', $shop->id)}}" method="post" id="drop-form-{{$shop->id}}">
+                                <a href="{{route('admin-service-edit', $service->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <span data-target="#drop_post_{{$service->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>
+                                <form onsubmit="true" action="{{route('admin-service-delete', $service->id)}}" method="post" id="drop-form-{{$service->id}}">
                                     @method('DELETE')
                                     @csrf
-                                    <div class="modal fade" id="drop_post_{{$shop->id}}">
+                                    <div class="modal fade" id="drop_post_{{$service->id}}">
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-danger">
                                                 <div class="modal-header">
@@ -61,7 +61,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Вы действительно хотите удалить магазин "{{$shop->title}}"?</p>
+                                                    <p>Вы действительно хотите удалить сервис "{{$service->title}}"?</p>
                                                     <p class="small">* Данное действие невозможно будет отменить!</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
@@ -80,7 +80,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    {{$shops->links('admin.layouts.paginate')}}
+                    {{$services->links('admin.layouts.paginate')}}
                 </div>
     </div>
 @endsection

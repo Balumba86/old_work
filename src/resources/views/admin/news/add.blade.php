@@ -16,6 +16,13 @@
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly>
                         </div>
                         <div class="form-group">
+                            <label for="customFile">Главное изображение*</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" required id="logo_shop" name="main_img">
+                                <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="">Текст статьи*</label>
                             <textarea id="editor" class="form-control" name="text" required></textarea>
                         </div>

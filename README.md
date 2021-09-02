@@ -15,6 +15,7 @@ docker-compose exec php yarn
 ```
 docker-compose exec php php artisan migrate
 docker-compose exec php php artisan key:generate
+docker-compose exec php php artisan db:seed
 ```
 
 ## Непосредственно разработка

@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\ShopCategory;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 
-class ShopCategoryService
+class ServicesCategoryService
 {
     public function adminIndex(Request $request)
     {
-        $categories = ShopCategory::query();
+        $categories = ServiceCategory::query();
 
         $search = $request->get('search');
 
@@ -25,29 +25,29 @@ class ShopCategoryService
 
     public function adminAll()
     {
-        return ShopCategory::select('id', 'title')->get()->all();
+        return ServiceCategory::select('id', 'title')->get()->all();
     }
 
     public function adminCreate($data)
     {
-        return ShopCategory::create($data);
+        return ServiceCategory::create($data);
     }
 
     public function adminGetById(int $id)
     {
-        return ShopCategory::where('id', $id)->first();
+        return ServiceCategory::where('id', $id)->first();
     }
 
     public function adminUpdate($data, int $id)
     {
-        $category = ShopCategory::where('id', $id)->first();
+        $category = ServiceCategory::where('id', $id)->first();
 
         return $category->update($data);
     }
 
     public function adminDelete(int $id)
     {
-        $category = ShopCategory::where('id', $id)->first();
+        $category = ServiceCategory::where('id', $id)->first();
 
         return $category->delete();
     }

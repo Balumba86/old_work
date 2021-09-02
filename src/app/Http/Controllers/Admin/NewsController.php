@@ -14,6 +14,7 @@ class NewsController extends Controller
         NewsService $newsService
     ) {
         $this->newsService = $newsService;
+        $this->middleware('auth');
     }
 
     /**
@@ -40,7 +41,7 @@ class NewsController extends Controller
      */
     public function create(Request $request)
     {
-        $this->newsService->adminCreate($request->all());
+        $this->newsService->adminCreate($request);
 
         return redirect()->route('admin-news');
     }
@@ -64,7 +65,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $this->newsService->adminUpdate($request->all(), $id);
+        $this->newsService->adminUpdate($request, $id);
 
         return redirect()->route('admin-news');
     }

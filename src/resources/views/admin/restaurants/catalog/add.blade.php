@@ -1,12 +1,12 @@
 @extends('admin.layouts.index')
-@section('title-page')Добавление магазина@endsection
+@section('title-page')Добавление кафе/ресторана@endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Добавление магазина</h3>
+            <h3 class="card-title">Добавление кафе/ресторана</h3>
         </div>
         <div class="card-body table-responsive p-0">
-            <form action="{{route('admin-shop-create')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin-restaurant-create')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card card-secondary">
                     <div class="card-header">
@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип магазина*</label>
+                            <label for="customFile">Логотип заведения*</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>

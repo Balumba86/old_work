@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsService
 {
@@ -22,8 +23,15 @@ class NewsService
         return $news;
     }
 
-    public function adminCreate($data)
+    public function adminCreate(Request $request)
     {
+        $data = $request->all();
+
+        if ($request->file('main_img')) {
+            $logo_path = $request->file('main_img')->store('news');
+            $data['main_img'] = $logo_path;
+        }
+
         return News::create($data);
     }
 
@@ -32,9 +40,17 @@ class NewsService
         return News::where('id', $id)->first();
     }
 
-    public function adminUpdate($data, int $id)
+    public function adminUpdate(Request $request, int $id)
     {
         $post = News::where('id', $id)->first();
+
+        $data = $request->all();
+
+        if ($request->file('main_img')) {
+            Storage::delete($data['main_img']);
+            $logo_path = $request->file('main_img')->store('news');
+            $data['main_img'] = $logo_path;
+        }
 
         return $post->update($data);
     }
@@ -42,6 +58,8 @@ class NewsService
     public function adminDelete(int $id)
     {
         $post = News::where('id', $id)->first();
+
+        Storage::delete($post->main_img);
 
         return $post->delete();
     }

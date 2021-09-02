@@ -18,6 +18,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('text');
+            $table->string('main_img');
             $table->boolean('published')->default(false);
             $table->string('meta_title');
             $table->string('meta_keywords');
