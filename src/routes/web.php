@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\RestaurantCategoryController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,23 @@ Route::
         Route::put('/update/{id}', [RestaurantController::class, 'update'])->name('admin-restaurant-update');
         Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('admin-restaurant-delete');
     });
+
+    Route::prefix('service-category')->group(function () {
+        Route::get('/', [ServiceCategoryController::class, 'index'])->name('admin-service-category');
+        Route::get('/add', [ServiceCategoryController::class, 'add'])->name('admin-service-category-add');
+        Route::post('/create', [ServiceCategoryController::class, 'create'])->name('admin-service-category-create');
+        Route::get('/edit/{id}', [ServiceCategoryController::class, 'edit'])->name('admin-service-category-edit');
+        Route::put('/update/{id}', [ServiceCategoryController::class, 'update'])->name('admin-service-category-update');
+        Route::delete('/delete/{id}', [ServiceCategoryController::class, 'delete'])->name('admin-service-category-delete');
+    });
+//    Route::prefix('services')->group(function () {
+//        Route::get('/', [RestaurantController::class, 'index'])->name('admin-service');
+//        Route::get('/add', [RestaurantController::class, 'add'])->name('admin-service-add');
+//        Route::post('/create', [RestaurantController::class, 'create'])->name('admin-service-create');
+//        Route::get('/edit/{id}', [RestaurantController::class, 'edit'])->name('admin-service-edit');
+//        Route::put('/update/{id}', [RestaurantController::class, 'update'])->name('admin-service-update');
+//        Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('admin-service-delete');
+//    });
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('admin-news');
