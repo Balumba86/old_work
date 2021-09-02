@@ -252,6 +252,10 @@ a[href='#']:focus {
 .link {
   display: block;
   margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: transparent;
   color: #007846;
   text-decoration: none;
   text-align: center;
@@ -263,6 +267,15 @@ a[href='#']:focus {
 }
 
 .section {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.page-title {
+  margin-bottom: 15px;
+  font-size: 35px;
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
 }

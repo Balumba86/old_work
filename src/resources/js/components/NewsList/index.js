@@ -73,7 +73,7 @@ const NewsList = ({ list = defaultList }) => {
       <h2 className={style['news-title']}>Новости</h2>
       <ul className={style['news-list']}>
         {list && list.map(item => (
-          <li className={style['news-list__item']}>
+          <li key={item.id} className={style['news-list__item']}>
             <a className={style['news-list__link']}>
               <img className={style['news-list__img']} width='300' height='400' src={item.image} alt='' />
               <time className={style['news-list__date']} dateTime={item.date}>{item.date}</time>
@@ -82,6 +82,9 @@ const NewsList = ({ list = defaultList }) => {
           </li>
         ))}
       </ul>
+      <div>
+        <button type='button' className='link'>Загрузить еще</button>
+      </div>
     </>
   )
 }

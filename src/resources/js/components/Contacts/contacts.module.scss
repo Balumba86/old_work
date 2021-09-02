@@ -1,0 +1,21 @@
+.contacts {
+  margin: 70px auto 0;
+  padding: 0 80px;
+}
+
+.contacts-row {
+  display: flex;
+  padding: 25px 0;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(155, 182, 162, 0.2);
+}
+
+.contacts-row:last-of-type {
+  border-bottom: 1px solid rgba(155, 182, 162, 0.2);
+}
+
+.contacts-col {
+  flex-basis: 33%;
+  font-size: 18px;
+}
