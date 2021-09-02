@@ -8,17 +8,8 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\RestaurantCategoryController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\ServiceController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -73,14 +64,14 @@ Route::
         Route::put('/update/{id}', [ServiceCategoryController::class, 'update'])->name('admin-service-category-update');
         Route::delete('/delete/{id}', [ServiceCategoryController::class, 'delete'])->name('admin-service-category-delete');
     });
-//    Route::prefix('services')->group(function () {
-//        Route::get('/', [RestaurantController::class, 'index'])->name('admin-service');
-//        Route::get('/add', [RestaurantController::class, 'add'])->name('admin-service-add');
-//        Route::post('/create', [RestaurantController::class, 'create'])->name('admin-service-create');
-//        Route::get('/edit/{id}', [RestaurantController::class, 'edit'])->name('admin-service-edit');
-//        Route::put('/update/{id}', [RestaurantController::class, 'update'])->name('admin-service-update');
-//        Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('admin-service-delete');
-//    });
+    Route::prefix('services')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('admin-service');
+        Route::get('/add', [ServiceController::class, 'add'])->name('admin-service-add');
+        Route::post('/create', [ServiceController::class, 'create'])->name('admin-service-create');
+        Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('admin-service-edit');
+        Route::put('/update/{id}', [ServiceController::class, 'update'])->name('admin-service-update');
+        Route::delete('/delete/{id}', [ServiceController::class, 'delete'])->name('admin-service-delete');
+    });
 
     Route::prefix('news')->group(function () {
         Route::get('/', [NewsController::class, 'index'])->name('admin-news');

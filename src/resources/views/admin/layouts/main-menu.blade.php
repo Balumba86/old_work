@@ -70,13 +70,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin-service-category')}}" class="nav-link {{ request()->is('admin/service-category*') ? 'active' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Категории</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="{{route('admin-service')}}" class="nav-link {{ request()->is('admin/services*') ? 'active' : null }}">
+                                <i class="fas fa-angle-right nav-icon"></i>
                                 <p>Каталог</p>
                             </a>
                         </li>
