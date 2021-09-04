@@ -82,9 +82,6 @@ const NewsList = ({ list = defaultList }) => {
           </li>
         ))}
       </ul>
-      <div>
-        <button type='button' className='link'>Загрузить еще</button>
-      </div>
     </>
   )
 }

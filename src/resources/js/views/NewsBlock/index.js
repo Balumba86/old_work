@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import NewsList from '../../components/NewsList'
+import NewsList from '../NewsList'
 import { PATHS } from '../../const'
 import { belwestLogo, gallery, gallery2 } from '../../images'
 

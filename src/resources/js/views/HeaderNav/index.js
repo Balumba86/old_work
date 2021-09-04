@@ -1,9 +1,20 @@
+import classNames from 'classnames'
 import { NavLink, useLocation } from 'react-router-dom'
 import { PATHS } from '../../const'
 import style from './nav.module.scss'
 
 const HeaderNav = () => {
   const location = useLocation()
+
+  const cafePath = PATHS.visitors_cafe.path;
+  const servicesPath = PATHS.visitors_services.path;
+  const shopsPath = PATHS.visitors_shops.path;
+
+  const visitorsClasses = classNames({
+    [style['nav-link']]: true,
+    [style['nav-link_active']]: location.pathname === cafePath || location.pathname === servicesPath || location.pathname === shopsPath
+  })
+
   return (
     <nav className={style.nav}>
       <ul className={style['nav-list']}>
@@ -21,9 +32,8 @@ const HeaderNav = () => {
         </li>
         <li className={style['nav-item']}>
           <NavLink
-            to={PATHS.visitors.path}
-            className={style['nav-link']}
-            activeClassName={style['nav-link_active']}>Посетителям</NavLink>
+            to={PATHS.visitors_shops.path}
+            className={visitorsClasses}>Посетителям</NavLink>
         </li>
         <li className={style['nav-item']}>
           <NavLink

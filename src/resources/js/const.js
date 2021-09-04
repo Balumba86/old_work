@@ -21,6 +21,18 @@ export const PATHS = {
   },
   visitors: {
     path: '/visitors',
-    exact: false
-  }
+    exact: true
+  },
+  visitors_cafe: {
+    path: '/cafe',
+    exact: true
+  },
+  visitors_services: {
+    path: '/services',
+    exact: true
+  },
+  visitors_shops: {
+    path: '/shops',
+    exact: true
+  },
 }
