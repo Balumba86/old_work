@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class ShopCategoryService
 {
+    // WEB Admin-panel
+
     public function adminIndex(Request $request)
     {
         $categories = ShopCategory::query();
@@ -50,5 +52,12 @@ class ShopCategoryService
         $category = ShopCategory::where('id', $id)->first();
 
         return $category->delete();
+    }
+
+    // Api
+
+    public function apiAll()
+    {
+        return ShopCategory::select('title', 'slug')->get()->all();
     }
 }
