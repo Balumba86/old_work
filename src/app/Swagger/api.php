@@ -1,49 +1,33 @@
 <?php
 /**
  * @OA\Info(
- *     description="This is a sample Petstore server.  You can find
-out more about Swagger at
-[http://swagger.io](http://swagger.io) or on
-[irc.freenode.net, #swagger](http://swagger.io/irc/).",
+ *     description="Документация API для фронтенда",
  *     version="1.0.0",
- *     title="Swagger Petstore",
- *     termsOfService="http://swagger.io/terms/",
+ *     title="API Nikolskiy",
  *     @OA\Contact(
- *         email="apiteam@swagger.io"
- *     ),
- *     @OA\License(
- *         name="Apache 2.0",
- *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *         email="balumba.ru@gmail.com"
  *     )
  * )
  */
 /**
  * @OA\Tag(
- *     name="pet",
- *     description="Everything about your Pets",
- *     @OA\ExternalDocumentation(
- *         description="Find out more",
- *         url="http://swagger.io"
- *     )
+ *     name="shop",
+ *     description="Магазины",
  * )
  * @OA\Tag(
- *     name="store",
- *     description="Access to Petstore orders",
+ *     name="restaurant",
+ *     description="Кафе/рестораны",
  * )
  * @OA\Tag(
- *     name="user",
- *     description="Operations about user",
- *     @OA\ExternalDocumentation(
- *         description="Find out more about store",
- *         url="http://swagger.io"
- *     )
+ *     name="service",
+ *     description="Сервисы/услуги",
  * )
- * @OA\Server(
- *     description="SwaggerHUB API Mocking",
- *     url="https://virtserver.swaggerhub.com/swagger/Petstore/1.0.0"
+ * @OA\Tag(
+ *     name="news",
+ *     description="Новости",
  * )
- * @OA\ExternalDocumentation(
- *     description="Find out more about Swagger",
- *     url="http://swagger.io"
+ * @OA\Tag(
+ *     name="partners",
+ *     description="Партнёры",
  * )
  */

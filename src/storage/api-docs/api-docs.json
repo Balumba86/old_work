@@ -1,0 +1,697 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Nikolskiy",
+        "description": "Документация API для фронтенда",
+        "contact": {
+            "email": "balumba.ru@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/shop/categories": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение списка категорий магазинов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shop/category/{categorySlug}": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение списка магазинов в категории",
+                "operationId": "categoryItems",
+                "parameters": [
+                    {
+                        "name": "categorySlug",
+                        "in": "path",
+                        "description": "slug запрашиваемой категории",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию магазина в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryShopDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shop/{shopSlug}": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение детальной информации",
+                "operationId": "getItemBySlug",
+                "parameters": [
+                    {
+                        "name": "shopSlug",
+                        "in": "path",
+                        "description": "slug магазина",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShopDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CategoryListResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategorySmall": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryShopResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryShopDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetail"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetail": {
+                "properties": {
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetailItem"
+                        }
+                    },
+                    "first_page_url": {
+                        "type": "string"
+                    },
+                    "from": {
+                        "type": "integer"
+                    },
+                    "next_page_url": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetailItem": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ShopDetail"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopDetail": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "website": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "meta_title": {
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "News": {
+                "title": "Модель новости",
+                "description": "Модель новости",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Заголовок новости",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Транслит заголовка новости для ЧПУ",
+                        "type": "string"
+                    },
+                    "text": {
+                        "title": "Текст новости",
+                        "description": "Текст новости",
+                        "type": "string"
+                    },
+                    "main_img": {
+                        "title": "Картинка",
+                        "description": "Изображение для списка статей",
+                        "type": "string"
+                    },
+                    "published": {
+                        "title": "Опубликовано",
+                        "description": "Метка того опубликована новость или снята с публикации",
+                        "type": "boolean"
+                    },
+                    "meta_title": {
+                        "title": "SEO название",
+                        "description": "SEO заголовок новости",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "Ключевые слова",
+                        "description": "Ключевые слова для SEO",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "Описание статьи",
+                        "description": "Описание для SEO",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Partner": {
+                "title": "Модель партнёра",
+                "description": "Модель партнёра",
+                "properties": {
+                    "name": {
+                        "title": "Название",
+                        "description": "Название партнёра",
+                        "type": "string"
+                    },
+                    "logo": {
+                        "title": "Логотип",
+                        "description": "Логотип партнёра",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание партнёра",
+                        "type": "string"
+                    },
+                    "show_main": {
+                        "title": "На главной",
+                        "description": "Показывать на главной странице",
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "title": "Сортировка",
+                        "description": "Сортировка показа на главной",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Restaurant": {
+                "title": "Модель ресторана",
+                "description": "Модель ресторана",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название заведения",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug заведения",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание заведения",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок заведения",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова заведения",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание заведения",
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "title": "Часы работы",
+                        "description": "Часы работы заведения",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "title": "Телефон",
+                        "description": "Телефон заведения",
+                        "type": "string"
+                    },
+                    "website": {
+                        "title": "Веб-сайт",
+                        "description": "Веб-сайт заведения",
+                        "type": "string"
+                    },
+                    "logo": {
+                        "title": "Логотип",
+                        "description": "Логотип заведения",
+                        "type": "string"
+                    },
+                    "show_main": {
+                        "title": "На главной",
+                        "description": "Показывать на главной странице",
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "title": "Сортировка",
+                        "description": "Сортировка показа на главной",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "RestaurantCategory": {
+                "title": "Модель категории ресторана",
+                "description": "Модель категории ресторана",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название категории",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug категории",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание категории",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок категории",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова категории",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание категории",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Service": {
+                "title": "Модель сервиса/услуги",
+                "description": "Модель сервиса/услуги",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название заведения",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug заведения",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание заведения",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок заведения",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова заведения",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание заведения",
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "title": "Часы работы",
+                        "description": "Часы работы заведения",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "title": "Телефон",
+                        "description": "Телефон заведения",
+                        "type": "string"
+                    },
+                    "website": {
+                        "title": "Веб-сайт",
+                        "description": "Веб-сайт заведения",
+                        "type": "string"
+                    },
+                    "logo": {
+                        "title": "Логотип",
+                        "description": "Логотип заведения",
+                        "type": "string"
+                    },
+                    "show_main": {
+                        "title": "На главной",
+                        "description": "Показывать на главной странице",
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "title": "Сортировка",
+                        "description": "Сортировка показа на главной",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "ServiceCategory": {
+                "title": "Модель категории сервиса/услуги",
+                "description": "Модель категории сервиса/услуги",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название категории",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug категории",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание категории",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок категории",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова категории",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание категории",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Shop": {
+                "title": "Модель магазина",
+                "description": "Модель магазина",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название заведения",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug заведения",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание заведения",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок заведения",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова заведения",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание заведения",
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "title": "Часы работы",
+                        "description": "Часы работы заведения",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "title": "Телефон",
+                        "description": "Телефон заведения",
+                        "type": "string"
+                    },
+                    "website": {
+                        "title": "Веб-сайт",
+                        "description": "Веб-сайт заведения",
+                        "type": "string"
+                    },
+                    "logo": {
+                        "title": "Логотип",
+                        "description": "Логотип заведения",
+                        "type": "string"
+                    },
+                    "show_main": {
+                        "title": "На главной",
+                        "description": "Показывать на главной странице",
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "title": "Сортировка",
+                        "description": "Сортировка показа на главной",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopCategory": {
+                "title": "Модель категории магазина",
+                "description": "Модель категории магазина",
+                "properties": {
+                    "title": {
+                        "title": "Название",
+                        "description": "Название категории",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "Slug",
+                        "description": "Slug категории",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "Описание",
+                        "description": "Описание категории",
+                        "type": "string"
+                    },
+                    "meta_title": {
+                        "title": "SEO заголовок",
+                        "description": "SEO заголовок категории",
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "title": "SEO ключевые слова",
+                        "description": "SEO ключевые слова категории",
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "title": "SEO описание",
+                        "description": "SEO описание категории",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "shop",
+            "description": "Магазины"
+        },
+        {
+            "name": "restaurant",
+            "description": "Кафе/рестораны"
+        },
+        {
+            "name": "service",
+            "description": "Сервисы/услуги"
+        },
+        {
+            "name": "news",
+            "description": "Новости"
+        },
+        {
+            "name": "partners",
+            "description": "Партнёры"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

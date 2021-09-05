@@ -58,6 +58,11 @@ class ShopCategoryService
 
     public function apiAll()
     {
-        return ShopCategory::select('title', 'slug')->get()->all();
+        return ShopCategory::select('id', 'title', 'slug')->get()->all();
+    }
+
+    public function getCategoryIdBySlug($slug)
+    {
+        return ShopCategory::select('id')->where('slug', $slug)->get()->first();
     }
 }

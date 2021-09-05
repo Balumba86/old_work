@@ -11,7 +11,12 @@ trait ApiResponse
      */
     static function result($data, $code = 200)
     {
-        return response()->json($data, $code);
+        $result = [
+            "type" => 'success',
+            "data" => $data
+        ];
+
+        return response()->json($result, $code);
     }
 
     /**
@@ -39,6 +44,7 @@ trait ApiResponse
         }
 
         $result = [
+            "type" => 'error',
             "error" => [
                 "code" => $code,
                 "title" => "Ошибка!",
