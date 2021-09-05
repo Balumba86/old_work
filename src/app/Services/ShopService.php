@@ -69,4 +69,40 @@ class ShopService
     {
         return Shop::all()->count();
     }
+
+    // Api
+
+    public function getItemsByCategoryId(Request $request, $category_id)
+    {
+        $shops = Shop::query();
+        $shops->with('category');
+        $shops->select('title', 'slug', 'logo', 'category');
+        $shops->where('category', $category_id);
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $shops->where('title', 'like', "%$search%");
+        }
+
+        $shops = $shops->orderBy('id', 'desc')->simplePaginate(10);
+
+        foreach ($shops->items() as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+        }
+
+        return $shops;
+    }
+
+    public function getBySlug(string $slug)
+    {
+        $shop = Shop::select('title', 'slug', 'description', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+
+        if ($shop) {
+            $shop->logo = Storage::url($shop->logo);
+        }
+
+        return $shop;
+    }
 }

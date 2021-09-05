@@ -1,24 +1,13 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Swagger Petstore",
-        "description": "This is a sample Petstore server.  You can find\nout more about Swagger at\n[http://swagger.io](http://swagger.io) or on\n[irc.freenode.net, #swagger](http://swagger.io/irc/).",
-        "termsOfService": "http://swagger.io/terms/",
+        "title": "API Nikolskiy",
+        "description": "Документация API для фронтенда",
         "contact": {
-            "email": "apiteam@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "email": "balumba.ru@gmail.com"
         },
         "version": "1.0.0"
     },
-    "servers": [
-        {
-            "url": "https://virtserver.swaggerhub.com/swagger/Petstore/1.0.0",
-            "description": "SwaggerHUB API Mocking"
-        }
-    ],
     "paths": {
         "/shop/categories": {
             "get": {
@@ -40,6 +29,86 @@
                     }
                 }
             }
+        },
+        "/shop/category/{categorySlug}": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение списка магазинов в категории",
+                "operationId": "categoryItems",
+                "parameters": [
+                    {
+                        "name": "categorySlug",
+                        "in": "path",
+                        "description": "slug запрашиваемой категории",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию магазина в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryShopDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shop/{shopSlug}": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение детальной информации",
+                "operationId": "getItemBySlug",
+                "parameters": [
+                    {
+                        "name": "shopSlug",
+                        "in": "path",
+                        "description": "slug магазина",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ShopDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -51,12 +120,10 @@
                         "default": "success"
                     },
                     "data": {
-                        "properties": {
-                            "profile": {
-                                "$ref": "#/components/schemas/CategorySmall"
-                            }
-                        },
-                        "type": "object"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
                     }
                 },
                 "type": "object"
@@ -66,19 +133,144 @@
                     "id": {
                         "type": "integer"
                     },
-                    "firstName": {
+                    "title": {
                         "type": "string"
                     },
-                    "lastName": {
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryShopResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryShopDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetail"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetail": {
+                "properties": {
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetailItem"
+                        }
+                    },
+                    "first_page_url": {
                         "type": "string"
                     },
-                    "middleName": {
+                    "from": {
+                        "type": "integer"
+                    },
+                    "next_page_url": {
                         "type": "string"
                     },
-                    "balance": {
+                    "path": {
                         "type": "string"
                     },
-                    "avatar": {
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetailItem": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ShopDetail"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopDetail": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "website": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "meta_title": {
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "type": "string"
+                    },
+                    "meta_description": {
                         "type": "string"
                     }
                 },
@@ -499,10 +691,6 @@
             "description": "Партнёры"
         }
     ],
-    "externalDocs": {
-        "description": "Find out more about Swagger",
-        "url": "http://swagger.io"
-    },
     "security": [
         []
     ]
