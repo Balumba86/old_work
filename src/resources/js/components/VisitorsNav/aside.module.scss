@@ -1,5 +1,13 @@
+.aside {
+  padding-top: 10px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
 .aside-nav__list {
   margin: 0;
+  margin-top: 15px;
   list-style: none;
   border-bottom: 1px solid rgba(#9BB6A2, 0.3);
 }

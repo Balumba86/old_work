@@ -4,9 +4,7 @@ import { Layout } from '../views'
 const NewsPage = () => {
   return (
     <Layout>
-      <section className='section'>
-        <News />
-      </section>
+      <News />
     </Layout>
   )
 }

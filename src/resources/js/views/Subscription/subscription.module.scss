@@ -11,6 +11,9 @@
   font-weight: 300;
   text-align: center;
   text-transform: uppercase;
+  @media(max-width: 1200px) {
+    font-size: 30px;
+  }
 }
 
 .subscr-subtitle {

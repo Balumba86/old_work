@@ -2,6 +2,7 @@ import { CardsList } from '../../views'
 import { belwestLogo } from '../../images'
 
 import style from './cafe.module.scss'
+import Filters from '../Filters'
 const list = [
   {
     id: 'cafe-1',
@@ -38,7 +39,7 @@ const Cafe = () => {
   return (
     <>
       <div className={style['cafe-bgr']} />
-      {/* search */}
+      <Filters />
       <CardsList list={list} />
     </>
   )

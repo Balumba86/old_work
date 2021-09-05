@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { NavLink, useLocation } from 'react-router-dom'
+import Search from '../Search'
 import { PATHS } from '../../const'
 
 import style from './aside.module.scss'
@@ -22,6 +23,7 @@ const VisitorsNav = () => {
 
   return (
     <aside className={style['aside']}>
+      <Search />
       <nav className={style['aside-nav']}>
         <ul className={style['aside-nav__list']}>
           <li className={style['aside-nav__item']}>

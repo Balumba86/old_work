@@ -1,3 +1,4 @@
+import Filters from '../Filters'
 import { CardsList } from '../../views'
 import { belwestLogo } from '../../images'
 
@@ -38,7 +39,7 @@ const Shops = () => {
   return (
     <>
       <div className={style['shops-bgr']} />
-      {/* search */}
+      <Filters />
       <CardsList list={list} />
     </>
   )

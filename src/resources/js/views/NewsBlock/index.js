@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import NewsList from '../NewsList'
 import { PATHS } from '../../const'
 import { belwestLogo, gallery, gallery2 } from '../../images'
+import style from './news.module.scss'
 
 const defaultList = [
   {
@@ -29,7 +30,7 @@ const defaultList = [
 
 const NewsBlock = () => {
   return (
-    <section className='section'>
+    <section className={style['section']}>
       <NewsList list={defaultList} />
       <Link className='link' to={PATHS.news.path}>Перейти к списку новостей</Link>
     </section>

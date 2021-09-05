@@ -5,6 +5,7 @@ import gallery2 from './gallery2.jpg'
 import logoNav from './logo_nav.svg'
 import banner from './banner.jpg'
 import sale from './sale.jpg'
+import search from './search.svg'
 import serviceBgr from './service_bgr.jpg'
 import shopBgr from './shop_bgr.jpg'
 import shop1 from './parners/shop1.jpg'
@@ -20,6 +21,7 @@ export {
   gallery2,
   logoNav,
   sale,
+  search,
   serviceBgr,
   shopBgr,
   shop1,
