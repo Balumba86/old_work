@@ -1,0 +1,29 @@
+.contacts {
+  margin: 70px auto 0;
+  padding: 0 80px;
+  width: 1500px;
+  // margin: 0 auto;
+  @media (max-width: 1500px) {
+    width: calc(100% - 100px);
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.contacts-row {
+  display: flex;
+  padding: 25px 0;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(155, 182, 162, 0.2);
+}
+
+.contacts-row:last-of-type {
+  border-bottom: 1px solid rgba(155, 182, 162, 0.2);
+}
+
+.contacts-col {
+  flex-basis: 33%;
+  font-size: 18px;
+}

@@ -1,20 +1,31 @@
 .shops-section {
+  width: 1300px;
   padding-top: 70px;
   padding-bottom: 100px;
+  margin: 0 auto;
+  @media (max-width: 1500px) {
+    width: calc(100% - 100px);
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: 100%;
+  }
 }
 
 .shops-title {
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   font-size: 35px;
   line-height: 1.3;
   font-weight: 300;
   text-align: center;
   text-transform: uppercase;
+  @media(max-width: 1200px) {
+    font-size: 30px;
+  }
 }
 
 .shops-list {
   display: grid;
-  padding: 0 80px;
+  // padding: 0 80px;
   margin: 0 auto;
   list-style: none;
   grid-template-columns: repeat(6, 1fr);
@@ -29,6 +40,9 @@
   padding: 5px;
   transition: 0.2s;
   filter: grayscale(1);
+  @media (max-width: 1024px) {
+    width: 130px;
+  }
 }
 
 .shops-list__logo {

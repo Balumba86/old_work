@@ -1,0 +1,27 @@
+.filters {
+  display: none;
+  margin-top: 20px;
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.filters-right {
+  flex-basis: calc(40% - 10px);
+  align-items: flex-end;
+}
+
+.filters-left {
+  flex-basis: calc(60% - 10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.filters-select {
+  display: flex;
+  align-items: flex-end;
+  flex-basis: calc(50% - 10px);
+}

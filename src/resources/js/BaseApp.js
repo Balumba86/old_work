@@ -1,11 +1,13 @@
 import { Switch, Route } from 'react-router-dom'
 import {
   AboutPage,
+  CafePage,
   ContactsPage,
   HomePage,
   NewsPage,
   RentersPage,
-  VisitorsPage
+  ServicesPage,
+  ShopsPage,
 } from './pages'
 
 import {PATHS} from './const'
@@ -40,9 +42,19 @@ function App() {
         component={RentersPage}
       />
       <Route
-        path={PATHS.visitors.path}
-        exact={PATHS.visitors.exact}
-        component={VisitorsPage}
+        path={PATHS.visitors_cafe.path}
+        exact={PATHS.visitors_cafe.exact}
+        component={CafePage}
+      />
+      <Route
+        path={PATHS.visitors_services.path}
+        exact={PATHS.visitors_services.exact}
+        component={ServicesPage}
+      />
+      <Route
+        path={PATHS.visitors_shops.path}
+        exact={PATHS.visitors_shops.exact}
+        component={ShopsPage}
       />
     </Switch>
   );
