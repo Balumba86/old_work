@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { PATHS } from '../../const'
 import { BaseSelect } from '../../views'
@@ -27,6 +28,13 @@ const optNav = [
 
 const Filters = () => {
   const location = useLocation();
+  const [defaultPageValue, setValue] = useState('')
+  useEffect(() => {
+    if(location) {
+      const value = optNav.find(el => el.value === location.pathname ? el.label : '')
+      setValue(value)
+    }
+  }, [location])
 console.log(location)
   return (
     <div className={style['filters']}>
@@ -35,7 +43,12 @@ console.log(location)
       </div>
       <div className={style['filters-left']}>
         <div className={style['filters-select']}>
-          <BaseSelect value={location.pathname} options={optNav} label='Раздел' id='page-select' />
+          <BaseSelect
+            value={defaultPageValue}
+            options={optNav}
+            label='Раздел'
+            id='page-select'
+          />
         </div>
         <div className={style['filters-select']}>
           <BaseSelect label='Категория' />

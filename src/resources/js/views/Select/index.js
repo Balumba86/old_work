@@ -41,16 +41,18 @@ const baseCustomStyles = () => {
     }),
     option: (base, { isSelected }) => ({
       ...base,
-      color: '#002C44',
+      color: isSelected ? '#fff' : '#403f3f',
       backgroundColor: isSelected ? 'hsla(127, 31%, 38%, 0.8)' : 'white',
       '&:hover': {
         color: isSelected ? 'hsla(127, 31%, 38%, 0.8)' : '#437F4A',
       },
       '&:active': {
-        backgroundColor: '#437F4A'
+        backgroundColor: '#437F4A',
+        color: isSelected ? '#fff' : '#403f3f',
       },
       '&:focus': {
-        backgroundColor: '#437F4A'
+        backgroundColor: '#437F4A',
+        color: isSelected ? '#fff' : '#403f3f',
       },
     })
   }
@@ -74,10 +76,10 @@ const DropdownIndicator = () => {
 
 const Option = ({ children, data, ...props }) => {
   return (
-    <components.Option key={data.id} value={data.value} {...props}>
-      <Link to={data.link}>
+    <components.Option className={style['select-option']} key={data.id} value={data.value} {...props}>
+      <Link className={style['select-link']} to={data.link}>
         {children}
-        </Link>
+      </Link>
     </components.Option>
   )
 }
@@ -94,25 +96,23 @@ const BaseSelect = ({
   return (
     <>
       <label className={style['select-label']} htmlFor={id}>
-        {label}
+        <span className={style['select-label__text']}>{label}</span>
       
-      <Select
-        id={id}
-        className={style.select}
-        styles={baseCustomStyles()}
-        components={{
-          DropdownIndicator,
-          Option
-        }}
-        placeholder=''
-        // isSearchable
-        // isLoading={isLoading}
-        options={options}
-        defaultValue={'/shops'}
-        {...props}
-      >
-        
-      </Select>
+        <Select
+          id={id}
+          className={style.select}
+          styles={baseCustomStyles()}
+          components={{
+            DropdownIndicator,
+            Option
+          }}
+          placeholder=''
+          // isSearchable
+          // isLoading={isLoading}
+          options={options}
+          defaultValue={'/shops'}
+          {...props}
+        />
       </label>
     </>
   )

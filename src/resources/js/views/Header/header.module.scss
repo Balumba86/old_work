@@ -12,12 +12,22 @@
 }
 
 .header-top {
-  width: 100%;
+  // width: 100%;
   height: 80px;
   display: flex;
-  padding: 0 100px;
+  padding: 0;
+  margin: 0 auto;
   justify-content: space-around;
   align-items: center;
+  color: var(--bgr-grey);
+  width: 1500px;
+  @media (max-width: 1500px) {
+    width: calc(100% - 100px);
+  }
+  @media (max-width: 1024px) {
+    // position: relative;
+    grid-template-columns: 100%;
+  }
 }
 
 .header-logo {
@@ -33,20 +43,60 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-grow: 2;
 }
 
 .header-top__right {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex-grow: 1;
 }
 
 .header-contacts__link, .header-contacts__link[href='#'] {
+  margin-right: 20px;
   cursor: pointer;
-  color: #000;
+  color: var(--bgr-grey);
   text-decoration: none;
+  word-break: none;
+}
+
+.header-contacts__block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  flex-shrink: 4;
+  @media (max-width: 1100px) {
+    margin-left: auto;
+    flex-wrap: wrap-reverse;
+  }
+}
+
+.header-contacts__block_a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.header-contacts__time {
+  margin-right: 20px;
+}
+
+.header-contacts__time svg,
+.header-contacts__address svg,
+.header-contacts__link svg {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.header-contacts__time,
+.header-contacts__address,
+.header-contacts__link {
+  display: flex;
+  align-items: center;
+
 }
 
 .header-contacts__link:hover {
@@ -75,27 +125,21 @@
 
 .header-social__link {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  filter: grayscale(1);
+  color: var(--bgr-grey);
   transition: 0.2s;
 }
 
 .header-social__link:hover {
-  filter: grayscale(0);
+  color: var(--active-color);
 }
 
-.link-vk {
-  background-image: url(../../images/social/vk_logo.svg);
-}
-
-.link-ok {
-  background-image: url(../../images/social/ok_logo.svg);
-}
-
-.link-instagram {
-  background-image: url(../../images/social/instagram_logo.svg);
+.header-social__link:active,
+.header-social__link:focus {
+  outline: none;
+  color: var(--active-color-hover);
 }

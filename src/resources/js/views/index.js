@@ -3,6 +3,7 @@ import Footer from './Footer'
 import Header from './Header'
 import HomeBanner from './HomeBanner'
 import Layout from './Layout'
+import LoaderPage from './LoaderPage'
 import NewsBlock from './NewsBlock'
 import NewsList from './NewsList'
 import BaseSelect from './Select'
@@ -16,6 +17,7 @@ export {
   Header,
   HomeBanner,
   Layout,
+  LoaderPage,
   NewsBlock,
   NewsList,
   BaseSelect,
