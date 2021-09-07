@@ -159,14 +159,6 @@ class Service extends Model
         'category'
     ];
 
-    protected $hidden = [
-        'category',
-    ];
-
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
-
     public function category()
     {
         return $this->hasOne(ServiceCategory::class, 'id', 'category');

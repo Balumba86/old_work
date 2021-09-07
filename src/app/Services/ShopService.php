@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ShopService
 {
@@ -33,6 +34,8 @@ class ShopService
             $data['logo'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return Shop::create($data);
     }
 
@@ -52,6 +55,8 @@ class ShopService
             $logo_path = $request->file('logo')->store('shop');
             $data['logo'] = $logo_path;
         }
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $shop->update($data);
     }

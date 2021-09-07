@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ServicesCategoryService
 {
@@ -30,6 +31,8 @@ class ServicesCategoryService
 
     public function adminCreate($data)
     {
+        $data['slug'] = Str::slug($data['title']);
+
         return ServiceCategory::create($data);
     }
 
@@ -41,6 +44,8 @@ class ServicesCategoryService
     public function adminUpdate($data, int $id)
     {
         $category = ServiceCategory::where('id', $id)->first();
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $category->update($data);
     }

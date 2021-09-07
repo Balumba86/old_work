@@ -70,7 +70,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CategoryShopDetailResponse"
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
                                 }
                             }
                         }
@@ -102,7 +102,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ShopDetailResponse"
+                                    "$ref": "#/components/schemas/ItemDetailResponse"
                                 }
                             }
                         }
@@ -113,169 +113,6 @@
     },
     "components": {
         "schemas": {
-            "CategoryListResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategorySmall"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategorySmall": {
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryShopResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategorySmall"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryShopDetailResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategoryDetail"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryDetail": {
-                "properties": {
-                    "current_page": {
-                        "type": "integer"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategoryDetailItem"
-                        }
-                    },
-                    "first_page_url": {
-                        "type": "string"
-                    },
-                    "from": {
-                        "type": "integer"
-                    },
-                    "next_page_url": {
-                        "type": "string"
-                    },
-                    "path": {
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "type": "string"
-                    },
-                    "to": {
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryDetailItem": {
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "category": {
-                        "$ref": "#/components/schemas/CategorySmall"
-                    }
-                },
-                "type": "object"
-            },
-            "ShopDetailResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "$ref": "#/components/schemas/ShopDetail"
-                    }
-                },
-                "type": "object"
-            },
-            "ShopDetail": {
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "hours_work": {
-                        "type": "string"
-                    },
-                    "phone": {
-                        "nullable": "true",
-                        "type": "string"
-                    },
-                    "website": {
-                        "nullable": "true",
-                        "type": "string"
-                    },
-                    "category": {
-                        "$ref": "#/components/schemas/CategorySmall"
-                    },
-                    "meta_title": {
-                        "type": "string"
-                    },
-                    "meta_keywords": {
-                        "type": "string"
-                    },
-                    "meta_description": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "News": {
                 "title": "Модель новости",
                 "description": "Модель новости",
@@ -662,6 +499,154 @@
                     "meta_description": {
                         "title": "SEO описание",
                         "description": "SEO описание категории",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryListResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategorySmall": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryItemDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetail"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetail": {
+                "properties": {
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetailItem"
+                        }
+                    },
+                    "first_page_url": {
+                        "type": "string"
+                    },
+                    "from": {
+                        "type": "integer"
+                    },
+                    "next_page_url": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetailItem": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ItemDetail"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemDetail": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hours_work": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "website": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "meta_title": {
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "type": "string"
+                    },
+                    "meta_description": {
                         "type": "string"
                     }
                 },

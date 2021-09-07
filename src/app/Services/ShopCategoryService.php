@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ShopCategoryService
 {
@@ -32,6 +33,8 @@ class ShopCategoryService
 
     public function adminCreate($data)
     {
+        $data['slug'] = Str::slug($data['title'], '-');
+
         return ShopCategory::create($data);
     }
 
@@ -43,6 +46,8 @@ class ShopCategoryService
     public function adminUpdate($data, int $id)
     {
         $category = ShopCategory::where('id', $id)->first();
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $category->update($data);
     }

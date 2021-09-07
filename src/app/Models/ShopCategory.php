@@ -92,7 +92,4 @@ class ShopCategory extends Model
         'meta_description',
     ];
 
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
 }

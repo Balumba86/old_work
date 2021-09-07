@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantService
 {
@@ -33,6 +34,8 @@ class RestaurantService
             $data['logo'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return Restaurant::create($data);
     }
 
@@ -52,6 +55,8 @@ class RestaurantService
             $logo_path = $request->file('logo')->store('restaurant');
             $data['logo'] = $logo_path;
         }
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $restaurant->update($data);
     }

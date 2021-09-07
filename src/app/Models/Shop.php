@@ -159,10 +159,6 @@ class Shop extends Model
         'category'
     ];
 
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
-
     public function category()
     {
         return $this->hasOne(ShopCategory::class, 'id', 'category')->select('id', 'title', 'slug');
