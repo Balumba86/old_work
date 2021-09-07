@@ -19,6 +19,35 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/" class="nav-link">Сайт</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}&color=FFF&background=a02c2c" class="user-image img-circle elevation-2" alt="User Image">
+                    <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <li class="user-header bg-primary">
+                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}&color=FFF&background=a02c2c" class="img-circle elevation-2" alt="User Image">
+
+                        <p>
+                            {{Auth::user()->name}}
+                            <small>{{Auth::user()->email}}</small>
+                        </p>
+                    </li>
+                    <li class="user-footer">
+                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                        <a href="#" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();
+                                                $('#logout-form').submit();">Выход</a>
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
 @include('admin.layouts.main-menu')
