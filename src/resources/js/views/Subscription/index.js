@@ -10,6 +10,13 @@ const Subscription = () => {
           <label htmlFor='subscrInput' className={style['subscr-label']}>Введите ваш e-mail</label>
           <input id='subscrInput' className={style['subscr-input']} />
         </fieldset>
+        <fieldset className={style.agree}>
+          <input checked id='agree' className={style['agree-input']} type='checkbox' />
+          <label htmlFor='agree' className={style['agree-label']}>
+            Согласен<span>&nbsp;</span>
+          </label>
+          <a className={style['agree-link']} href='#'>на обработку моих персональных данных</a>
+        </fieldset>
         <fieldset className={style['subscr-form__bottom']}>
           <button className={style['subscr-button']}>Подписаться</button>
         </fieldset>
