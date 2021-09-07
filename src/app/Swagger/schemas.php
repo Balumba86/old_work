@@ -2,6 +2,33 @@
 
 /**
  * @OA\Schema(
+ *      schema="Subscribe",
+ *      @OA\Property(
+ *           property="email",
+ *           type="string",
+ *           default="my@mail.com"
+ *      ),
+ *      @OA\Property(
+ *           property="accept",
+ *           type="boolean",
+ *           default=true
+ *      ),
+ * )
+
+ * @OA\Schema(
+ *      schema="SubscribeResponse",
+ *      @OA\Property(
+ *          property="result",
+ *          type="bollean",
+ *          default=true
+ *      ),
+ *      @OA\Property(
+ *          property="message",
+ *          type="string",
+ *          default="Вы успешно подписались на нашу рассылку!"
+ *      ),
+ * )
+ * @OA\Schema(
  *      schema="CategoryListResponse",
  *      @OA\Property(
  *          property="type",

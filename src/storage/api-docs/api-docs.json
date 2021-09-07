@@ -210,6 +210,30 @@
                     }
                 }
             }
+        },
+        "/system/email/subscribe": {
+            "post": {
+                "tags": [
+                    "system"
+                ],
+                "summary": "Подписка на Email-рассылку",
+                "operationId": "cff22f47f4745533a655ebfbfda7db92",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/SubscribeEmail"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubscribeResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -605,6 +629,32 @@
                 },
                 "type": "object"
             },
+            "Subscribe": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "default": "my@mail.com"
+                    },
+                    "accept": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "type": "object"
+            },
+            "SubscribeResponse": {
+                "properties": {
+                    "result": {
+                        "type": "bollean",
+                        "default": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "default": "Вы успешно подписались на нашу рассылку!"
+                    }
+                },
+                "type": "object"
+            },
             "CategoryListResponse": {
                 "properties": {
                     "type": {
@@ -753,6 +803,18 @@
                 },
                 "type": "object"
             }
+        },
+        "requestBodies": {
+            "SubscribeEmail": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Subscribe"
+                        }
+                    }
+                }
+            }
         }
     },
     "tags": [
@@ -775,6 +837,10 @@
         {
             "name": "partners",
             "description": "Партнёры"
+        },
+        {
+            "name": "system",
+            "description": "Системный роутинг"
         }
     ],
     "security": [

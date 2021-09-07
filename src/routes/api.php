@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Traits\ApiResponse;
+use App\Http\Controllers\Api\SubscribeController;
 use App\Http\Controllers\Api\ShopCategoryController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\RestaurantCategoryController;
@@ -28,6 +29,10 @@ Route::prefix('v1')->middleware('api')->group(function () {
         Route::get('/categories', [RestaurantCategoryController::class, 'index'])->name('api-restaurant-category-list');
         Route::get('/category/{slug}', [RestaurantCategoryController::class, 'categoryItems'])->name('api-restaurant-category-items');
         Route::get('/{slug}', [RestaurantController::class, 'getItemBySlug'])->name('api-restaurant-item');
+    });
+
+    Route::prefix('system')->group(function () {
+        Route::post('email/subscribe', [SubscribeController::class, 'subscribe'])->name('email-subscribe');
     });
 
     Route::fallback(function(){
