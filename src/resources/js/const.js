@@ -19,6 +19,18 @@ export const PATHS = {
     path: '/renter',
     exact: false
   },
+  cafe_detail: {
+    path: '/cafe/:slug',
+    exact: false
+  },
+  services_detail: {
+    path: '/services/:slug',
+    exact: false
+  },
+  shops_detail: {
+    path: '/shops/:slug',
+    exact: false
+  },
   visitors: {
     path: '/visitors',
     exact: true

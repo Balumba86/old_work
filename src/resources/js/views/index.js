@@ -1,4 +1,5 @@
 import CardsList from './CardsList'
+import DetailBlock from './DetailBlock'
 import Footer from './Footer'
 import Header from './Header'
 import HomeBanner from './HomeBanner'
@@ -13,6 +14,7 @@ import VisitorsLayout from './VisitorsLayout'
 
 export {
   CardsList,
+  DetailBlock,
   Footer,
   Header,
   HomeBanner,

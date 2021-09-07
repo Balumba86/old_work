@@ -1,12 +1,15 @@
 import { Switch, Route } from 'react-router-dom'
 import {
   AboutPage,
+  CafeDetailPage,
   CafePage,
   ContactsPage,
   HomePage,
   NewsPage,
   RentersPage,
+  ServiceDetailPage,
   ServicesPage,
+  ShopDetailPage,
   ShopsPage,
 } from './pages'
 import { LoaderPage } from './views';
@@ -57,6 +60,21 @@ function App() {
           path={PATHS.visitors_shops.path}
           exact={PATHS.visitors_shops.exact}
           component={ShopsPage}
+        />
+        <Route 
+          path={PATHS.shops_detail.path}
+          exact={PATHS.shops_detail.exact}
+          component={ShopDetailPage}
+        />
+        <Route
+          path={PATHS.services_detail.path}
+          exact={PATHS.services_detail.exact}
+          component={ServiceDetailPage}
+        />
+        <Route
+          path={PATHS.cafe_detail.path}
+          exact={PATHS.cafe_detail.exact}
+          component={CafeDetailPage}
         />
       </Switch>
     </>
