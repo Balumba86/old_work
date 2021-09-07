@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantService
 {
@@ -33,6 +34,8 @@ class RestaurantService
             $data['logo'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return Restaurant::create($data);
     }
 
@@ -53,6 +56,8 @@ class RestaurantService
             $data['logo'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return $restaurant->update($data);
     }
 
@@ -68,5 +73,41 @@ class RestaurantService
     public function adminCount():int
     {
         return Restaurant::all()->count();
+    }
+
+    // Api
+
+    public function getItemsByCategoryId(Request $request, $category_id)
+    {
+        $restaurants = Restaurant::query();
+        $restaurants->with('category');
+        $restaurants->select('title', 'slug', 'logo', 'category', 'level');
+        $restaurants->where('category', $category_id);
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $restaurants->where('title', 'like', "%$search%");
+        }
+
+        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(10);
+
+        foreach ($restaurants->items() as $restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+        }
+
+        return $restaurants;
+    }
+
+    public function getBySlug(string $slug)
+    {
+        $restaurant = Restaurant::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+
+        if ($restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+        }
+
+        return $restaurant;
     }
 }

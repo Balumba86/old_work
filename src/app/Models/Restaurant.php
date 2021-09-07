@@ -156,19 +156,12 @@ class Restaurant extends Model
         'logo',
         'show_main',
         'sort',
-        'category'
-    ];
-
-    protected $hidden = [
         'category',
+        'level'
     ];
-
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
 
     public function category()
     {
-        return $this->hasOne(RestaurantCategory::class, 'id', 'category');
+        return $this->hasOne(RestaurantCategory::class, 'id', 'category')->select('id', 'title', 'slug');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NewsService
 {
@@ -32,6 +33,8 @@ class NewsService
             $data['main_img'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return News::create($data);
     }
 
@@ -51,6 +54,8 @@ class NewsService
             $logo_path = $request->file('main_img')->store('news');
             $data['main_img'] = $logo_path;
         }
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $post->update($data);
     }

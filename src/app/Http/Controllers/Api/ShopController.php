@@ -42,7 +42,7 @@ class ShopController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Успешный ответ",
-     *         @OA\JsonContent(ref="#/components/schemas/ShopDetailResponse")
+     *         @OA\JsonContent(ref="#/components/schemas/ItemDetailResponse")
      *     )
      * )
      */
@@ -57,67 +57,3 @@ class ShopController extends Controller
         return ApiResponse::result($shop);
     }
 }
-
-/**
- * @OA\Schema(
- *      schema="ShopDetailResponse",
- *      @OA\Property(
- *          property="type",
- *          type="string",
- *          default="success"
- *      ),
- *       @OA\Property(
- *            property="data",
- *            ref="#/components/schemas/ShopDetail"
- *       )
- * )
- * @OA\Schema (
- *     schema="ShopDetail",
- *     @OA\Property(
- *         property="title",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="slug",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="logo",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="description",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="hours_work",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="phone",
- *         type="string",
- *         nullable="true"
- *     ),
- *     @OA\Property(
- *         property="website",
- *         type="string",
- *         nullable="true"
- *     ),
- *     @OA\Property(
- *          property="category",
- *          ref="#/components/schemas/CategorySmall"
- *     ),
- *     @OA\Property(
- *         property="meta_title",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="meta_keywords",
- *         type="string"
- *     ),
- *     @OA\Property(
- *         property="meta_description",
- *         type="string"
- *     )
- * )
- */

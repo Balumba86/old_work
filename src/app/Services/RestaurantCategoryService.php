@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\RestaurantCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RestaurantCategoryService
 {
@@ -30,6 +31,8 @@ class RestaurantCategoryService
 
     public function adminCreate($data)
     {
+        $data['slug'] = Str::slug($data['title']);
+
         return RestaurantCategory::create($data);
     }
 
@@ -42,6 +45,8 @@ class RestaurantCategoryService
     {
         $category = RestaurantCategory::where('id', $id)->first();
 
+        $data['slug'] = Str::slug($data['title']);
+
         return $category->update($data);
     }
 
@@ -50,5 +55,17 @@ class RestaurantCategoryService
         $category = RestaurantCategory::where('id', $id)->first();
 
         return $category->delete();
+    }
+
+    // Api
+
+    public function apiAll()
+    {
+        return RestaurantCategory::select('id', 'title', 'slug')->get()->all();
+    }
+
+    public function getCategoryIdBySlug($slug)
+    {
+        return RestaurantCategory::select('id')->where('slug', $slug)->get()->first();
     }
 }

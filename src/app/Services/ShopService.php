@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ShopService
 {
@@ -33,6 +34,8 @@ class ShopService
             $data['logo'] = $logo_path;
         }
 
+        $data['slug'] = Str::slug($data['title']);
+
         return Shop::create($data);
     }
 
@@ -52,6 +55,8 @@ class ShopService
             $logo_path = $request->file('logo')->store('shop');
             $data['logo'] = $logo_path;
         }
+
+        $data['slug'] = Str::slug($data['title']);
 
         return $shop->update($data);
     }
@@ -76,7 +81,7 @@ class ShopService
     {
         $shops = Shop::query();
         $shops->with('category');
-        $shops->select('title', 'slug', 'logo', 'category');
+        $shops->select('title', 'slug', 'logo', 'category', 'level');
         $shops->where('category', $category_id);
 
         $search = $request->get('search');
@@ -97,7 +102,7 @@ class ShopService
 
     public function getBySlug(string $slug)
     {
-        $shop = Shop::select('title', 'slug', 'description', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+        $shop = Shop::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
 
         if ($shop) {
             $shop->logo = Storage::url($shop->logo);

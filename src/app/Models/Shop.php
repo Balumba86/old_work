@@ -156,12 +156,9 @@ class Shop extends Model
         'logo',
         'show_main',
         'sort',
-        'category'
+        'category',
+        'level'
     ];
-
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
 
     public function category()
     {

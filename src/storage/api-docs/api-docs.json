@@ -9,6 +9,107 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/restaurant/categories": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка категорий кафе/ресторанов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/category/{categorySlug}": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка кафе/ресторанов в категории",
+                "operationId": "categoryItems",
+                "parameters": [
+                    {
+                        "name": "categorySlug",
+                        "in": "path",
+                        "description": "slug запрашиваемой категории",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию заведения в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/{restaurantSlug}": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение детальной информации",
+                "operationId": "getItemBySlug",
+                "parameters": [
+                    {
+                        "name": "restaurantSlug",
+                        "in": "path",
+                        "description": "slug кафе/ресторана",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/shop/categories": {
             "get": {
                 "tags": [
@@ -70,7 +171,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CategoryShopDetailResponse"
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
                                 }
                             }
                         }
@@ -102,7 +203,31 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ShopDetailResponse"
+                                    "$ref": "#/components/schemas/ItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/system/email/subscribe": {
+            "post": {
+                "tags": [
+                    "system"
+                ],
+                "summary": "Подписка на Email-рассылку",
+                "operationId": "cff22f47f4745533a655ebfbfda7db92",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/SubscribeEmail"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubscribeResponse"
                                 }
                             }
                         }
@@ -113,169 +238,6 @@
     },
     "components": {
         "schemas": {
-            "CategoryListResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategorySmall"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategorySmall": {
-                "properties": {
-                    "id": {
-                        "type": "integer"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryShopResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategorySmall"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryShopDetailResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategoryDetail"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryDetail": {
-                "properties": {
-                    "current_page": {
-                        "type": "integer"
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategoryDetailItem"
-                        }
-                    },
-                    "first_page_url": {
-                        "type": "string"
-                    },
-                    "from": {
-                        "type": "integer"
-                    },
-                    "next_page_url": {
-                        "type": "string"
-                    },
-                    "path": {
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "type": "string"
-                    },
-                    "to": {
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryDetailItem": {
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "category": {
-                        "$ref": "#/components/schemas/CategorySmall"
-                    }
-                },
-                "type": "object"
-            },
-            "ShopDetailResponse": {
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "default": "success"
-                    },
-                    "data": {
-                        "$ref": "#/components/schemas/ShopDetail"
-                    }
-                },
-                "type": "object"
-            },
-            "ShopDetail": {
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "hours_work": {
-                        "type": "string"
-                    },
-                    "phone": {
-                        "nullable": "true",
-                        "type": "string"
-                    },
-                    "website": {
-                        "nullable": "true",
-                        "type": "string"
-                    },
-                    "category": {
-                        "$ref": "#/components/schemas/CategorySmall"
-                    },
-                    "meta_title": {
-                        "type": "string"
-                    },
-                    "meta_keywords": {
-                        "type": "string"
-                    },
-                    "meta_description": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "News": {
                 "title": "Модель новости",
                 "description": "Модель новости",
@@ -666,6 +628,198 @@
                     }
                 },
                 "type": "object"
+            },
+            "Subscribe": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "default": "my@mail.com"
+                    },
+                    "accept": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "type": "object"
+            },
+            "SubscribeResponse": {
+                "properties": {
+                    "result": {
+                        "type": "bollean",
+                        "default": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "default": "Вы успешно подписались на нашу рассылку!"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryListResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategorySmall"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategorySmall": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryItemDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetail"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetail": {
+                "properties": {
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryDetailItem"
+                        }
+                    },
+                    "first_page_url": {
+                        "type": "string"
+                    },
+                    "from": {
+                        "type": "integer"
+                    },
+                    "next_page_url": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryDetailItem": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "integer"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemDetailResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ItemDetail"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemDetail": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "integer"
+                    },
+                    "hours_work": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "website": {
+                        "nullable": "true",
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "meta_title": {
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "requestBodies": {
+            "SubscribeEmail": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Subscribe"
+                        }
+                    }
+                }
             }
         }
     },
@@ -689,6 +843,10 @@
         {
             "name": "partners",
             "description": "Партнёры"
+        },
+        {
+            "name": "system",
+            "description": "Системный роутинг"
         }
     ],
     "security": [

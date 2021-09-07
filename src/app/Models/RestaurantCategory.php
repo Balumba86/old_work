@@ -91,8 +91,4 @@ class RestaurantCategory extends Model
         'meta_keywords',
         'meta_description'
     ];
-
-    public function setSlugAttribute($value) {
-        $this->attributes['slug'] = Str::slug($this->title, '-');
-    }
 }
