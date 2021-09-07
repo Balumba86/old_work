@@ -30,4 +30,8 @@
  *     name="partners",
  *     description="Партнёры",
  * )
+ * @OA\Tag(
+ *     name="system",
+ *     description="Системный роутинг",
+ * )
  */
