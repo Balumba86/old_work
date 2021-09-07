@@ -2,6 +2,7 @@ import belwestLogo from './belwest.jpg'
 import cafeBgr from './cafe_bgr.jpg'
 import gallery from './gallery.jpg'
 import gallery2 from './gallery2.jpg'
+import Icon from './icons/Icon'
 import logoNav from './logo_nav.svg'
 import banner from './banner.jpg'
 import sale from './sale.jpg'
@@ -19,6 +20,7 @@ export {
   cafeBgr,
   gallery,
   gallery2,
+  Icon,
   logoNav,
   sale,
   search,

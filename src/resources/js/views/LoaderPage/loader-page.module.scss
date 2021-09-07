@@ -1,0 +1,33 @@
+.loader-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgr-white);
+}
+
+.loader {
+  width: 180px;
+  height: 180px;
+  margin-top: 130px;
+  background: url(../../images/logo_nav.svg) no-repeat center;
+  background-size: cover;
+  animation: loader ease-in-out 2.5s infinite;
+  transition: 0.2s;
+}
+
+@keyframes loader {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

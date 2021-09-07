@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import { Icon } from '../../images'
 import style from './search.module.scss'
 
 const Search = () => {
@@ -22,7 +23,9 @@ const Search = () => {
         value={formik.values.search}
         onInput={formik.handleChange}
       />
-      <button type='submit' className={style['search-btn']}></button>
+      <button type='submit' className={style['search-btn']}>
+        {/* <Icon name='audio' /> */}
+      </button>
 
     </form>
   )

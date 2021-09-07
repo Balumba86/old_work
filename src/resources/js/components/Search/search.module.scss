@@ -42,10 +42,10 @@
 }
 
 .search-btn:hover {
-  // color: var(--active-color);
+  color: var(--active-color);
 }
 
 .search-btn:active, .search-btn:focus {
   outline: none;
-  // color: var(--active-color-hover);
+  color: var(--active-color-hover);
 }
