@@ -9,6 +9,107 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/restaurant/categories": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка категорий кафе/ресторанов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/category/{categorySlug}": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка кафе/ресторанов в категории",
+                "operationId": "categoryItems",
+                "parameters": [
+                    {
+                        "name": "categorySlug",
+                        "in": "path",
+                        "description": "slug запрашиваемой категории",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию заведения в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/{restaurantSlug}": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение детальной информации",
+                "operationId": "getItemBySlug",
+                "parameters": [
+                    {
+                        "name": "restaurantSlug",
+                        "in": "path",
+                        "description": "slug кафе/ресторана",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/shop/categories": {
             "get": {
                 "tags": [

@@ -56,4 +56,16 @@ class RestaurantCategoryService
 
         return $category->delete();
     }
+
+    // Api
+
+    public function apiAll()
+    {
+        return RestaurantCategory::select('id', 'title', 'slug')->get()->all();
+    }
+
+    public function getCategoryIdBySlug($slug)
+    {
+        return RestaurantCategory::select('id')->where('slug', $slug)->get()->first();
+    }
 }

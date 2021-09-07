@@ -161,6 +161,6 @@ class Restaurant extends Model
 
     public function category()
     {
-        return $this->hasOne(RestaurantCategory::class, 'id', 'category');
+        return $this->hasOne(RestaurantCategory::class, 'id', 'category')->select('id', 'title', 'slug');
     }
 }
