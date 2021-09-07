@@ -81,7 +81,7 @@ class RestaurantService
     {
         $restaurants = Restaurant::query();
         $restaurants->with('category');
-        $restaurants->select('title', 'slug', 'logo', 'category');
+        $restaurants->select('title', 'slug', 'logo', 'category', 'level');
         $restaurants->where('category', $category_id);
 
         $search = $request->get('search');
@@ -102,7 +102,7 @@ class RestaurantService
 
     public function getBySlug(string $slug)
     {
-        $restaurant = Restaurant::select('title', 'slug', 'description', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+        $restaurant = Restaurant::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
 
         if ($restaurant) {
             $restaurant->logo = Storage::url($restaurant->logo);

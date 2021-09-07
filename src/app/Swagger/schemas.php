@@ -130,6 +130,10 @@
  *         type="string"
  *     ),
  *     @OA\Property(
+ *         property="level",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
  *          property="category",
  *          ref="#/components/schemas/CategorySmall"
  *      ),
@@ -163,6 +167,10 @@
  *     @OA\Property(
  *         property="description",
  *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="level",
+ *         type="integer"
  *     ),
  *     @OA\Property(
  *         property="hours_work",

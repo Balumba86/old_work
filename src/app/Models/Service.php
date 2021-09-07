@@ -156,11 +156,12 @@ class Service extends Model
         'logo',
         'show_main',
         'sort',
-        'category'
+        'category',
+        'level'
     ];
 
     public function category()
     {
-        return $this->hasOne(ServiceCategory::class, 'id', 'category');
+        return $this->hasOne(ServiceCategory::class, 'id', 'category')->select('id', 'title', 'slug');
     }
 }

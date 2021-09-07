@@ -156,7 +156,8 @@ class Shop extends Model
         'logo',
         'show_main',
         'sort',
-        'category'
+        'category',
+        'level'
     ];
 
     public function category()
