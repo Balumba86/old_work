@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('styles')
+    <style>
+        .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+            height: auto!important;
+        }
+    </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini">
 <div class="wrapper">
@@ -37,6 +42,10 @@
                             {{Auth::user()->name}}
                             <small>{{Auth::user()->email}}</small>
                         </p>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input class="custom-control-input custom-control-input-success" type="checkbox" id="theme_mode">
+                            <label for="theme_mode" class="custom-control-label">Тёмная тема</label>
+                        </div>
                     </li>
                     <li class="user-footer">
                         <a href="#" class="btn btn-default btn-flat">Профиль</a>
@@ -81,5 +90,50 @@
 <script src="{{ asset('js/admin/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/admin/demo.js') }}"></script>
 @stack('scripts')
+<script>
+    var main = $('body');
+    var header = $('.main-header');
+    var user_mode = localStorage.getItem('theme');
+    if(!user_mode) {
+        localStorage.setItem('theme', 'light');
+        window.location.reload();
+    }
+    if(user_mode === 'dark') {
+        if (!main.hasClass('dark-mode')) {
+            main.addClass('dark-mode');
+        }
+        if (!header.hasClass('navbar-dark')) {
+            header.addClass('navbar-dark')
+        }
+        $('#theme_mode').attr('checked', true);
+    } else {
+        if (main.hasClass('dark-mode')) {
+            main.removeClass('dark-mode');
+        }
+        if (header.hasClass('navbar-dark')) {
+            header.removeClass('navbar-dark')
+        }
+        $('#theme_mode').attr('checked', false);
+    }
+    $('#theme_mode').on('click', function (e) {
+        if (e.currentTarget.checked) {
+            if (!main.hasClass('dark-mode')) {
+                main.addClass('dark-mode');
+            }
+            if (!header.hasClass('navbar-dark')) {
+                header.addClass('navbar-dark')
+            }
+            localStorage.setItem('theme', 'dark');
+        } else {
+            if (main.hasClass('dark-mode')) {
+                main.removeClass('dark-mode');
+            }
+            if (header.hasClass('navbar-dark')) {
+                header.removeClass('navbar-dark')
+            }
+            localStorage.setItem('theme', 'light');
+        }
+    })
+</script>
 </body>
 </html>
