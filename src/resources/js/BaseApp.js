@@ -1,12 +1,16 @@
 import { Switch, Route } from 'react-router-dom'
 import {
   AboutPage,
+  CafeDetailPage,
   CafePage,
   ContactsPage,
   HomePage,
+  NewsDetailPage,
   NewsPage,
   RentersPage,
+  ServiceDetailPage,
   ServicesPage,
+  ShopDetailPage,
   ShopsPage,
 } from './pages'
 import { LoaderPage } from './views';
@@ -27,6 +31,11 @@ function App() {
           path={PATHS.about.path}
           exact={PATHS.about.exact}
           component={AboutPage}
+        />
+        <Route
+          path={PATHS.news_detail.path}
+          exact={PATHS.news_detail.exact}
+          component={NewsDetailPage}
         />
         <Route
           path={PATHS.news.path}
@@ -57,6 +66,21 @@ function App() {
           path={PATHS.visitors_shops.path}
           exact={PATHS.visitors_shops.exact}
           component={ShopsPage}
+        />
+        <Route 
+          path={PATHS.shops_detail.path}
+          exact={PATHS.shops_detail.exact}
+          component={ShopDetailPage}
+        />
+        <Route
+          path={PATHS.services_detail.path}
+          exact={PATHS.services_detail.exact}
+          component={ServiceDetailPage}
+        />
+        <Route
+          path={PATHS.cafe_detail.path}
+          exact={PATHS.cafe_detail.exact}
+          component={CafeDetailPage}
         />
       </Switch>
     </>

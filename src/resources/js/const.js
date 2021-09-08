@@ -15,8 +15,24 @@ export const PATHS = {
     path: '/news',
     exact: true
   },
+  news_detail: {
+    path: '/news/:slug',
+    exact: false
+  },
   renter: {
-    path: '/renter',
+    path: '/renters',
+    exact: false
+  },
+  cafe_detail: {
+    path: '/visitors/cafe/:slug',
+    exact: false
+  },
+  services_detail: {
+    path: '/visitors/services/:slug',
+    exact: false
+  },
+  shops_detail: {
+    path: '/visitors/shops/:slug',
     exact: false
   },
   visitors: {
@@ -24,15 +40,15 @@ export const PATHS = {
     exact: true
   },
   visitors_cafe: {
-    path: '/cafe',
+    path: '/visitors/cafe',
     exact: true
   },
   visitors_services: {
-    path: '/services',
+    path: '/visitors/services',
     exact: true
   },
   visitors_shops: {
-    path: '/shops',
+    path: '/visitors/shops',
     exact: true
   },
 }

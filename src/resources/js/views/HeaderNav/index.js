@@ -6,13 +6,9 @@ import style from './nav.module.scss'
 const HeaderNav = () => {
   const location = useLocation()
 
-  const cafePath = PATHS.visitors_cafe.path;
-  const servicesPath = PATHS.visitors_services.path;
-  const shopsPath = PATHS.visitors_shops.path;
-
   const visitorsClasses = classNames({
     [style['nav-link']]: true,
-    [style['nav-link_active']]: location.pathname === cafePath || location.pathname === servicesPath || location.pathname === shopsPath
+    [style['nav-link_active']]: location.pathname.includes(PATHS.visitors.path)
   })
 
   return (

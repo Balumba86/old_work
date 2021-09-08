@@ -1,4 +1,4 @@
-import { HomeBanner, Layout, NewsBlock, ShopsBlock, Subscription } from '../views'
+import { HomeBanner, ImageMall, Layout, NewsBlock, ShopsBlock, Subscription } from '../views'
 
 const HomePage = () => {
   return (
@@ -8,6 +8,7 @@ const HomePage = () => {
       <NewsBlock />
       <Subscription />
       <ShopsBlock />
+      {/* <ImageMall /> */}
     </Layout>
   )
 }
