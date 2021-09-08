@@ -9,6 +9,69 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/news/list": {
+            "get": {
+                "tags": [
+                    "news"
+                ],
+                "summary": "Получение списка новостей",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewsListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/news/{postSlug}": {
+            "get": {
+                "tags": [
+                    "news"
+                ],
+                "summary": "Получение детальной публикации",
+                "operationId": "getPostBySlug",
+                "parameters": [
+                    {
+                        "name": "postSlug",
+                        "in": "path",
+                        "description": "slug поста",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/restaurant/categories": {
             "get": {
                 "tags": [
@@ -90,6 +153,107 @@
                         "name": "restaurantSlug",
                         "in": "path",
                         "description": "slug кафе/ресторана",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/service/categories": {
+            "get": {
+                "tags": [
+                    "service"
+                ],
+                "summary": "Получение списка категорий сервисов/услуг",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryListResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/service/category/{categorySlug}": {
+            "get": {
+                "tags": [
+                    "service"
+                ],
+                "summary": "Получение списка сервисов в категории",
+                "operationId": "categoryItems",
+                "parameters": [
+                    {
+                        "name": "categorySlug",
+                        "in": "path",
+                        "description": "slug запрашиваемой категории",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию сервиса/услуги в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/service/{shopSlug}": {
+            "get": {
+                "tags": [
+                    "service"
+                ],
+                "summary": "Получение детальной информации",
+                "operationId": "getItemBySlug",
+                "parameters": [
+                    {
+                        "name": "shopSlug",
+                        "in": "path",
+                        "description": "slug сервиса/услуги",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -808,6 +972,121 @@
                     }
                 },
                 "type": "object"
+            },
+            "NewsListResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewsListPaginate"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "NewsListPaginate": {
+                "properties": {
+                    "current_page": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewsList"
+                        }
+                    },
+                    "first_page_url": {
+                        "type": "string"
+                    },
+                    "from": {
+                        "type": "integer"
+                    },
+                    "next_page_url": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "NewsList": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "main_img": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "views_count": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "PostResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PostDetail"
+                    }
+                },
+                "type": "object"
+            },
+            "PostDetail": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "main_img": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "default": "2021-09-08T19:12:40.000000Z"
+                    },
+                    "meta_title": {
+                        "type": "string"
+                    },
+                    "meta_keywords": {
+                        "type": "string"
+                    },
+                    "meta_description": {
+                        "type": "string"
+                    },
+                    "views_count": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
             }
         },
         "requestBodies": {
@@ -839,10 +1118,6 @@
         {
             "name": "news",
             "description": "Новости"
-        },
-        {
-            "name": "partners",
-            "description": "Партнёры"
         },
         {
             "name": "system",

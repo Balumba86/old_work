@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('styles')
+    <style>
+        .navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+            height: auto!important;
+        }
+    </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini">
 <div class="wrapper">
@@ -18,6 +23,39 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/" class="nav-link">Сайт</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}&color=FFF&background=a02c2c" class="user-image img-circle elevation-2" alt="User Image">
+                    <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <li class="user-header bg-primary">
+                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}&color=FFF&background=a02c2c" class="img-circle elevation-2" alt="User Image">
+
+                        <p>
+                            {{Auth::user()->name}}
+                            <small>{{Auth::user()->email}}</small>
+                        </p>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input class="custom-control-input custom-control-input-success" type="checkbox" id="theme_mode">
+                            <label for="theme_mode" class="custom-control-label">Тёмная тема</label>
+                        </div>
+                    </li>
+                    <li class="user-footer">
+                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                        <a href="#" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();
+                                                $('#logout-form').submit();">Выход</a>
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>
@@ -52,5 +90,50 @@
 <script src="{{ asset('js/admin/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/admin/demo.js') }}"></script>
 @stack('scripts')
+<script>
+    var main = $('body');
+    var header = $('.main-header');
+    var user_mode = localStorage.getItem('theme');
+    if(!user_mode) {
+        localStorage.setItem('theme', 'light');
+        window.location.reload();
+    }
+    if(user_mode === 'dark') {
+        if (!main.hasClass('dark-mode')) {
+            main.addClass('dark-mode');
+        }
+        if (!header.hasClass('navbar-dark')) {
+            header.addClass('navbar-dark')
+        }
+        $('#theme_mode').attr('checked', true);
+    } else {
+        if (main.hasClass('dark-mode')) {
+            main.removeClass('dark-mode');
+        }
+        if (header.hasClass('navbar-dark')) {
+            header.removeClass('navbar-dark')
+        }
+        $('#theme_mode').attr('checked', false);
+    }
+    $('#theme_mode').on('click', function (e) {
+        if (e.currentTarget.checked) {
+            if (!main.hasClass('dark-mode')) {
+                main.addClass('dark-mode');
+            }
+            if (!header.hasClass('navbar-dark')) {
+                header.addClass('navbar-dark')
+            }
+            localStorage.setItem('theme', 'dark');
+        } else {
+            if (main.hasClass('dark-mode')) {
+                main.removeClass('dark-mode');
+            }
+            if (header.hasClass('navbar-dark')) {
+                header.removeClass('navbar-dark')
+            }
+            localStorage.setItem('theme', 'light');
+        }
+    })
+</script>
 </body>
 </html>

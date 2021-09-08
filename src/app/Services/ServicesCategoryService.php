@@ -56,4 +56,16 @@ class ServicesCategoryService
 
         return $category->delete();
     }
+
+    // Api
+
+    public function apiAll()
+    {
+        return ServiceCategory::select('id', 'title', 'slug')->get()->all();
+    }
+
+    public function getCategoryIdBySlug($slug)
+    {
+        return ServiceCategory::select('id')->where('slug', $slug)->get()->first();
+    }
 }

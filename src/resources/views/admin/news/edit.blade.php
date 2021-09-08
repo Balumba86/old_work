@@ -63,7 +63,7 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('plugins/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('plugins/summernote/lang/summernote-ru-RU.min.js') }}"></script>
     <script>
         $(function () {
