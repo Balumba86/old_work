@@ -74,4 +74,40 @@ class ServicesItemsService
     {
         return Service::all()->count();
     }
+
+    // Api
+
+    public function getItemsByCategoryId(Request $request, $category_id)
+    {
+        $services = Service::query();
+        $services->with('category');
+        $services->select('title', 'slug', 'logo', 'category', 'level');
+        $services->where('category', $category_id);
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $services->where('title', 'like', "%$search%");
+        }
+
+        $services = $services->orderBy('id', 'desc')->simplePaginate(10);
+
+        foreach ($services->items() as $service) {
+            $service->logo = Storage::url($service->logo);
+        }
+
+        return $services;
+    }
+
+    public function getBySlug(string $slug)
+    {
+        $service = Service::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+
+        if ($service) {
+            $service->logo = Storage::url($service->logo);
+        }
+
+        return $service;
+    }
 }

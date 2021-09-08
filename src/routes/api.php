@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\ShopCategoryController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\RestaurantCategoryController;
 use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\ServiceCategoryController;
+use App\Http\Controllers\Api\ServiceController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
@@ -29,6 +31,11 @@ Route::prefix('v1')->middleware('api')->group(function () {
         Route::get('/categories', [RestaurantCategoryController::class, 'index'])->name('api-restaurant-category-list');
         Route::get('/category/{slug}', [RestaurantCategoryController::class, 'categoryItems'])->name('api-restaurant-category-items');
         Route::get('/{slug}', [RestaurantController::class, 'getItemBySlug'])->name('api-restaurant-item');
+    });
+    Route::prefix('service')->group(function () {
+        Route::get('/categories', [ServiceCategoryController::class, 'index'])->name('api-service-category-list');
+        Route::get('/category/{slug}', [ServiceCategoryController::class, 'categoryItems'])->name('api-service-category-items');
+        Route::get('/{slug}', [ServiceController::class, 'getItemBySlug'])->name('api-service-item');
     });
 
     Route::prefix('system')->group(function () {
