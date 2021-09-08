@@ -1,8 +1,9 @@
+import { PATHS } from "../../const"
 import { DetailBlock } from "../../views"
 
 const ServiceDetail = () => {
   return (
-    <DetailBlock />
+    <DetailBlock baseUrl={PATHS.visitors_services.path} linkLabel='К списку сервисов и услуг' />
   )
 }
 

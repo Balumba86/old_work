@@ -5,6 +5,7 @@ import {
   CafePage,
   ContactsPage,
   HomePage,
+  NewsDetailPage,
   NewsPage,
   RentersPage,
   ServiceDetailPage,
@@ -30,6 +31,11 @@ function App() {
           path={PATHS.about.path}
           exact={PATHS.about.exact}
           component={AboutPage}
+        />
+        <Route
+          path={PATHS.news_detail.path}
+          exact={PATHS.news_detail.exact}
+          component={NewsDetailPage}
         />
         <Route
           path={PATHS.news.path}

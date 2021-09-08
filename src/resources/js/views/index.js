@@ -3,6 +3,7 @@ import DetailBlock from './DetailBlock'
 import Footer from './Footer'
 import Header from './Header'
 import HomeBanner from './HomeBanner'
+import ImageMall from './ImageMall'
 import Layout from './Layout'
 import LoaderPage from './LoaderPage'
 import NewsBlock from './NewsBlock'
@@ -18,6 +19,7 @@ export {
   Footer,
   Header,
   HomeBanner,
+  ImageMall,
   Layout,
   LoaderPage,
   NewsBlock,

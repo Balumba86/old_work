@@ -1,13 +1,10 @@
+import Renters from '../components/Renters'
 import { Layout } from '../views'
 
 const RentersPage = () => {
   return (
     <Layout>
-      <main>
-        <section>
-
-        </section>
-      </main>
+      <Renters />
     </Layout>
   )
 }

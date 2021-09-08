@@ -3,6 +3,7 @@ import CafeDetailPage from './CafeDetailPage'
 import CafePage from './CafePage'
 import ContactsPage from './ContactsPage'
 import HomePage from './HomePage'
+import NewsDetailPage from './NewsDetailPage'
 import NewsPage from './NewsPage'
 import RentersPage from './RentersPage'
 import ServiceDetailPage from './ServiceDetailPage'
@@ -16,6 +17,7 @@ export {
   CafePage,
   ContactsPage,
   HomePage,
+  NewsDetailPage,
   NewsPage,
   RentersPage,
   ServiceDetailPage,
