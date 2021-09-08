@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\News;
+use App\Models\PostViews;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -98,11 +99,28 @@ class NewsService
         if ($post) {
             $post->main_img = Storage::url($post->main_img);
             $post->views_count = count($post->views);
-
+            $this->viewIncrement($request, $post->id);
             unset($post->id);
             unset($post->views);
         }
 
         return $post;
+    }
+
+    private function viewIncrement(Request $request, int $post_id)
+    {
+        $ip_adress = $request->server('REMOTE_ADDR');
+
+        // Формируем дату для проверки просмотра страницы
+        $date = mktime(date('H'), date('i'), 0, date("m")  , date("d"), date("Y"));
+        $view_check = PostViews::where('post_id', $post_id)->where('created_at', 'like', date('Y-m-d H', $date).'%')->where('ip', $ip_adress)->get()->count();
+
+        if ($view_check === 0) {
+            $view_data = [
+                'ip' => $ip_adress,
+                'post_id' => $post_id
+            ];
+            PostViews::create($view_data);
+        }
     }
 }
