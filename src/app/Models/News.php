@@ -112,4 +112,8 @@ class News extends Model
                            'meta_keywords',
                            'meta_description'];
 
+    public function views()
+    {
+        return $this->hasMany(PostViews::class, 'post_id', 'id');
+    }
 }

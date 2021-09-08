@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,12 @@ class NewsService
             $news->where('title', 'like', "%$search%");
         }
 
-        $news = $news->orderBy('id', 'desc')->paginate(10);
+        $news = $news->with('views')->orderBy('id', 'desc')->paginate(10);
+
+        foreach ($news->items() as $post) {
+            $post->views_count = count($post->views);
+            unset($post->views);
+        }
 
         return $news;
     }
@@ -67,5 +73,36 @@ class NewsService
         Storage::delete($post->main_img);
 
         return $post->delete();
+    }
+
+    // Api
+
+    public function getList(Request $request)
+    {
+        $news = News::select('title', 'slug', 'main_img', 'text')->with('views')->where('published', true)->orderBy('id', 'desc')->simplePaginate(10);
+
+        foreach ($news->items() as $post) {
+            $post->main_img = Storage::url($post->main_img);
+            $post->text = mb_substr(strip_tags($post->text), 0, 200);
+            $post->views_count = count($post->views);
+            unset($post->views);
+        }
+
+        return $news;
+    }
+
+    public function getPost(Request $request, $slug)
+    {
+        $post = News::select('id', 'title', 'slug', 'main_img', 'text', 'created_at', 'meta_title', 'meta_keywords', 'meta_description')->with('views')->where('published', true)->where('slug', $slug)->get()->first();
+
+        if ($post) {
+            $post->main_img = Storage::url($post->main_img);
+            $post->views_count = count($post->views);
+
+            unset($post->id);
+            unset($post->views);
+        }
+
+        return $post;
     }
 }
