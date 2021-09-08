@@ -36,7 +36,7 @@
                         <tr>
                             <td>{{$post->title}}</td>
                             <td class="text-center">@if($post->published) <i class="fas fa-check"></i> @else <i class="fas fa-times"></i> @endif</td>
-                            <td class="text-center">100500</td>
+                            <td class="text-center">{{$post->views_count}}</td>
                             <td class="text-center">{{date('d.m.Y H:i', strtotime($post->created_at))}}</td>
                             <td>
                                 <a href="{{route('admin-news-edit', $post->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
