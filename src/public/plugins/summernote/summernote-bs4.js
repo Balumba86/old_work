@@ -1,14 +1,14 @@
 /*!
- * 
+ *
  * Super simple wysiwyg editor v0.8.18
  * https://summernote.org
- * 
- * 
+ *
+ *
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
- * 
+ *
  * Date: 2020-05-20T16:47Z
- * 
+ *
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -10145,7 +10145,13 @@ var ui_ui = function ui(editorOptions) {
       })($node, options);
     },
     button: function button($node, options) {
-      return renderer["a" /* default */].create('<button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1">', function ($node, options) {
+        var class_btn = 'btn-light';
+        if(user_mode === 'dark') {
+            class_btn = 'btn-dark';
+        } else {
+            class_btn = 'btn-light';
+        }
+      return renderer["a" /* default */].create('<button type="button" class="note-btn btn ' + class_btn + ' btn-sm" tabindex="-1">', function ($node, options) {
         if (options && options.tooltip) {
           $node.attr({
             title: options.tooltip,
