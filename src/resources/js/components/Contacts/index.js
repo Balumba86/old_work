@@ -3,7 +3,8 @@ import style from './contacts.module.scss'
 
 const Contacts = () => {
   return (
-    <>
+    <section className={style['section']}>
+      <h2 className={style['title']}>Контактная информация</h2>
       <LocationMap />
       <div className={style.contacts}>
         <div className={style['contacts-row']}>
@@ -22,7 +23,7 @@ const Contacts = () => {
           <div className={style['contacts-col']}>nikolskiy.adm@yandex.ru</div>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 

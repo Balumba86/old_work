@@ -1,10 +1,15 @@
+import banner from './banner.jpg'
 import belwestLogo from './belwest.jpg'
 import cafeBgr from './cafe_bgr.jpg'
 import gallery from './gallery.jpg'
 import gallery2 from './gallery2.jpg'
 import Icon from './icons/Icon'
 import logoNav from './logo_nav.svg'
-import banner from './banner.jpg'
+import planParking from './levels/parking.jpg'
+import planLevel1 from './levels/level_1.jpg'
+import planLevel2 from './levels/level_2.jpg'
+import planLevel3 from './levels/level_3.jpg'
+import planLevel4 from './levels/level_4.jpg'
 import sale from './sale.jpg'
 import search from './search.svg'
 import serviceBgr from './service_bgr.jpg'
@@ -22,6 +27,11 @@ export {
   gallery2,
   Icon,
   logoNav,
+  planParking,
+  planLevel1,
+  planLevel2,
+  planLevel3,
+  planLevel4,
   sale,
   search,
   serviceBgr,

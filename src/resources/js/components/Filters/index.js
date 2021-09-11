@@ -38,10 +38,10 @@ const Filters = () => {
 console.log(location)
   return (
     <div className={style['filters']}>
-      <div className={style['filters-right']}>
+      <div className={style['filters-left']}>
         <Search />
       </div>
-      {/* <div className={style['filters-left']}> */}
+      <div className={style['filters-right']}>
         <div className={style['filters-select']}>
           <BaseSelect
             value={defaultPageValue}
@@ -53,7 +53,7 @@ console.log(location)
         <div className={style['filters-select']}>
           <BaseSelect label='Категория' />
         </div>
-      {/* </div> */}
+      </div>
     </div>
   )
 }
