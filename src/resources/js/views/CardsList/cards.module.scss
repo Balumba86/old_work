@@ -6,35 +6,22 @@
 .list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, var(--min-width-col));
+  grid-template-columns: 100%;
   grid-auto-rows: var(--min-height-row);
   gap: 30px;
   margin-top: 30px;
   list-style: none;
-  @media (max-width: 1400px) {
-    // --min-width-col: 250px;
-    // --min-height-row: 350px;
+  @media (min-width: 567.98px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  @media (max-width: 1200px) {
-    // --min-width-col: 200px;
-    // --min-height-row: 300px;
-  }
-
-  @media (max-width: 1024px) {
-    // --min-width-col: 250px;
-    // --min-height-row: 350px;
+  @media (min-width: 991.98px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
 .list-link {
-  // display: grid;
-  // grid-column: 1fr;
-  // grid-template-rows: 60% repeat(2, 1fr) 20%;
-  // gap: 5px;
   display: flex;
-  // align-items: center;
-  // justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 100%;

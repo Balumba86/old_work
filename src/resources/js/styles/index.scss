@@ -7,6 +7,15 @@
   --bgr-grey: #403f3f;
 }
 
+// $xxxs-width: 321.98px;
+// $xxs-width: 359.98px;
+// $xs-width: 567.98px;
+// $sm-width: 767.98px;
+// $md-width: 991.98px;
+// $lg-width: 1289.98px;
+// $xl-width: 1559.98px;
+// $xxl-width: 1749.98px;
+
 @font-face {
   font-family: 'Gilroy';
   src: url('../fonts/Gilroy-ExtraBold.eot'),
@@ -251,7 +260,7 @@ a[href='#']:focus {
 
 .link {
   display: block;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   border: none;
@@ -259,6 +268,12 @@ a[href='#']:focus {
   color: #007846;
   text-decoration: none;
   text-align: center;
+  @media (min-width: 767.98px) {
+    margin-top: 30px;
+  }
+  @media (min-width: 1199.98px) {
+    margin-top: 40px;
+  }
 }
 
 .link:hover {

@@ -8,6 +8,10 @@ const Header = () => {
   return (
     <header className={style.header}>
       <div className={style['header-top']}>
+        <div className={style['header--mobile']}>
+          <a className={style['header--mobile-logo']}/>
+          <button className={style['header--mobile-btn']}></button>
+        </div>
         <div className={style['header-top__left']}>
           <a className={style['header-logo']}/>
           <div className={style['header-contacts__block_a']}>
@@ -21,23 +25,26 @@ const Header = () => {
           </div>
         </div>
         <div className={style['header-top__right']}>
-          <ul className={style['header-social']}>
-            <li className={style['header-social__item']}>
-              <a href='#' className={style['header-social__link']}>
-                <Icon name='vk' />
-              </a>
-            </li>
-            <li className={style['header-social__item']}>
-              <a href='#' className={style['header-social__link']}>
-                <Icon name='instagram' />
-              </a>
-            </li>
-            <li className={style['header-social__item']}>
-              <a href='#' className={style['header-social__link']}>
-                <Icon name='ok' />
-              </a>
-            </li>
-          </ul>
+          <div className={style['header-social__wrapper']}>
+            <span>Мы в соц.сетях</span>
+            <ul className={style['header-social']}>
+              <li className={style['header-social__item']}>
+                <a href='#' className={style['header-social__link']}>
+                  <Icon name='vk' />
+                </a>
+              </li>
+              <li className={style['header-social__item']}>
+                <a href='#' className={style['header-social__link']}>
+                  <Icon name='instagram' />
+                </a>
+              </li>
+              <li className={style['header-social__item']}>
+                <a href='#' className={style['header-social__link']}>
+                  <Icon name='ok' />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className={style['header-bottom']}>
