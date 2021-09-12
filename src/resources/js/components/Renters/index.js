@@ -1,5 +1,4 @@
-import classNames from 'classnames'
-import { useState } from 'react'
+import RentersForm from '../RentersForm'
 import {
   planParking,
   planLevel1,
@@ -10,25 +9,6 @@ import {
 import style from './renters.module.scss'
 
 const Renters = () => {
-  const [showForm, setShowForm] = useState(false)
-
-  const classesContacts = classNames({
-    [style["form-item"]]: true,
-    [style["contacts"]]: true,
-    [style['active']]: !showForm
-  })
-
-  const classesForm = classNames({
-    [style["form-item"]]: true,
-    [style["form"]]: true,
-    [style['active']]: showForm
-  })
-
-  const classesContainer = classNames({
-    [style["container-form"]]: true,
-    [style["container-form_right"]]: showForm
-  })
-
   return (
     <section className={style['section']}>
       <h2 className={style['renters-title']}>Арендаторам</h2>
@@ -71,65 +51,7 @@ const Renters = () => {
           </ul>
           <a className={style['download-link']} href='#'>Скачать всю карту торгового центра</a>
         </div>
-
-        <div className={style["container"]}>
-          <div className={style["box"]}></div>
-           <div className={style["container-forms"]}>
-            <div className={style["container-info"]}>
-              
-              <div className={style["info-item"]}>
-                <div className={style["table"]}>
-                  <div className={style["table-cell"]}>
-                    <p>Связаться с нами для уточнения информации по аренде</p>
-                    <button type='button' className={style["btn"]} onClick={() => setShowForm(false)}>
-                      Посмотреть контакты
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={style["info-item"]}>
-                <div className={style["table"]}>
-                  <div className={style["table-cell"]}>
-                    <p>Вы можете оставить заявку на аренду онлайн</p>
-                    <button type='button' className={style["btn"]} onClick={() => setShowForm(true)}>
-                      Оставить заявку
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={classesContainer}>
-              <div className={classesContacts}>
-                <div className={style["table"]}>
-                  <div className={style["table-cell"]}>
-                    <h4>Контактная информация</h4>
-                    <div>
-                      <div>г. Иваново, проспект Ленина, д. 57А</div>
-                      <div>c 09:00 до 21:00 </div>
-                      <div>+7 (4932) 77-32-07</div>
-                      <div>+7 (905) 107-31-11</div>
-                      <div>manager_sity@mail.ru</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classesForm}>
-                <div className={style["table"]}>
-                  <div className={style["table-cell"]}>
-                    <form>
-                      <input placeholder="Фамия Имя Отчечтво" type="text" />
-                      <input placeholder="+7 (ххх) ххх-хх-хх" type="tel" />
-                      <textarea placeholder="Username" type="text" />
-                      <button className={style["btn"]}>Отправить</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-       
+        <RentersForm />
       </div>
     </section>
   )
