@@ -40,11 +40,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Часы работы*</label>
-                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work" required value="{{$restaurant->hours_work}}">
+                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work"
+                                   data-inputmask='"mask": "99:99 - 99:99"' data-mask
+                                   required value="{{$restaurant->hours_work}}">
                         </div>
                         <div class="form-group">
                             <label for="">Телнфон</label>
-                            <input class="form-control" type="text" placeholder="+7(4932)55-55-55" name="phone" value="{{$restaurant->phone}}">
+                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{$restaurant->phone}}"
+                                   data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
+                            >
                         </div>
                         <div class="form-group">
                             <label for="">Вебсайт</label>
@@ -107,4 +111,14 @@
         </div>
     </div>
 @endsection
+@push('styles')
 
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script>
+        $('[data-mask]').inputmask()
+    </script>
+@endpush
