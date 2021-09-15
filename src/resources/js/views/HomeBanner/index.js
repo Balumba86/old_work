@@ -16,8 +16,10 @@ const HomeBanner = () => {
         autoPlay={true}
         infiniteLoop={true}
         interval={5000}
-        renderArrowPrev={() => <button className={classNames([style['slider-btn'], style['btn-prev']])} />}
-        renderArrowNext={() => <button className={classNames([style['slider-btn'], style['btn-next']])} />}>
+        showArrows={true}
+        // renderArrowPrev={() => <button className={classNames([style['slider-btn'], style['btn-prev']])} />}
+        // renderArrowNext={() => <button className={classNames([style['slider-btn'], style['btn-next']])} />}
+      >
         <img width='100%' src={banner} />
         <img width='100%' src={banner} />
         <img width='100%' src={banner} />

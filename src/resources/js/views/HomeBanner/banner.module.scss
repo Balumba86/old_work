@@ -49,14 +49,23 @@
   opacity: 1;
 }
 
-.btn-prev {
+.carousel.carousel-slider .control-arrow:hover
+
+.btn-prev,
+.carousel .control-prev.control-arrow {
   left: 0;
-  background: rgba(#000, 0.4) url(../../images/left-arrow.svg) no-repeat center;
+  background-color: rgba(#000, 0.4);
+  background-image: url(../../images/left-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 65%;
 }
 
 .btn-next {
   right: 0;
-  background: rgba(#000, 0.4) url(../../images/right-arrow.svg) no-repeat center;
+  background-color: rgba(#000, 0.4);
+  background-image: url(../../images/right-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: 65%;
 }

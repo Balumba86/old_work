@@ -1,3 +1,4 @@
+import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
 import { CardsList } from '../../views'
 import { belwestLogo } from '../../images'
@@ -44,10 +45,12 @@ const list = [
 ]
 
 const Services = () => {
+  const { filters } = useStoreon('filters')
+
   return (
     <>
       <div className={style['services-bgr']} />
-      <Filters />
+      <Filters filters={filters.services} />
       <CardsList list={list} baseUrl={PATHS.visitors_services.path} />
     </>
   )
