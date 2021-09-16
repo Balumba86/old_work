@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Images;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +37,20 @@ class ServicesItemsService
 
         $data['slug'] = Str::slug($data['title']);
 
-        return Service::create($data);
+        $serviceItem = Service::create($data);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('service/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'service',
+                    'target_id' => $serviceItem->id
+                ]);
+            }
+        }
+
+        return $serviceItem;
     }
 
     public function adminGetById(int $id)
@@ -54,6 +68,17 @@ class ServicesItemsService
             Storage::delete($data['logo']);
             $logo_path = $request->file('logo')->store('service');
             $data['logo'] = $logo_path;
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('service/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'service',
+                    'target_id' => $id
+                ]);
+            }
         }
 
         $data['slug'] = Str::slug($data['title']);
@@ -102,10 +127,14 @@ class ServicesItemsService
 
     public function getBySlug(string $slug)
     {
-        $service = Service::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+        $service = Service::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($service) {
             $service->logo = Storage::url($service->logo);
+
+            foreach ($service->images as $img) {
+                $img->path = Storage::url($img->path);
+            }
         }
 
         return $service;

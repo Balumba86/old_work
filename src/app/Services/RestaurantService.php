@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Images;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +37,20 @@ class RestaurantService
 
         $data['slug'] = Str::slug($data['title']);
 
-        return Restaurant::create($data);
+        $restaurant = Restaurant::create($data);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('restaurant/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'restaurant',
+                    'target_id' => $restaurant->id
+                ]);
+            }
+        }
+
+        return $restaurant;
     }
 
     public function adminGetById(int $id)
@@ -54,6 +68,17 @@ class RestaurantService
             Storage::delete($data['logo']);
             $logo_path = $request->file('logo')->store('restaurant');
             $data['logo'] = $logo_path;
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('restaurant/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'restaurant',
+                    'target_id' => $id
+                ]);
+            }
         }
 
         $data['slug'] = Str::slug($data['title']);
@@ -102,10 +127,14 @@ class RestaurantService
 
     public function getBySlug(string $slug)
     {
-        $restaurant = Restaurant::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+        $restaurant = Restaurant::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($restaurant) {
             $restaurant->logo = Storage::url($restaurant->logo);
+
+            foreach ($restaurant->images as $img) {
+                $img->path = Storage::url($img->path);
+            }
         }
 
         return $restaurant;
