@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\RestaurantCategoryService;
 use App\Services\RestaurantService;
 use Illuminate\Http\Request;
+use App\Http\Requests\ResidentEntityRequest;
 
 class RestaurantController extends Controller
 {
@@ -45,7 +46,7 @@ class RestaurantController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(ResidentEntityRequest $request)
     {
         $this->restaurantService->adminCreate($request);
 
@@ -70,7 +71,7 @@ class RestaurantController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(ResidentEntityRequest $request, int $id)
     {
         $this->restaurantService->adminUpdate($request, $id);
 
