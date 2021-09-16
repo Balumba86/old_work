@@ -28,7 +28,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип организации<span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
+                            <label for="customFile">Логотип организации (400x300 px)<span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Изменить файл</label>
@@ -54,7 +54,7 @@
                                    required value="{{$service->hours_work}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Телнфон</label>
+                            <label for="">Телефон</label>
                             <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{$service->phone}}"
                                    data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
                             >

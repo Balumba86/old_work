@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип магазина*</label>
+                            <label for="customFile">Логотип магазина* (400x300 px)</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
@@ -54,7 +54,7 @@
                                    required>
                         </div>
                         <div class="form-group">
-                            <label for="">Телнфон</label>
+                            <label for="">Телефон</label>
                             <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone"
                                    data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
                             >
