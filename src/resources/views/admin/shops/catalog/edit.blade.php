@@ -35,6 +35,77 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Галерея изображений</label>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
+                                    Открыть редактор
+                                </button>
+                                <div class="modal fade" id="gallery">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Галерея</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="card card-success card-outline card-tabs">
+                                                    <div class="card-header p-0 pt-1">
+                                                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#tab-list" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Загруженное</a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#tab-load" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Добавить ещё</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                                                            <div class="tab-pane fade show active" id="tab-list" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                                                <div id="loaded_files_block" class="row">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="tab-load" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+                                                                <div id="add_files_block">
+                                                                    <div class="custom-file" id="gallery_add">
+                                                                        <input type="file" accept="image/jpeg,image/png,image/jpg" class="custom-file-input" id="gallery" multiple name="images[]">
+                                                                        <label class="custom-file-label" for="gallery">Выбрать файлы</label>
+                                                                    </div>
+                                                                    <div class="form-group mt-3" id="template_result" style="display: none">
+                                                                        <span>Прогресс загрузки</span>
+                                                                        <div class="progress progress-sm">
+                                                                            <div id="progress-file" class="progress-bar bg-success progress-file" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <button type="button" class="btn btn-primary" id="send-files" style="display: none">Загрузить</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success" data-dismiss="modal">Применить</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
                             <label for="">Описание</label>
                             <textarea class="form-control" name="description">{{$shop->description}}</textarea>
                         </div>
@@ -113,13 +184,64 @@
     </div>
 @endsection
 @push('styles')
-
 @endpush
 
 @push('scripts')
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script>
-        $('[data-mask]').inputmask()
+        window.onload = function(){
+            $('[data-mask]').inputmask();
+
+            // $('#gallery').on('change', function (e) {
+            //     $('#send-files').show();
+            //     $('#progress-file').attr('aria-valuemax', 100)
+            //     $('#progress-file').attr('aria-valuenow', 0)
+            //     $('#progress-file').attr('style', `width: 0%`);
+            //     $('#template_result').show();
+            //     $('#send-files').attr('disabled', false);
+            // })
+
+            // $('#send-files').on('click', function (e) {
+            //     e.stopPropagation();
+            //     e.preventDefault();
+            //     $(e.target).attr('disabled', true);
+            //     let input = $(e.target).closest('.modal-content').find('input[type="file"]');
+            //     let files = input[0].files;
+            //     uploadAudio(files, function (data) {
+            //         if (data.type === 'success') {
+            //             console.log('key', data)
+            //         }
+            //     });
+            // });
+
+            {{--function uploadAudio(files, callback) {--}}
+            {{--    var xhr = new XMLHttpRequest();--}}
+            {{--    // обработчик для отправки--}}
+            {{--    xhr.upload.onprogress = function(event) {--}}
+            {{--        let procent = (event.loaded / event.total) * 100;--}}
+            {{--        $('#progress-file').attr('aria-valuemax', event.total)--}}
+            {{--        $('#progress-file').attr('aria-valuenow', event.loaded)--}}
+            {{--        $('#progress-file').attr('style', `width: ${procent}%`);--}}
+            {{--    }--}}
+            {{--    $.each(files, function( key, value ){--}}
+            {{--        let data = new FormData();--}}
+            {{--        data.append('content', value);--}}
+            {{--        data.append('id', {{ $shop->test ?: null }});--}}
+            {{--        xhr.onload = xhr.onerror = function() {--}}
+            {{--            if (this.status === 200) {--}}
+            {{--                console.log("success", this.response);--}}
+            {{--                callback(JSON.parse(this.response));--}}
+            {{--            } else {--}}
+            {{--                console.log("error " + this.status);--}}
+            {{--                callback({success: false, status: this.status});--}}
+            {{--            }--}}
+            {{--        };--}}
+            {{--        xhr.open("POST", "/api/v1/system/upload/shop", false);--}}
+            {{--        xhr.send(data);--}}
+            {{--    })--}}
+
+            {{--}--}}
+        }
     </script>
 @endpush

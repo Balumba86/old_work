@@ -939,7 +939,8 @@
                         "type": "string"
                     },
                     "logo": {
-                        "type": "string"
+                        "type": "string",
+                        "default": "https://example.com/path/image.jpg"
                     },
                     "description": {
                         "type": "string"
@@ -969,6 +970,24 @@
                     },
                     "meta_description": {
                         "type": "string"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EntityImage"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "EntityImage": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "path": {
+                        "type": "string",
+                        "default": "https://example.com/path/image.jpg"
                     }
                 },
                 "type": "object"
