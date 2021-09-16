@@ -35,6 +35,15 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Галерея изображений</label>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
+                                    Открыть редактор
+                                </button>
+                                @include('admin.layouts.gallery_modal')
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="">Описание</label>
                             <textarea class="form-control" name="description">{{$restaurant->description}}</textarea>
                         </div>
