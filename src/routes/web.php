@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\RestaurantCategoryController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\RentRequestController;
 
 
 Route::get('/', function () {
@@ -80,6 +81,13 @@ Route::
         Route::get('/edit/{id}', [NewsController::class, 'edit'])->name('admin-news-edit');
         Route::put('/update/{id}', [NewsController::class, 'update'])->name('admin-news-update');
         Route::delete('/delete/{id}', [NewsController::class, 'delete'])->name('admin-news-delete');
+    });
+
+    Route::prefix('rent')->group(function () {
+        Route::get('/', [RentRequestController::class, 'index'])->name('admin-rent');
+        Route::get('/show/{id}', [RentRequestController::class, 'edit'])->name('admin-rent-show');
+        Route::put('/update/{id}', [RentRequestController::class, 'update'])->name('admin-rent-update');
+        Route::delete('/delete/{id}', [RentRequestController::class, 'delete'])->name('admin-rent-delete');
     });
 
 });
