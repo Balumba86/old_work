@@ -10,32 +10,38 @@ const optNav = [
     id: 'shops',
     label: 'Магазины',
     link: PATHS.visitors_shops.path,
-    value: '/shops'
+    value: '/visitors/shops'
   },
   {
     id: 'cafe',
     label: 'Кафе и рестораны',
     link: PATHS.visitors_cafe.path,
-    value: '/cafe'
+    value: '/visitors/cafe'
   },
   {
     id: 'services',
     label: 'Сервисы и услуги',
     link: PATHS.visitors_services.path,
-    value: '/services'
+    value: '/visitors/services'
   }
 ]
 
-const Filters = () => {
+const Filters = ({ filters = [] }) => {
   const location = useLocation();
-  const [defaultPageValue, setValue] = useState('')
+  const [defaultPageValue, setValue] = useState(undefined)
+
   useEffect(() => {
-    if(location) {
-      const value = optNav.find(el => el.value === location.pathname ? el.label : '')
+    if(location.pathname) {
+      let value = undefined
+      optNav.forEach(el => {
+        if(location.pathname.includes(el.value)) {
+          value = el
+        }
+      })
       setValue(value)
     }
-  }, [location])
-console.log(location)
+  }, [location.pathname])
+  
   return (
     <div className={style['filters']}>
       <div className={style['filters-left']}>
@@ -51,7 +57,7 @@ console.log(location)
           />
         </div>
         <div className={style['filters-select']}>
-          <BaseSelect label='Категория' />
+          <BaseSelect options={filters} placeholder='Выберите категорию' label='Категория' />
         </div>
       </div>
     </div>

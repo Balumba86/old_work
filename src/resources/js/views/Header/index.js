@@ -2,6 +2,7 @@ import HeaderNav from '../HeaderNav'
 import { Icon } from '../../images'
 import style from './header.module.scss'
 import { PATHS } from '../../const'
+import Social from '../Social'
 
 const Header = () => {
 
@@ -25,7 +26,8 @@ const Header = () => {
           </div>
         </div>
         <div className={style['header-top__right']}>
-          <div className={style['header-social__wrapper']}>
+          <Social />
+          {/* <div className={style['header-social__wrapper']}>
             <span>Мы в соц.сетях</span>
             <ul className={style['header-social']}>
               <li className={style['header-social__item']}>
@@ -44,7 +46,7 @@ const Header = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={style['header-bottom']}>
