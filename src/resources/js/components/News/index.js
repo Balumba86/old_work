@@ -1,23 +1,32 @@
-import { useEffect } from "react"
+import InfiniteList from "../InfiniteList"
 import { NewsList } from "../../views"
 import api from "../../api"
 
 import style from './news.module.scss'
 
 const News = () => {
-  useEffect(() => {
-    api.getNewsList({})
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
 
-  }, [])
-  return (
-    <section className={style['section']}>
-      <NewsList />
-      <div>
-        <button type='button' className='link'>Загрузить еще</button>
-      </div>
-    </section>
+  return ( 
+    <InfiniteList api={api.getNewsList}>
+      {({
+        results = [],
+        isNext,
+        isPrev,
+        currentPage,
+        showMore
+      }) => {
+        return (
+          <section className={style['section']}>
+            <NewsList list={results} />
+            {isNext ? (
+              <div>
+                <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
+              </div>
+            ) : null}
+          </section>
+        )
+      }}
+    </InfiniteList>
   )
 }
 

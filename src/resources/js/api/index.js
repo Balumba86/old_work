@@ -1,12 +1,15 @@
 import { PATHS } from "../const";
 import BaseApi from "./base";
-import { categoriesSerializer } from './serializers'
+import {
+  categoriesSerializer,
+  newsListSerializer
+} from './serializers'
 
 class Api extends BaseApi {
 
   getNewsList = async (params = {}) => {
     const res = await this.get('/news/list', params)
-    return res.data
+    return newsListSerializer(res.data)
   }
 
   // getNewsDetail = ({ postSlug = ''}) => {
