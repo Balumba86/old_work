@@ -85,7 +85,7 @@ Route::
 
     Route::prefix('rent')->group(function () {
         Route::get('/', [RentRequestController::class, 'index'])->name('admin-rent');
-        Route::get('/show/{id}', [RentRequestController::class, 'edit'])->name('admin-rent-show');
+        Route::get('/show/{id}', [RentRequestController::class, 'show'])->name('admin-rent-show');
         Route::put('/update/{id}', [RentRequestController::class, 'update'])->name('admin-rent-update');
         Route::delete('/delete/{id}', [RentRequestController::class, 'delete'])->name('admin-rent-delete');
     });

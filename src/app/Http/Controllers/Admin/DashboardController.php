@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\RentRequestService;
 use App\Services\RestaurantService;
 use App\Services\ServicesItemsService;
 use App\Services\ShopService;
@@ -13,16 +14,19 @@ class DashboardController extends Controller
     private $shopService;
     private $restaurantService;
     private $serviceItemsService;
+    private $rentService;
 
     public function __construct(
         ShopService $shopService,
         RestaurantService $restaurantService,
-        ServicesItemsService $serviceItemsService
+        ServicesItemsService $serviceItemsService,
+        RentRequestService $rentService
     )
     {
         $this->shopService = $shopService;
         $this->restaurantService = $restaurantService;
         $this->serviceItemsService = $serviceItemsService;
+        $this->rentService = $rentService;
         $this->middleware('auth');
     }
 
@@ -32,7 +36,7 @@ class DashboardController extends Controller
             'count_shops' => $this->shopService->adminCount(),
             'count_cafe' => $this->restaurantService->adminCount(),
             'count_services' => $this->serviceItemsService->adminCount(),
-            'count_requests' => 0
+            'count_requests' => $this->rentService->adminCount()
         ]);
     }
 }

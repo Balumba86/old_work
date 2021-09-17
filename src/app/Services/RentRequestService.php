@@ -34,4 +34,32 @@ class RentRequestService
 
         return $rents;
     }
+
+    public function adminGetById(int $id)
+    {
+        return RentRequest::where('id', $id)->first();
+    }
+
+    public function adminUpdate(int $id)
+    {
+        $request = RentRequest::where('id', $id)->first();
+
+        $data = [
+            "is_new" => false
+        ];
+
+        return $request->update($data);
+    }
+
+    public function adminDelete(int $id)
+    {
+        $rent = RentRequest::where('id', $id)->first();
+
+        return $rent->delete();
+    }
+
+    public function adminCount():int
+    {
+        return RentRequest::where('is_new', true)->get()->count();
+    }
 }

@@ -58,7 +58,7 @@
                             <td>
                                 <a href="{{route('admin-rent-show', $rent->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                 <span data-target="#drop_post_{{$rent->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>
-                                <form onsubmit="true" action="{{route('admin-rent-show', $rent->id)}}" method="post" id="drop-form-{{$rent->id}}">
+                                <form onsubmit="true" action="{{route('admin-rent-delete', $rent->id)}}" method="post" id="drop-form-{{$rent->id}}">
                                     @method('DELETE')
                                     @csrf
                                     <div class="modal fade" id="drop_post_{{$rent->id}}">
@@ -70,7 +70,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Вы действительно хотите удалить пост "{{$rent->title}}"?</p>
+                                                    <p>Вы действительно хотите удалить заявку №{{$rent->id}} ?</p>
                                                     <p class="small">* Данное действие невозможно будет отменить!</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
