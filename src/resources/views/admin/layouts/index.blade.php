@@ -73,6 +73,32 @@
                     </div>
                 </div>
             @endif
+                @if(session('success'))
+                    <div class="alert alert-arrow d-flex rounded p-0 system-message" role="alert">
+                        <div class="alert-icon d-flex justify-content-center align-items-center text-white flex-grow-0 flex-shrink-0">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <div class="alert-message d-flex align-items-center py-2 pl-4 pr-3">
+                            {{ session('success') }}
+                        </div>
+                        <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                @endif
+                @if(session('info'))
+                    <div class="alert alert-arrow alert-arrow-primary d-flex rounded p-0 system-message" role="alert">
+                        <div class="alert-icon d-flex justify-content-center align-items-center text-white flex-grow-0 flex-shrink-0">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="alert-message d-flex align-items-center py-2 pl-4 pr-3">
+                            {{ session('info') }}
+                        </div>
+                        <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                @endif
             @yield('content')
         </section>
     </div>
