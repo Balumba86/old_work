@@ -52,7 +52,7 @@
                         <div class="icon">
                             <i class="fas fa-bullhorn"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Перейти к списку</a>
+                        <a href="{{route('admin-rent')}}" class="small-box-footer">Перейти к списку</a>
                     </div>
                 </div>
             </div>

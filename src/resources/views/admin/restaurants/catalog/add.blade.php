@@ -27,10 +27,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип заведения*</label>
+                            <label for="customFile">Логотип заведения* (400x300 px)</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Галерея изображений</label>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
+                                    Открыть редактор
+                                </button>
+                                @include('admin.layouts.gallery_modal')
                             </div>
                         </div>
                         <div class="form-group">
@@ -39,11 +48,16 @@
                         </div>
                         <div class="form-group">
                             <label for="">Часы работы*</label>
-                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work" required>
+                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work"
+                                   data-inputmask='"mask": "99:99 - 99:99"' data-mask
+                                   value="09:00 - 21:00"
+                                   required>
                         </div>
                         <div class="form-group">
-                            <label for="">Телнфон</label>
-                            <input class="form-control" type="text" placeholder="+7(4932)55-55-55" name="phone">
+                            <label for="">Телефон</label>
+                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone"
+                                   data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
+                            >
                         </div>
                         <div class="form-group">
                             <label for="">Вебсайт</label>
@@ -105,3 +119,14 @@
         </div>
     </div>
 @endsection
+@push('styles')
+
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script>
+        $('[data-mask]').inputmask()
+    </script>
+@endpush

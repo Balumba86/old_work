@@ -164,4 +164,9 @@ class Shop extends Model
     {
         return $this->hasOne(ShopCategory::class, 'id', 'category')->select('id', 'title', 'slug');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Images::class, 'target_id', 'id')->where('target', 'shop');
+    }
 }

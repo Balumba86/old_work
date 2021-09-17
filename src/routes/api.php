@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Traits\ApiResponse;
 use App\Http\Controllers\Api\SubscribeController;
+use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\ShopCategoryController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\RestaurantCategoryController;
@@ -45,6 +46,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
 
     Route::prefix('system')->group(function () {
         Route::post('email/subscribe', [SubscribeController::class, 'subscribe'])->name('email-subscribe');
+        Route::post('upload/shop', [UploadController::class, 'uploadShopImg']);
     });
 
     Route::fallback(function(){

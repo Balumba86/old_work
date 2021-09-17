@@ -164,4 +164,9 @@ class Service extends Model
     {
         return $this->hasOne(ServiceCategory::class, 'id', 'category')->select('id', 'title', 'slug');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Images::class, 'target_id', 'id')->where('target', 'service');
+    }
 }

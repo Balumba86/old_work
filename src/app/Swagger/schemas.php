@@ -162,7 +162,8 @@
  *     ),
  *     @OA\Property(
  *         property="logo",
- *         type="string"
+ *         type="string",
+ *         default="https://example.com/path/image.jpg"
  *     ),
  *     @OA\Property(
  *         property="description",
@@ -201,7 +202,27 @@
  *     @OA\Property(
  *         property="meta_description",
  *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="images",
+ *         type="array",
+ *         @OA\Items(
+ *           ref="#/components/schemas/EntityImage"
+ *         )
  *     )
+ * )
+ *
+ * @OA\Schema (
+ *     schema="EntityImage",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="path",
+ *         type="string",
+ *         default="https://example.com/path/image.jpg"
+ *     ),
  * )
  *
  * @OA\Schema(

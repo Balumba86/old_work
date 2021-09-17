@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Images;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +37,20 @@ class ShopService
 
         $data['slug'] = Str::slug($data['title']);
 
-        return Shop::create($data);
+        $shop = Shop::create($data);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('shop/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'shop',
+                    'target_id' => $shop->id
+                ]);
+            }
+        }
+
+        return $shop;
     }
 
     public function adminGetById(int $id)
@@ -54,6 +68,16 @@ class ShopService
             Storage::delete($data['logo']);
             $logo_path = $request->file('logo')->store('shop');
             $data['logo'] = $logo_path;
+        }
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $tmp = $image->store('shop/gallery');
+                Images::create([
+                    'path' => $tmp,
+                    'target' => 'shop',
+                    'target_id' => $id
+                ]);
+            }
         }
 
         $data['slug'] = Str::slug($data['title']);
@@ -102,10 +126,14 @@ class ShopService
 
     public function getBySlug(string $slug)
     {
-        $shop = Shop::select('title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category')->where('slug', $slug)->get()->first();
+        $shop = Shop::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($shop) {
             $shop->logo = Storage::url($shop->logo);
+
+            foreach ($shop->images as $img) {
+                $img->path = Storage::url($img->path);
+            }
         }
 
         return $shop;

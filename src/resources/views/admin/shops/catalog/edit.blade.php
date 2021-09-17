@@ -28,10 +28,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Логотип магазина* <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
+                            <label for="customFile">Логотип магазина* (400x300 px) <span class="small">(не выбирайте новый файл чтобы не удалять старый)</span></label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="logo_shop" name="logo">
                                 <label class="custom-file-label" for="logo_shop">Изменить файл</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Галерея изображений</label>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
+                                    Открыть редактор
+                                </button>
+                                @include('admin.layouts.gallery_modal')
                             </div>
                         </div>
                         <div class="form-group">
@@ -40,11 +49,16 @@
                         </div>
                         <div class="form-group">
                             <label for="">Часы работы*</label>
-                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work" required value="{{$shop->hours_work}}">
+                            <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work"
+                                   data-inputmask='"mask": "99:99 - 99:99"' data-mask
+                                   required
+                                   value="{{$shop->hours_work}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Телнфон</label>
-                            <input class="form-control" type="text" placeholder="+7(4932)55-55-55" name="phone" value="{{$shop->phone}}">
+                            <label for="">Телефон</label>
+                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{$shop->phone}}"
+                                   data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
+                            >
                         </div>
                         <div class="form-group">
                             <label for="">Вебсайт</label>
@@ -107,4 +121,65 @@
         </div>
     </div>
 @endsection
+@push('styles')
+@endpush
 
+@push('scripts')
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script>
+        window.onload = function(){
+            $('[data-mask]').inputmask();
+
+            // $('#gallery').on('change', function (e) {
+            //     $('#send-files').show();
+            //     $('#progress-file').attr('aria-valuemax', 100)
+            //     $('#progress-file').attr('aria-valuenow', 0)
+            //     $('#progress-file').attr('style', `width: 0%`);
+            //     $('#template_result').show();
+            //     $('#send-files').attr('disabled', false);
+            // })
+
+            // $('#send-files').on('click', function (e) {
+            //     e.stopPropagation();
+            //     e.preventDefault();
+            //     $(e.target).attr('disabled', true);
+            //     let input = $(e.target).closest('.modal-content').find('input[type="file"]');
+            //     let files = input[0].files;
+            //     uploadAudio(files, function (data) {
+            //         if (data.type === 'success') {
+            //             console.log('key', data)
+            //         }
+            //     });
+            // });
+
+            {{--function uploadAudio(files, callback) {--}}
+            {{--    var xhr = new XMLHttpRequest();--}}
+            {{--    // обработчик для отправки--}}
+            {{--    xhr.upload.onprogress = function(event) {--}}
+            {{--        let procent = (event.loaded / event.total) * 100;--}}
+            {{--        $('#progress-file').attr('aria-valuemax', event.total)--}}
+            {{--        $('#progress-file').attr('aria-valuenow', event.loaded)--}}
+            {{--        $('#progress-file').attr('style', `width: ${procent}%`);--}}
+            {{--    }--}}
+            {{--    $.each(files, function( key, value ){--}}
+            {{--        let data = new FormData();--}}
+            {{--        data.append('content', value);--}}
+            {{--        data.append('id', {{ $shop->test ?: null }});--}}
+            {{--        xhr.onload = xhr.onerror = function() {--}}
+            {{--            if (this.status === 200) {--}}
+            {{--                console.log("success", this.response);--}}
+            {{--                callback(JSON.parse(this.response));--}}
+            {{--            } else {--}}
+            {{--                console.log("error " + this.status);--}}
+            {{--                callback({success: false, status: this.status});--}}
+            {{--            }--}}
+            {{--        };--}}
+            {{--        xhr.open("POST", "/api/v1/system/upload/shop", false);--}}
+            {{--        xhr.send(data);--}}
+            {{--    })--}}
+
+            {{--}--}}
+        }
+    </script>
+@endpush
