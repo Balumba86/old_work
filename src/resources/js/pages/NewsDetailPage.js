@@ -1,8 +1,11 @@
+import NewsDetail from '../components/NewsDetail'
 import { Layout } from '../views'
 
 const NewsDetailPage = () => {
   return (
-    <Layout>NewsDetailPage</Layout>
+    <Layout>
+      <NewsDetail />
+    </Layout>
   )
 }
 

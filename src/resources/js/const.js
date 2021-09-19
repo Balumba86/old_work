@@ -24,15 +24,27 @@ export const PATHS = {
     exact: false
   },
   cafe_detail: {
-    path: '/visitors/cafe/:slug',
+    path: '/visitors/cafe/detail/:slug',
     exact: false
   },
   services_detail: {
-    path: '/visitors/services/:slug',
+    path: '/visitors/services/detail/:slug',
     exact: false
   },
   shops_detail: {
-    path: '/visitors/shops/:slug',
+    path: '/visitors/shops/detail/:slug',
+    exact: false
+  },
+  cafe_category: {
+    path: '/visitors/cafe/:category',
+    exact: false
+  },
+  services_category: {
+    path: '/visitors/services/:category',
+    exact: false
+  },
+  shops_category: {
+    path: '/visitors/shops/:category',
     exact: false
   },
   visitors: {
@@ -51,4 +63,10 @@ export const PATHS = {
     path: '/visitors/shops',
     exact: true
   },
+}
+
+export const LOADING_STATES = {
+  'loading': 'loading',
+  'loaded': 'loaded',
+  'failed': 'failed'
 }

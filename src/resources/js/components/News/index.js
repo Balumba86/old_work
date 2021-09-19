@@ -1,8 +1,9 @@
 import InfiniteList from "../InfiniteList"
-import { NewsList } from "../../views"
+import { LoaderPage, NewsList } from "../../views"
 import api from "../../api"
 
 import style from './news.module.scss'
+import { LOADING_STATES } from "../../const"
 
 const News = () => {
 
@@ -13,16 +14,23 @@ const News = () => {
         isNext,
         isPrev,
         currentPage,
+        status,
         showMore
       }) => {
         return (
           <section className={style['section']}>
-            <NewsList list={results} />
-            {isNext ? (
-              <div>
-                <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
-              </div>
+            {status === LOADING_STATES.loading ? <LoaderPage /> : null}
+            {status === LOADING_STATES.loaded && results.length > 0 ? (
+              <>
+                <NewsList list={results} />
+                {isNext ? (
+                  <div>
+                    <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
+                  </div>
+                ) : null}
+              </>
             ) : null}
+            
           </section>
         )
       }}

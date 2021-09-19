@@ -7,7 +7,8 @@ const categoriesSerializer = (res, baseUrl) => {
         value: el.slug,
         label: el.title,
         link: `${baseUrl}/${el.slug}`,
-        id: el.id
+        id: el.id,
+        slug: el.slug
       })
     })
   }

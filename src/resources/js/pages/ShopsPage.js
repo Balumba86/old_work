@@ -1,10 +1,10 @@
-import Shops from '../components/Shops'
+import ShopsList from '../components/ShopsList'
 import { VisitorsLayout } from '../views'
 
 const ShopsPage = () => {
   return (
     <VisitorsLayout title='Магазины'>
-      <Shops />
+      <ShopsList />
     </VisitorsLayout>
   )
 }

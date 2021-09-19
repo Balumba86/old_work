@@ -1,57 +1,57 @@
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
-import { CardsList } from '../../views'
-import { belwestLogo } from '../../images'
-import { PATHS } from '../../const'
+import { CardsList, LoaderPage, MessageNotResults } from '../../views'
+import { LOADING_STATES, PATHS } from '../../const'
 
 import style from './services.module.scss'
 
-const list = [
-  {
-    id: 'service-1',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-2',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-3',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-4',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-5',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-6',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'service-7',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-]
-
-const Services = () => {
+const Services = ({
+  results = [],
+  status = '',
+  isNext,
+  showMore = () => {},
+  loadData = () => {}
+}) => {
+  const [slug, setSlug] = useState(null)
+  const [filterValue, setFilterValue] = useState(undefined)
+  const location = useLocation()
   const { filters } = useStoreon('filters')
+
+  useEffect(() => {
+    if(location && location.state) {
+      if(!slug) {
+        setSlug(location.state.slug)
+      }
+      if(slug && slug !== location.state.slug) {
+        loadData(1, { categorySlug: location.state.slug })
+        setSlug(location.state.slug)
+      }      
+    }
+  }, [location.state])
+
+  useEffect(() => {
+    if(location && location.state && filters) {
+      filters.services.find(el => {
+        if(el.value === location.state.slug) {
+          setFilterValue(el)
+        }
+      })
+    }
+  }, [location, filters])
 
   return (
     <>
       <div className={style['services-bgr']} />
-      <Filters filters={filters.services} />
-      <CardsList list={list} baseUrl={PATHS.visitors_services.path} />
+      <Filters filterValue={filterValue} filters={filters.services} />
+      {status === LOADING_STATES.loading ? <LoaderPage /> : null}
+      {status === LOADING_STATES.loaded && results.length > 0 ? (
+        <CardsList list={results} baseUrl={PATHS.visitors_services.path} />
+      ) : null}
+      {status === LOADING_STATES.loaded && results.length === 0 ? (
+        <MessageNotResults text='В этом разделе пока нет сервисов и услуг' />
+      ) : null}
     </>
   )
 }

@@ -8,6 +8,7 @@ import ImageMall from './ImageMall'
 import Input from './Input'
 import Layout from './Layout'
 import LoaderPage from './LoaderPage'
+import MessageNotResults from './MessageNotResults'
 import NewsBlock from './NewsBlock'
 import NewsList from './NewsList'
 import BaseSelect from './Select'
@@ -27,6 +28,7 @@ export {
   Input,
   Layout,
   LoaderPage,
+  MessageNotResults,
   NewsBlock,
   NewsList,
   BaseSelect,

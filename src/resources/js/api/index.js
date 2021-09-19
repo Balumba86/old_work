@@ -2,6 +2,7 @@ import { PATHS } from "../const";
 import BaseApi from "./base";
 import {
   categoriesSerializer,
+  categoryListSerializer,
   newsListSerializer
 } from './serializers'
 
@@ -12,20 +13,20 @@ class Api extends BaseApi {
     return newsListSerializer(res.data)
   }
 
-  // getNewsDetail = ({ postSlug = ''}) => {
-  //   const res = this.get(`/news/${postSlug}`, {})
-  //   return res
-  // }
+  getNewsDetail = async ({ postSlug = ''}) => {
+    const res = await this.get(`/news/${postSlug}`)
+    return res.data
+  }
 
   getCatogoriesShops = async () => {
     const res = await this.get('/shop/categories')
     return categoriesSerializer(res.data, PATHS.visitors_shops.path)
   }
 
-  // getShopsCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/shop​/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getShopsCategorySlug = async ({ categorySlug = '', params = {} }) => {
+    const res = await this.get(`/shop/category/${categorySlug}`, params)
+    return categoryListSerializer(res.data)
+  }
 
   // getShopDetail = ({ shopSlug = '' }) => {
   //   const res = this.get(`/shop​/${shopSlug}`, {})
@@ -37,10 +38,10 @@ class Api extends BaseApi {
     return categoriesSerializer(res.data, PATHS.visitors_cafe.path)
   }
 
-  // getCafeCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/restaurant/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getCafeCategorySlug = async ({ categorySlug = '', params = {} }) => {
+    const res = await this.get(`/restaurant/category/${categorySlug}`, params)
+    return categoryListSerializer(res.data)
+  }
 
   // getCafeDetail = ({ restaurantSlug = '' }) => {
   //   const res = this.get(`/restaurant/${restaurantSlug}`, {})
@@ -52,10 +53,10 @@ class Api extends BaseApi {
     return categoriesSerializer(res.data, PATHS.visitors_services.path)
   }
 
-  // getServicesCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/service​/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getServicesCategorySlug = async ({ categorySlug = '', params = {} }) => {
+    const res = await this.get(`/service/category/${categorySlug}`, params)
+    return categoryListSerializer(res.data)
+  }
 
   // getServiceDetail = ({ serviceSlug = '' }) => {
   //   const res = this.get(`/service​/${serviceSlug}`, {})

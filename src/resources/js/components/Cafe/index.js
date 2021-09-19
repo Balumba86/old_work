@@ -1,57 +1,57 @@
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
-import { CardsList } from '../../views'
-import { belwestLogo } from '../../images'
-import { PATHS } from '../../const'
+import { CardsList, LoaderPage, MessageNotResults } from '../../views'
+import { LOADING_STATES, PATHS } from '../../const'
 
 import style from './cafe.module.scss'
 
-const list = [
-  {
-    id: 'cafe-1',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-2',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-3',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-4',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-5',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-6',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-  {
-    id: 'cafe-7',
-    image: belwestLogo,
-    slug: 'detail'
-  },
-]
-
-const Cafe = () => {
+const Cafe = ({
+  results = [],
+  status = '',
+  isNext,
+  showMore = () => {},
+  loadData = () => {}
+}) => {
+  const [slug, setSlug] = useState(null)
+  const [filterValue, setFilterValue] = useState(undefined)
+  const location = useLocation()
   const { filters } = useStoreon('filters')
+
+  useEffect(() => {
+    if(location && location.state) {
+      if(!slug) {
+        setSlug(location.state.slug)
+      }
+      if(slug && slug !== location.state.slug) {
+        loadData(1, { categorySlug: location.state.slug })
+        setSlug(location.state.slug)
+      }      
+    }
+  }, [location.state])
+
+  useEffect(() => {
+    if(location && location.state && filters) {
+      filters.cafe.find(el => {
+        if(el.value === location.state.slug) {
+          setFilterValue(el)
+        }
+      })
+    }
+  }, [location, filters])
 
   return (
     <>
       <div className={style['cafe-bgr']} />
-      <Filters filters={filters.cafe} />
-      <CardsList list={list} baseUrl={PATHS.visitors_cafe.path} />
+      <Filters filterValue={filterValue} filters={filters.cafe} />
+      {status === LOADING_STATES.loading ? <LoaderPage /> : null}
+      {status === LOADING_STATES.loaded && results.length > 0 ? (
+        <CardsList list={results} baseUrl={PATHS.visitors_cafe.path} />
+      ) : null}
+      {status === LOADING_STATES.loaded && results.length === 0 ? (
+        <MessageNotResults text='В этом разделе пока нет кафе и ресторанов' />
+      ) : null}
     </>
   )
 }

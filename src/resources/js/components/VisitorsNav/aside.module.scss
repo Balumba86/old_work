@@ -63,6 +63,12 @@
   color: var(--bgr-grey);
 }
 
-.sub-menu__link:hover {
+.sub-menu__link_active {
   color: var(--active-color);
+  text-decoration: underline;
+}
+
+.sub-menu__link:hover {
+  color: var(--active-color-hover);
+  text-decoration-style: dashed;
 }

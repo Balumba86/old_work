@@ -1,10 +1,10 @@
+import ServicesList from '../components/ServicesList'
 import { VisitorsLayout } from '../views'
-import Services from '../components/Services'
 
 const ServicesPage = () => {
   return (
     <VisitorsLayout title='Сервисы и услуги'>
-      <Services />
+      <ServicesList />
     </VisitorsLayout>
   )
 }

@@ -26,7 +26,7 @@ const optNav = [
   }
 ]
 
-const Filters = ({ filters = [] }) => {
+const Filters = ({ filters = [], filterValue = undefined }) => {
   const location = useLocation();
   const [defaultPageValue, setValue] = useState(undefined)
 
@@ -57,7 +57,7 @@ const Filters = ({ filters = [] }) => {
           />
         </div>
         <div className={style['filters-select']}>
-          <BaseSelect options={filters} placeholder='Выберите категорию' label='Категория' />
+          <BaseSelect value={filterValue} options={filters} placeholder='Выберите категорию' label='Категория' />
         </div>
       </div>
     </div>

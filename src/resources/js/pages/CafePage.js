@@ -1,10 +1,11 @@
-import Cafe from '../components/Cafe'
+
+import CafeList from '../components/CafeList'
 import { VisitorsLayout } from '../views'
 
 const CafePage = () => {
   return (
     <VisitorsLayout title='Кафе и рестораны'>
-      <Cafe />
+      <CafeList />
     </VisitorsLayout>
   )
 }
