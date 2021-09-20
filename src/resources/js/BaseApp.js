@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom'
+import { useStoreon } from 'storeon/react';
 import {
   AboutPage,
   CafeDetailPage,
@@ -15,9 +17,42 @@ import {
 } from './pages'
 import { LoaderPage } from './views';
 
-import {PATHS} from './const'
+import { PATHS } from './const'
+import api from './api'
  
-function App() {
+const App = () => {
+  const { dispatch } = useStoreon()
+
+  const getShopsFilters = () => {
+    api.getCatogoriesShops()
+      .then(res => {
+        dispatch('filters/update', { shops: res || [] })
+      })
+      .catch(err => console.log(err))
+  }
+
+  const getCafeFilters = () => {
+    api.getCatogoriesCafe()
+      .then(res => {
+        dispatch('filters/update', { cafe: res || [] })
+      })
+      .catch(err => console.log(err))
+  }
+
+  const getServicesFilters = () => {
+    api.getCatogoriesServices()
+      .then(res => {
+        dispatch('filters/update', { services: res || [] })
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getShopsFilters();
+    getCafeFilters();
+    getServicesFilters();
+  }, [])
+
   return (
     <>
       <Switch>

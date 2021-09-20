@@ -1,3 +1,4 @@
+import { Button, Input } from '..'
 import style from './subscription.module.scss'
 
 const Subscription = () => {
@@ -8,8 +9,7 @@ const Subscription = () => {
         <span className={style['subscr-subtitle']}>и узнавайте обо всем первыми</span></h2>
         <form className={style['subscr-form']}>
           <fieldset className={style['subscr-form__body']}>
-            <label htmlFor='subscrInput' className={style['subscr-label']}>Введите ваш e-mail</label>
-            <input id='subscrInput' className={style['subscr-input']} />
+            <Input id='subscrInput' label='Введите ваш e-mail' />
           </fieldset>
           <fieldset className={style.agree}>
             <input checked id='agree' className={style['agree-input']} type='checkbox' />
@@ -17,7 +17,7 @@ const Subscription = () => {
             <a className={style['agree-link']} href='#'>Согласен <span>на обработку моих персональных данных</span></a>
           </fieldset>
           <fieldset className={style['subscr-form__bottom']}>
-            <button className={style['subscr-button']}>Подписаться</button>
+            <Button>Подписаться</Button>
           </fieldset>
         </form>
       </div>

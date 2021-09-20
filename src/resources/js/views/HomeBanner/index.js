@@ -1,12 +1,29 @@
+
+import classNames from 'classnames'
+import { Carousel } from 'react-responsive-carousel'
 import { banner } from '../../images'
+
 import style from './banner.module.scss'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const HomeBanner = () => {
   return (
     <section className={style['section']}>
-      {/* <p className={style['home-banner__subtitle']}>Ждёт новых посетителей</p> */}
-      {/* TODO: gallery banners */}
-      <img width='100%' src={banner} />
+      <Carousel className={style['slider']}
+        showIndicators={false}
+        showThumbs={false}
+        showStatus={false}
+        autoPlay={true}
+        infiniteLoop={true}
+        interval={5000}
+        showArrows={true}
+        // renderArrowPrev={() => <button className={classNames([style['slider-btn'], style['btn-prev']])} />}
+        // renderArrowNext={() => <button className={classNames([style['slider-btn'], style['btn-next']])} />}
+      >
+        <img width='100%' src={banner} />
+        <img width='100%' src={banner} />
+        <img width='100%' src={banner} />
+      </Carousel>
     </section>
   )
 }

@@ -89,7 +89,7 @@ const BaseSelect = ({
   // isLoading = true,
   options = [],
   label = '',
-  // value = null,
+  value = undefined,
   ...props
 }) => {
 
@@ -110,7 +110,7 @@ const BaseSelect = ({
           // isSearchable
           // isLoading={isLoading}
           options={options}
-          defaultValue={'/shops'}
+          value={value}
           {...props}
         />
       </label>

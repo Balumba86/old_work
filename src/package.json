@@ -28,6 +28,8 @@
         "classnames": "^2.3.1",
         "dayjs": "^1.10.6",
         "formik": "^2.2.9",
+        "react-helmet": "^6.1.0",
+        "react-responsive-carousel": "^3.2.21",
         "react-router": "^5.2.1",
         "react-router-dom": "^5.2.1",
         "react-select": "^4.3.1",

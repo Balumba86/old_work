@@ -1,6 +1,6 @@
 import banner from './banner.jpg'
 import belwestLogo from './belwest.jpg'
-import cafeBgr from './cafe_bgr.jpg'
+import cafeBgr from './visitors/cafe_bgr.png'
 import gallery from './gallery.jpg'
 import gallery2 from './gallery2.jpg'
 import Icon from './icons/Icon'
