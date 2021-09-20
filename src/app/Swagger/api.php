@@ -11,6 +11,10 @@
  */
 /**
  * @OA\Tag(
+ *     name="main",
+ *     description="Главная страница сайта",
+ * )
+ * @OA\Tag(
  *     name="shop",
  *     description="Магазины",
  * )

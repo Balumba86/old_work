@@ -380,4 +380,92 @@
  *         type="integer"
  *     )
  * )
+ *
+ * @OA\Schema(
+ *      schema="HomePageResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            ref="#/components/schemas/HomePage"
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="HomePage",
+ *     @OA\Property(
+ *         property="banners",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/BannerMain"
+ *         ),
+ *     ),
+ *     @OA\Property(
+ *         property="shops",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/ShopMain"
+ *         ),
+ *     ),
+ *     @OA\Property(
+ *         property="news",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/NewsMain"
+ *         ),
+ *     ),
+ * )
+ * @OA\Schema (
+ *     schema="BannerMain",
+ *     @OA\Property(
+ *         property="path",
+ *         type="string",
+ *         default="https://example.com/banners/image.jpg"
+ *     )
+ * )
+ * @OA\Schema (
+ *     schema="ShopMain",
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="logo",
+ *         type="string",
+ *         default="https://example.com/path/image.jpg"
+ *     ),
+ *     @OA\Property(
+ *         property="level",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="point",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *          property="category",
+ *          ref="#/components/schemas/CategorySmall"
+ *     )
+ * )
+ * @OA\Schema (
+ *     schema="NewsMain",
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="main_img",
+ *         type="string"
+ *     )
+ * )
  */

@@ -123,4 +123,15 @@ class NewsService
             PostViews::create($view_data);
         }
     }
+
+    public function getForHome()
+    {
+        $news = News::select('title', 'slug', 'main_img')->where('published', true)->orderBy('id', 'desc')->limit(3)->get();
+
+        foreach ($news as $post) {
+            $post->main_img = Storage::url($post->main_img);
+        }
+
+        return $news;
+    }
 }

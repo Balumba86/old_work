@@ -56,4 +56,17 @@ class MainBannerService
 
         return $banner->delete();
     }
+
+    // Api
+
+    public function getForHome()
+    {
+        $banners = MainBanner::all('path');
+
+        foreach ($banners as $banner) {
+            $banner->path = Storage::url($banner->path);
+        }
+
+        return $banners;
+    }
 }

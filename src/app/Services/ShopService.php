@@ -160,4 +160,16 @@ class ShopService
 
         return $shop;
     }
+
+    public function getForHome()
+    {
+        $shops = Shop::where('show_main', true)->orderBy('sort', 'asc')->select('id', 'title', 'slug', 'level', 'point', 'category', 'logo')->with('category')->limit(3)->get();
+
+        foreach ($shops as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+            unset($shop->id);
+        }
+
+        return $shops;
+    }
 }

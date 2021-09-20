@@ -9,6 +9,27 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/home": {
+            "get": {
+                "tags": [
+                    "main"
+                ],
+                "summary": "Получение информации для главной страницы",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HomePageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/news/list": {
             "get": {
                 "tags": [
@@ -1266,6 +1287,88 @@
                     }
                 },
                 "type": "object"
+            },
+            "HomePageResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/HomePage"
+                    }
+                },
+                "type": "object"
+            },
+            "HomePage": {
+                "properties": {
+                    "banners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BannerMain"
+                        }
+                    },
+                    "shops": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ShopMain"
+                        }
+                    },
+                    "news": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewsMain"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "BannerMain": {
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "default": "https://example.com/banners/image.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopMain": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string",
+                        "default": "https://example.com/path/image.jpg"
+                    },
+                    "level": {
+                        "type": "integer"
+                    },
+                    "point": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "NewsMain": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "main_img": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             }
         },
         "requestBodies": {
@@ -1292,6 +1395,10 @@
         }
     },
     "tags": [
+        {
+            "name": "main",
+            "description": "Главная страница сайта"
+        },
         {
             "name": "shop",
             "description": "Магазины"
