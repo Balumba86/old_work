@@ -72,6 +72,30 @@
                 }
             }
         },
+        "/system/rent": {
+            "post": {
+                "tags": [
+                    "system"
+                ],
+                "summary": "Подача заявки на аренду",
+                "operationId": "af391d8e4711b026e4dc78da5228116a",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RentRequest"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubscribeResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/restaurant/categories": {
             "get": {
                 "tags": [
@@ -923,6 +947,23 @@
                 },
                 "type": "object"
             },
+            "RentRequest": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "comment": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "SubscribeResponse": {
                 "properties": {
                     "result": {
@@ -930,8 +971,7 @@
                         "default": true
                     },
                     "message": {
-                        "type": "string",
-                        "default": "Вы успешно подписались на нашу рассылку!"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -1232,6 +1272,16 @@
                     "application/json": {
                         "schema": {
                             "$ref": "#/components/schemas/Subscribe"
+                        }
+                    }
+                }
+            },
+            "RentRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/RentRequest"
                         }
                     }
                 }

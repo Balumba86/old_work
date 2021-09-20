@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\ServiceCategoryController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\RentRequestController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
@@ -49,6 +50,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
 
     Route::prefix('system')->group(function () {
         Route::post('email/subscribe', [SubscribeController::class, 'subscribe'])->name('email-subscribe');
+        Route::post('rent', [RentRequestController::class, 'request'])->name('rent-request');
         Route::post('upload/shop', [UploadController::class, 'uploadShopImg']);
     });
 

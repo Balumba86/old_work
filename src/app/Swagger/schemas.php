@@ -14,6 +14,26 @@
  *           default=true
  *      ),
  * )
+ *
+ * @OA\Schema(
+ *      schema="RentRequest",
+ *      @OA\Property(
+ *           property="name",
+ *           type="string"
+ *      ),
+ *      @OA\Property(
+ *           property="email",
+ *           type="string"
+ *      ),
+ *     @OA\Property(
+ *           property="phone",
+ *           type="string"
+ *      ),
+ *     @OA\Property(
+ *           property="comment",
+ *           type="string"
+ *      ),
+ * )
 
  * @OA\Schema(
  *      schema="SubscribeResponse",
@@ -24,8 +44,7 @@
  *      ),
  *      @OA\Property(
  *          property="message",
- *          type="string",
- *          default="Вы успешно подписались на нашу рассылку!"
+ *          type="string"
  *      ),
  * )
  * @OA\Schema(
