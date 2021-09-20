@@ -116,7 +116,29 @@ class RestaurantService
             $restaurants->where('title', 'like', "%$search%");
         }
 
-        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(10);
+        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($restaurants->items() as $restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+        }
+
+        return $restaurants;
+    }
+
+    public function getList(Request $request)
+    {
+        $restaurants = Restaurant::query();
+        $restaurants->with('category');
+        $restaurants->select('title', 'slug', 'logo', 'category', 'level');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $restaurants->where('title', 'like', "%$search%");
+        }
+
+        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($restaurants->items() as $restaurant) {
             $restaurant->logo = Storage::url($restaurant->logo);

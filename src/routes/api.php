@@ -26,16 +26,19 @@ Route::prefix('v1')->middleware('api')->group(function () {
 
     Route::prefix('shop')->group(function () {
         Route::get('/categories', [ShopCategoryController::class, 'index'])->name('api-shop-category-list');
+        Route::get('/list', [ShopCategoryController::class, 'list'])->name('api-shop-list');
         Route::get('/category/{slug}', [ShopCategoryController::class, 'categoryItems'])->name('api-shop-category-items');
         Route::get('/{slug}', [ShopController::class, 'getItemBySlug'])->name('api-shop-item');
     });
     Route::prefix('restaurant')->group(function () {
         Route::get('/categories', [RestaurantCategoryController::class, 'index'])->name('api-restaurant-category-list');
+        Route::get('/list', [RestaurantCategoryController::class, 'list'])->name('api-restaurant-list');
         Route::get('/category/{slug}', [RestaurantCategoryController::class, 'categoryItems'])->name('api-restaurant-category-items');
         Route::get('/{slug}', [RestaurantController::class, 'getItemBySlug'])->name('api-restaurant-item');
     });
     Route::prefix('service')->group(function () {
         Route::get('/categories', [ServiceCategoryController::class, 'index'])->name('api-service-category-list');
+        Route::get('/list', [ServiceCategoryController::class, 'list'])->name('api-service-list');
         Route::get('/category/{slug}', [ServiceCategoryController::class, 'categoryItems'])->name('api-service-category-items');
         Route::get('/{slug}', [ServiceController::class, 'getItemBySlug'])->name('api-service-item');
     });

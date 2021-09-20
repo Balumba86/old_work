@@ -115,7 +115,29 @@ class ShopService
             $shops->where('title', 'like', "%$search%");
         }
 
-        $shops = $shops->orderBy('id', 'desc')->simplePaginate(10);
+        $shops = $shops->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($shops->items() as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+        }
+
+        return $shops;
+    }
+
+    public function getList(Request $request)
+    {
+        $shops = Shop::query();
+        $shops->with('category');
+        $shops->select('title', 'slug', 'logo', 'category', 'level');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $shops->where('title', 'like', "%$search%");
+        }
+
+        $shops = $shops->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($shops->items() as $shop) {
             $shop->logo = Storage::url($shop->logo);

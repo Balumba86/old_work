@@ -141,6 +141,45 @@
                 }
             }
         },
+        "/restaurant/list": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка кафе/ресторанов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию заведения",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/restaurant/{restaurantSlug}": {
             "get": {
                 "tags": [
@@ -242,6 +281,45 @@
                 }
             }
         },
+        "/service/list": {
+            "get": {
+                "tags": [
+                    "service"
+                ],
+                "summary": "Получение списка сервисов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию сервиса/услуги",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/service/{shopSlug}": {
             "get": {
                 "tags": [
@@ -316,6 +394,45 @@
                         "name": "search",
                         "in": "query",
                         "description": "Поиск по названию магазина в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shop/list": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение списка магазинов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию магазина",
                         "schema": {
                             "type": "string"
                         }

@@ -116,7 +116,29 @@ class ServicesItemsService
             $services->where('title', 'like', "%$search%");
         }
 
-        $services = $services->orderBy('id', 'desc')->simplePaginate(10);
+        $services = $services->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($services->items() as $service) {
+            $service->logo = Storage::url($service->logo);
+        }
+
+        return $services;
+    }
+
+    public function getList(Request $request)
+    {
+        $services = Service::query();
+        $services->with('category');
+        $services->select('title', 'slug', 'logo', 'category', 'level');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $services->where('title', 'like', "%$search%");
+        }
+
+        $services = $services->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($services->items() as $service) {
             $service->logo = Storage::url($service->logo);
