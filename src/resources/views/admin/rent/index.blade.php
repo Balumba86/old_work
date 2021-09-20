@@ -56,7 +56,7 @@
                             <td class="text-center">{{date('d.m.Y H:i', strtotime($rent->created_at))}}</td>
                             <td class="text-center">@if($rent->is_new) <small class="badge badge-primary">Новое</small> @else <small class="badge badge-secondary">Просмотрено</small> @endif</td>
                             <td>
-                                <a href="{{route('admin-rent-show', $rent->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{route('admin-rent-show', $rent->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-eye"></i></a>
                                 <span data-target="#drop_post_{{$rent->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>
                                 <form onsubmit="true" action="{{route('admin-rent-delete', $rent->id)}}" method="post" id="drop-form-{{$rent->id}}">
                                     @method('DELETE')

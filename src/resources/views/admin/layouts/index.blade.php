@@ -63,40 +63,26 @@
     <div class="content-wrapper">
         <section class="content">
             @if($errors->any())
-                <div class="info-box">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-exclamation-triangle"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Ошибка!</span>
-                        @foreach($errors->all() as $error)
-                            <span class="info-box-number">{{ $error }}</span>
-                        @endforeach
-                    </div>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i> Ошибка!</h5>
+                    @foreach($errors->all() as $error)
+                        <span class="info-box-number">{{ $error }}</span>
+                    @endforeach
                 </div>
             @endif
                 @if(session('success'))
-                    <div class="alert alert-arrow d-flex rounded p-0 system-message" role="alert">
-                        <div class="alert-icon d-flex justify-content-center align-items-center text-white flex-grow-0 flex-shrink-0">
-                            <i class="fa fa-check"></i>
-                        </div>
-                        <div class="alert-message d-flex align-items-center py-2 pl-4 pr-3">
-                            {{ session('success') }}
-                        </div>
-                        <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
-                            <i class="fas fa-times"></i>
-                        </a>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i>Готово</h5>
+                        {{ session('success') }}
                     </div>
                 @endif
                 @if(session('info'))
-                    <div class="alert alert-arrow alert-arrow-primary d-flex rounded p-0 system-message" role="alert">
-                        <div class="alert-icon d-flex justify-content-center align-items-center text-white flex-grow-0 flex-shrink-0">
-                            <i class="fas fa-info"></i>
-                        </div>
-                        <div class="alert-message d-flex align-items-center py-2 pl-4 pr-3">
-                            {{ session('info') }}
-                        </div>
-                        <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
-                            <i class="fas fa-times"></i>
-                        </a>
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-info"></i> </h5>
+                        {{ session('info') }}
                     </div>
                 @endif
             @yield('content')
