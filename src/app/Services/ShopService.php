@@ -105,7 +105,7 @@ class ShopService
     {
         $shops = Shop::query();
         $shops->with('category');
-        $shops->select('title', 'slug', 'logo', 'category', 'level');
+        $shops->select('title', 'slug', 'logo', 'category', 'level', 'point');
         $shops->where('category', $category_id);
 
         $search = $request->get('search');
@@ -128,7 +128,7 @@ class ShopService
     {
         $shops = Shop::query();
         $shops->with('category');
-        $shops->select('title', 'slug', 'logo', 'category', 'level');
+        $shops->select('title', 'slug', 'logo', 'category', 'level', 'point');
 
         $search = $request->get('search');
 
@@ -148,7 +148,7 @@ class ShopService
 
     public function getBySlug(string $slug)
     {
-        $shop = Shop::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
+        $shop = Shop::select('id', 'title', 'slug', 'description', 'level', 'point', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($shop) {
             $shop->logo = Storage::url($shop->logo);

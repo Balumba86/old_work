@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\RentRequestController;
+use App\Http\Controllers\Admin\MainBannerController;
 
 
 Route::get('/', function () {
@@ -88,6 +89,15 @@ Route::
         Route::get('/show/{id}', [RentRequestController::class, 'show'])->name('admin-rent-show');
         Route::put('/update/{id}', [RentRequestController::class, 'update'])->name('admin-rent-update');
         Route::delete('/delete/{id}', [RentRequestController::class, 'delete'])->name('admin-rent-delete');
+    });
+
+    Route::prefix('banners')->group(function () {
+        Route::get('/', [MainBannerController::class, 'index'])->name('admin-banners');
+        Route::get('/add', [MainBannerController::class, 'add'])->name('admin-banners-add');
+        Route::post('/create', [MainBannerController::class, 'create'])->name('admin-banners-create');
+        Route::get('/edit/{id}', [MainBannerController::class, 'edit'])->name('admin-banners-edit');
+        Route::put('/update/{id}', [MainBannerController::class, 'update'])->name('admin-banners-update');
+        Route::delete('/delete/{id}', [MainBannerController::class, 'delete'])->name('admin-banners-delete');
     });
 
 });

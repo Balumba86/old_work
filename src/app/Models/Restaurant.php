@@ -157,7 +157,8 @@ class Restaurant extends Model
         'show_main',
         'sort',
         'category',
-        'level'
+        'level',
+        ''
     ];
 
     public function category()

@@ -1105,6 +1105,9 @@
                     "level": {
                         "type": "integer"
                     },
+                    "point": {
+                        "type": "string"
+                    },
                     "hours_work": {
                         "type": "string"
                     },

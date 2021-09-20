@@ -193,6 +193,10 @@
  *         type="integer"
  *     ),
  *     @OA\Property(
+ *         property="point",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
  *         property="hours_work",
  *         type="string"
  *     ),
