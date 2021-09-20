@@ -64,15 +64,25 @@
                             <label for="">Вебсайт</label>
                             <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{$shop->website}}">
                         </div>
-                        <div class="form-group">
-                            <label for="">Уровень расположения*</label>
-                            <select class="form-control" name="level">
-                                <option value="0" @if($shop->level === 0) selected @endif>0</option>
-                                <option value="1" @if($shop->level === 1) selected @endif>1</option>
-                                <option value="2" @if($shop->level === 2) selected @endif>2</option>
-                                <option value="3" @if($shop->level === 3) selected @endif>3</option>
-                                <option value="4" @if($shop->level === 4) selected @endif>4</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Уровень расположения*</label>
+                                    <select class="form-control" name="level">
+                                        <option value="0" @if($shop->level === 0) selected @endif>0</option>
+                                        <option value="1" @if($shop->level === 1) selected @endif>1</option>
+                                        <option value="2" @if($shop->level === 2) selected @endif>2</option>
+                                        <option value="3" @if($shop->level === 3) selected @endif>3</option>
+                                        <option value="4" @if($shop->level === 4) selected @endif>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Место*</label>
+                                    <input class="form-control" type="text" placeholder="" name="point" required value="{{$shop->point}}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

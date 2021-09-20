@@ -63,15 +63,25 @@
                             <label for="">Вебсайт</label>
                             <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website">
                         </div>
-                        <div class="form-group">
-                            <label for="">Уровень расположения*</label>
-                            <select class="form-control" name="level">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Уровень расположения*</label>
+                                    <select class="form-control" name="level">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Место*</label>
+                                    <input class="form-control" type="text" placeholder="" name="point" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
