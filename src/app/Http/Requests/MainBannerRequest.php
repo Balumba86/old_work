@@ -24,14 +24,14 @@ class MainBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'path' => 'nullable|dimensions:width=1840,height=550|mimes:jpeg,jpg,png'
+            'path' => 'nullable|dimensions:width=1600,height=900|mimes:jpeg,jpg,png'
         ];
     }
 
     public function messages()
     {
         return [
-            'path.dimensions' => 'Размер изображения баннера должен быть 1840x550 пикселей',
+            'path.dimensions' => 'Размер изображения баннера должен быть 1600x900 пикселей',
             'path.mimes' => 'Формат файла баннера должен быть jpeg, jpg или png'
         ];
     }

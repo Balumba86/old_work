@@ -16,7 +16,7 @@
                             <input class="form-control" type="text" placeholder="" name="name" value="{{$banner->name}}" >
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Файл баннера* (1840x550 px)</label>
+                            <label for="customFile">Файл баннера* (1600x900 px)</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="logo_shop" name="path">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
