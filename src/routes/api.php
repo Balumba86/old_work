@@ -14,12 +14,17 @@ use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\RentRequestController;
 use App\Http\Controllers\Api\HomePageController;
+use App\Http\Controllers\Api\ContactController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
 
     Route::prefix('home')->group(function () {
         Route::get('/', [HomePageController::class, 'index']);
+    });
+
+    Route::prefix('contacts')->group(function () {
+        Route::get('/', [ContactController::class, 'index']);
     });
 
     Route::prefix('shop')->group(function () {
