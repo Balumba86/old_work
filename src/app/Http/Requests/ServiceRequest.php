@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ServiceRequest extends FormRequest
 {
@@ -23,8 +24,14 @@ class ServiceRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->route('id');
         return [
-            'title' => 'required|unique:services,title|min:3|max:100',
+            'title' => [
+                'required',
+                'min:3',
+                'max:100',
+                Rule::unique('shops', 'title')->ignore($id, 'id')
+            ],
             'logo' => 'nullable|dimensions:width=400,height=300|mimes:jpeg,jpg,png',
             'images.*' => 'nullable|dimensions:width=1024,height=768|mimes:jpeg,jpg,png',
         ];
