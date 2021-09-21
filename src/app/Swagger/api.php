@@ -34,4 +34,8 @@
  *     name="system",
  *     description="Системный роутинг",
  * )
+ * @OA\Tag(
+ *     name="other",
+ *     description="Прочий роутинг получения данных",
+ * )
  */
