@@ -9,6 +9,27 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/contacts": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка контактов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/home": {
             "get": {
                 "tags": [
@@ -997,6 +1018,40 @@
                 },
                 "type": "object"
             },
+            "ContactsResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Contact"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Contact": {
+                "properties": {
+                    "department_name": {
+                        "type": "string",
+                        "default": "Административныый отдел"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "contact_name": {
+                        "type": "string",
+                        "default": "Иванов Иван Иванович"
+                    }
+                },
+                "type": "object"
+            },
             "CategoryListResponse": {
                 "properties": {
                     "type": {
@@ -1418,6 +1473,10 @@
         {
             "name": "system",
             "description": "Системный роутинг"
+        },
+        {
+            "name": "other",
+            "description": "Прочий роутинг получения данных"
         }
     ],
     "security": [
