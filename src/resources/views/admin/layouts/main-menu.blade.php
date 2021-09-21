@@ -9,7 +9,7 @@
 
                 <li class="nav-item"><a href="{{route('admin-dashboard')}}" class="nav-link {{ request()->is('admin') ? 'active' : null }}"><i class="fas fa-home nav-icon"></i><p>Главная</p></a></li>
 
-                <li class="nav-item"><a href="{{route('admin-news')}}" class="nav-link {{ request()->is('admin/news*') ? 'active' : null }}"><i class="fas fa-newspaper nav-icon"></i><p>Новости</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-news')}}" class="nav-link {{ request()->is('admin/news*') ? 'active' : null }}"><i class="fas fa-newspaper nav-icon"></i><p>События</p></a></li>
 
                 <li class="nav-item {{ request()->is('admin/shop-category*') || request()->is('admin/shops*') ? 'menu-open' : null }}">
                     <a href="#" class="nav-link">
@@ -84,7 +84,11 @@
                 </li>
 
                 <li class="nav-header">Прочие разделы</li>
+
                 <li class="nav-item"><a href="{{route('admin-banners')}}" class="nav-link {{ request()->is('admin/banners*') ? 'active' : null }}"><i class="far fa-images nav-icon"></i><p>Баннеры на главной</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/contacts*') ? 'active' : null }}"><i class="far fa-address-card nav-icon"></i><p>Контакты</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
+
                 <li class="nav-item"><a href="{{route('admin-rent')}}" class="nav-link {{ request()->is('admin/rent*') ? 'active' : null }}"><i class="fas fa-bullhorn nav-icon"></i><p>Заявки на аренду</p></a></li>
 
 {{--                <li class="nav-item">--}}

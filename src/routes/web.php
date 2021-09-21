@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\RentRequestController;
 use App\Http\Controllers\Admin\MainBannerController;
+use App\Http\Controllers\Admin\ContactController;
 
 
 Route::get('/', function () {
@@ -98,6 +99,15 @@ Route::
         Route::get('/edit/{id}', [MainBannerController::class, 'edit'])->name('admin-banners-edit');
         Route::put('/update/{id}', [MainBannerController::class, 'update'])->name('admin-banners-update');
         Route::delete('/delete/{id}', [MainBannerController::class, 'delete'])->name('admin-banners-delete');
+    });
+
+    Route::prefix('contacts')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('admin-contacts');
+        Route::get('/add', [ContactController::class, 'add'])->name('admin-contacts-add');
+        Route::post('/create', [ContactController::class, 'create'])->name('admin-contacts-create');
+        Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('admin-contacts-edit');
+        Route::put('/update/{id}', [ContactController::class, 'update'])->name('admin-contacts-update');
+        Route::delete('/delete/{id}', [ContactController::class, 'delete'])->name('admin-contacts-delete');
     });
 
 });

@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Название*</label>
-                            <input class="form-control" type="text" placeholder="" name="title" required value="{{$shop->title}}">
+                            <input class="form-control" type="text" placeholder="" name="title" required value="{{old("title") ?? $shop->title}}">
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{$shop->slug}}">
                         </div>
                         <div class="form-group">
@@ -45,24 +45,24 @@
                         </div>
                         <div class="form-group">
                             <label for="">Описание</label>
-                            <textarea class="form-control" name="description">{{$shop->description}}</textarea>
+                            <textarea class="form-control" name="description">{{old("description") ?? $shop->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Часы работы*</label>
                             <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work"
                                    data-inputmask='"mask": "99:99 - 99:99"' data-mask
                                    required
-                                   value="{{$shop->hours_work}}">
+                                   value="{{old("hours_work") ?? $shop->hours_work}}">
                         </div>
                         <div class="form-group">
                             <label for="">Телефон</label>
-                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{$shop->phone}}"
+                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{old("phone") ?? $shop->phone}}"
                                    data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
                             >
                         </div>
                         <div class="form-group">
                             <label for="">Вебсайт</label>
-                            <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{$shop->website}}">
+                            <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{old("website") ?? $shop->website}}">
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -80,7 +80,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="">Место*</label>
-                                    <input class="form-control" type="text" placeholder="" name="point" required value="{{$shop->point}}">
+                                    <input class="form-control" type="text" placeholder="" name="point" required value="{{old("point") ?? $shop->point}}">
                                 </div>
                             </div>
                         </div>
@@ -111,15 +111,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Мета-заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{$shop->meta_title}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{old("meta_title") ?? $shop->meta_title}}">
                         </div>
                         <div class="form-group">
                             <label for="">Ключевые слова*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{$shop->meta_keywords}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{old("meta_keywords") ?? $shop->meta_keywords}}">
                         </div>
                         <div class="form-group">
                             <label for="">Мета-описание*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{$shop->meta_description}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{old("meta_description") ?? $shop->meta_description}}">
                         </div>
                     </div>
                     <div class="card-footer">
