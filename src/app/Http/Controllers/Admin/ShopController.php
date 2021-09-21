@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\ShopService;
 use App\Services\ShopCategoryService;
 use Illuminate\Http\Request;
-use App\Http\Requests\ResidentEntityRequest;
+use App\Http\Requests\ShopRequest;
 
 class ShopController extends Controller
 {
@@ -46,7 +46,7 @@ class ShopController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(ResidentEntityRequest $request)
+    public function create(ShopRequest $request)
     {
         $this->shopService->adminCreate($request);
 
@@ -71,7 +71,7 @@ class ShopController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ResidentEntityRequest $request, int $id)
+    public function update(ShopRequest $request, int $id)
     {
         $this->shopService->adminUpdate($request, $id);
 

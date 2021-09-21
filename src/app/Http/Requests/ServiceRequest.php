@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ResidentEntityRequest extends FormRequest
+class ServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ResidentEntityRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:100',
+            'title' => 'required|unique:services,title|min:3|max:100',
             'logo' => 'nullable|dimensions:width=400,height=300|mimes:jpeg,jpg,png',
             'images.*' => 'nullable|dimensions:width=1024,height=768|mimes:jpeg,jpg,png',
         ];
@@ -34,6 +34,7 @@ class ResidentEntityRequest extends FormRequest
     {
         return [
             'title.required' => 'Вы не указали Название',
+            'title.unique' => 'Название должно быть уникальным',
             'title.min' => 'Минимальная длина названия - 3 знака',
             'title.max' => 'Максимальная длина названия - 100 знаков',
             'logo.dimensions' => 'Размер изображения логотипа должен быть 400x300 пикселей',
