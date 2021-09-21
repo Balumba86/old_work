@@ -6,12 +6,14 @@ import style from './news-list.module.scss'
 const NewsList = ({ list = [] }) => {
   const history = useHistory();
 
+  console.log(list, 'news')
+
   const handleClick = (path, state) => {
     history.push({pathname: path, state})
   }
   return (
     <>
-      <h2 className={style['news-title']}>Новости</h2>
+      <h2 className={style['news-title']}>События</h2>
       <ul className={style['news-list']}>
         {list && list.map((item) => {
           const path = `${PATHS.news.path}/${item.slug}`

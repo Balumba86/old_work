@@ -12,11 +12,11 @@ export const PATHS = {
     exact: false
   },
   news: {
-    path: '/news',
+    path: '/events',
     exact: true
   },
   news_detail: {
-    path: '/news/:slug',
+    path: '/events/:slug',
     exact: false
   },
   renter: {

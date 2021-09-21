@@ -9,7 +9,7 @@ const FooterNav = () => {
         <Link className={style['nav-link']} to={PATHS.home.path}>Главная</Link>
       </li>
       <li className={style['nav-item']}>
-        <Link className={style['nav-link']} to={PATHS.news.path}>Новости</Link>
+        <Link className={style['nav-link']} to={PATHS.news.path}>События</Link>
       </li>
       <li className={style['nav-item']}>
         <Link className={style['nav-link']} to={PATHS.about.path}>О комплексе</Link>

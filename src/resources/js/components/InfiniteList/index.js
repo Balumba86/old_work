@@ -14,7 +14,8 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
     if(api) {
       api({ ...fp })
         .then(res => {
-          setResults([...results, ...res.results])
+          const newRes = fp.page !== 1 ? [...results, ...res.results] : res.results
+          setResults(newRes)
           setStatus(LOADING_STATES.loaded)
           setIsNext(Boolean(res.next))
           setIsPrev(Boolean(res.prev))
@@ -28,18 +29,25 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
   }
 
   const loadData = (page = 1, params = {}) => {
-    const fp = { page, ...filterParams, ...params}
+    const fp = { ...filterParams, ...params, page }
     setFilterParams(fp)
     getData(fp)
   }
 
   useEffect(() => {
+    setCurrentPage(filterParams.page || 1)
+  }, [filterParams])
+
+  useEffect(() => {
+    console.log('check')
     getData(initFilterParams)
   }, [])
 
-  const showMore = () => {
+  const showMore = (e) => {
+    e.preventDefault()
     if(isNext) {
-      setFilterParams({ page: currentPage + 1 })
+      loadData(currentPage + 1, {})
+      setCurrentPage(currentPage + 1)
     }
   }
 

@@ -9,10 +9,11 @@ import style from './shops.module.scss'
 
 const Shops = ({ 
   results = [],
-  status = '',
+  status,
   isNext,
   showMore = () => {},
-  loadData = () => {}
+  loadData = () => {},
+  currentPage
 }) => {
   const [slug, setSlug] = useState(null)
   const [filterValue, setFilterValue] = useState(undefined)
@@ -45,9 +46,16 @@ const Shops = ({
     <>
       <div className={style['shops-bgr']} />
       <Filters filterValue={filterValue} filters={filters.shops} />
-      {status === LOADING_STATES.loading ? <LoaderPage /> : null}
-      {status === LOADING_STATES.loaded && results.length > 0 ? (
-        <CardsList isNext={isNext} list={results} baseUrl={PATHS.visitors_shops.path} />
+      {status === LOADING_STATES.loading && currentPage === 1 ? <LoaderPage /> : null}
+      {results.length > 0 ? (
+        <>
+          <CardsList isNext={isNext} list={results} baseUrl={PATHS.visitors_shops.path} />
+          {isNext && (
+            <div>
+              <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
+            </div>
+          )}
+        </>
       ) : null}
       {status === LOADING_STATES.loaded && results.length === 0 ? (
         <MessageNotResults text='В этом разделе пока нет магазинов' />

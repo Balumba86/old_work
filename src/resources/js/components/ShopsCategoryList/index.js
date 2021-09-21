@@ -10,6 +10,7 @@ const ShopsCategoryList = () => {
       api={api.getShopsCategorySlug}
       initFilterParams={{
         page: 1,
+        search: '',
         categorySlug: location.state.slug
       }}
       >
@@ -18,10 +19,12 @@ const ShopsCategoryList = () => {
         isNext,
         status,
         showMore,
-        loadData
+        loadData,
+        currentPage
       }) => {
+        console.log(results, 'results', currentPage)
         return (
-          <Shops isNext={isNext} loadData={loadData} results={results} status={status} showMore={showMore} />
+          <Shops isNext={isNext} currentPage={currentPage} loadData={loadData} results={results} status={status} showMore={showMore} />
         )
       }}
     </InfiniteList>

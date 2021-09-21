@@ -1,9 +1,15 @@
 import InfiniteList from "../InfiniteList"
 import Cafe from '../Cafe'
+import api from "../../api"
 
 const CafeList = () => {
   return (
-    <InfiniteList>
+    <InfiniteList
+      api={api.getCafeList}
+      initFilterParams={{
+        page: 1,
+      }}
+    >
       {({
         results = [],
         isNext,

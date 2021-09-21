@@ -12,7 +12,7 @@ const Subscription = () => {
             <Input id='subscrInput' label='Введите ваш e-mail' />
           </fieldset>
           <fieldset className={style.agree}>
-            <input checked id='agree' className={style['agree-input']} type='checkbox' />
+            <input defaultChecked id='agree' className={style['agree-input']} type='checkbox' />
             <label htmlFor='agree' className={style['agree-label']} />
             <a className={style['agree-link']} href='#'>Согласен <span>на обработку моих персональных данных</span></a>
           </fieldset>

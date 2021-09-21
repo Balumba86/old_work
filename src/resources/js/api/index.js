@@ -8,6 +8,11 @@ import {
 
 class Api extends BaseApi {
 
+  getHomeData = async () => {
+    const res = await this.get('/home')
+    return res.data
+  }
+
   getNewsList = async (params = {}) => {
     const res = await this.get('/news/list', params)
     return newsListSerializer(res.data)
@@ -18,13 +23,21 @@ class Api extends BaseApi {
     return res.data
   }
 
+  getShopList = async (params = {}) => {
+    console.log(params, 'get list')
+    const res = await this.get('/shop/list', params)
+    return categoryListSerializer(res.data)
+  }
+
   getCatogoriesShops = async () => {
     const res = await this.get('/shop/categories')
     return categoriesSerializer(res.data, PATHS.visitors_shops.path)
   }
 
-  getShopsCategorySlug = async ({ categorySlug = '', params = {} }) => {
-    const res = await this.get(`/shop/category/${categorySlug}`, params)
+  getShopsCategorySlug = async (params = {}) => {
+    const newParams = {...params};
+    delete newParams.categorySlug;
+    const res = await this.get(`/shop/category/${params.categorySlug}`, newParams)
     return categoryListSerializer(res.data)
   }
 
@@ -32,6 +45,11 @@ class Api extends BaseApi {
   //   const res = this.get(`/shop​/${shopSlug}`, {})
   //   return res
   // }
+
+  getCafeList = async (params = {}) => {
+    const res = await this.get('/restaurant/list', params)
+    return categoryListSerializer(res.data)
+  }
 
   getCatogoriesCafe = async () => {
     const res = await this.get('/restaurant/categories')
