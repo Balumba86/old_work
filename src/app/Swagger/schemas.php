@@ -48,6 +48,42 @@
  *      ),
  * )
  * @OA\Schema(
+ *      schema="ContactsResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/Contact"
+ *            )
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="Contact",
+ *     @OA\Property(
+ *         property="department_name",
+ *         type="string",
+ *         default="Административныый отдел"
+ *     ),
+ *     @OA\Property(
+ *         property="email",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="phone",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="contact_name",
+ *         type="string",
+ *         default="Иванов Иван Иванович"
+ *     )
+ * )
+ * @OA\Schema(
  *      schema="CategoryListResponse",
  *      @OA\Property(
  *          property="type",
