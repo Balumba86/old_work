@@ -98,4 +98,40 @@ class ServiceCategoryController extends Controller
 
         return ApiResponse::result($result);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/service/list",
+     *     tags={"service"},
+     *     summary="Получение списка сервисов",
+     *     operationId="list",
+     *     @OA\Parameter(
+     *         name="search",
+     *         in="query",
+     *         description="Поиск по названию сервиса/услуги",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Номер запрашиваемой страницы",
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Успешный ответ",
+     *         @OA\JsonContent(ref="#/components/schemas/CategoryItemDetailResponse")
+     *     )
+     * )
+     */
+    public function list(Request $request)
+    {
+        $services = $this->serviceItemsService->getList($request);
+
+        return ApiResponse::result($services);
+    }
 }

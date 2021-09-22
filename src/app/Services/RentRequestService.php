@@ -62,4 +62,13 @@ class RentRequestService
     {
         return RentRequest::where('is_new', true)->get()->count();
     }
+
+    // Api
+
+    public function rentRequest(Request $request)
+    {
+        $result = RentRequest::create($request->all());
+
+        return $result;
+    }
 }

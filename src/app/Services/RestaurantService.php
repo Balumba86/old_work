@@ -106,7 +106,7 @@ class RestaurantService
     {
         $restaurants = Restaurant::query();
         $restaurants->with('category');
-        $restaurants->select('title', 'slug', 'logo', 'category', 'level');
+        $restaurants->select('title', 'slug', 'logo', 'category', 'level', 'point');
         $restaurants->where('category', $category_id);
 
         $search = $request->get('search');
@@ -116,7 +116,29 @@ class RestaurantService
             $restaurants->where('title', 'like', "%$search%");
         }
 
-        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(10);
+        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($restaurants->items() as $restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+        }
+
+        return $restaurants;
+    }
+
+    public function getList(Request $request)
+    {
+        $restaurants = Restaurant::query();
+        $restaurants->with('category');
+        $restaurants->select('title', 'slug', 'logo', 'category', 'level', 'point');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $restaurants->where('title', 'like', "%$search%");
+        }
+
+        $restaurants = $restaurants->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($restaurants->items() as $restaurant) {
             $restaurant->logo = Storage::url($restaurant->logo);
@@ -127,7 +149,7 @@ class RestaurantService
 
     public function getBySlug(string $slug)
     {
-        $restaurant = Restaurant::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
+        $restaurant = Restaurant::select('id', 'title', 'slug', 'description', 'level', 'point', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($restaurant) {
             $restaurant->logo = Storage::url($restaurant->logo);
@@ -138,5 +160,17 @@ class RestaurantService
         }
 
         return $restaurant;
+    }
+
+    public function getByLelel(int $id)
+    {
+        $restaurants = Restaurant::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($restaurants as $restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+            $restaurant->type = 'restaurant';
+        }
+
+        return $restaurants->toArray();
     }
 }

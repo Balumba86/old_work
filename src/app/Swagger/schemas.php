@@ -14,6 +14,26 @@
  *           default=true
  *      ),
  * )
+ *
+ * @OA\Schema(
+ *      schema="RentRequest",
+ *      @OA\Property(
+ *           property="name",
+ *           type="string"
+ *      ),
+ *      @OA\Property(
+ *           property="email",
+ *           type="string"
+ *      ),
+ *     @OA\Property(
+ *           property="phone",
+ *           type="string"
+ *      ),
+ *     @OA\Property(
+ *           property="comment",
+ *           type="string"
+ *      ),
+ * )
 
  * @OA\Schema(
  *      schema="SubscribeResponse",
@@ -24,9 +44,94 @@
  *      ),
  *      @OA\Property(
  *          property="message",
- *          type="string",
- *          default="Вы успешно подписались на нашу рассылку!"
+ *          type="string"
  *      ),
+ * )
+ *
+ * @OA\Schema(
+ *      schema="LevelResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/LevelItem"
+ *            )
+ *       )
+ * )
+ *
+ * @OA\Schema (
+ *     schema="LevelItem",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="point",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *          property="category",
+ *          ref="#/components/schemas/CategorySmall"
+ *      ),
+ *     @OA\Property(
+ *         property="logo",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="type",
+ *         type="string",
+ *         default="shop | restaurant | service"
+ *     )
+ * )
+ *
+ * @OA\Schema(
+ *      schema="ContactsResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/Contact"
+ *            )
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="Contact",
+ *     @OA\Property(
+ *         property="department_name",
+ *         type="string",
+ *         default="Административныый отдел"
+ *     ),
+ *     @OA\Property(
+ *         property="email",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="phone",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="contact_name",
+ *         type="string",
+ *         default="Иванов Иван Иванович"
+ *     )
  * )
  * @OA\Schema(
  *      schema="CategoryListResponse",
@@ -172,6 +277,10 @@
  *     @OA\Property(
  *         property="level",
  *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="point",
+ *         type="string"
  *     ),
  *     @OA\Property(
  *         property="hours_work",
@@ -355,6 +464,94 @@
  *     @OA\Property(
  *         property="views_count",
  *         type="integer"
+ *     )
+ * )
+ *
+ * @OA\Schema(
+ *      schema="HomePageResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            ref="#/components/schemas/HomePage"
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="HomePage",
+ *     @OA\Property(
+ *         property="banners",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/BannerMain"
+ *         ),
+ *     ),
+ *     @OA\Property(
+ *         property="shops",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/ShopMain"
+ *         ),
+ *     ),
+ *     @OA\Property(
+ *         property="news",
+ *         type="array",
+ *         @OA\Items(
+ *             ref="#/components/schemas/NewsMain"
+ *         ),
+ *     ),
+ * )
+ * @OA\Schema (
+ *     schema="BannerMain",
+ *     @OA\Property(
+ *         property="path",
+ *         type="string",
+ *         default="https://example.com/banners/image.jpg"
+ *     )
+ * )
+ * @OA\Schema (
+ *     schema="ShopMain",
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="logo",
+ *         type="string",
+ *         default="https://example.com/path/image.jpg"
+ *     ),
+ *     @OA\Property(
+ *         property="level",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="point",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *          property="category",
+ *          ref="#/components/schemas/CategorySmall"
+ *     )
+ * )
+ * @OA\Schema (
+ *     schema="NewsMain",
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="main_img",
+ *         type="string"
  *     )
  * )
  */

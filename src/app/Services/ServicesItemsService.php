@@ -106,7 +106,7 @@ class ServicesItemsService
     {
         $services = Service::query();
         $services->with('category');
-        $services->select('title', 'slug', 'logo', 'category', 'level');
+        $services->select('title', 'slug', 'logo', 'category', 'level', 'point');
         $services->where('category', $category_id);
 
         $search = $request->get('search');
@@ -116,7 +116,29 @@ class ServicesItemsService
             $services->where('title', 'like', "%$search%");
         }
 
-        $services = $services->orderBy('id', 'desc')->simplePaginate(10);
+        $services = $services->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($services->items() as $service) {
+            $service->logo = Storage::url($service->logo);
+        }
+
+        return $services;
+    }
+
+    public function getList(Request $request)
+    {
+        $services = Service::query();
+        $services->with('category');
+        $services->select('title', 'slug', 'logo', 'category', 'level', 'point');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $services->where('title', 'like', "%$search%");
+        }
+
+        $services = $services->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($services->items() as $service) {
             $service->logo = Storage::url($service->logo);
@@ -127,7 +149,7 @@ class ServicesItemsService
 
     public function getBySlug(string $slug)
     {
-        $service = Service::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
+        $service = Service::select('id', 'title', 'slug', 'description', 'level', 'point', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($service) {
             $service->logo = Storage::url($service->logo);
@@ -138,5 +160,17 @@ class ServicesItemsService
         }
 
         return $service;
+    }
+
+    public function getByLelel(int $id)
+    {
+        $services = Service::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($services as $service) {
+            $service->logo = Storage::url($service->logo);
+            $service->type = 'service';
+        }
+
+        return $services->toArray();
     }
 }

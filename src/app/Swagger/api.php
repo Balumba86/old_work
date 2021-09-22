@@ -11,6 +11,10 @@
  */
 /**
  * @OA\Tag(
+ *     name="main",
+ *     description="Главная страница сайта",
+ * )
+ * @OA\Tag(
  *     name="shop",
  *     description="Магазины",
  * )
@@ -29,5 +33,9 @@
  * @OA\Tag(
  *     name="system",
  *     description="Системный роутинг",
+ * )
+ * @OA\Tag(
+ *     name="other",
+ *     description="Прочий роутинг получения данных",
  * )
  */

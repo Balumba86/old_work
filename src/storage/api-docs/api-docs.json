@@ -9,6 +9,80 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/contacts": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка контактов",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContactsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/home": {
+            "get": {
+                "tags": [
+                    "main"
+                ],
+                "summary": "Получение информации для главной страницы",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HomePageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/level/{id}": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка сущностей по номеру уровня ТЦ",
+                "operationId": "indexLevel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Номер уровня",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LevelResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/news/list": {
             "get": {
                 "tags": [
@@ -72,6 +146,30 @@
                 }
             }
         },
+        "/system/rent": {
+            "post": {
+                "tags": [
+                    "system"
+                ],
+                "summary": "Подача заявки на аренду",
+                "operationId": "af391d8e4711b026e4dc78da5228116a",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RentRequest"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubscribeResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/restaurant/categories": {
             "get": {
                 "tags": [
@@ -114,6 +212,45 @@
                         "name": "search",
                         "in": "query",
                         "description": "Поиск по названию заведения в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/list": {
+            "get": {
+                "tags": [
+                    "restaurant"
+                ],
+                "summary": "Получение списка кафе/ресторанов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию заведения",
                         "schema": {
                             "type": "string"
                         }
@@ -242,6 +379,45 @@
                 }
             }
         },
+        "/service/list": {
+            "get": {
+                "tags": [
+                    "service"
+                ],
+                "summary": "Получение списка сервисов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию сервиса/услуги",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/service/{shopSlug}": {
             "get": {
                 "tags": [
@@ -316,6 +492,45 @@
                         "name": "search",
                         "in": "query",
                         "description": "Поиск по названию магазина в категории",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryItemDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shop/list": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Получение списка магазинов",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Поиск по названию магазина",
                         "schema": {
                             "type": "string"
                         }
@@ -806,6 +1021,23 @@
                 },
                 "type": "object"
             },
+            "RentRequest": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "comment": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "SubscribeResponse": {
                 "properties": {
                     "result": {
@@ -813,8 +1045,83 @@
                         "default": true
                     },
                     "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LevelResponse": {
+                "properties": {
+                    "type": {
                         "type": "string",
-                        "default": "Вы успешно подписались на нашу рассылку!"
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LevelItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "LevelItem": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "point": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "shop | restaurant | service"
+                    }
+                },
+                "type": "object"
+            },
+            "ContactsResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Contact"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Contact": {
+                "properties": {
+                    "department_name": {
+                        "type": "string",
+                        "default": "Административныый отдел"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "contact_name": {
+                        "type": "string",
+                        "default": "Иванов Иван Иванович"
                     }
                 },
                 "type": "object"
@@ -947,6 +1254,9 @@
                     },
                     "level": {
                         "type": "integer"
+                    },
+                    "point": {
+                        "type": "string"
                     },
                     "hours_work": {
                         "type": "string"
@@ -1106,6 +1416,88 @@
                     }
                 },
                 "type": "object"
+            },
+            "HomePageResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/HomePage"
+                    }
+                },
+                "type": "object"
+            },
+            "HomePage": {
+                "properties": {
+                    "banners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BannerMain"
+                        }
+                    },
+                    "shops": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ShopMain"
+                        }
+                    },
+                    "news": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NewsMain"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "BannerMain": {
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "default": "https://example.com/banners/image.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "ShopMain": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string",
+                        "default": "https://example.com/path/image.jpg"
+                    },
+                    "level": {
+                        "type": "integer"
+                    },
+                    "point": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    }
+                },
+                "type": "object"
+            },
+            "NewsMain": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "main_img": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             }
         },
         "requestBodies": {
@@ -1118,10 +1510,24 @@
                         }
                     }
                 }
+            },
+            "RentRequest": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/RentRequest"
+                        }
+                    }
+                }
             }
         }
     },
     "tags": [
+        {
+            "name": "main",
+            "description": "Главная страница сайта"
+        },
         {
             "name": "shop",
             "description": "Магазины"
@@ -1141,6 +1547,10 @@
         {
             "name": "system",
             "description": "Системный роутинг"
+        },
+        {
+            "name": "other",
+            "description": "Прочий роутинг получения данных"
         }
     ],
     "security": [

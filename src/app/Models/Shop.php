@@ -157,7 +157,8 @@ class Shop extends Model
         'show_main',
         'sort',
         'category',
-        'level'
+        'level',
+        'point'
     ];
 
     public function category()

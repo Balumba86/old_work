@@ -94,7 +94,7 @@ class NewsService
 
     public function getPost(Request $request, $slug)
     {
-        $post = News::select('id', 'title', 'slug', 'main_img', 'text', 'created_at', 'meta_title', 'meta_keywords', 'meta_description')->with('views')->where('published', true)->where('slug', $slug)->get()->first();
+        $post = News::select('id', 'title', 'slug', 'main_img', 'text', 'created_at', 'meta_title', 'meta_keywords', 'meta_description', 'created_at')->with('views')->where('published', true)->where('slug', $slug)->get()->first();
 
         if ($post) {
             $post->main_img = Storage::url($post->main_img);
@@ -122,5 +122,16 @@ class NewsService
             ];
             PostViews::create($view_data);
         }
+    }
+
+    public function getForHome()
+    {
+        $news = News::select('title', 'slug', 'main_img')->where('published', true)->orderBy('id', 'desc')->limit(3)->get();
+
+        foreach ($news as $post) {
+            $post->main_img = Storage::url($post->main_img);
+        }
+
+        return $news;
     }
 }

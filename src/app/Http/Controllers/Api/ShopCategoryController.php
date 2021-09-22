@@ -98,4 +98,40 @@ class ShopCategoryController extends Controller
 
         return ApiResponse::result($result);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/shop/list",
+     *     tags={"shop"},
+     *     summary="Получение списка магазинов",
+     *     operationId="list",
+     *     @OA\Parameter(
+     *         name="search",
+     *         in="query",
+     *         description="Поиск по названию магазина",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Номер запрашиваемой страницы",
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Успешный ответ",
+     *         @OA\JsonContent(ref="#/components/schemas/CategoryItemDetailResponse")
+     *     )
+     * )
+     */
+    public function list(Request $request)
+    {
+        $shops = $this->shopService->getList($request);
+
+        return ApiResponse::result($shops);
+    }
 }

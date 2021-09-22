@@ -63,16 +63,28 @@
     <div class="content-wrapper">
         <section class="content">
             @if($errors->any())
-                <div class="info-box">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-exclamation-triangle"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Ошибка!</span>
-                        @foreach($errors->all() as $error)
-                            <span class="info-box-number">{{ $error }}</span>
-                        @endforeach
-                    </div>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i> Ошибка!</h5>
+                    @foreach($errors->all() as $error)
+                        <span class="info-box-number">{{ $error }}</span>
+                    @endforeach
                 </div>
             @endif
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i>Готово</h5>
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if(session('info'))
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-info"></i> </h5>
+                        {{ session('info') }}
+                    </div>
+                @endif
             @yield('content')
         </section>
     </div>

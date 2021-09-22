@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\ServicesCategoryService;
 use App\Services\ServicesItemsService;
 use Illuminate\Http\Request;
-use App\Http\Requests\ResidentEntityRequest;
+use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -46,7 +46,7 @@ class ServiceController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(ResidentEntityRequest $request)
+    public function create(ServiceRequest $request)
     {
         $this->serviceItemsService->adminCreate($request);
 
@@ -71,7 +71,7 @@ class ServiceController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ResidentEntityRequest $request, int $id)
+    public function update(ServiceRequest $request, int $id)
     {
         $this->serviceItemsService->adminUpdate($request, $id);
 

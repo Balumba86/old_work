@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Название*</label>
-                            <input class="form-control" type="text" placeholder="" name="title" required value="{{$restaurant->title}}">
+                            <input class="form-control" type="text" placeholder="" name="title" required value="{{old("title") ?? $restaurant->title}}">
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly value="{{$restaurant->slug}}">
                         </div>
                         <div class="form-group">
@@ -45,33 +45,43 @@
                         </div>
                         <div class="form-group">
                             <label for="">Описание</label>
-                            <textarea class="form-control" name="description">{{$restaurant->description}}</textarea>
+                            <textarea class="form-control" name="description">{{old("description") ?? $restaurant->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Часы работы*</label>
                             <input class="form-control" type="text" placeholder="10:00 - 19:00" name="hours_work"
                                    data-inputmask='"mask": "99:99 - 99:99"' data-mask
-                                   required value="{{$restaurant->hours_work}}">
+                                   required value="{{old("hours_work") ?? $restaurant->hours_work}}">
                         </div>
                         <div class="form-group">
                             <label for="">Телефон</label>
-                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{$restaurant->phone}}"
+                            <input class="form-control" type="text" placeholder="+7 (4932) 55-55-55" name="phone" value="{{old("phone") ?? $restaurant->phone}}"
                                    data-inputmask='"mask": "+7 (999[9]) 99[9]-99-99"' data-mask
                             >
                         </div>
                         <div class="form-group">
                             <label for="">Вебсайт</label>
-                            <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{$restaurant->website}}">
+                            <input class="form-control" type="text" placeholder="https://sitecompany.ru" name="website" value="{{old("website") ?? $restaurant->website}}">
                         </div>
-                        <div class="form-group">
-                            <label for="">Уровень расположения*</label>
-                            <select class="form-control" name="level">
-                                <option value="0" @if($restaurant->level === 0) selected @endif>0</option>
-                                <option value="1" @if($restaurant->level === 1) selected @endif>1</option>
-                                <option value="2" @if($restaurant->level === 2) selected @endif>2</option>
-                                <option value="3" @if($restaurant->level === 3) selected @endif>3</option>
-                                <option value="4" @if($restaurant->level === 4) selected @endif>4</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Уровень расположения*</label>
+                                    <select class="form-control" name="level">
+                                        <option value="0" @if($restaurant->level === 0) selected @endif>0</option>
+                                        <option value="1" @if($restaurant->level === 1) selected @endif>1</option>
+                                        <option value="2" @if($restaurant->level === 2) selected @endif>2</option>
+                                        <option value="3" @if($restaurant->level === 3) selected @endif>3</option>
+                                        <option value="4" @if($restaurant->level === 4) selected @endif>4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Место*</label>
+                                    <input class="form-control" type="text" placeholder="" name="point" required value="{{old("point") ?? $restaurant->point}}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,15 +110,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Мета-заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{$restaurant->meta_title}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{old("meta_title") ?? $restaurant->meta_title}}">
                         </div>
                         <div class="form-group">
                             <label for="">Ключевые слова*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{$restaurant->meta_keywords}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{old("meta_keywords") ?? $restaurant->meta_keywords}}">
                         </div>
                         <div class="form-group">
                             <label for="">Мета-описание*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{$restaurant->meta_description}}">
+                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{old("meta_description") ?? $restaurant->meta_description}}">
                         </div>
                     </div>
                     <div class="card-footer">

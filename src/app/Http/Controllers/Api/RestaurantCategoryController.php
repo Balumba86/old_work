@@ -98,4 +98,40 @@ class RestaurantCategoryController extends Controller
 
         return ApiResponse::result($result);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/restaurant/list",
+     *     tags={"restaurant"},
+     *     summary="Получение списка кафе/ресторанов",
+     *     operationId="list",
+     *     @OA\Parameter(
+     *         name="search",
+     *         in="query",
+     *         description="Поиск по названию заведения",
+     *         @OA\Schema(
+     *             type="string"
+     *         )
+     *     ),
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Номер запрашиваемой страницы",
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Успешный ответ",
+     *         @OA\JsonContent(ref="#/components/schemas/CategoryItemDetailResponse")
+     *     )
+     * )
+     */
+    public function list(Request $request)
+    {
+        $restaurants = $this->restaurantService->getList($request);
+
+        return ApiResponse::result($restaurants);
+    }
 }

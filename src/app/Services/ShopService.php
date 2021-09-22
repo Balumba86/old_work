@@ -105,7 +105,7 @@ class ShopService
     {
         $shops = Shop::query();
         $shops->with('category');
-        $shops->select('title', 'slug', 'logo', 'category', 'level');
+        $shops->select('title', 'slug', 'logo', 'category', 'level', 'point');
         $shops->where('category', $category_id);
 
         $search = $request->get('search');
@@ -115,7 +115,29 @@ class ShopService
             $shops->where('title', 'like', "%$search%");
         }
 
-        $shops = $shops->orderBy('id', 'desc')->simplePaginate(10);
+        $shops = $shops->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($shops->items() as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+        }
+
+        return $shops;
+    }
+
+    public function getList(Request $request)
+    {
+        $shops = Shop::query();
+        $shops->with('category');
+        $shops->select('title', 'slug', 'logo', 'category', 'level', 'point');
+
+        $search = $request->get('search');
+
+        if (!is_null($search)) {
+            $search = trim($search);
+            $shops->where('title', 'like', "%$search%");
+        }
+
+        $shops = $shops->orderBy('id', 'desc')->simplePaginate(9);
 
         foreach ($shops->items() as $shop) {
             $shop->logo = Storage::url($shop->logo);
@@ -126,7 +148,7 @@ class ShopService
 
     public function getBySlug(string $slug)
     {
-        $shop = Shop::select('id', 'title', 'slug', 'description', 'level', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
+        $shop = Shop::select('id', 'title', 'slug', 'description', 'level', 'point', 'category', 'logo', 'hours_work', 'phone', 'website', 'meta_title', 'meta_keywords', 'meta_description')->with('category', 'images')->where('slug', $slug)->get()->first();
 
         if ($shop) {
             $shop->logo = Storage::url($shop->logo);
@@ -137,5 +159,29 @@ class ShopService
         }
 
         return $shop;
+    }
+
+    public function getForHome()
+    {
+        $shops = Shop::where('show_main', true)->orderBy('sort', 'asc')->select('id', 'title', 'slug', 'level', 'point', 'category', 'logo')->with('category')->limit(3)->get();
+
+        foreach ($shops as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+            unset($shop->id);
+        }
+
+        return $shops;
+    }
+
+    public function getByLelel(int $id)
+    {
+        $shops = Shop::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($shops as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+            $shop->type = 'shop';
+        }
+
+        return $shops->toArray();
     }
 }
