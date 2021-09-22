@@ -161,4 +161,16 @@ class ServicesItemsService
 
         return $service;
     }
+
+    public function getByLelel(int $id)
+    {
+        $services = Service::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($services as $service) {
+            $service->logo = Storage::url($service->logo);
+            $service->type = 'service';
+        }
+
+        return $services->toArray();
+    }
 }

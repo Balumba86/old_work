@@ -161,4 +161,16 @@ class RestaurantService
 
         return $restaurant;
     }
+
+    public function getByLelel(int $id)
+    {
+        $restaurants = Restaurant::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($restaurants as $restaurant) {
+            $restaurant->logo = Storage::url($restaurant->logo);
+            $restaurant->type = 'restaurant';
+        }
+
+        return $restaurants->toArray();
+    }
 }

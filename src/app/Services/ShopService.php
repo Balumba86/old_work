@@ -172,4 +172,16 @@ class ShopService
 
         return $shops;
     }
+
+    public function getByLelel(int $id)
+    {
+        $shops = Shop::where('level', $id)->orderBy('point', 'asc')->select('id', 'title', 'slug', 'point', 'category', 'logo')->with('category')->get();
+
+        foreach ($shops as $shop) {
+            $shop->logo = Storage::url($shop->logo);
+            $shop->type = 'shop';
+        }
+
+        return $shops->toArray();
+    }
 }

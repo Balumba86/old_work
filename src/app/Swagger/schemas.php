@@ -47,6 +47,56 @@
  *          type="string"
  *      ),
  * )
+ *
+ * @OA\Schema(
+ *      schema="LevelResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/LevelItem"
+ *            )
+ *       )
+ * )
+ *
+ * @OA\Schema (
+ *     schema="LevelItem",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="slug",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="point",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *          property="category",
+ *          ref="#/components/schemas/CategorySmall"
+ *      ),
+ *     @OA\Property(
+ *         property="logo",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="type",
+ *         type="string",
+ *         default="shop | restaurant | service"
+ *     )
+ * )
+ *
  * @OA\Schema(
  *      schema="ContactsResponse",
  *      @OA\Property(

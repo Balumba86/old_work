@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\RentRequestController;
 use App\Http\Controllers\Api\HomePageController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\LevelController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
@@ -23,9 +24,8 @@ Route::prefix('v1')->middleware('api')->group(function () {
         Route::get('/', [HomePageController::class, 'index']);
     });
 
-    Route::prefix('contacts')->group(function () {
-        Route::get('/', [ContactController::class, 'index']);
-    });
+    Route::get('/contacts', [ContactController::class, 'index']);
+    Route::get('/level/{id}', [LevelController::class, 'indexLevel']);
 
     Route::prefix('shop')->group(function () {
         Route::get('/categories', [ShopCategoryController::class, 'index'])->name('api-shop-category-list');

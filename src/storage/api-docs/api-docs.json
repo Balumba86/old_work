@@ -51,6 +51,38 @@
                 }
             }
         },
+        "/level/{id}": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка сущностей по номеру уровня ТЦ",
+                "operationId": "indexLevel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Номер уровня",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LevelResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/news/list": {
             "get": {
                 "tags": [
@@ -1014,6 +1046,48 @@
                     },
                     "message": {
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LevelResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/LevelItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "LevelItem": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "point": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/CategorySmall"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "default": "shop | restaurant | service"
                     }
                 },
                 "type": "object"
