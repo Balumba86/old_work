@@ -1,0 +1,35 @@
+.shops-bgr {
+  width: calc(100% + 40px);
+  height: 250px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/shops_bgr_3.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 767.98px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.services-bgr {
+  width: calc(100% + 40px);
+  height: 250px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/services_bgr_2.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 767.98px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.cafe-bgr {
+  width: calc(100% + 40px);
+  height: 250px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/cafe_bgr_3.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 767.98px) {
+    width: 100%;
+    margin: 0;
+  }
+}

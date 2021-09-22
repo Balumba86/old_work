@@ -1,10 +1,18 @@
-import ShopsList from '../components/ShopsList'
-import { VisitorsLayout } from '../views'
+import VisitorsList from "../components/VisitorsList"
+import { VisitorsLayout } from "../views"
+import api from "../api"
 
 const ShopsPage = () => {
   return (
     <VisitorsLayout title='Магазины'>
-      <ShopsList />
+      <VisitorsList
+        api={api.getShopList}
+        initFilterParams={{
+          page: 1,
+          search: ''
+        }}
+        variant='shops'
+      />
     </VisitorsLayout>
   )
 }

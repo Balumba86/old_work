@@ -66,6 +66,11 @@ class Api extends BaseApi {
   //   return res
   // }
 
+  getServicesList = async (params = {}) => {
+    const res = await this.get('/service/list', params)
+    return res.data
+  }
+
   getCatogoriesServices = async () => {
     const res = await this.get('/service/categories')
     return categoriesSerializer(res.data, PATHS.visitors_services.path)
@@ -85,6 +90,11 @@ class Api extends BaseApi {
   //   const res = this.post('​/system​/email​/subscribe', params)
   //   return res
   // }
+
+  getContacts = async () => {
+    const res = await this.get('/contacts')
+    return res.data
+  }
 
 }
 
