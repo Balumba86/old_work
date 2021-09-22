@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\ContactController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site');
 });
 
 Route::
@@ -114,8 +114,6 @@ Route::
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/{query}', function() {
-    return view('welcome');
+    return view('site');
 })->where('query', '^((?!api|admin).)*$');
