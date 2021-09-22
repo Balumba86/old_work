@@ -2,7 +2,7 @@
 /**
  * @OA\Info(
  *     description="Документация API для фронтенда",
- *     version="1.0.0",
+ *     version="1.19.0",
  *     title="API Nikolskiy",
  *     @OA\Contact(
  *         email="balumba.ru@gmail.com"
