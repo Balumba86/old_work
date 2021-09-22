@@ -87,7 +87,7 @@
 
                 <li class="nav-item"><a href="{{route('admin-banners')}}" class="nav-link {{ request()->is('admin/banners*') ? 'active' : null }}"><i class="far fa-images nav-icon"></i><p>Баннеры на главной</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/contacts*') ? 'active' : null }}"><i class="far fa-address-card nav-icon"></i><p>Контакты</p></a></li>
-                <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-jobs')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
 
                 <li class="nav-item"><a href="{{route('admin-rent')}}" class="nav-link {{ request()->is('admin/rent*') ? 'active' : null }}"><i class="fas fa-bullhorn nav-icon"></i><p>Заявки на аренду</p></a></li>
 
