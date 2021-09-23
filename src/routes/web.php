@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\RentRequestController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\MainBannerController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::
         prefix('admin')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
-
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('admin-profile');
 
     Route::prefix('shop-category')->group(function () {
         Route::get('/', [ShopCategoryController::class, 'index'])->name('admin-shop-category');
