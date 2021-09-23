@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                        <a href="{{ route('admin-profile') }}" class="btn btn-default btn-flat">Профиль</a>
                         <a href="#" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();
                                                 $('#logout-form').submit();">Выход</a>
                         <form method="POST" action="{{ route('logout') }}" id="logout-form">
