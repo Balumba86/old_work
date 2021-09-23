@@ -40,7 +40,7 @@
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
                                     Открыть редактор
                                 </button>
-                                @include('admin.layouts.gallery_modal')
+                                @include('admin.layouts.gallery_modal', ["type" => "shop", "entity_id" => $shop->id])
                             </div>
                         </div>
                         <div class="form-group">
@@ -133,63 +133,12 @@
 @endsection
 @push('styles')
 @endpush
-
 @push('scripts')
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script>
         window.onload = function(){
             $('[data-mask]').inputmask();
-
-            // $('#gallery').on('change', function (e) {
-            //     $('#send-files').show();
-            //     $('#progress-file').attr('aria-valuemax', 100)
-            //     $('#progress-file').attr('aria-valuenow', 0)
-            //     $('#progress-file').attr('style', `width: 0%`);
-            //     $('#template_result').show();
-            //     $('#send-files').attr('disabled', false);
-            // })
-
-            // $('#send-files').on('click', function (e) {
-            //     e.stopPropagation();
-            //     e.preventDefault();
-            //     $(e.target).attr('disabled', true);
-            //     let input = $(e.target).closest('.modal-content').find('input[type="file"]');
-            //     let files = input[0].files;
-            //     uploadAudio(files, function (data) {
-            //         if (data.type === 'success') {
-            //             console.log('key', data)
-            //         }
-            //     });
-            // });
-
-            {{--function uploadAudio(files, callback) {--}}
-            {{--    var xhr = new XMLHttpRequest();--}}
-            {{--    // обработчик для отправки--}}
-            {{--    xhr.upload.onprogress = function(event) {--}}
-            {{--        let procent = (event.loaded / event.total) * 100;--}}
-            {{--        $('#progress-file').attr('aria-valuemax', event.total)--}}
-            {{--        $('#progress-file').attr('aria-valuenow', event.loaded)--}}
-            {{--        $('#progress-file').attr('style', `width: ${procent}%`);--}}
-            {{--    }--}}
-            {{--    $.each(files, function( key, value ){--}}
-            {{--        let data = new FormData();--}}
-            {{--        data.append('content', value);--}}
-            {{--        data.append('id', {{ $shop->test ?: null }});--}}
-            {{--        xhr.onload = xhr.onerror = function() {--}}
-            {{--            if (this.status === 200) {--}}
-            {{--                console.log("success", this.response);--}}
-            {{--                callback(JSON.parse(this.response));--}}
-            {{--            } else {--}}
-            {{--                console.log("error " + this.status);--}}
-            {{--                callback({success: false, status: this.status});--}}
-            {{--            }--}}
-            {{--        };--}}
-            {{--        xhr.open("POST", "/api/v1/system/upload/shop", false);--}}
-            {{--        xhr.send(data);--}}
-            {{--    })--}}
-
-            {{--}--}}
         }
     </script>
 @endpush
