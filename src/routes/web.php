@@ -26,6 +26,7 @@ Route::
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('admin-profile');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin-profile-update');
 
     Route::prefix('shop-category')->group(function () {
         Route::get('/', [ShopCategoryController::class, 'index'])->name('admin-shop-category');
