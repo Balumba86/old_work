@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                        <a href="{{ route('admin-profile') }}" class="btn btn-default btn-flat">Профиль</a>
                         <a href="#" class="btn btn-default btn-flat float-right" onclick="event.preventDefault();
                                                 $('#logout-form').submit();">Выход</a>
                         <form method="POST" action="{{ route('logout') }}" id="logout-form">
@@ -83,6 +83,13 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h5><i class="icon fas fa-info"></i> </h5>
                         {{ session('info') }}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-info"></i>Ошибка!</h5>
+                        {{ session('error') }}
                     </div>
                 @endif
             @yield('content')

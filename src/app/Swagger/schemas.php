@@ -63,7 +63,6 @@
  *            )
  *       )
  * )
- *
  * @OA\Schema (
  *     schema="LevelItem",
  *     @OA\Property(
@@ -96,7 +95,6 @@
  *         default="shop | restaurant | service"
  *     )
  * )
- *
  * @OA\Schema(
  *      schema="ContactsResponse",
  *      @OA\Property(
@@ -131,6 +129,46 @@
  *         property="contact_name",
  *         type="string",
  *         default="Иванов Иван Иванович"
+ *     )
+ * )
+ * @OA\Schema(
+ *      schema="JobsResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/JobItem"
+ *            )
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="JobItem",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="title",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="description",
+ *         type="string"
+ *     ),
+ *     @OA\Property(
+ *         property="created_at",
+ *         type="string",
+ *         default="2021-09-22T23:53:30.000000Z"
+ *     ),
+ *     @OA\Property(
+ *         property="updated_at",
+ *         type="string",
+ *         default="2021-09-22T23:55:52.000000Z"
  *     )
  * )
  * @OA\Schema(

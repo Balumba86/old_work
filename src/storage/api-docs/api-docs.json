@@ -6,7 +6,7 @@
         "contact": {
             "email": "balumba.ru@gmail.com"
         },
-        "version": "1.0.0"
+        "version": "1.19.0"
     },
     "paths": {
         "/contacts": {
@@ -44,6 +44,27 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/HomePageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/opening-jobs": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка вакансий",
+                "operationId": "indexJobs",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JobsResponse"
                                 }
                             }
                         }
@@ -1122,6 +1143,43 @@
                     "contact_name": {
                         "type": "string",
                         "default": "Иванов Иван Иванович"
+                    }
+                },
+                "type": "object"
+            },
+            "JobsResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/JobItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "JobItem": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "default": "2021-09-22T23:53:30.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "default": "2021-09-22T23:55:52.000000Z"
                     }
                 },
                 "type": "object"

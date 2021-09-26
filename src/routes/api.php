@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\RentRequestController;
 use App\Http\Controllers\Api\HomePageController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\LevelController;
+use App\Http\Controllers\Api\JobController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
@@ -26,6 +27,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
 
     Route::get('/contacts', [ContactController::class, 'index']);
     Route::get('/level/{id}', [LevelController::class, 'indexLevel']);
+    Route::get('/opening-jobs', [JobController::class, 'indexJobs']);
 
     Route::prefix('shop')->group(function () {
         Route::get('/categories', [ShopCategoryController::class, 'index'])->name('api-shop-category-list');
@@ -53,7 +55,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
     Route::prefix('system')->group(function () {
         Route::post('email/subscribe', [SubscribeController::class, 'subscribe'])->name('email-subscribe');
         Route::post('rent', [RentRequestController::class, 'request'])->name('rent-request');
-        Route::post('upload/shop', [UploadController::class, 'uploadShopImg']);
+        Route::post('gallery', [UploadController::class, 'galleryImg']);
     });
 
     Route::fallback(function(){

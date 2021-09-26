@@ -10,8 +10,10 @@ use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\RentRequestController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\MainBannerController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
 Route::get('/', function () {
@@ -23,7 +25,8 @@ Route::
         prefix('admin')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
-
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('admin-profile');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin-profile-update');
 
     Route::prefix('shop-category')->group(function () {
         Route::get('/', [ShopCategoryController::class, 'index'])->name('admin-shop-category');
@@ -108,6 +111,15 @@ Route::
         Route::get('/edit/{id}', [ContactController::class, 'edit'])->name('admin-contacts-edit');
         Route::put('/update/{id}', [ContactController::class, 'update'])->name('admin-contacts-update');
         Route::delete('/delete/{id}', [ContactController::class, 'delete'])->name('admin-contacts-delete');
+    });
+
+    Route::prefix('jobs')->group(function () {
+        Route::get('/', [JobController::class, 'index'])->name('admin-jobs');
+        Route::get('/add', [JobController::class, 'add'])->name('admin-jobs-add');
+        Route::post('/create', [JobController::class, 'create'])->name('admin-jobs-create');
+        Route::get('/edit/{id}', [JobController::class, 'edit'])->name('admin-jobs-edit');
+        Route::put('/update/{id}', [JobController::class, 'update'])->name('admin-jobs-update');
+        Route::delete('/delete/{id}', [JobController::class, 'delete'])->name('admin-jobs-delete');
     });
 
 });

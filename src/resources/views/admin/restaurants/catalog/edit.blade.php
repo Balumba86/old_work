@@ -40,7 +40,7 @@
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gallery">
                                     Открыть редактор
                                 </button>
-                                @include('admin.layouts.gallery_modal')
+                                @include('admin.layouts.gallery_modal', ["type" => "restaurant", "entity_id" => $restaurant->id])
                             </div>
                         </div>
                         <div class="form-group">
