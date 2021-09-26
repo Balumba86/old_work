@@ -153,6 +153,57 @@
 }
 
 .header--mobile-btn {
-  width: 40px;
-  height: 40px;
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 20px;
+}
+
+.header--mobile-btn span {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--bgr-white);
+  transition: 0.3s;
+}
+
+.header--mobile-btn::before,
+.header--mobile-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--bgr-white);
+  transition: 0.3s;
+}
+
+.header--mobile-btn::before {
+  top: 0px;
+}
+
+.header--mobile-btn::after {
+  top: 18px;
+}
+
+.header--mobile-btn_open span {
+  display: none;
+}
+
+.header--mobile-btn_open::before,
+.header--mobile-btn_open::after {
+  top: 9px;
+}
+
+.header--mobile-btn_open::before {
+  transform: rotate(45deg);
+}
+
+.header--mobile-btn_open::after {
+  transform: rotate(-45deg);
 }

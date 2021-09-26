@@ -56,7 +56,12 @@ const Visitors = ({
       {status === LOADING_STATES.loading && currentPage === 1 ? <LoaderPage /> : null}
       {results.length > 0 ? (
         <>
-          <CardsList isNext={isNext} list={results} baseUrl={PATHS.visitors_shops.path} />
+          <CardsList
+            showMore={showMore}
+            status={status}
+            isNext={isNext}
+            list={results}
+            baseUrl={PATHS.shops_detail.path} />
           {isNext && (
             <div>
               <button onClick={showMore} type='button' className='link'>Загрузить еще</button>

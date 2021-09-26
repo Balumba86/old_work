@@ -149,7 +149,7 @@
 
 .benefits-list {
   display: grid;
-  grid-auto-rows: 50px;
+  grid-auto-rows: 90px;
   grid-template-columns: 100%;
   gap: 20px;
   list-style: none;
@@ -161,13 +161,67 @@
   }
 }
 
-.benefits-list li {
+.benefits-item {
   display: flex;
+  height: 100%;
+  padding: 15px 10px;
   align-items: center;
   font-size: 14px;
+  border: 1px solid transparent;
   @media (min-width: 767.98px) {
     font-size: 16px;
   }
+}
+
+.benefits-item:hover {
+  border: 1px solid rgba(#9BB6A2, 0.1);
+  box-shadow: 2px 2px 15px rgba(#9BB6A2, 0.1);
+}
+
+.item-bgr {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 90px;
+  
+}
+
+.item-bgr::before {
+  display: block;
+  width: 90px;
+  height: 100%;
+  content: '';
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center left;
+}
+
+.item-bgr_location::before {
+  background-image: url(../../images/icons/location.svg);
+}
+
+.item-bgr_people::before {
+  background-image: url(../../images/icons/people.svg);
+}
+
+.item-bgr_doc::before {
+  background-image: url(../../images/icons/doc.svg);
+}
+
+.item-bgr_hands::before {
+  background-image: url(../../images/icons/hands.svg);
+}
+
+.item-bgr_medal::before {
+  background-image: url(../../images/icons/medal.svg);
+}
+
+.item-bgr_check::before {
+  background-image: url(../../images/icons/check.svg);
 }
 
 .plans {

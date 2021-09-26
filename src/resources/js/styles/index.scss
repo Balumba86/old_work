@@ -235,13 +235,16 @@
   font-style: normal;
 }
 
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: Gilroy, sans-serif;
   font-size: 16px;
   line-height: 1;
+  border: none;
 }
 
 body {
@@ -296,44 +299,4 @@ a[href='#']:focus {
   @media(max-width: 1200px) {
     font-size: 30px;
   }
-}
-
-.carousel .control-arrow {
-  position: absolute;
-  width: 50px;
-  height: 100%;
-  top: 0;
-  opacity: 0.3;
-  border: none;
-  z-index: 1;
-}
-
-.carousel .control-arrow:before,
-.carousel.carousel-slider .control-arrow:before {
-  display: none;
-}
-
-.carousel .control-arrow:hover,
-.carousel.carousel-slider .control-arrow:hover {
-  opacity: 1;
-}
-
-.carousel.carousel-slider .control-prev.control-arrow:hover,
-.carousel .control-prev.control-arrow {
-  left: 0;
-  background-color: rgba(#000, 0.4);
-  background-image: url(../images/left-arrow.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 65%;
-}
-
-.carousel.carousel-slider .control-next.control-arrow:hover,
-.carousel .control-next.control-arrow {
-  right: 0;
-  background-color: rgba(#000, 0.4);
-  background-image: url(../images/right-arrow.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 65%;
 }

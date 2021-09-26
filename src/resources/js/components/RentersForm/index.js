@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { Icon } from '../../images'
 import { Button, Input, TextArea } from '../../views'
 import style from './renters-form.module.scss'
 
@@ -19,12 +20,12 @@ const RentersForm = () => {
       <div className={style['content']}>
         <div className={contactsClasses}>
           <h4 className={style['block-title']}>Контакты</h4>
-          <div>
-            <div>г. Иваново, проспект Ленина, д. 57А</div>
-            <div>c 09:00 до 21:00 </div>
-            <div>+7 (4932) 77-32-07</div>
-            <div>+7 (905) 107-31-11</div>
-            <div>manager_sity@mail.ru</div>
+          <div className={style['contacts']}>
+            <div className={style['contacts-item']}><Icon name='geo' />г. Иваново, проспект Ленина, д. 57А</div>
+            <div className={style['contacts-item']}><Icon name='time' />c 09:00 до 21:00 </div>
+            <div className={style['contacts-item']}><Icon name='phone' />+7 (4932) 77-32-07</div>
+            <div className={style['contacts-item']}><Icon name='phone' />+7 (905) 107-31-11</div>
+            <div className={classNames([style['contacts-item'], style['email']])}><Icon name='email' width="90%" />manager_sity@mail.ru</div>
           </div>
         </div>
         <div className={formClasses}>

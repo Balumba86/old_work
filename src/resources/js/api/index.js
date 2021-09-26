@@ -41,10 +41,10 @@ class Api extends BaseApi {
     return categoryListSerializer(res.data)
   }
 
-  // getShopDetail = ({ shopSlug = '' }) => {
-  //   const res = this.get(`/shop​/${shopSlug}`, {})
-  //   return res
-  // }
+  getShopDetail = async (shopSlug = '') => {
+    const res = await this.get(`/shop/${shopSlug}`)
+    return res.data
+  }
 
   getCafeList = async (params = {}) => {
     const res = await this.get('/restaurant/list', params)
@@ -61,7 +61,7 @@ class Api extends BaseApi {
     return categoryListSerializer(res.data)
   }
 
-  // getCafeDetail = ({ restaurantSlug = '' }) => {
+  // getCafeDetail = (restaurantSlug = '') => {
   //   const res = this.get(`/restaurant/${restaurantSlug}`, {})
   //   return res
   // }
@@ -81,7 +81,7 @@ class Api extends BaseApi {
     return categoryListSerializer(res.data)
   }
 
-  // getServiceDetail = ({ serviceSlug = '' }) => {
+  // getServiceDetail = (serviceSlug = '') => {
   //   const res = this.get(`/service​/${serviceSlug}`, {})
   //   return res
   // }

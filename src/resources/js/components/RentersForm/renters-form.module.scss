@@ -40,6 +40,23 @@
   }
 }
 
+.contacts-item {
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+  max-height: 30px;
+}
+
+.contacts-item svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.email svg {
+  height: 23px;
+}
+
 .content {
   display: block;
   @media (min-width: 991.98px) {

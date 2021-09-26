@@ -24,15 +24,15 @@ export const PATHS = {
     exact: false
   },
   cafe_detail: {
-    path: '/visitors/cafe/detail/:slug',
+    path: '/visitors/cafe/detail/',
     exact: false
   },
   services_detail: {
-    path: '/visitors/services/detail/:slug',
+    path: '/visitors/services/detail/',
     exact: false
   },
   shops_detail: {
-    path: '/visitors/shops/detail/:slug',
+    path: '/visitors/shops/detail/',
     exact: false
   },
   cafe_category: {

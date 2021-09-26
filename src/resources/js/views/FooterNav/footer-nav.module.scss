@@ -1,8 +1,11 @@
 .nav {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 100%;
   list-style: none;
+  @media (min-width: 359.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .nav-item {
@@ -11,9 +14,17 @@
 
 .nav-link {
   display: block;
-  padding: 8px 0;
+  padding: 8px 10px;
   line-height: 1.2;
   color: var(--bgr-white);
+  text-decoration: none;
+  font-size: 12px;
+  @media (min-width: 359.98px) {
+    font-size: 14px;
+  }
+  @media (min-width: 567.98px) {
+    font-size: 16px;
+  }
 }
 
 .nav-link:hover,
