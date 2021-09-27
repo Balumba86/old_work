@@ -1,9 +1,17 @@
+import { useState } from 'react'
 import { gallery, Icon } from '../../images'
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Thumbs } from 'swiper';
+
 import style from './detail.module.scss'
+import "swiper/css";
+import "swiper/css/navigation"
+import "swiper/css/thumbs"
+
+SwiperCore.use([Navigation, Thumbs]);
 
 const DetailBlock = ({ baseUrl = '/', linkLabel = '', data = {} }) => {
-  console.log(data, 'data', baseUrl, linkLabel)
-
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 // category:
 // id: 6
 // slug: "zenskaya-odezda"
@@ -28,21 +36,21 @@ const DetailBlock = ({ baseUrl = '/', linkLabel = '', data = {} }) => {
       <a href={baseUrl} className={style['back-link']}>&#8592; {linkLabel}</a>
       <h2 className={style['detail-title']}>{data.title || ''}</h2>
       <div className={style['detail-content']}>
-        <div className={style['detail-gallery']}>
-          {data.images ? (
-            <>
-              <img src={gallery} alt='image' />
-              <div className={style['detail-gallery__miniatures']}>
-                <img src={gallery} alt='image' />
-                <img src={gallery} alt='image' />
-                <img src={gallery} alt='image' />
-                <img src={gallery} alt='image' />
-              </div>
-            </>
-          ) : (
-            <div></div>
-          )}
-          
+        <div className={style['gallery']}>
+          <Swiper thumbs={{ swiper: thumbsSwiper }} className={style['detail-gallery']} navigation={true} slidesPerView={1}>
+            <SwiperSlide><img width='300' src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide><img width='300' src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide><img width='300' src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide><img width='300' src={gallery} alt='image' /></SwiperSlide>
+          </Swiper>
+          <Swiper className={style['gallery-miniatures']} spaceBetween={10} freeMode={true} watchSlidesProgress={true} onSwiper={setThumbsSwiper} navigation={true}
+          slidesPerView={4}
+          >
+            <SwiperSlide className={style['gallery-miniatures__item']}><img src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide className={style['gallery-miniatures__item']}><img src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide className={style['gallery-miniatures__item']}><img src={gallery} alt='image' /></SwiperSlide>
+            <SwiperSlide className={style['gallery-miniatures__item']}><img src={gallery} alt='image' /></SwiperSlide>
+          </Swiper>
         </div>
         <div className={style['detail-info']}>
           {data.description && data.description !== '' && (

@@ -26,7 +26,7 @@ const optNav = [
   }
 ]
 
-const Filters = ({ filters = [], filterValue = undefined }) => {
+const Filters = ({ filters = [], filterValue = undefined, loadData = () => {} }) => {
   const location = useLocation();
   const [defaultPageValue, setValue] = useState(undefined)
 
@@ -45,7 +45,7 @@ const Filters = ({ filters = [], filterValue = undefined }) => {
   return (
     <div className={style['filters']}>
       <div className={style['filters-left']}>
-        <Search />
+        <Search loadData={loadData} />
       </div>
       <div className={style['filters-right']}>
         <div className={style['filters-select']}>

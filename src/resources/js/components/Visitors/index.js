@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
-import { CardsList, LoaderPage, MessageNotResults } from '../../views'
-import { LOADING_STATES, PATHS } from '../../const'
+import { CardsList, LoaderPage, LoaderRing, MessageNotResults } from '../../views'
+import { LOADING_STATES, NOT_DATA_VISITORS, PATHS } from '../../const'
 import classNames from 'classnames'
 
 import style from './visitors.module.scss'
@@ -15,12 +15,16 @@ const Visitors = ({
   showMore = () => {},
   loadData = () => {},
   currentPage,
-  variant = null
+  variant = null,
+  filterParams = {},
+  isLoadMore = false,
 }) => {
   const [slug, setSlug] = useState(null)
   const [filterValue, setFilterValue] = useState(undefined)
   const location = useLocation()
   const { filters } = useStoreon('filters')
+
+  console.log(variant, 'check');
 
   useEffect(() => {
     if(location && location.state) {
@@ -44,6 +48,12 @@ const Visitors = ({
     }
   }, [location, filters])
 
+  useEffect(() => {
+    if(isNext && isLoadMore && status !== LOADING_STATES.loading) {
+      showMore()
+    }
+  }, [isLoadMore, isNext])
+
   const classes = classNames({
     [style[`${variant}-bgr`]]: variant,
     [style['bgr']]: true
@@ -52,8 +62,11 @@ const Visitors = ({
   return (
     <>
       <div className={classes} />
-      <Filters filterValue={filterValue} filters={filters[variant]} />
-      {status === LOADING_STATES.loading && currentPage === 1 ? <LoaderPage /> : null}
+      <Filters loadData={loadData} filterValue={filterValue} filters={filters[variant]} />
+      {status === LOADING_STATES.loading && currentPage === 1 && (
+        <LoaderPage />
+      )}
+      
       {results.length > 0 ? (
         <>
           <CardsList
@@ -62,15 +75,17 @@ const Visitors = ({
             isNext={isNext}
             list={results}
             baseUrl={PATHS.shops_detail.path} />
-          {isNext && (
-            <div>
-              <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
-            </div>
-          )}
         </>
       ) : null}
-      {status === LOADING_STATES.loaded && results.length === 0 ? (
-        <MessageNotResults text='В этом разделе пока нет магазинов' /> // add text variants
+      {status === LOADING_STATES.loading && currentPage > 1 && (
+        <LoaderRing />
+      )}
+      {status === LOADING_STATES.loaded && results.length === 0 && filterParams.search === '' ? (
+        <MessageNotResults text={NOT_DATA_VISITORS[variant]} />
+      ) : null}
+
+      {status === LOADING_STATES.loaded && results.length === 0 && filterParams.search !== '' ? (
+        <MessageNotResults text='По вашему запросу ничего не найдено' />
       ) : null}
     </>
   )

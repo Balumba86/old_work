@@ -1,11 +1,16 @@
 import News from '../components/News'
+import ScrollingLayout from '../components/ScrollingLayout'
 import { Layout } from '../views'
 
 const NewsPage = () => {
   return (
-    <Layout>
-      <News />
-    </Layout>
+    <ScrollingLayout>
+      {(props) => (
+        <Layout>
+          <News {...props} />
+        </Layout>
+      )}
+    </ScrollingLayout>
   )
 }
 

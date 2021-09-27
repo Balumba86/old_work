@@ -6,9 +6,7 @@ import style from './shops.module.scss'
 import "swiper/css";
 import "swiper/css/navigation"
 
-SwiperCore.use([
-  Navigation
-]);
+SwiperCore.use([Navigation]);
 
 const ShopsBlock = ({ shops = [] }) => {
   return (
@@ -20,13 +18,17 @@ const ShopsBlock = ({ shops = [] }) => {
           <Swiper
             navigation={true}
             spaceBetween={10}
+            slidesPerView={1}
             breakpoints={{
-              // '359.98': {
-              //   slidesPerView: 1,
-              // },
-              // '567.98': {
-              //   slidesPerView: 2,
-              // },
+              '329.98': {
+                slidesPerView: 1
+              },
+              '359.98': {
+                slidesPerView: 2,
+              },
+              '567.98': {
+                slidesPerView: 4,
+              },
               '991.98': {
                 slidesPerView: 6,
               }

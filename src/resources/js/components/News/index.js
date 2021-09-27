@@ -1,37 +1,17 @@
 import InfiniteList from "../InfiniteList"
-import { LoaderPage, NewsList } from "../../views"
+import NewsSection from "./NewsSection"
 import api from "../../api"
 
-import style from './news.module.scss'
-import { LOADING_STATES } from "../../const"
-
-const News = () => {
+const News = ({ isLoadMore = false }) => {
 
   return ( 
     <InfiniteList api={api.getNewsList}>
-      {({
-        results = [],
-        isNext,
-        isPrev,
-        currentPage,
-        status,
-        showMore
-      }) => {
+      {(props) => {
         return (
-          <section className={style['section']}>
-            {status === LOADING_STATES.loading ? <LoaderPage /> : null}
-            {status === LOADING_STATES.loaded && results.length > 0 ? (
-              <>
-                <NewsList list={results} />
-                {isNext ? (
-                  <div>
-                    <button onClick={showMore} type='button' className='link'>Загрузить еще</button>
-                  </div>
-                ) : null}
-              </>
-            ) : null}
-            
-          </section>
+          <NewsSection
+            isLoadMore={isLoadMore}
+            {...props}
+          />
         )
       }}
     </InfiniteList>

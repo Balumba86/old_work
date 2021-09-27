@@ -1,7 +1,7 @@
 import InfiniteList from "../InfiniteList"
 import Visitors from "../Visitors"
 
-const VisitorsList = ({ api, initFilterParams = {}, variant = null }) => {
+const VisitorsList = ({ api, initFilterParams = {}, variant = null, ...props }) => {
   return (
     <InfiniteList
       api={api}
@@ -15,6 +15,7 @@ const VisitorsList = ({ api, initFilterParams = {}, variant = null }) => {
         status,
         showMore,
         loadData,
+        filterParams = {}
       }) => {
         return (
           <Visitors
@@ -25,6 +26,8 @@ const VisitorsList = ({ api, initFilterParams = {}, variant = null }) => {
             status={status}
             showMore={showMore}
             variant={variant}
+            filterParams={filterParams}
+            {...props}
           />
         )
       }}

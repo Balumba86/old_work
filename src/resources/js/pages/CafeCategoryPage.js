@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
+import ScrollingLayout from "../components/ScrollingLayout"
 import VisitorsList from "../components/VisitorsList"
 import { VisitorsLayout } from "../views"
 import { PATHS } from "../const"
@@ -20,18 +21,24 @@ const CafeCategoryPage = () => {
   }, [])
 
   return (
-    <VisitorsLayout title='Кафе и рестораны'>
-      {slug && (
-        <VisitorsList
-          api={api.getCafeCategorySlug}
-          initFilterParams={{
-            page: 1,
-            categorySlug: slug
-          }}
-          variant='cafe'
-        />
+    <ScrollingLayout>
+      {(props) => (
+        <VisitorsLayout title='Кафе и рестораны'>
+          {slug && (
+            <VisitorsList
+              api={api.getCafeCategorySlug}
+              initFilterParams={{
+                page: 1,
+                search: '',
+                categorySlug: slug
+              }}
+              variant='cafe'
+              {...props}
+            />
+          )}
+        </VisitorsLayout>
       )}
-    </VisitorsLayout>
+    </ScrollingLayout>
   )
 }
 

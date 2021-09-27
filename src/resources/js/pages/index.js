@@ -6,6 +6,7 @@ import ContactsPage from './ContactsPage'
 import HomePage from './HomePage'
 import NewsDetailPage from './NewsDetailPage'
 import NewsPage from './NewsPage'
+import NotFoundPage from './NotFoundPage'
 import RentersPage from './RentersPage'
 import ServicesCategoryPage from './ServicesCategoryPage'
 import ServiceDetailPage from './ServiceDetailPage'
@@ -23,6 +24,7 @@ export {
   HomePage,
   NewsDetailPage,
   NewsPage,
+  NotFoundPage,
   RentersPage,
   ServicesCategoryPage,
   ServiceDetailPage,

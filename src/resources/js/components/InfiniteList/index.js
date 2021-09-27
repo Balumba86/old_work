@@ -39,12 +39,13 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
   }, [filterParams])
 
   useEffect(() => {
-    console.log('check')
     getData(initFilterParams)
   }, [])
 
-  const showMore = (e) => {
-    e.preventDefault()
+  const showMore = (e = null) => {
+    if(e) {
+      e.preventDefault()
+    }
     if(isNext) {
       loadData(currentPage + 1, {})
       setCurrentPage(currentPage + 1)
@@ -58,6 +59,7 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
       isPrev,
       currentPage,
       status,
+      filterParams,
       showMore,
       loadData
     })}</>

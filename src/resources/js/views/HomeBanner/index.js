@@ -8,8 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination"
 import style from './banner.module.scss'
 
-
-
 SwiperCore.use([
   Autoplay,
   Pagination

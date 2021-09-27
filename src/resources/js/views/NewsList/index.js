@@ -6,11 +6,10 @@ import style from './news-list.module.scss'
 const NewsList = ({ list = [] }) => {
   const history = useHistory();
 
-  console.log(list, 'news')
-
   const handleClick = (path, state) => {
     history.push({pathname: path, state})
   }
+
   return (
     <>
       <h2 className={style['news-title']}>События</h2>

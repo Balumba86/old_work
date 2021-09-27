@@ -70,3 +70,9 @@ export const LOADING_STATES = {
   'loaded': 'loaded',
   'failed': 'failed'
 }
+
+export const NOT_DATA_VISITORS = {
+  cafe: 'В этом разделе пока нет кафе и ресторанов',
+  services: 'В этом разделе пока нет сервисов и услуг',
+  shops: 'В этом разделе пока нет магазинов'
+}

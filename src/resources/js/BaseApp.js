@@ -10,6 +10,7 @@ import {
   HomePage,
   NewsDetailPage,
   NewsPage,
+  NotFoundPage,
   RentersPage,
   ServiceDetailPage,
   ServicesCategoryPage,
@@ -134,6 +135,8 @@ const App = () => {
           exact={PATHS.services_category.exact}
           component={ServicesCategoryPage}
         />
+
+        <Route component={NotFoundPage} />
       </Switch>
     </>
   );

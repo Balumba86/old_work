@@ -1,14 +1,20 @@
+import ScrollingLayout from '../components/ScrollingLayout'
 import { Layout } from '../views'
 
 const AboutPage = () => {
   return (
-    <Layout>
-      <main>
-        <section>
+    <ScrollingLayout>
+      {() => (
+        <Layout>
+          <main>
+            <section>
 
-        </section>
-      </main>
-    </Layout>
+            </section>
+          </main>
+        </Layout>
+      )}
+    </ScrollingLayout>
+    
   )
 }
 

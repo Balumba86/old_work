@@ -5,6 +5,7 @@
   width: 100%;
   height: calc(100vh + 90px);
   background-color: var(--bgr-white);
+  z-index: 99;
 }
 
 .nav {
