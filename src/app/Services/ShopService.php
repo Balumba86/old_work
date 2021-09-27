@@ -163,7 +163,7 @@ class ShopService
 
     public function getForHome()
     {
-        $shops = Shop::where('show_main', true)->orderBy('sort', 'asc')->select('id', 'title', 'slug', 'level', 'point', 'category', 'logo')->with('category')->limit(3)->get();
+        $shops = Shop::where('show_main', true)->orderBy('sort', 'asc')->select('id', 'title', 'slug', 'level', 'point', 'category', 'logo')->with('category')->get();
 
         foreach ($shops as $shop) {
             $shop->logo = Storage::url($shop->logo);
