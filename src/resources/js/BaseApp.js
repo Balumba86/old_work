@@ -11,6 +11,7 @@ import {
   NewsDetailPage,
   NewsPage,
   NotFoundPage,
+  PersonalDataPolicyPage,
   RentersPage,
   ServiceDetailPage,
   ServicesCategoryPage,
@@ -18,6 +19,7 @@ import {
   ShopCategoryPage,
   ShopDetailPage,
   ShopsPage,
+  VacanciesPage,
 } from './pages'
 
 import { PATHS } from './const'
@@ -134,6 +136,17 @@ const App = () => {
           path={PATHS.services_category.path}
           exact={PATHS.services_category.exact}
           component={ServicesCategoryPage}
+        />
+        <Route
+          path={PATHS.vacancies.path}
+          exact={PATHS.vacancies.exact}
+          component={VacanciesPage}
+        />
+
+        <Route
+          path={PATHS.personal_data.path}
+          exact={PATHS.personal_data.exact}
+          component={PersonalDataPolicyPage}
         />
 
         <Route component={NotFoundPage} />

@@ -62,10 +62,10 @@ class Api extends BaseApi {
     return categoryListSerializer(res.data)
   }
 
-  // getCafeDetail = (restaurantSlug = '') => {
-  //   const res = this.get(`/restaurant/${restaurantSlug}`, {})
-  //   return res
-  // }
+  getCafeDetail = async (restaurantSlug = '') => {
+    const res = await this.get(`/restaurant/${restaurantSlug}`)
+    return res.data
+  }
 
   getServicesList = async (params = {}) => {
     const res = await this.get('/service/list', params)
@@ -84,18 +84,23 @@ class Api extends BaseApi {
     return categoryListSerializer(res.data)
   }
 
-  // getServiceDetail = (serviceSlug = '') => {
-  //   const res = this.get(`/service​/${serviceSlug}`, {})
-  //   return res
-  // }
+  getServiceDetail = async (serviceSlug = '') => {
+    const res = await this.get(`/service/${serviceSlug}`)
+    return res.data
+  }
 
-  // sendSubscribeData = ({ params = {} }) => {
-  //   const res = this.post('​/system​/email​/subscribe', params)
-  //   return res
-  // }
+  sendSubscribeData = async ({ params = {} }) => {
+    const res = await this.post('/system/email/subscribe', params)
+    return res.data
+  }
 
   getContacts = async () => {
     const res = await this.get('/contacts')
+    return res.data
+  }
+
+  getVacanciesList = async () => {
+    const res = await this.get('/opening-jobs')
     return res.data
   }
 

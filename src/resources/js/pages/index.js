@@ -7,6 +7,7 @@ import HomePage from './HomePage'
 import NewsDetailPage from './NewsDetailPage'
 import NewsPage from './NewsPage'
 import NotFoundPage from './NotFoundPage'
+import PersonalDataPolicyPage from './PersonalDataPolicyPage'
 import RentersPage from './RentersPage'
 import ServicesCategoryPage from './ServicesCategoryPage'
 import ServiceDetailPage from './ServiceDetailPage'
@@ -14,6 +15,7 @@ import ServicesPage from './ServicesPage'
 import ShopCategoryPage from './ShopCategoryPage'
 import ShopDetailPage from './ShopDetailPage'
 import ShopsPage from './ShopsPage'
+import VacanciesPage from './VacanciesPage'
 
 export {
   AboutPage,
@@ -25,6 +27,7 @@ export {
   NewsDetailPage,
   NewsPage,
   NotFoundPage,
+  PersonalDataPolicyPage,
   RentersPage,
   ServicesCategoryPage,
   ServiceDetailPage,
@@ -32,4 +35,5 @@ export {
   ShopCategoryPage,
   ShopDetailPage,
   ShopsPage,
+  VacanciesPage
 }

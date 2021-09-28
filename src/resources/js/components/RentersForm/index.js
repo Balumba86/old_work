@@ -1,9 +1,31 @@
+import { useState } from 'react'
 import classNames from 'classnames'
+import { useFormik } from 'formik'
 import { Icon } from '../../images'
+import { rentApplicationSchema } from '../../schema'
 import { Button, Input, TextArea } from '../../views'
 import style from './renters-form.module.scss'
 
+const SHOW_TYPES = {
+  fail: 'fail',
+  form: 'form',
+  loading: 'loading',
+  success: 'success'
+}
+
 const RentersForm = () => {
+  const [showType, setShowType] = useState(SHOW_TYPES.form)
+  const [message, setMessage] = useState(null)
+  
+  const onSubmit = (values, actions) => {
+
+  }
+
+  const formik = useFormik({
+    initialValues: {},
+    validationSchema: rentApplicationSchema,
+    onSubmit
+  })
 
   const formClasses = classNames({
     [style['content-item']]: true,

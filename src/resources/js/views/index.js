@@ -9,7 +9,9 @@ import Input from './Input'
 import Layout from './Layout'
 import LoaderPage from './LoaderPage'
 import LoaderRing from './LoaderRing'
-import MessageNotResults from './MessageNotResults'
+import { MessageError } from './Message'
+import { MessageNotResults } from './Message'
+import { MessageSuccess } from './Message'
 import NewsBlock from './NewsBlock'
 import NewsList from './NewsList'
 import BaseSelect from './Select'
@@ -30,7 +32,9 @@ export {
   Layout,
   LoaderPage,
   LoaderRing,
+  MessageError,
   MessageNotResults,
+  MessageSuccess,
   NewsBlock,
   NewsList,
   BaseSelect,

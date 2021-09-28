@@ -12,6 +12,7 @@
 .button:hover {
   background-color: var(--active-color-hover);
   border-color: var(--active-color-hover);
+  cursor: pointer;
 }
 
 
@@ -19,6 +20,11 @@
 .button:focus {
   background-color: var(--active-color-active);
   border-color: var(--active-color-active);
+}
+
+.button:disabled {
+  filter: grayscale(0.6);
+  cursor: not-allowed;
 }
 
 .scroll-top {
@@ -32,4 +38,5 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 50%;
+  z-index: 55;
 }

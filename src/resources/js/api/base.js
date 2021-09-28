@@ -6,7 +6,14 @@ class BaseApi {
   }
 
   post = async (url, params, axiosParams = {}) => {
-    return await this.send(url, 'post', params, axiosParams);
+    const base_url = this.url;
+    const res = await axios({
+      method: 'post',
+      data: params,
+      url: `${base_url}${url}`,
+      ...axiosParams
+    });
+    return res;
   };
 
   get = async (url, params = {}, axiosParams = {}) => {

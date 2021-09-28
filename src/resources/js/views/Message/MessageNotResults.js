@@ -1,4 +1,4 @@
-import style from './not-results.module.scss'
+import style from './message.module.scss'
 
 const MessageNotResults = ({text = ''}) => {
   return (

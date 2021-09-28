@@ -19,6 +19,10 @@ export const PATHS = {
     path: '/events/:slug',
     exact: false
   },
+  personal_data: {
+    path: '/personal-data-policy',
+    exact: false
+  },
   renter: {
     path: '/renters',
     exact: false
@@ -45,6 +49,10 @@ export const PATHS = {
   },
   shops_category: {
     path: '/visitors/shops/:category',
+    exact: false
+  },
+  vacancies: {
+    path: '/vacancies',
     exact: false
   },
   visitors: {
