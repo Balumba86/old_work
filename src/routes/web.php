@@ -127,7 +127,7 @@ Route::
         Route::get('/', [MailSenderController::class, 'index'])->name('admin-email-sender');
         Route::get('/add', [MailSenderController::class, 'add'])->name('admin-email-sender-add');
         Route::post('/create', [MailSenderController::class, 'create'])->name('admin-email-sender-create');
-        Route::get('/edit/{id}', [MailSenderController::class, 'view'])->name('admin-email-sender-view');
+        Route::get('/view/{id}', [MailSenderController::class, 'view'])->name('admin-email-sender-view');
     });
 
 });
