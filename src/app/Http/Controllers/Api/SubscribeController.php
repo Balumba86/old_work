@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\EmailService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmailSubscribeRequest;
 
 /**
  * Class SubscribeController
@@ -39,7 +40,7 @@ class SubscribeController extends Controller
      * )
      */
 
-    public function subscribe(Request $request)
+    public function subscribe(EmailSubscribeRequest $request)
     {
         $this->emailService->subscribeEmail($request);
 
