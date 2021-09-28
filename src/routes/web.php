@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\MainBannerController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\MailSenderController;
 
 
 Route::get('/', function () {
@@ -120,6 +121,13 @@ Route::
         Route::get('/edit/{id}', [JobController::class, 'edit'])->name('admin-jobs-edit');
         Route::put('/update/{id}', [JobController::class, 'update'])->name('admin-jobs-update');
         Route::delete('/delete/{id}', [JobController::class, 'delete'])->name('admin-jobs-delete');
+    });
+
+    Route::prefix('email-sender')->group(function () {
+        Route::get('/', [MailSenderController::class, 'index'])->name('admin-email-sender');
+        Route::get('/add', [MailSenderController::class, 'add'])->name('admin-email-sender-add');
+        Route::post('/create', [MailSenderController::class, 'create'])->name('admin-email-sender-create');
+        Route::get('/edit/{id}', [MailSenderController::class, 'view'])->name('admin-email-sender-view');
     });
 
 });

@@ -90,6 +90,7 @@
                 <li class="nav-item"><a href="{{route('admin-jobs')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
 
                 <li class="nav-item"><a href="{{route('admin-rent')}}" class="nav-link {{ request()->is('admin/rent*') ? 'active' : null }}"><i class="fas fa-bullhorn nav-icon"></i><p>Заявки на аренду</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-email-sender')}}" class="nav-link {{ request()->is('admin/email-sender*') ? 'active' : null }}"><i class="fas fa-paper-plane nav-icon"></i><p>Рассылка писем</p></a></li>
 
 {{--                <li class="nav-item">--}}
 {{--                    <a href="#" class="nav-link">--}}
