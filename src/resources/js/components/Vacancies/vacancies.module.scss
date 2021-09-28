@@ -1,0 +1,70 @@
+.section {
+  margin: 0 auto;
+  padding: 30px 0;
+  width: calc(100% - 40px);
+  @media (min-width: 767.98px) {
+    width: calc(100% - 100px);
+    padding: 40px 0;
+  }
+  @media (min-width: 1199.98px) {
+    padding: 50px 0 70px;
+  }
+  @media (min-width: 1559.98px) {
+    width: 1500px;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 25px;
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  @media (min-width: 767.98px) {
+    font-size: 30px;
+  }
+  @media (min-width: 1199.98px) {
+    font-size: 35px;
+  }
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.vacancies-list {
+  display: grid;
+  width: fit-content;
+  margin: 30px auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+  grid-auto-rows: auto;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.vacancies-item {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px 30px;
+  border-radius: 1px;
+  background-color: var(--bgr-white);
+}
+
+.vacancies-item:hover {
+  box-shadow: 2px 2px 15px rgba(#9BB6A2, 0.4);
+}
+
+.vacancies-item__title {
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}

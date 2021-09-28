@@ -35,7 +35,7 @@ const HeaderNav = () => {
           <NavLink
             to={PATHS.news.path}
             className={style['nav-link']}
-            activeClassName={style['nav-link_active']}>Новости</NavLink>
+            activeClassName={style['nav-link_active']}>События</NavLink>
         </li>
         <li className={style['nav-item']}>
           <NavLink

@@ -1,11 +1,16 @@
 import Renters from '../components/Renters'
+import ScrollingLayout from '../components/ScrollingLayout'
 import { Layout } from '../views'
 
 const RentersPage = () => {
   return (
-    <Layout>
-      <Renters />
-    </Layout>
+    <ScrollingLayout>
+      {() => (
+        <Layout>
+          <Renters />
+        </Layout>
+      )}
+    </ScrollingLayout>
   )
 }
 

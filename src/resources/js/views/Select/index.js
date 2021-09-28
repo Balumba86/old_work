@@ -77,7 +77,7 @@ const DropdownIndicator = () => {
 const Option = ({ children, data, ...props }) => {
   return (
     <components.Option className={style['select-option']} key={data.id} value={data.value} {...props}>
-      <Link className={style['select-link']} to={data.link}>
+      <Link className={style['select-link']} to={{ pathname: data.link, state: { slug: data.slug } }}>
         {children}
       </Link>
     </components.Option>

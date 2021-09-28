@@ -5,6 +5,7 @@ import Search from '../Search'
 import { PATHS } from '../../const'
 
 import style from './aside.module.scss'
+import SubMenu from './SubMenu'
 
 const VisitorsNav = () => {
   const { filters } = useStoreon('filters')
@@ -12,15 +13,15 @@ const VisitorsNav = () => {
 
   const subShops = classNames({
     [style['sub-menu']]: true,
-    [style['visible']]: location.pathname === PATHS.visitors_shops.path
+    [style['visible']]: filters && filters.shops.length > 0 && location.pathname.includes('shops')
   })
   const subCafe = classNames({
     [style['sub-menu']]: true,
-    [style['visible']]: location.pathname === PATHS.visitors_cafe.path
+    [style['visible']]: filters && filters.cafe.length > 0 && location.pathname.includes('cafe')
   })
   const subServices = classNames({
     [style['sub-menu']]: true,
-    [style['visible']]: location.pathname === PATHS.visitors_services.path
+    [style['visible']]: filters && filters.services.length > 0 && location.pathname.includes('services')
   })
 
   return (
@@ -35,13 +36,7 @@ const VisitorsNav = () => {
               to={PATHS.visitors_shops.path}>
                 Магазины
             </NavLink>
-            <ul className={subShops}>
-              {filters && filters.shops.map(item => (
-                <li key={item.id} className={style['sub-menu__item']}>
-                  <NavLink to={item.link} className={style['sub-menu__link']}>{item.label}</NavLink>
-                </li>
-              ))}
-            </ul>
+            <SubMenu itemsList={filters.shops} menuClasses={subShops} />
           </li>
           <li className={style['aside-nav__item']}>
             <NavLink
@@ -50,13 +45,7 @@ const VisitorsNav = () => {
               to={PATHS.visitors_cafe.path}>
                 Кафе и рестораны
             </NavLink>
-            <ul className={subCafe}>
-              {filters && filters.cafe.map(item => (
-                <li key={item.id} className={style['sub-menu__item']}>
-                  <NavLink to={item.link} className={style['sub-menu__link']}>{item.label}</NavLink>
-                </li>
-              ))}
-            </ul>
+            <SubMenu itemsList={filters.cafe} menuClasses={subCafe} />
           </li>
           <li className={style['aside-nav__item']}>
             <NavLink
@@ -65,13 +54,7 @@ const VisitorsNav = () => {
               to={PATHS.visitors_services.path}>
                 Сервисы и услуги
             </NavLink>
-            <ul className={subServices}>
-              {filters && filters.services.map(item => (
-                <li key={item.id} className={style['sub-menu__item']}>
-                  <NavLink to={item.link} className={style['sub-menu__link']}>{item.label}</NavLink>
-                </li>
-              ))}
-            </ul>
+            <SubMenu itemsList={filters.services} menuClasses={subServices} />
           </li>
         </ul>
       </nav>

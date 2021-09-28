@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { LOADING_STATES } from "../../const"
 
 const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
   const [results, setResults] = useState([])
@@ -6,29 +7,48 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
   const [isNext, setIsNext] = useState(false)
   const [isPrev, setIsPrev] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+  const [status, setStatus] = useState(LOADING_STATES.loading)
 
-  const getData = () => {
-    api(filterParams)
-      .then(res => {
-        setResults([...results, ...res.results])
-        setIsNext(Boolean(res.next))
-        setIsPrev(Boolean(res.prev))
-        setCurrentPage(res.currentPage)
-      })
-      .catch(err => console.log(err))
+  const getData = (fp = {}) => {
+    setStatus(LOADING_STATES.loading)
+    if(api) {
+      api({ ...fp })
+        .then(res => {
+          const newRes = fp.page !== 1 ? [...results, ...res.results] : res.results
+          setResults(newRes)
+          setStatus(LOADING_STATES.loaded)
+          setIsNext(Boolean(res.next))
+          setIsPrev(Boolean(res.prev))
+          setCurrentPage(res.currentPage)
+        })
+        .catch(err => {
+          console.log(err)
+          setStatus(LOADING_STATES.failed)
+        })
+    }
+  }
+
+  const loadData = (page = 1, params = {}) => {
+    const fp = { ...filterParams, ...params, page }
+    setFilterParams(fp)
+    getData(fp)
   }
 
   useEffect(() => {
-    getData()
-  }, [])
-
-  useEffect(() => {
-    getData()
+    setCurrentPage(filterParams.page || 1)
   }, [filterParams])
 
-  const showMore = () => {
+  useEffect(() => {
+    getData(initFilterParams)
+  }, [])
+
+  const showMore = (e = null) => {
+    if(e) {
+      e.preventDefault()
+    }
     if(isNext) {
-      setFilterParams({ page: currentPage + 1 })
+      loadData(currentPage + 1, {})
+      setCurrentPage(currentPage + 1)
     }
   }
 
@@ -38,7 +58,10 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
       isNext,
       isPrev,
       currentPage,
-      showMore
+      status,
+      filterParams,
+      showMore,
+      loadData
     })}</>
   )
 }

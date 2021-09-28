@@ -4,9 +4,11 @@ import {
   planLevel1,
   planLevel2,
   planLevel3,
-  planLevel4
+  planLevel4,
+  Icon
 } from '../../images'
 import style from './renters.module.scss'
+import classNames from 'classnames'
 
 const Renters = () => {
   return (
@@ -22,12 +24,24 @@ const Renters = () => {
         <div className={style['benefits']}>
           <h3 className={style['block-title']}>Наши преимущества</h3>
           <ul className={style['benefits-list']}>
-            <li>Расположение в самом густонаселенном районе города на главной транспортной магистрали</li>
-            <li>Активная маркетинговая поддержка Арендаторов</li>
-            <li>Заключение как краткосрочного (на 11 месяцев), так и долгосрочного (от 2 до 7 лет) договора аренды</li>
-            <li>Индивидуальный подход к каждому Арендатору</li>
-            <li>Профессиональная управляющая компания</li>
-            <li>Присутствуют современные инженерно-технические условия и все необходимые коммуникации</li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_location']])}>Расположение в самом густонаселенном районе города на главной транспортной магистрали</div>
+            </li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_people']])}>Активная маркетинговая поддержка Арендаторов</div>
+            </li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_doc']])}>Заключение как краткосрочного (на 11 месяцев), так и долгосрочного (от 2 до 7 лет) договора аренды</div>
+            </li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_hands']])}>Индивидуальный подход к каждому Арендатору</div>
+            </li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_medal']])}>Профессиональная управляющая компания</div>
+            </li>
+            <li className={style['benefits-item']}>
+              <div className={classNames([style['item-bgr'], style['item-bgr_check']])}>Присутствуют современные инженерно-технические условия и все необходимые коммуникации</div>
+            </li>
           </ul>
         </div>
         <div className={style['plans']}>

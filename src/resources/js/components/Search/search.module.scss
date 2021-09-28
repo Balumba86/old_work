@@ -24,9 +24,8 @@
 }
 
 .search-btn svg {
-  width: 70%;
-  height: 70%;
-  fill: currentColor;
+  width: 90%;
+  height: 90%;
 }
 
 .search-btn {
@@ -36,13 +35,17 @@
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background: url(../../images/search.svg) no-repeat center / 70%;
   color: var(--bgr-grey);
   border: none;
 }
 
-.search-btn:hover {
+.search-btn:not(:disabled):hover {
   color: var(--active-color);
+  cursor: pointer;
+}
+
+.search-btn:disabled {
+  opacity: 0.5;
 }
 
 .search-btn:active, .search-btn:focus {

@@ -24,3 +24,21 @@
     flex-grow: 1.5;
   }
 }
+
+.input_error {
+  border-color: var(--text-color-error);
+}
+
+.input-overlay {
+  position: relative;
+  display: flex;
+  flex-grow: 2;
+}
+
+.error-text {
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  color: var(--text-color-error);
+  font-size: 12px;
+}

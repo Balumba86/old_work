@@ -1,11 +1,25 @@
-import Cafe from '../components/Cafe'
-import { VisitorsLayout } from '../views'
+import ScrollingLayout from "../components/ScrollingLayout"
+import VisitorsList from "../components/VisitorsList"
+import { VisitorsLayout } from "../views"
+import api from "../api"
 
 const CafePage = () => {
   return (
-    <VisitorsLayout title='Кафе и рестораны'>
-      <Cafe />
-    </VisitorsLayout>
+    <ScrollingLayout>
+      {(props) => (
+        <VisitorsLayout title='Кафе и рестораны'>
+          <VisitorsList
+            api={api.getCafeList}
+            initFilterParams={{
+              page: 1,
+              search: ''
+            }}
+            variant='cafe'
+            {...props}
+          />
+        </VisitorsLayout>
+      )}
+    </ScrollingLayout>
   )
 }
 

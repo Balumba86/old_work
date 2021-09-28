@@ -12,11 +12,15 @@ export const PATHS = {
     exact: false
   },
   news: {
-    path: '/news',
+    path: '/events',
     exact: true
   },
   news_detail: {
-    path: '/news/:slug',
+    path: '/events/:slug',
+    exact: false
+  },
+  personal_data: {
+    path: '/personal-data-policy',
     exact: false
   },
   renter: {
@@ -24,15 +28,31 @@ export const PATHS = {
     exact: false
   },
   cafe_detail: {
-    path: '/visitors/cafe/:slug',
+    path: '/visitors/cafe/detail/',
     exact: false
   },
   services_detail: {
-    path: '/visitors/services/:slug',
+    path: '/visitors/services/detail/',
     exact: false
   },
   shops_detail: {
-    path: '/visitors/shops/:slug',
+    path: '/visitors/shops/detail/',
+    exact: false
+  },
+  cafe_category: {
+    path: '/visitors/cafe/:category',
+    exact: false
+  },
+  services_category: {
+    path: '/visitors/services/:category',
+    exact: false
+  },
+  shops_category: {
+    path: '/visitors/shops/:category',
+    exact: false
+  },
+  vacancies: {
+    path: '/vacancies',
     exact: false
   },
   visitors: {
@@ -51,4 +71,16 @@ export const PATHS = {
     path: '/visitors/shops',
     exact: true
   },
+}
+
+export const LOADING_STATES = {
+  'loading': 'loading',
+  'loaded': 'loaded',
+  'failed': 'failed'
+}
+
+export const NOT_DATA_VISITORS = {
+  cafe: 'В этом разделе пока нет кафе и ресторанов',
+  services: 'В этом разделе пока нет сервисов и услуг',
+  shops: 'В этом разделе пока нет магазинов'
 }

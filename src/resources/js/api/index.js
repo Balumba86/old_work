@@ -2,70 +2,112 @@ import { PATHS } from "../const";
 import BaseApi from "./base";
 import {
   categoriesSerializer,
+  categoryListSerializer,
   newsListSerializer
 } from './serializers'
 
 class Api extends BaseApi {
+
+  getHomeData = async () => {
+    const res = await this.get('/home')
+    return res.data
+  }
 
   getNewsList = async (params = {}) => {
     const res = await this.get('/news/list', params)
     return newsListSerializer(res.data)
   }
 
-  // getNewsDetail = ({ postSlug = ''}) => {
-  //   const res = this.get(`/news/${postSlug}`, {})
-  //   return res
-  // }
+  getNewsDetail = async ({ postSlug = ''}) => {
+    const res = await this.get(`/news/${postSlug}`)
+    return res.data
+  }
+
+  getShopList = async (params = {}) => {
+    const res = await this.get('/shop/list', params)
+    return categoryListSerializer(res.data)
+  }
 
   getCatogoriesShops = async () => {
     const res = await this.get('/shop/categories')
     return categoriesSerializer(res.data, PATHS.visitors_shops.path)
   }
 
-  // getShopsCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/shop​/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getShopsCategorySlug = async (params = {}) => {
+    const newParams = {...params};
+    delete newParams.categorySlug;
+    const res = await this.get(`/shop/category/${params.categorySlug}`, newParams)
+    return categoryListSerializer(res.data)
+  }
 
-  // getShopDetail = ({ shopSlug = '' }) => {
-  //   const res = this.get(`/shop​/${shopSlug}`, {})
-  //   return res
-  // }
+  getShopDetail = async (shopSlug = '') => {
+    const res = await this.get(`/shop/${shopSlug}`)
+    return res.data
+  }
+
+  getCafeList = async (params = {}) => {
+    const res = await this.get('/restaurant/list', params)
+    return categoryListSerializer(res.data)
+  }
 
   getCatogoriesCafe = async () => {
     const res = await this.get('/restaurant/categories')
     return categoriesSerializer(res.data, PATHS.visitors_cafe.path)
   }
 
-  // getCafeCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/restaurant/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getCafeCategorySlug = async (params = {}) => {
+    const newParams = {...params};
+    delete newParams.categorySlug;
+    const res = await this.get(`/restaurant/category/${params.categorySlug}`, newParams)
+    return categoryListSerializer(res.data)
+  }
 
-  // getCafeDetail = ({ restaurantSlug = '' }) => {
-  //   const res = this.get(`/restaurant/${restaurantSlug}`, {})
-  //   return res
-  // }
+  getCafeDetail = async (restaurantSlug = '') => {
+    const res = await this.get(`/restaurant/${restaurantSlug}`)
+    return res.data
+  }
+
+  getServicesList = async (params = {}) => {
+    const res = await this.get('/service/list', params)
+    return res.data
+  }
 
   getCatogoriesServices = async () => {
     const res = await this.get('/service/categories')
     return categoriesSerializer(res.data, PATHS.visitors_services.path)
   }
 
-  // getServicesCategorySlug = ({ categorySlug = '' }) => {
-  //   const res = this.get(`/service​/category/${categorySlug}`, {})
-  //   return res
-  // }
+  getServicesCategorySlug = async (params = {}) => {
+    const newParams = {...params};
+    delete newParams.categorySlug;
+    const res = await this.get(`/service/category/${params.categorySlug}`, newParams)
+    return categoryListSerializer(res.data)
+  }
 
-  // getServiceDetail = ({ serviceSlug = '' }) => {
-  //   const res = this.get(`/service​/${serviceSlug}`, {})
-  //   return res
-  // }
+  getServiceDetail = async (serviceSlug = '') => {
+    const res = await this.get(`/service/${serviceSlug}`)
+    return res.data
+  }
 
-  // sendSubscribeData = ({ params = {} }) => {
-  //   const res = this.post('​/system​/email​/subscribe', params)
-  //   return res
-  // }
+  sendSubscribeData = async ({ params = {} }) => {
+    const res = await this.post('/system/email/subscribe', params)
+    return res.data
+  }
+
+  getContacts = async () => {
+    const res = await this.get('/contacts')
+    return res.data
+  }
+
+  getVacanciesList = async () => {
+    const res = await this.get('/opening-jobs')
+    return res.data
+  }
+
+  sentRenterData = async (params = {}) => {
+    const res = await this.post('/system/rent', params)
+    return res.data
+  }
 
 }
 

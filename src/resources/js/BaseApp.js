@@ -3,19 +3,24 @@ import { Switch, Route } from 'react-router-dom'
 import { useStoreon } from 'storeon/react';
 import {
   AboutPage,
+  CafeCategoryPage,
   CafeDetailPage,
   CafePage,
   ContactsPage,
   HomePage,
   NewsDetailPage,
   NewsPage,
+  NotFoundPage,
+  PersonalDataPolicyPage,
   RentersPage,
   ServiceDetailPage,
+  ServicesCategoryPage,
   ServicesPage,
+  ShopCategoryPage,
   ShopDetailPage,
   ShopsPage,
+  VacanciesPage,
 } from './pages'
-import { LoaderPage } from './views';
 
 import { PATHS } from './const'
 import api from './api'
@@ -117,6 +122,34 @@ const App = () => {
           exact={PATHS.cafe_detail.exact}
           component={CafeDetailPage}
         />
+        <Route 
+          path={PATHS.shops_category.path}
+          exact={PATHS.shops_category.exact}
+          component={ShopCategoryPage}
+        />
+        <Route
+          path={PATHS.cafe_category.path}
+          exact={PATHS.cafe_category.exact}
+          component={CafeCategoryPage}
+        />
+        <Route
+          path={PATHS.services_category.path}
+          exact={PATHS.services_category.exact}
+          component={ServicesCategoryPage}
+        />
+        <Route
+          path={PATHS.vacancies.path}
+          exact={PATHS.vacancies.exact}
+          component={VacanciesPage}
+        />
+
+        <Route
+          path={PATHS.personal_data.path}
+          exact={PATHS.personal_data.exact}
+          component={PersonalDataPolicyPage}
+        />
+
+        <Route component={NotFoundPage} />
       </Switch>
     </>
   );

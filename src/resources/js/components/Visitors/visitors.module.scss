@@ -1,0 +1,66 @@
+.shops-bgr {
+  width: calc(100% + 40px);
+  // height: 250px;
+  height: 90px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/shops_bgr_3.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 359.98px) {
+    height: 130px;
+  }
+  @media (min-width: 567.98px) {
+    height: 180px;
+  }
+  @media (min-width: 767.98px) {
+    width: 100%;
+    height: 230px;
+    margin: 0;
+  }
+  @media (min-width: 991.98px) {
+    height: 280px;
+  }
+}
+
+.services-bgr {
+  width: calc(100% + 40px);
+  height: 90px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/services_bgr_2.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 359.98px) {
+    height: 130px;
+  }
+  @media (min-width: 567.98px) {
+    height: 180px;
+  }
+  @media (min-width: 767.98px) {
+    width: 100%;
+    height: 230px;
+    margin: 0;
+  }
+  @media (min-width: 991.98px) {
+    height: 280px;
+  }
+}
+
+.cafe-bgr {
+  width: calc(100% + 40px);
+  height: 90px;
+  margin: 0 -20px;
+  background: url(../../images/visitors/cafe_bgr_3.jpg) no-repeat center;
+  background-size: cover;
+  @media (min-width: 359.98px) {
+    height: 130px;
+  }
+  @media (min-width: 567.98px) {
+    height: 180px;
+  }
+  @media (min-width: 767.98px) {
+    width: 100%;
+    height: 230px;
+    margin: 0;
+  }
+  @media (min-width: 991.98px) {
+    height: 280px;
+  }
+}
