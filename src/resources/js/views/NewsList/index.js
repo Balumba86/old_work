@@ -12,7 +12,6 @@ const NewsList = ({ list = [] }) => {
 
   return (
     <>
-      <h2 className={style['news-title']}>События</h2>
       <ul className={style['news-list']}>
         {list && list.map((item) => {
           const path = `${PATHS.news.path}/${item.slug}`

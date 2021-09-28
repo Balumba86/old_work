@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { LoaderPage, LoaderRing, NewsList } from "../../views"
+import { LoaderPage, LoaderRing, MessageError, NewsList } from "../../views"
 import { LOADING_STATES } from "../../const"
 import style from './news.module.scss'
 
@@ -20,6 +20,7 @@ const NewsSection = ({
 
   return (
     <section className={style['section']}>
+      <h2 className={style['news-title']}>События</h2>
       {status === LOADING_STATES.loading && currentPage === 1 && (
         <LoaderPage />
       )}
@@ -31,6 +32,9 @@ const NewsSection = ({
           )}
         </>
       ) : null}
+      {status === LOADING_STATES.failed && (
+        <MessageError />
+      )}
     </section>
   )
 }

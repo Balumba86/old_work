@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
-import { CardsList, LoaderPage, LoaderRing, MessageNotResults } from '../../views'
+import { CardsList, LoaderPage, LoaderRing, MessageError, MessageNotResults } from '../../views'
 import { LOADING_STATES, NOT_DATA_VISITORS, PATHS } from '../../const'
 import classNames from 'classnames'
 
@@ -87,6 +87,9 @@ const Visitors = ({
       {status === LOADING_STATES.loaded && results.length === 0 && filterParams.search !== '' ? (
         <MessageNotResults text='По вашему запросу ничего не найдено' />
       ) : null}
+      {status === LOADING_STATES.failed && (
+        <MessageError />
+      )}
     </>
   )
 }

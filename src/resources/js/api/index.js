@@ -104,6 +104,11 @@ class Api extends BaseApi {
     return res.data
   }
 
+  sentRenterData = async (params = {}) => {
+    const res = await this.post('/system/rent', params)
+    return res.data
+  }
+
 }
 
 const MAIN_URL = process.env.MIX_REACT_APP_API_URL;

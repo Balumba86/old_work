@@ -5,7 +5,9 @@ const subscriptionSchema = Yup.object().shape({
 })
 
 const rentApplicationSchema = Yup.object().shape({
-
+  name: Yup.string('').required('Это поле обязательно для заполнения'),
+  email: Yup.string().email('Введите корректный email').required('Это поле обязательно для заполнения'),
+  phone: Yup.string('').required('Это поле обязательно для заполнения'),
 })
 
 export {

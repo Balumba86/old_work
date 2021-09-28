@@ -304,24 +304,24 @@ a[href='#']:focus {
 
 .swiper-button-next,
 .swiper-button-prev {
-  width: 44px;
-  height: 44px;
+  width: 34px;
+  height: 34px;
   margin-top: 0;
   border-radius: 50%;
   background-color: white;
-  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
 }
 .swiper-button-next {
-  right: -20px;
+  right: 0px;
 }
 
 .swiper-button-prev {
-  left: -20px;
+  left: 0px;
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  font-size: 26px;
+  font-size: 16px;
   text-align: center;
   vertical-align: middle;
   color: var(--active-color);
@@ -329,14 +329,14 @@ a[href='#']:focus {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 }
 
 .swiper-button-next:after {
-  margin-right: -2px;
+  // margin-right: -2px;
 }
 
 .swiper-button-prev:after {
-  margin-left: -2px;
+  // margin-left: -2px;
 }

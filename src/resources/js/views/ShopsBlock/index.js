@@ -27,7 +27,7 @@ const ShopsBlock = ({ shops = [] }) => {
                 slidesPerView: 2,
               },
               '567.98': {
-                slidesPerView: 4,
+                slidesPerView: 3,
               },
               '991.98': {
                 slidesPerView: 6,

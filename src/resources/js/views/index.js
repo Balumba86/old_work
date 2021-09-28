@@ -6,6 +6,7 @@ import Header from './Header'
 import HomeBanner from './HomeBanner'
 import ImageMall from './ImageMall'
 import Input from './Input'
+import InputPhone from './Input/InputPhone'
 import Layout from './Layout'
 import LoaderPage from './LoaderPage'
 import LoaderRing from './LoaderRing'
@@ -29,6 +30,7 @@ export {
   HomeBanner,
   ImageMall,
   Input,
+  InputPhone,
   Layout,
   LoaderPage,
   LoaderRing,
