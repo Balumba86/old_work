@@ -23,4 +23,11 @@ class EmailService
 
         return Subscribe::create($data);
     }
+
+    public function getAllSubscribers(): array
+    {
+        $subscribers = Subscribe::where('active', true)->get();
+
+        return $subscribers->toArray();
+    }
 }
