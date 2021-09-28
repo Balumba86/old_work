@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\EmailService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\EmailSubscribeRequest;
 
 /**
  * Class SubscribeController
@@ -40,8 +39,22 @@ class SubscribeController extends Controller
      * )
      */
 
-    public function subscribe(EmailSubscribeRequest $request)
+    public function subscribe(Request $request)
     {
+        $data = $request->all();
+
+        if (!isset($data['email']) || $data['email'] === '' || $data['email'] === null){
+            return ApiResponse::error('Адрес электронной почты обязателен');
+        }
+
+        if (!isset($data['accept']) || !is_bool($data['accept'])){
+            return ApiResponse::error('Не найден флаг солгасия с обработкой персональных данных');
+        }
+
+        if (mb_strpos($data['email'], "@") === false){
+            return ApiResponse::error('Некорректный формат email');
+        }
+
         $this->emailService->subscribeEmail($request);
 
         return ApiResponse::success('Вы успешно подписались на нашу рассылку!');
