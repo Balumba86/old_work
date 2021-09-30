@@ -37,7 +37,7 @@ class MailSender extends Mailable
             ->subject($this->mail_subject)
             ->view('mail.subscriber', [
                 "mail_text" => $this->mail_text,
-                "token" => $this->user_token
+                "mail_token" => $this->user_token
             ]);
     }
 }
