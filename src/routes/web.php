@@ -16,14 +16,14 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MailSenderController;
 
+use App\Http\Controllers\Email\UnsubscribeController;
+
 
 Route::get('/', function () {
     return view('site');
 });
 
-Route::
-        middleware(['auth:sanctum', 'verified'])->
-        prefix('admin')->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('admin-profile');
@@ -132,8 +132,13 @@ Route::
 
 });
 
+Route::prefix('email')->group(function () {
+    Route::get('/unsubscribe', [UnsubscribeController::class, 'checkEmail'])->name('user-email-unsubscribe-page');
+    Route::post('/unsubscribe/submit', [UnsubscribeController::class, 'submit'])->name('user-email-unsubscribe-page-submit');
+});
+
 Auth::routes();
 
 Route::get('/{query}', function() {
     return view('site');
-})->where('query', '^((?!api|admin).)*$');
+})->where('query', '^((?!api|admin|email).)*$');

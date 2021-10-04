@@ -30,4 +30,22 @@ class EmailService
 
         return $subscribers->toArray();
     }
+
+    public function getSubscriberByToken(?string $token)
+    {
+        $subscriber = Subscribe::where('token', $token)->get()->first();
+
+        return $subscriber;
+    }
+
+    public function unsubscribeByToken(?string $token)
+    {
+        $subscriber = Subscribe::where('token', $token)->get()->first();
+
+        if ($subscriber) {
+            $subscriber->update([
+                "active" => false
+            ]);
+        }
+    }
 }
