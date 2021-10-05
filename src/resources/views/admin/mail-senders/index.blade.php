@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">E-mail рассылки {{$process}}</h3>
+            <h3 class="card-title">E-mail рассылки</h3>
         </div>
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-nowrap">
@@ -38,7 +38,7 @@
                     </td>
                 </tr>
                 @empty
-                    <tr><td colspan="4" style="text-align: center">Рассылок нет</td></tr>
+                    <tr><td colspan="5" style="text-align: center">Рассылок нет</td></tr>
                 @endforelse
                 </tbody>
             </table>
