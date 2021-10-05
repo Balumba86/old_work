@@ -25,8 +25,12 @@ class MailSenderController extends Controller
     {
         $list = $this->mailSenderService->listPaginate();
 
+        $process = $this->mailSenderService->lastProcess();
+
         return view('admin.mail-senders.index', [
-            'senders' => $list
+            'senders' => $list,
+            'process' => $process,
+            'can_create' => $process === 0
         ]);
     }
 

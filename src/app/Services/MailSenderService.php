@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Jobs\SendEmail;
+use App\Models\Job;
 use App\Models\MailSender;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class MailSenderService
 
         $result = MailSender::create([
             "subject" => $data['subject'],
-            "text" => $data['text']
+            "text" => $data['text'],
+            "subscribers" => count($subscribers)
         ]);
 
         if ($result) {
@@ -36,5 +38,10 @@ class MailSenderService
     public function getById(int $id)
     {
         return MailSender::where('id', $id)->get()->first();
+    }
+
+    public function lastProcess()
+    {
+        return Job::all()->count();
     }
 }
