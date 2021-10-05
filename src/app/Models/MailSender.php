@@ -12,6 +12,7 @@ class MailSender extends Model
     protected $fillable = [
       'subject',
       'text',
+      'subscribers',
       'finished_at'
     ];
 }
