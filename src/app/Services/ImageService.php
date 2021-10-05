@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Images;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class ImageService
 {
@@ -36,6 +37,20 @@ class ImageService
         if ($image) {
             Storage::delete($image->path);
             return $image->delete();
+        }
+
+        return false;
+    }
+
+    public function uploadNew(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $type = $request->get('type');
+            $path = $type ?: 'email';
+            $image = $request->file('image');
+            $tmp = $image->store("$path");
+
+            return Storage::url($tmp);
         }
 
         return false;

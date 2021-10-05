@@ -49,4 +49,9 @@ class UploadController extends Controller
             return ApiResponse::error('Ошибка удаления');
         }
     }
+
+    public function uploadImg(Request $request)
+    {
+        return ApiResponse::result($this->imageService->uploadNew($request));
+    }
 }
