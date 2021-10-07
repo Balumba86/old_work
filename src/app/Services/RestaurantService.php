@@ -100,6 +100,11 @@ class RestaurantService
         return Restaurant::all()->count();
     }
 
+    public function countOnLevel(int $level): int
+    {
+        return Restaurant::where('level', $level)->get()->count();
+    }
+
     // Api
 
     public function getItemsByCategoryId(Request $request, $category_id)

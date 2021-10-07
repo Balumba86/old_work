@@ -100,6 +100,11 @@ class ServicesItemsService
         return Service::all()->count();
     }
 
+    public function countOnLevel(int $level): int
+    {
+        return Service::where('level', $level)->get()->count();
+    }
+
     // Api
 
     public function getItemsByCategoryId(Request $request, $category_id)

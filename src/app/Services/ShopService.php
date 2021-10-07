@@ -99,6 +99,11 @@ class ShopService
         return Shop::all()->count();
     }
 
+    public function countOnLevel(int $level): int
+    {
+        return Shop::where('level', $level)->get()->count();
+    }
+
     // Api
 
     public function getItemsByCategoryId(Request $request, $category_id)

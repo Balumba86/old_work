@@ -36,7 +36,22 @@ class DashboardController extends Controller
             'count_shops' => $this->shopService->adminCount(),
             'count_cafe' => $this->restaurantService->adminCount(),
             'count_services' => $this->serviceItemsService->adminCount(),
-            'count_requests' => $this->rentService->adminCount()
+            'count_requests' => $this->rentService->adminCount(),
+            'residents_levels' => [
+                self::countEntityOnLevel(1),
+                self::countEntityOnLevel(2),
+                self::countEntityOnLevel(3),
+                self::countEntityOnLevel(4)
+            ]
         ]);
+    }
+
+    private function countEntityOnLevel(int $level): int
+    {
+        $shops = $this->shopService->countOnLevel($level);
+        $restaurants = $this->restaurantService->countOnLevel($level);
+        $services = $this->serviceItemsService->countOnLevel($level);
+
+        return ($shops + $restaurants + $services);
     }
 }
