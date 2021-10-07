@@ -76,13 +76,13 @@
     <script>
         $(function () {
             var labelsSubscribers = [
-                '01.03.2022',
-                '02.03.2022',
-                '03.03.2022',
-                '04.03.2022',
-                '05.03.2022',
-                '06.03.2022',
-                '07.03.2022'
+                "{{$subscribe_labels[0]}}",
+                "{{$subscribe_labels[1]}}",
+                "{{$subscribe_labels[2]}}",
+                "{{$subscribe_labels[3]}}",
+                "{{$subscribe_labels[4]}}",
+                "{{$subscribe_labels[5]}}",
+                "{{$subscribe_labels[6]}}"
             ];
             var dataSubscribers = {
                 labels: labelsSubscribers,
@@ -91,13 +91,29 @@
                         label: 'Подписки',
                         backgroundColor: 'rgb(2,152,21)',
                         borderColor: 'rgb(2,152,21)',
-                        data: [10, 5, 11, 20, 30, 45, 147]
+                        data: [
+                            {{$subscribers[0]}},
+                            {{$subscribers[1]}},
+                            {{$subscribers[2]}},
+                            {{$subscribers[3]}},
+                            {{$subscribers[4]}},
+                            {{$subscribers[5]}},
+                            {{$subscribers[6]}}
+                        ]
                     },
                     {
                         label: 'Отписки',
                         backgroundColor: 'rgb(246,26,72)',
                         borderColor: 'rgb(246,26,72)',
-                        data: [0, 0, 2, 20, 30, 45, 0]
+                        data: [
+                            {{$unsubscribers[0]}},
+                            {{$unsubscribers[1]}},
+                            {{$unsubscribers[2]}},
+                            {{$unsubscribers[3]}},
+                            {{$unsubscribers[4]}},
+                            {{$unsubscribers[5]}},
+                            {{$unsubscribers[6]}}
+                        ]
                     },
                 ]
             };

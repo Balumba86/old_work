@@ -48,4 +48,30 @@ class EmailService
             ]);
         }
     }
+
+    public function getSubscribersLastWeek()
+    {
+        return [
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-6 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-5 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-4 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-3 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-2 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("-1 day")))->get()->count(),
+            Subscribe::whereDate('created_at', date("Y-m-d", strtotime("now")))->get()->count()
+        ];
+    }
+
+    public function getUnsubscribersLastWeek()
+    {
+        return [
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-6 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-5 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-4 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-3 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-2 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("-1 day")))->get()->count(),
+            Subscribe::where('active', false)->whereDate('updated_at', date("Y-m-d", strtotime("now")))->get()->count()
+        ];
+    }
 }
