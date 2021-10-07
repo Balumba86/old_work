@@ -58,10 +58,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <canvas id="subscribers" height="200"></canvas>
+                    <canvas id="subscribers" height="180"></canvas>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <canvas id="residents" style="min-height: 250px; height: 250px; max-height: 480px; max-width: 100%;"></canvas>
+                    <canvas id="residents" height="180"></canvas>
                 </div>
             </div>
         </div>
@@ -75,29 +75,29 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(function () {
-            const labelsSubscribers = [
-                'Январь',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
+            var labelsSubscribers = [
+                '01.03.2022',
+                '02.03.2022',
+                '03.03.2022',
+                '04.03.2022',
+                '05.03.2022',
+                '06.03.2022',
+                '07.03.2022'
             ];
-            const dataSubscribers = {
+            var dataSubscribers = {
                 labels: labelsSubscribers,
                 datasets: [
                     {
                         label: 'Подписки',
                         backgroundColor: 'rgb(2,152,21)',
                         borderColor: 'rgb(2,152,21)',
-                        data: [0, 10, 5, 11, 20, 30, 45],
-                        fill: "QQQQQQ"
+                        data: [10, 5, 11, 20, 30, 45, 147]
                     },
                     {
                         label: 'Отписки',
                         backgroundColor: 'rgb(246,26,72)',
                         borderColor: 'rgb(246,26,72)',
-                        data: [0, 0, 0, 2, 20, 30, 45],
+                        data: [0, 0, 2, 20, 30, 45, 0]
                     },
                 ]
             };
@@ -129,32 +129,48 @@
                 configSubscribers
             );
 
-            const DATA_COUNT = 5;
-            const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-
-            const dataResidents = {
+            var DATA_COUNT = 5;
+            var NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+            var dataResidents = {
                 labels: ['Уровень 1', 'Уровень 2', 'Уровень 3', 'Уровень 4'],
                 datasets: [
                     {
-                        label: 'Dataset 1',
+                        label: 'Магазины',
                         data: [
-                            {{$residents_levels[0]}},
-                            {{$residents_levels[1]}},
-                            {{$residents_levels[2]}},
-                            {{$residents_levels[3]}},
+                            {{$residents_levels['shop'][0]}},
+                            {{$residents_levels['shop'][1]}},
+                            {{$residents_levels['shop'][2]}},
+                            {{$residents_levels['shop'][3]}},
                         ],
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            'rgb(179,86,255)'
+                        backgroundColor: 'rgb(49, 137, 197)',
+                        borderColor: 'rgb(49, 137, 197)'
+                    },
+                    {
+                        label: 'Кафе/рестораны',
+                        data: [
+                            {{$residents_levels['restaurant'][0]}},
+                            {{$residents_levels['restaurant'][1]}},
+                            {{$residents_levels['restaurant'][2]}},
+                            {{$residents_levels['restaurant'][3]}},
                         ],
-                        hoverOffset: 4
-                    }
+                        backgroundColor: 'rgb(3, 169, 127)',
+                        borderColor: 'rgb(3, 169, 127)'
+                    },
+                    {
+                        label: 'Сервисы/услуги',
+                        data: [
+                            {{$residents_levels['services'][0]}},
+                            {{$residents_levels['services'][1]}},
+                            {{$residents_levels['services'][2]}},
+                            {{$residents_levels['services'][3]}},
+                        ],
+                        backgroundColor: 'rgb(208, 58, 127)',
+                        borderColor: 'rgb(208, 58, 127)'
+                    },
                 ]
             };
-            const configResidents = {
-                type: 'doughnut',
+            var configResidents = {
+                type: 'bar',
                 data: dataResidents,
                 options: {
                     responsive: true,
