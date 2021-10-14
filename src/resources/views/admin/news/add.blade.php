@@ -16,6 +16,14 @@
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly>
                         </div>
                         <div class="form-group">
+                            <label for="">Тип публикации</label>
+                            <select class="form-control" name="type">
+                                @foreach($event_types as $key => $value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="customFile">Главное изображение*</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="main_img">

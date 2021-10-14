@@ -65,6 +65,16 @@ class News extends Model
 
     /**
      * @OA\Property(
+     *     description="Тип, публикуемой новости",
+     *     title="Тип события",
+     * )
+     *
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @OA\Property(
      *     description="Метка того опубликована новость или снята с публикации",
      *     title="Опубликовано",
      * )
@@ -108,6 +118,7 @@ class News extends Model
                            'text',
                            'main_img',
                            'published',
+                           'type',
                            'meta_title',
                            'meta_keywords',
                            'meta_description'];

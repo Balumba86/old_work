@@ -25,6 +25,7 @@
                         <thead>
                         <tr>
                             <th>Заголовок</th>
+                            <th>Тип</th>
                             <th class="text-center">Опубликована</th>
                             <th class="text-center"><i class="far fa-eye"></i></th>
                             <th class="text-center">Добавлена</th>
@@ -35,6 +36,7 @@
                         @forelse($news as $post)
                         <tr>
                             <td>{{$post->title}}</td>
+                            <td>{{$event_types[$post->type]}}</td>
                             <td class="text-center">@if($post->published) <i class="fas fa-check"></i> @else <i class="fas fa-times"></i> @endif</td>
                             <td class="text-center">{{$post->views_count}}</td>
                             <td class="text-center">{{date('d.m.Y H:i', strtotime($post->created_at))}}</td>

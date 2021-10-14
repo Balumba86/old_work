@@ -23,7 +23,8 @@ class NewsController extends Controller
     public function index(Request $request)
     {
         return view('admin.news.index', [
-            'news' => $this->newsService->adminIndex($request)
+            'news' => $this->newsService->adminIndex($request),
+            'event_types' => config('enums.event_types')
         ]);
     }
 
@@ -32,7 +33,9 @@ class NewsController extends Controller
      */
     public function add()
     {
-        return view('admin.news.add');
+        return view('admin.news.add', [
+            'event_types' => config('enums.event_types')
+        ]);
     }
 
     /**
@@ -53,7 +56,8 @@ class NewsController extends Controller
     public function edit(int $id)
     {
         return view('admin.news.edit', [
-            'post' => $this->newsService->adminGetById($id)
+            'post' => $this->newsService->adminGetById($id),
+            'event_types' => config('enums.event_types')
         ]);
     }
 
