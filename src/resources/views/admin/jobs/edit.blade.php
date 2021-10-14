@@ -39,7 +39,25 @@
         $(function () {
             $('#editor').summernote({
                 height: 300,
-                lang: 'ru-RU'
+                lang: 'ru-RU',
+                multiple: false,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        let xhr = new XMLHttpRequest();
+                        let data = new FormData();
+                        data.append('image', files[0]);
+                        xhr.onload = xhr.onerror = function() {
+                            if (this.status === 200) {
+                                let result = JSON.parse(this.response)
+                                $('#editor').summernote('insertImage', result.data);
+                            } else {
+                                console.log("error " + this.status);
+                            }
+                        };
+                        xhr.open("POST", "/api/v1/system/upload?type=vacancy", true);
+                        xhr.send(data);
+                    }
+                }
             })
         })
     </script>
