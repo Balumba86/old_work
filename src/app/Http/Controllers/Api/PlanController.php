@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\ImageService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -17,15 +18,13 @@ class PlanController extends Controller
         $this->imageService = $imageService;
     }
 
-    public function index()
-    {
-        return view('admin.plans.index');
-    }
 
-    public function create(Request $request)
+    public function indexPlans()
     {
-        $this->imageService->generateArchive($request);
+        $plans = $this->imageService->getImages('plan', 0);
 
-        return view('admin.plans.index');
+        return ApiResponse::result([
+            'images' => $plans
+        ]);
     }
 }

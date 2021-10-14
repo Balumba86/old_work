@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Images;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use ZipArchive;
 
 class ImageService
 {
@@ -60,5 +61,33 @@ class ImageService
         }
 
         return false;
+    }
+
+    public function generateArchive(Request $request)
+    {
+        $type = $request->get('type');
+
+        $query = Images::query();
+        $query->where('target', $type);
+        $query->where('target_id', 0);
+        $query->select('id as image_id', 'path');
+
+        $result = $query->get();
+
+        $zip = new ZipArchive();
+        $zip_name = "plans_" . date('dd_mm_YYYY') . ".zip";
+        $zip_full_path = 'storage/uploads/' . $type . '/'.$zip_name;
+
+        if ($zip->open($zip_full_path, ZipArchive::CREATE) === TRUE) {
+            foreach ($result as $i => $image) {
+                $file = Storage::url($image->path);
+                $zip->addFile($i.".jpg", $file);
+            }
+            $zip->close();
+        }
+
+
+
+
     }
 }

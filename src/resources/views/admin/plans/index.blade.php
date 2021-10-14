@@ -15,7 +15,11 @@
         </div>
     </div>
     <div class="card-footer">
-
+        <form action="{{route('admin-plans-create')}}" method="post">
+            @csrf
+            <input type="hidden" name="type" value="plan">
+            <button type="submit" class="btn bg-gradient-info">Создать архив для скачивания</button>
+        </form>
     </div>
 </div>
 @endsection

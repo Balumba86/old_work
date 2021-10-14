@@ -98,6 +98,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     });
     Route::prefix('plans')->group(function () {
         Route::get('/', [PlanController::class, 'index'])->name('admin-plans');
+        Route::post('/create-archive', [PlanController::class, 'create'])->name('admin-plans-create');
     });
 
     Route::prefix('banners')->group(function () {
