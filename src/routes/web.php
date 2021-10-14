@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MainBannerController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MailSenderController;
+use App\Http\Controllers\Admin\PlanController;
 
 use App\Http\Controllers\Email\UnsubscribeController;
 
@@ -94,6 +95,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         Route::get('/show/{id}', [RentRequestController::class, 'show'])->name('admin-rent-show');
         Route::put('/update/{id}', [RentRequestController::class, 'update'])->name('admin-rent-update');
         Route::delete('/delete/{id}', [RentRequestController::class, 'delete'])->name('admin-rent-delete');
+    });
+    Route::prefix('plans')->group(function () {
+        Route::get('/', [PlanController::class, 'index'])->name('admin-plans');
     });
 
     Route::prefix('banners')->group(function () {
