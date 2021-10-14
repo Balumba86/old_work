@@ -54,4 +54,32 @@ class UploadController extends Controller
     {
         return ApiResponse::result($this->imageService->uploadNew($request));
     }
+
+    public function planImg(Request $request)
+    {
+        $data = $request->all();
+        $action = $data['action'] ?? 'get';
+        $type = $data['type'] ?? null;
+        $id = $data['id'] ?? null;
+        $image_id = $data['image_id'] ?? null;
+
+        if (!in_array($action, $this->methods)) {
+            return ApiResponse::error('method not allowed');
+        }
+
+        if ($action === 'get') {
+            $images = $this->imageService->getImages($type, $id);
+
+            return ApiResponse::result($images);
+        }
+        if ($action === 'delete') {
+            $deleted = $this->imageService->deleteImages($type, $id, $image_id);
+
+            if ($deleted) {
+                return ApiResponse::success('Изображение успешно удалено');
+            }
+
+            return ApiResponse::error('Ошибка удаления');
+        }
+    }
 }

@@ -50,6 +50,12 @@ class ImageService
             $image = $request->file('image');
             $tmp = $image->store("$path");
 
+            Images::create([
+                "target" => $path,
+                "target_id" => 0,
+                "path" => $tmp
+            ]);
+
             return Storage::url($tmp);
         }
 
