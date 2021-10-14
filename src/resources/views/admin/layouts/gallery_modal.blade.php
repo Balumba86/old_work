@@ -92,6 +92,7 @@
             right: 5px;
             top: 5px;
             cursor: pointer;
+            color: white;
         }
         .gallery_item span i {
             margin-left: 4px;
