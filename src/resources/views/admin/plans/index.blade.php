@@ -18,7 +18,7 @@
         <form action="{{route('admin-plans-create')}}" method="post">
             @csrf
             <input type="hidden" name="type" value="plan">
-            <button type="submit" class="btn bg-gradient-info">Создать архив для скачивания</button>
+            <button type="submit" class="btn bg-gradient-info" disabled>Создать архив для скачивания</button>
         </form>
     </div>
 </div>
