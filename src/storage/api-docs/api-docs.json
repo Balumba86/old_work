@@ -167,6 +167,27 @@
                 }
             }
         },
+        "/plans": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение списка изображений планов уровней ТЦ",
+                "operationId": "indexPlans",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlanResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/system/rent": {
             "post": {
                 "tags": [
@@ -662,6 +683,11 @@
                         "description": "Изображение для списка статей",
                         "type": "string"
                     },
+                    "type": {
+                        "title": "Тип события",
+                        "description": "Тип, публикуемой новости",
+                        "type": "string"
+                    },
                     "published": {
                         "title": "Опубликовано",
                         "description": "Метка того опубликована новость или снята с публикации",
@@ -1067,6 +1093,41 @@
                     },
                     "message": {
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PlanResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "properties": {
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ImageItem"
+                                }
+                            },
+                            "archive": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ImageItem": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "path": {
+                        "type": "string",
+                        "default": "https://example.com/images/image.jpg"
                     }
                 },
                 "type": "object"

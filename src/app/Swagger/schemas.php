@@ -49,6 +49,41 @@
  * )
  *
  * @OA\Schema(
+ *      schema="PlanResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *          property="data",
+ *            @OA\Property(
+ *            property="images",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/ImageItem"
+ *            )
+ *         ),
+ *         @OA\Property(
+ *            property="archive",
+ *            type="string"
+ *          ),
+ *     )
+ * )
+ * @OA\Schema (
+ *     schema="ImageItem",
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer"
+ *     ),
+ *     @OA\Property(
+ *         property="path",
+ *         type="string",
+ *         default="https://example.com/images/image.jpg"
+ *     )
+ * )
+ *
+ * @OA\Schema(
  *      schema="LevelResponse",
  *      @OA\Property(
  *          property="type",
