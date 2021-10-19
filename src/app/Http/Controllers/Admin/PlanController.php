@@ -19,13 +19,15 @@ class PlanController extends Controller
 
     public function index()
     {
-        return view('admin.plans.index');
+        return view('admin.plans.index', [
+            'archive' => $this->imageService->getLastArchive('plan')
+        ]);
     }
 
     public function create(Request $request)
     {
         $this->imageService->generateArchive($request);
 
-        return view('admin.plans.index');
+        return redirect()->route('admin-plans');
     }
 }
