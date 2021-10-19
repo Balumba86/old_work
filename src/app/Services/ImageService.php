@@ -131,6 +131,17 @@ class ImageService
         return $result;
     }
 
+    public function getLastArchiveLink($type): string
+    {
+        $files = Storage::files('uploads/', $type);
+
+        if (count($files) > 0) {
+            return Storage::url($files[0]);
+        }
+
+        return '';
+    }
+
     private function getFilesize($filesize)
     {
         // Если размер больше 1 Кб

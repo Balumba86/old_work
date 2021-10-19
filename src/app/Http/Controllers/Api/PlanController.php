@@ -44,7 +44,7 @@ class PlanController extends Controller
 
         return ApiResponse::result([
             'images' => $plans,
-            'archive' => ''
+            'archive' => $this->imageService->getLastArchiveLink('plan')
         ]);
     }
 }
