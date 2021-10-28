@@ -43,8 +43,8 @@ const Header = () => {
           <div className={style['header-top__left']}>
             <a className={style['header-logo']}/>
             <div className={style['header-contacts__block_a']}>
-              <a href={PATHS.about.path} className={style['header-contacts__link']}><Icon name='scheme' />Схема ТЦ</a>
-              <a href={PATHS.about.path} className={style['header-contacts__link']}><Icon name='parking' />Парковка</a>
+              {/* <a href={PATHS.scheme.path} className={style['header-contacts__link']}><Icon name='scheme' />Схема ТЦ</a> */}
+              <a href={PATHS.scheme.path} className={style['header-contacts__link']}><Icon name='parking' />Парковка</a>
               <a href='tel:+78001015458' className={style['header-contacts__link']}><Icon name='phone' />+7 (800) 101-54-58</a>
             </div>
             <div className={style['header-contacts__block']}>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import api from '../../api'
 import { LOADING_STATES } from '../../const'
 import { HomeBanner, LoaderPage, NewsBlock, ShopsBlock, Subscription } from '../../views'
+import api from '../../api'
 
 const Home = () => {
   const [loading, setLoading] = useState(LOADING_STATES.loading)
   const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
-  const [shops, setShops] = useState([])
+  // const [shops, setShops] = useState([])
 
   useEffect(() => {
     api.getHomeData()
@@ -15,7 +15,7 @@ const Home = () => {
         setLoading(LOADING_STATES.loaded)
         setBanners(data.banners || [])
         setEvents(data.news || [])
-        setShops(data.shops || [])
+        // setShops(data.shops || [])
       })
       .catch(err => console.log(err, 'err home'))
   }, [])
@@ -26,8 +26,8 @@ const Home = () => {
         <>
           <HomeBanner banners={banners} />
           <NewsBlock list={events} />
-          <Subscription />
-          <ShopsBlock shops={shops} />
+          {/* <Subscription /> */}
+          <ShopsBlock />
         </>
       )}
       {loading === LOADING_STATES.loading && (

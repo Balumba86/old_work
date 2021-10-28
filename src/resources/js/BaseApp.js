@@ -68,8 +68,8 @@ const App = () => {
           component={HomePage}
         />
         <Route
-          path={PATHS.about.path}
-          exact={PATHS.about.exact}
+          path={PATHS.scheme.path}
+          exact={PATHS.scheme.exact}
           component={AboutPage}
         />
         <Route
@@ -93,18 +93,18 @@ const App = () => {
           component={RentersPage}
         />
         <Route
-          path={PATHS.visitors_cafe.path}
-          exact={PATHS.visitors_cafe.exact}
+          path={PATHS.cafe.path}
+          exact={PATHS.cafe.exact}
           component={CafePage}
         />
         <Route
-          path={PATHS.visitors_services.path}
-          exact={PATHS.visitors_services.exact}
+          path={PATHS.services.path}
+          exact={PATHS.services.exact}
           component={ServicesPage}
         />
         <Route
-          path={PATHS.visitors_shops.path}
-          exact={PATHS.visitors_shops.exact}
+          path={PATHS.shops.path}
+          exact={PATHS.shops.exact}
           component={ShopsPage}
         />
         <Route 

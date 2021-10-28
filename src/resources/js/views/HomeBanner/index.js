@@ -2,20 +2,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
   Autoplay,
   Pagination,
+  Navigation
 } from 'swiper';
 
 import "swiper/css";
 import "swiper/css/pagination"
+import "swiper/css/navigation"
 import style from './banner.module.scss'
+import classNames from "classnames";
 
 SwiperCore.use([
   Autoplay,
-  Pagination
+  Pagination,
+  Navigation
 ]);
 
 const HomeBanner = ({ banners = [] }) => {
+  const sectionClasses = classNames([style['section'], 'banners-slider'])
+  
   return (
-    <section className={style['section']}>
+    <section className={sectionClasses}>
       <Swiper
         slidesPerView={1}
         loop={true}
@@ -23,6 +29,7 @@ const HomeBanner = ({ banners = [] }) => {
         pagination={{
           clickable: true
         }}
+        navigation={true}
         autoplay={{
           delay: 5000,
         }}

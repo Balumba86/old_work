@@ -9,20 +9,20 @@ const optNav = [
   {
     id: 'shops',
     label: 'Магазины',
-    link: PATHS.visitors_shops.path,
-    value: '/visitors/shops'
+    link: PATHS.shops.path,
+    value: '/shops'
   },
   {
     id: 'cafe',
     label: 'Кафе и рестораны',
-    link: PATHS.visitors_cafe.path,
-    value: '/visitors/cafe'
+    link: PATHS.cafe.path,
+    value: 's/cafe'
   },
   {
     id: 'services',
     label: 'Сервисы и услуги',
-    link: PATHS.visitors_services.path,
-    value: '/visitors/services'
+    link: PATHS.services.path,
+    value: '/services'
   }
 ]
 
@@ -48,14 +48,14 @@ const Filters = ({ filters = [], filterValue = undefined, loadData = () => {} })
         <Search loadData={loadData} />
       </div>
       <div className={style['filters-right']}>
-        <div className={style['filters-select']}>
+        {/* <div className={style['filters-select']}>
           <BaseSelect
             value={defaultPageValue}
             options={optNav}
             label='Раздел'
             id='page-select'
           />
-        </div>
+        </div> */}
         <div className={style['filters-select']}>
           <BaseSelect value={filterValue} options={filters} placeholder='Выберите категорию' label='Категория' />
         </div>

@@ -9,7 +9,7 @@ const Social = ({ variant = null}) => {
   })
   return (
     <div className={classes}>
-      <span>Мы в соц.сетях</span>
+      <span>Связаться с нами</span>
       <ul className={style['social']}>
         <li className={style['social__item']}>
           <a href='#' className={style['social__link']}>
@@ -24,6 +24,11 @@ const Social = ({ variant = null}) => {
         <li className={style['social__item']}>
           <a href='#' className={style['social__link']}>
             <Icon name='ok' />
+          </a>
+        </li>
+        <li className={style['social__item']}>
+          <a href='#' className={style['social__link']}>
+            <Icon name='youtube' />
           </a>
         </li>
       </ul>

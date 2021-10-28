@@ -6,7 +6,7 @@ const VisitorsLayout = ({ children = null, title = '' }) => {
   return (
     <Layout>
       <section className={style['section']}>
-        <VisitorsNav />
+        {/* <VisitorsNav /> */}
         <div className={style['page-content']}>
           <h2 className={style['page-title']}>{title}</h2>
           {children}

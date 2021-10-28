@@ -30,30 +30,30 @@ const VisitorsNav = () => {
       <nav className={style['aside-nav']}>
         <ul className={style['aside-nav__list']}>
           <li className={style['aside-nav__item']}>
-            <NavLink
+            {/* <NavLink
               activeClassName={style['aside-nav__link_active']}
               className={style['aside-nav__link']}
               to={PATHS.visitors_shops.path}>
                 Магазины
-            </NavLink>
+            </NavLink> */}
             <SubMenu itemsList={filters.shops} menuClasses={subShops} />
           </li>
           <li className={style['aside-nav__item']}>
-            <NavLink
+            {/* <NavLink
               activeClassName={style['aside-nav__link_active']}
               className={style['aside-nav__link']}
               to={PATHS.visitors_cafe.path}>
                 Кафе и рестораны
-            </NavLink>
+            </NavLink> */}
             <SubMenu itemsList={filters.cafe} menuClasses={subCafe} />
           </li>
           <li className={style['aside-nav__item']}>
-            <NavLink
+            {/* <NavLink
               activeClassName={style['aside-nav__link_active']}
               className={style['aside-nav__link']}
               to={PATHS.visitors_services.path}>
                 Сервисы и услуги
-            </NavLink>
+            </NavLink> */}
             <SubMenu itemsList={filters.services} menuClasses={subServices} />
           </li>
         </ul>

@@ -3,8 +3,8 @@ export const PATHS = {
     path: '/',
     exact: true
   },
-  about: {
-    path: '/about',
+  scheme: {
+    path: '/scheme',
     exact: false
   },
   contacts: {
@@ -27,49 +27,45 @@ export const PATHS = {
     path: '/renters',
     exact: false
   },
+  cafe: {
+    path: '/cafe',
+    exact: true
+  },
+  cafe_category: {
+    path: '/cafe/:category',
+    exact: false
+  },
   cafe_detail: {
-    path: '/visitors/cafe/detail/',
+    path: '/cafe/detail/',
+    exact: false
+  },
+  services: {
+    path: '/services',
+    exact: true
+  },
+  services_category: {
+    path: '/services/:category',
     exact: false
   },
   services_detail: {
-    path: '/visitors/services/detail/',
+    path: '/services/detail/',
+    exact: false
+  },  
+  shops: {
+    path: '/shops',
+    exact: true
+  },
+  shops_category: {
+    path: '/shops/:category',
     exact: false
   },
   shops_detail: {
-    path: '/visitors/shops/detail/',
-    exact: false
-  },
-  cafe_category: {
-    path: '/visitors/cafe/:category',
-    exact: false
-  },
-  services_category: {
-    path: '/visitors/services/:category',
-    exact: false
-  },
-  shops_category: {
-    path: '/visitors/shops/:category',
+    path: '/shops/detail/',
     exact: false
   },
   vacancies: {
     path: '/vacancies',
     exact: false
-  },
-  visitors: {
-    path: '/visitors',
-    exact: true
-  },
-  visitors_cafe: {
-    path: '/visitors/cafe',
-    exact: true
-  },
-  visitors_services: {
-    path: '/visitors/services',
-    exact: true
-  },
-  visitors_shops: {
-    path: '/visitors/shops',
-    exact: true
   },
 }
 
@@ -83,4 +79,20 @@ export const NOT_DATA_VISITORS = {
   cafe: 'В этом разделе пока нет кафе и ресторанов',
   services: 'В этом разделе пока нет сервисов и услуг',
   shops: 'В этом разделе пока нет магазинов'
+}
+
+export const NEWS_TYPES_TITLES = {
+  news: 'Новости',
+  openings: 'Открытия',
+  events: 'Мероприятия',
+  promotions_and_discounts: 'Акции и скидки',
+  film: 'Фильм'
+}
+
+export const NEWS_TYPES = {
+  news: 'news',
+  openings: 'openings',
+  events: 'events',
+  promotions_and_discounts: 'promotions_and_discounts',
+  film: 'film'
 }

@@ -10,7 +10,7 @@ const ShopDetailPage = () => {
       {(props) => (
         <Layout>
           <VisitorsDetail
-            baseUrl={PATHS.visitors_shops.path}
+            baseUrl={PATHS.shops.path}
             linkLabel='К списку магазинов'
             api={api.getShopDetail}
             pathDetail={PATHS.shops_detail.path}

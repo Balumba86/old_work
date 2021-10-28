@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from 'swiper';
 // import { PATHS } from '../../const'
 
@@ -11,8 +11,8 @@ SwiperCore.use([Navigation]);
 const ShopsBlock = ({ shops = [] }) => {
   return (
     <>
-    <section className={style['shops-section']}>
-      {shops && shops.length > 0 ? (
+    {/* <section className={style['shops-section']}> */}
+      {/* {shops && shops.length > 0 ? (
         <>
           <h2 className={style['shops-title']}>Магазины</h2>
           <Swiper
@@ -43,8 +43,8 @@ const ShopsBlock = ({ shops = [] }) => {
             ))}
           </Swiper>
         </>      
-      ) : null}
-       </section>
+      ) : null} */}
+       {/* </section> */}
       <section style={{overflow: 'hidden'}}>
         <div className={style.shadow} />
         <div className={style.bgr} />

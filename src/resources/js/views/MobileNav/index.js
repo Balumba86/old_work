@@ -15,11 +15,6 @@ const MobileNav = () => {
     }
   }, [])
 
-  const visitorsClasses = classNames({
-    [style['nav-link']]: true,
-    [style['nav-link_active']]: location.pathname.includes(PATHS.visitors.path)
-  })
-
   return createPortal(
     <div className={style['mobile-menu']}>
       <nav className={style.nav}>
@@ -32,14 +27,27 @@ const MobileNav = () => {
           </li>
           <li className={style['nav-item']}>
             <NavLink
-              to={PATHS.about.path}
+              to={PATHS.scheme.path}
               className={style['nav-link']}
-              activeClassName={style['nav-link_active']}>О комплексе</NavLink>
+              activeClassName={style['nav-link_active']}>Карта ТЦ</NavLink>
           </li>
           <li className={style['nav-item']}>
             <NavLink
-              to={PATHS.visitors_shops.path}
-              className={visitorsClasses}>Посетителям</NavLink>
+              to={PATHS.shops.path}
+              className={style['nav-link']}
+              activeClassName={style['nav-link_active']}>Магазины</NavLink>
+          </li>
+          <li className={style['nav-item']}>
+            <NavLink
+              to={PATHS.cafe.path}
+              className={style['nav-link']}
+              activeClassName={style['nav-link_active']}>Кафе и рестораны</NavLink>
+          </li>
+          <li className={style['nav-item']}>
+            <NavLink
+              to={PATHS.services.path}
+              className={style['nav-link']}
+              activeClassName={style['nav-link_active']}>Сервисы и услуги</NavLink>
           </li>
           <li className={style['nav-item']}>
             <NavLink
