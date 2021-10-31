@@ -1,14 +1,15 @@
 .filters {
-  // display: none;
   margin-top: 20px;
   grid-template-columns: 100%;
   display: grid;
   gap: 20px;
+  @media (min-width: 567.98px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
   @media (min-width: 991.98px) {
     grid-template-columns: 66% 1fr;
-  }
-  @media (min-width: 1199.98px) {
-    // display: none;
+    gap: 20px;
   }
 }
 
@@ -20,14 +21,6 @@
 
 .filters-right {
   width: 100%;
-  // display: grid;
-  // grid-template-columns: 100%;
-  // gap: 20px;
-  // align-items: end;
-  // justify-content: space-between;
-  // @media (min-width: 567.98px) {
-  //   grid-template-columns: repeat(2, 1fr);
-  // }
 }
 
 .filters-select {

@@ -24,8 +24,6 @@ const Visitors = ({
   const location = useLocation()
   const { filters } = useStoreon('filters')
 
-  console.log(variant, 'check');
-
   useEffect(() => {
     if(location && location.state) {
       if(!slug) {
@@ -62,21 +60,22 @@ const Visitors = ({
   return (
     <>
       <div className={classes} />
-      <Filters loadData={loadData} filterValue={filterValue} filters={filters[variant]} />
+      <div className={style['visitors-content']}>
+        <Filters loadData={loadData} filterValue={filterValue} filters={filters[variant]} />
+        {results.length > 0 ? (
+          <>
+            <CardsList
+              showMore={showMore}
+              status={status}
+              isNext={isNext}
+              list={results}
+              baseUrl={PATHS.shops_detail.path} />
+          </>
+        ) : null}
+      </div>
       {status === LOADING_STATES.loading && currentPage === 1 && (
         <LoaderPage />
       )}
-      
-      {results.length > 0 ? (
-        <>
-          <CardsList
-            showMore={showMore}
-            status={status}
-            isNext={isNext}
-            list={results}
-            baseUrl={PATHS.shops_detail.path} />
-        </>
-      ) : null}
       {status === LOADING_STATES.loading && currentPage > 1 && (
         <LoaderRing />
       )}

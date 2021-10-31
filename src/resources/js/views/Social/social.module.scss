@@ -42,7 +42,6 @@
   padding: 8px 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  // align-items: flex-end;
   @media (min-width: 359.98px) {
     flex-direction: row;
     align-items: center;
@@ -62,10 +61,6 @@
 
 .footer-social .social {
   width: 100%;
-  justify-content: space-between;
-  @media (min-width: 359.98px) {
-    width: auto;
-  }
 }
 
 .footer-social span {
@@ -79,6 +74,9 @@
   @media (min-width: 567.98px) {
     padding-bottom: 16px;
     font-size: 16px;
+  }
+  @media (min-width: 991.98px) {
+    padding-left: 4px;
   }
 }
 

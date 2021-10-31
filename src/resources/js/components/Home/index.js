@@ -7,7 +7,6 @@ const Home = () => {
   const [loading, setLoading] = useState(LOADING_STATES.loading)
   const [banners, setBanners] = useState([])
   const [events, setEvents] = useState([])
-  // const [shops, setShops] = useState([])
 
   useEffect(() => {
     api.getHomeData()
@@ -15,7 +14,6 @@ const Home = () => {
         setLoading(LOADING_STATES.loaded)
         setBanners(data.banners || [])
         setEvents(data.news || [])
-        // setShops(data.shops || [])
       })
       .catch(err => console.log(err, 'err home'))
   }, [])
@@ -26,7 +24,6 @@ const Home = () => {
         <>
           <HomeBanner banners={banners} />
           <NewsBlock list={events} />
-          {/* <Subscription /> */}
           <ShopsBlock />
         </>
       )}

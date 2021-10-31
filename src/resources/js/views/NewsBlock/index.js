@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-// import { Link } from 'react-router-dom'
 import { NEWS_TYPES_TITLES, PATHS } from '../../const'
 
 import style from './news.module.scss'
@@ -22,7 +21,6 @@ const NewsBlock = ({ list = [] }) => {
           )
         })}
       </ul>
-      {/* <Link className='link' to={PATHS.news.path}>Перейти к списку событий</Link> */}
     </section>
   )
 }

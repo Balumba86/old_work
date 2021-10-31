@@ -1,5 +1,3 @@
-
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Select, { components } from 'react-select'
 import style from './select.module.scss'
@@ -86,7 +84,6 @@ const Option = ({ children, data, ...props }) => {
 
 const BaseSelect = ({
   id,
-  // isLoading = true,
   options = [],
   label = '',
   value = undefined,
@@ -107,8 +104,6 @@ const BaseSelect = ({
             Option
           }}
           placeholder=''
-          // isSearchable
-          // isLoading={isLoading}
           options={options}
           value={value}
           {...props}

@@ -32,8 +32,6 @@ const NewsDetail = () => {
     }
   }, [slug])
 
-  console.log(data, 'check')
-
   return (
     <>
       {loading === LOADING_STATES.loaded && data ? (

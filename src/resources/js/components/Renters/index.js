@@ -5,7 +5,6 @@ import {
   planLevel2,
   planLevel3,
   planLevel4,
-  Icon
 } from '../../images'
 import style from './renters.module.scss'
 import classNames from 'classnames'

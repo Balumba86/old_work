@@ -22,7 +22,6 @@ const InfiniteList = ({ api, children = null, initFilterParams = {} }) => {
           setCurrentPage(res.currentPage)
         })
         .catch(err => {
-          console.log(err)
           setStatus(LOADING_STATES.failed)
         })
     }

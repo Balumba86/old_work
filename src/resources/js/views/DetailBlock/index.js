@@ -12,24 +12,6 @@ SwiperCore.use([Navigation, Thumbs]);
 
 const DetailBlock = ({ baseUrl = '/', linkLabel = '', data = {} }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-// category:
-// id: 6
-// slug: "zenskaya-odezda"
-// title: "Женская одежда"
-// description: null
-// hours_work: "09:00 - 21:00"
-// id: 16
-// images: [{…}]
-// level: 1
-// logo: "http://176.99.11.26/storage/shop/IpNMw8TC0egqT2YZZzMIsOgHoS87tw33JOoK8oaa.jpg"
-// meta_description: "тест"
-// meta_keywords: "тест"
-// meta_title: "тест"
-// phone: null
-// point: "8"
-// slug: "test8"
-// title: "Тест8"
-// website: null
 
   return (
     <section className={style['section']}>

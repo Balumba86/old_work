@@ -30,7 +30,7 @@ class Api extends BaseApi {
 
   getCatogoriesShops = async () => {
     const res = await this.get('/shop/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_shops.path)
+    return categoriesSerializer(res.data, PATHS.shops.path)
   }
 
   getShopsCategorySlug = async (params = {}) => {
@@ -52,7 +52,7 @@ class Api extends BaseApi {
 
   getCatogoriesCafe = async () => {
     const res = await this.get('/restaurant/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_cafe.path)
+    return categoriesSerializer(res.data, PATHS.cafe.path)
   }
 
   getCafeCategorySlug = async (params = {}) => {
@@ -74,7 +74,7 @@ class Api extends BaseApi {
 
   getCatogoriesServices = async () => {
     const res = await this.get('/service/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_services.path)
+    return categoriesSerializer(res.data, PATHS.services.path)
   }
 
   getServicesCategorySlug = async (params = {}) => {
