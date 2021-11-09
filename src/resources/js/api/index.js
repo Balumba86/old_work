@@ -109,6 +109,11 @@ class Api extends BaseApi {
     return res.data
   }
 
+  getLevelsImages = async () => {
+    const res = await this.get('/plans')
+    return res.data
+  }
+
 }
 
 const MAIN_URL = process.env.MIX_REACT_APP_API_URL;

@@ -1,13 +1,7 @@
-import RentersForm from '../RentersForm'
-import {
-  planParking,
-  planLevel1,
-  planLevel2,
-  planLevel3,
-  planLevel4,
-} from '../../images'
-import style from './renters.module.scss'
 import classNames from 'classnames'
+import RentersForm from '../RentersForm'
+import LevelsPlans from './LevelsPlans'
+import style from './renters.module.scss'
 
 const Renters = () => {
   return (
@@ -43,27 +37,7 @@ const Renters = () => {
             </li>
           </ul>
         </div>
-        <div className={style['plans']}>
-          <h3 className={style['block-title']}>Планы помещений</h3>
-          <ul className={style['plans-list']}>
-            <li className={style['plans-list__item']}>
-              <img src={planParking} alt='План парковки' />
-            </li>
-            <li className={style['plans-list__item']}>
-              <img src={planLevel1} alt='План первого уровня' />
-            </li>
-            <li className={style['plans-list__item']}>
-              <img src={planLevel2} alt='План второго уровня' />
-            </li>
-            <li className={style['plans-list__item']}>
-              <img src={planLevel3} alt='План третьего уровня' />
-            </li>
-            <li className={style['plans-list__item']}>
-              <img src={planLevel4} alt='План четвертого уровня' />
-            </li>
-          </ul>
-          <a className={style['download-link']} href='#'>Скачать всю карту торгового центра</a>
-        </div>
+        <LevelsPlans />
         <RentersForm />
       </div>
     </section>

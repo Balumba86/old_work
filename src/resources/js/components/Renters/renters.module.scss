@@ -247,7 +247,8 @@
   }
 }
 
-.plans-list__item {
+.plans-list__item,
+.plans-list a {
   position: relative;
   height: 150px;
   border: 1px solid rgba(#9BB6A2, 0.2);
@@ -276,7 +277,8 @@
   display: flex;
 }
 
-.plans-list__item img {
+.plans-list__item img,
+.plans-list a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
