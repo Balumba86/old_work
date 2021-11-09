@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -42,7 +43,7 @@ class NewsController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(NewsRequest $request)
     {
         $this->newsService->adminCreate($request);
 
@@ -67,7 +68,7 @@ class NewsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(NewsRequest $request, int $id)
     {
         $this->newsService->adminUpdate($request, $id);
 

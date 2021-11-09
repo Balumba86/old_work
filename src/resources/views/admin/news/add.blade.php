@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="title" required>
+                            <input class="form-control" type="text" placeholder="" name="title" required value="{{old("title")}}">
                             <input class="form-control" type="hidden" placeholder="" name="slug" readonly>
                         </div>
                         <div class="form-group">
@@ -24,7 +24,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Главное изображение*</label>
+                            <label for="customFile">Главное изображение* (400x300 px)</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" required id="logo_shop" name="main_img">
                                 <label class="custom-file-label" for="logo_shop">Выбрать файл</label>
@@ -32,20 +32,20 @@
                         </div>
                         <div class="form-group">
                             <label for="">Текст статьи*</label>
-                            <textarea id="editor" class="form-control" name="text" required></textarea>
+                            <textarea id="editor" class="form-control" name="text" required>{{old("text")}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="">Мета-заголовок*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_title" required>
+                            <input class="form-control" type="text" placeholder="" name="meta_title" required value="{{old("meta_title")}}">
                         </div>
                         <div class="form-group">
                             <label for="">Ключевые слова*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required>
+                            <input class="form-control" type="text" placeholder="" name="meta_keywords" required value="{{old("meta_keywords")}}">
                         </div>
                         <div class="form-group">
                             <label for="">Мета-описание*</label>
-                            <input class="form-control" type="text" placeholder="" name="meta_description" required>
+                            <input class="form-control" type="text" placeholder="" name="meta_description" required value="{{old("meta_description")}}">
                         </div>
 
                         <div class="form-group">
