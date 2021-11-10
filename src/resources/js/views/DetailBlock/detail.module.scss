@@ -40,6 +40,7 @@
 
 .back-link:hover {
   color: var(--active-color-hover);
+  cursor: pointer;
 }
 
 .back-link:active,
@@ -71,6 +72,13 @@
 .gallery-miniatures__item img {
   width: 100%;
   object-fit: cover;
+  height: 100%;
+}
+
+.detail-gallery .img-logo,
+.gallery-miniatures__item .img-logo {
+  width: 100%;
+  object-fit: contain;
   height: 100%;
 }
 

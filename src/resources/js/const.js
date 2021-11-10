@@ -36,7 +36,7 @@ export const PATHS = {
     exact: false
   },
   cafe_detail: {
-    path: '/cafe/detail/',
+    path: '/cafe/detail/:slug',
     exact: false
   },
   services: {
@@ -48,7 +48,7 @@ export const PATHS = {
     exact: false
   },
   services_detail: {
-    path: '/services/detail/',
+    path: '/services/detail/:slug',
     exact: false
   },  
   shops: {
@@ -60,7 +60,7 @@ export const PATHS = {
     exact: false
   },
   shops_detail: {
-    path: '/shops/detail/',
+    path: '/shops/detail/:slug',
     exact: false
   },
   vacancies: {

@@ -303,44 +303,36 @@ a[href='#']:focus {
   }
 }
 
-// .swiper-button-next,
-// .swiper-button-prev {
-//   width: 34px;
-//   height: 34px;
-//   margin-top: 0;
-//   transform: translateY(-50%);
-//   border-radius: 50%;
-//   background-color: white;
-//   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-// }
-// .swiper-button-next {
-//   right: 10px;
-// }
-
-// .swiper-button-prev {
-//   left: 10px;
-// }
-
-// .swiper-button-next:after,
-// .swiper-button-prev:after {
-//   font-size: 16px;
-//   text-align: center;
-//   vertical-align: middle;
-//   color: var(--active-color);
-// }
-
-// .swiper-button-next:hover,
-// .swiper-button-prev:hover {
-//   width: 35px;
-//   height: 35px;
-// }
-
-.swiper-button-next:after {
-  // margin-right: -2px;
+.gallery .swiper-button-next,
+.gallery .swiper-button-prev {
+  width: 34px;
+  height: 34px;
+  margin-top: 0;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+}
+.gallery .swiper-button-next {
+  right: 10px;
 }
 
-.swiper-button-prev:after {
-  // margin-left: -2px;
+.gallery .swiper-button-prev {
+  left: 10px;
+}
+
+.gallery .swiper-button-next:after,
+.gallery .swiper-button-prev:after {
+  font-size: 16px;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--active-color);
+}
+
+.gallery .swiper-button-next:hover,
+.gallery .swiper-button-prev:hover {
+  width: 35px;
+  height: 35px;
 }
 
 .banners-slider {
