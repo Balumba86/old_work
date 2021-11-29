@@ -18,6 +18,7 @@ import NewsList from './NewsList'
 import BaseSelect from './Select'
 import ShopsBlock from './ShopsBlock'
 import Subscription from './Subscription'
+import Tabs from './Tabs'
 import TextArea from './TextArea'
 import VisitorsLayout from './VisitorsLayout'
 
@@ -42,6 +43,7 @@ export {
   BaseSelect,
   ShopsBlock,
   Subscription,
+  Tabs,
   TextArea,
   VisitorsLayout
 }

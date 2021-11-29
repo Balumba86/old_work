@@ -1,0 +1,26 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  list-style: none;
+}
+
+.tabs--item {
+  margin-right: 30px;
+}
+
+.tabs--link {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  transition: 0.2s;
+}
+
+.tabs--link:hover {
+  color: var(--active-color-hover);
+  cursor: pointer;
+}
+
+.tabs--link-active {
+  color: var(--active-color);
+  text-decoration: none;
+}

@@ -1,9 +1,9 @@
-import AboutPage from './AboutPage'
 import CafeCategoryPage from './CafeCategoryPage'
 import CafeDetailPage from './CafeDetailPage'
 import CafePage from './CafePage'
 import ContactsPage from './ContactsPage'
 import HomePage from './HomePage'
+import LevelsPage from './LevelsPage'
 import NewsDetailPage from './NewsDetailPage'
 import NewsPage from './NewsPage'
 import NotFoundPage from './NotFoundPage'
@@ -18,12 +18,12 @@ import ShopsPage from './ShopsPage'
 import VacanciesPage from './VacanciesPage'
 
 export {
-  AboutPage,
   CafeCategoryPage,
   CafeDetailPage,
   CafePage,
   ContactsPage,
   HomePage,
+  LevelsPage,
   NewsDetailPage,
   NewsPage,
   NotFoundPage,

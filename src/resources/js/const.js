@@ -4,7 +4,7 @@ export const PATHS = {
     exact: true
   },
   scheme: {
-    path: '/scheme',
+    path: '/levels',
     exact: false
   },
   contacts: {

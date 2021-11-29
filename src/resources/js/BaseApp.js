@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { useStoreon } from 'storeon/react';
 import {
-  AboutPage,
   CafeCategoryPage,
   CafeDetailPage,
   CafePage,
   ContactsPage,
   HomePage,
+  LevelsPage,
   NewsDetailPage,
   NewsPage,
   NotFoundPage,
@@ -70,7 +70,7 @@ const App = () => {
         <Route
           path={PATHS.scheme.path}
           exact={PATHS.scheme.exact}
-          component={AboutPage}
+          component={LevelsPage}
         />
         <Route
           path={PATHS.news_detail.path}
