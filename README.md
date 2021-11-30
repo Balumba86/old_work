@@ -31,3 +31,15 @@ make build
 Для запуска слушателя делаем `make dev`
 
 Для боевой сборки фронта (для теста, например) делаем `make prod`
+
+---
+
+При разработке, для генерации/обновления Swagger выполните команду
+
+    docker-compose exec php php artisan l5-swagger:generate
+
+---
+
+Для заполнения БД базовыми данными, выполните
+
+    docker-compose exec php php artisan db:seed
