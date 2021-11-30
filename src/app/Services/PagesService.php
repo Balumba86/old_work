@@ -41,4 +41,13 @@ class PagesService
 
         return $page->delete();
     }
+
+    // Api
+
+    public function getBySlug(string $slug)
+    {
+        $page = Pages::where('slug', $slug)->first();
+
+        return $page;
+    }
 }
