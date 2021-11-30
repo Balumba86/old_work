@@ -30,7 +30,7 @@ class Api extends BaseApi {
 
   getCatogoriesShops = async () => {
     const res = await this.get('/shop/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_shops.path)
+    return categoriesSerializer(res.data, PATHS.shops.path)
   }
 
   getShopsCategorySlug = async (params = {}) => {
@@ -52,7 +52,7 @@ class Api extends BaseApi {
 
   getCatogoriesCafe = async () => {
     const res = await this.get('/restaurant/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_cafe.path)
+    return categoriesSerializer(res.data, PATHS.cafe.path)
   }
 
   getCafeCategorySlug = async (params = {}) => {
@@ -74,7 +74,7 @@ class Api extends BaseApi {
 
   getCatogoriesServices = async () => {
     const res = await this.get('/service/categories')
-    return categoriesSerializer(res.data, PATHS.visitors_services.path)
+    return categoriesSerializer(res.data, PATHS.services.path)
   }
 
   getServicesCategorySlug = async (params = {}) => {
@@ -106,6 +106,16 @@ class Api extends BaseApi {
 
   sentRenterData = async (params = {}) => {
     const res = await this.post('/system/rent', params)
+    return res.data
+  }
+
+  getLevelsImages = async () => {
+    const res = await this.get('/plans')
+    return res.data
+  }
+
+  getLevelInfo = async ({ id = null }) => {
+    const res = await this.get(`/level/${id}`)
     return res.data
   }
 

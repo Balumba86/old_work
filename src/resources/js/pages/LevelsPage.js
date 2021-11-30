@@ -1,16 +1,13 @@
 import ScrollingLayout from '../components/ScrollingLayout'
+import Levels from '../components/Levels'
 import { Layout } from '../views'
 
-const AboutPage = () => {
+const LevelsPage = () => {
   return (
     <ScrollingLayout>
       {() => (
         <Layout>
-          <main>
-            <section>
-
-            </section>
-          </main>
+          <Levels />
         </Layout>
       )}
     </ScrollingLayout>
@@ -18,4 +15,4 @@ const AboutPage = () => {
   )
 }
 
-export default AboutPage
+export default LevelsPage

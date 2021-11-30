@@ -3,7 +3,7 @@ import { useLocation } from 'react-router'
 import { useStoreon } from 'storeon/react'
 import Filters from '../Filters'
 import { CardsList, LoaderPage, LoaderRing, MessageError, MessageNotResults } from '../../views'
-import { LOADING_STATES, NOT_DATA_VISITORS, PATHS } from '../../const'
+import { LOADING_STATES, NOT_DATA_VISITORS } from '../../const'
 import classNames from 'classnames'
 
 import style from './visitors.module.scss'
@@ -24,29 +24,27 @@ const Visitors = ({
   const location = useLocation()
   const { filters } = useStoreon('filters')
 
-  console.log(variant, 'check');
-
   useEffect(() => {
-    if(location && location.state) {
-      if(!slug) {
-        setSlug(location.state.slug)
+    if(location) {
+      const { pathname, state } = location;
+      const startIndex = pathname.lastIndexOf('/')
+      const categorySlug = state?.slug || pathname.slice(startIndex + 1)
+      setSlug(categorySlug)
+      if(state && slug && slug !== state.slug) {
+        loadData(1, { categorySlug })
       }
-      if(slug && slug !== location.state.slug) {
-        loadData(1, { categorySlug: location.state.slug })
-        setSlug(location.state.slug)
-      }      
     }
-  }, [location.state])
+  }, [location])
 
   useEffect(() => {
-    if(location && location.state && filters) {
+    if(slug && filters) {
       filters[variant].find(el => {
-        if(el.value === location.state.slug) {
+        if(el.value === slug) {
           setFilterValue(el)
         }
       })
     }
-  }, [location, filters])
+  }, [slug, filters])
 
   useEffect(() => {
     if(isNext && isLoadMore && status !== LOADING_STATES.loading) {
@@ -62,21 +60,22 @@ const Visitors = ({
   return (
     <>
       <div className={classes} />
-      <Filters loadData={loadData} filterValue={filterValue} filters={filters[variant]} />
+      <div className={style['visitors-content']}>
+        <Filters loadData={loadData} filterValue={filterValue} filters={filters[variant]} />
+        {results.length > 0 ? (
+          <>
+            <CardsList
+              showMore={showMore}
+              status={status}
+              isNext={isNext}
+              list={results}
+            />
+          </>
+        ) : null}
+      </div>
       {status === LOADING_STATES.loading && currentPage === 1 && (
         <LoaderPage />
       )}
-      
-      {results.length > 0 ? (
-        <>
-          <CardsList
-            showMore={showMore}
-            status={status}
-            isNext={isNext}
-            list={results}
-            baseUrl={PATHS.shops_detail.path} />
-        </>
-      ) : null}
       {status === LOADING_STATES.loading && currentPage > 1 && (
         <LoaderRing />
       )}

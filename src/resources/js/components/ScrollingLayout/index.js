@@ -6,8 +6,8 @@ const ScrollingLayout = ({ children = null }) => {
   const [isLoadMore, setLoadMore] = useState(false)
 
   const scrollingTop = () => {
-    if(document) {
-      document.scrollTo({
+    if(window) {
+      window.scrollTo({
         top: 0,
         behavior: 'smooth'
       })
@@ -33,18 +33,18 @@ const ScrollingLayout = ({ children = null }) => {
   }
 
   useEffect(() => {
-    if(document) {
-      document.addEventListener('scroll', scrollingPage)
+    if(window) {
+      window.addEventListener('scroll', scrollingPage)
     }
     
     return () => {
       setShowBtn(false)
       setLoadMore(false)
       window.scrollTo(0, 0);
-      document.removeEventListener('scroll', scrollingPage)
+      window.removeEventListener('scroll', scrollingPage)
     }
     
-  }, [document])
+  }, [window])
 
   return (
     <>

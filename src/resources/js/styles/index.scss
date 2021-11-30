@@ -2,6 +2,7 @@
   --active-color: #437F4A;
   --active-color-hover: hsla(127, 31%, 38%, 0.9);
   --active-color-active: hsla(127, 31%, 38%, 0.8);
+  --active-color-gold: #DCA41D;
   --bgr-white: #fdfdfd;
   --text-color: #000;
   --text-color-error: #d1281c;
@@ -302,41 +303,68 @@ a[href='#']:focus {
   }
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+.gallery .swiper-button-next,
+.gallery .swiper-button-prev {
   width: 34px;
   height: 34px;
   margin-top: 0;
+  transform: translateY(-50%);
   border-radius: 50%;
   background-color: white;
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
 }
-.swiper-button-next {
-  right: 0px;
+.gallery .swiper-button-next {
+  right: 10px;
 }
 
-.swiper-button-prev {
-  left: 0px;
+.gallery .swiper-button-prev {
+  left: 10px;
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
+.gallery .swiper-button-next:after,
+.gallery .swiper-button-prev:after {
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
   color: var(--active-color);
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
+.gallery .swiper-button-next:hover,
+.gallery .swiper-button-prev:hover {
   width: 35px;
   height: 35px;
 }
 
-.swiper-button-next:after {
-  // margin-right: -2px;
-}
-
-.swiper-button-prev:after {
-  // margin-left: -2px;
+.banners-slider {
+  & .swiper-button-next,
+  & .swiper-button-prev {
+    width: 50px;
+    height: 100%;
+    top: auto;
+    bottom: 0;
+    border-radius: 0;
+    background-color: rgba(#000, 0.2);
+    box-shadow: none;
+    transition: 0.2s;
+    &:hover {
+      background-color: rgba(#000, 0.3);
+      &::after {
+        opacity: 1;
+      }
+    }
+    &::after {
+      font-size: 26px;
+      text-align: center;
+      vertical-align: middle;
+      color: var(--bgr-white);
+      opacity: 0.3;
+      transition: 0.2s;
+    }
+  }
+  & .swiper-button-next {
+    right: 0;
+  }
+  & .swiper-button-prev {
+    left: 0;
+  }
 }

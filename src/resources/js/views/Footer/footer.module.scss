@@ -19,12 +19,8 @@
   display: grid;
   grid-template-columns: 100%;
   @media (min-width: 991.98px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 2fr;
   }
-  // 2.5fr repeat(2, 1fr);
-  // @media (min-width: 1199.98px) {
-  //   grid-template-columns: repeat(2, 1.5fr) 1fr;
-  // }
 }
 
 .mobile-btn {
@@ -116,7 +112,7 @@
 .contacts-overlay {
   grid-template-columns: 100%;
   @media (min-width: 567.98px) {
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

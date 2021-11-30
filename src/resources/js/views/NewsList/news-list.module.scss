@@ -38,9 +38,9 @@
 }
 
 .news-list__link {
+  position: relative;
   width: 100%;
   height: 100%;
-  padding: 5px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -59,33 +59,57 @@
   width: 100%;  
   object-fit: cover;
   border-radius: 1px;
-  height: 260px;
-  min-height: 260px;
-  @media (min-width: 359.98px) {
-    height: 300px;
-  }
-  @media (min-width: 1199.98px) {
-    height: 400px;
-    min-height: 400px;
-  }
-}
-
-.news-list__date {
-  margin-top: 5px;
-  color: #9BB6A2;
-  font-size: 12px;
-  filter: grayscale(0.5);
-  @media (min-width: 1199.98px) {
-    font-size: 14px;
-  }
+  height: 70%;
 }
 
 .news-list__title {
   margin-top: 10px;
+  padding: 0 5px;
   color: #000;
   font-size: 16px;
   font-weight: normal;
   @media (min-width: 1199.98px) {
     font-size: 18px;
+  }
+}
+
+.news-list__text {
+  padding: 20px 5px;
+  color: #000;
+}
+
+.news-list__type {
+  position: absolute;
+  content: '';
+  top: 10px;
+  left: 0;
+  padding: 8px 10px;
+  background-color: var(--active-color);
+  color: var(--bgr-white);
+  border-radius: 0 2px 2px 0;
+}
+
+.news-list__content {
+  display: flex;
+  height: 25%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event {
+  &-news {
+    background: linear-gradient(-47deg, rgba(67,127,74,1) 0%, rgba(26,83,33,1) 100%);
+  }
+  &-openings {
+    background: linear-gradient(-47deg, #fad961 0%, #f76b1c 100%)
+  }
+  &-events {
+    background: linear-gradient(-47deg, #5c99e1 0%, #1e5ba3 100%);
+  }
+  &-promotions_and_discounts {
+    background: linear-gradient(-47deg, #f76ad5 0%, #a31e5b 100%);
+  }
+  &-film {
+    background: linear-gradient(-47deg, #939090 0%, #141314 100%);
   }
 }

@@ -15,7 +15,7 @@ const ShopCategoryPage = () => {
       setSlug(location.state.slug)
     } else {
       const { pathname } = location;
-      const newSlug = pathname.replace(`${PATHS.visitors_shops.path}`, '').replace('/', '')
+      const newSlug = pathname.replace(`${PATHS.shops.path}`, '').replace('/', '')
       setSlug(newSlug)
     }
   }, [])

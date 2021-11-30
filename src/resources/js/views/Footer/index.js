@@ -4,6 +4,7 @@ import { Icon } from '../../images'
 import style from './footer.module.scss'
 import { useState } from 'react'
 import classNames from 'classnames'
+import SubscriptionForm from '../../components/SubscriptionForm'
 
 const Footer = () => {
   const [isShow, setShow] = useState(null)
@@ -41,20 +42,14 @@ const Footer = () => {
             <a onClick={e => handleClickLink(e, { currentBlock: 'contacts'})} role='button' href='#' className={style['mobile-btn']}>Контакты</a>
             <div className={classNames([style['footer-block'], style['contacts-overlay']])}>
               <div>
+                <Social variant='footer-social' />
                 <div className={style['footer-contacts']}><Icon name='geo' />г. Иваново, пр. Ленина, 57А</div>
                 <div className={style['footer-contacts']}><Icon name='time' />9:00 - 21:00</div>
                 <div className={style['footer-contacts']}><Icon name='phone' />+7 (800) 101-54-58</div>
               </div>
-              <Social variant='footer-social' />
+              <SubscriptionForm />
             </div>
-          </div>
-          {/* <FooterNav />
-          <div>
-            <div className={style['footer-contacts']}><Icon name='geo' />г. Иваново, пр. Ленина, 57А</div>
-            <div className={style['footer-contacts']}><Icon name='time' />9:00 - 21:00</div>
-            <div className={style['footer-contacts']}><Icon name='phone' />+7 (800) 101-54-58</div>
-          </div>
-          <Social variant='footer-social' /> */}
+          </div>          
         </div>
         <div className={style['footer-copyright']}>ТЦ НИКОЛЬСКИЙ &copy; 2021 / ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
       </div>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import { DetailBlock, LoaderPage } from "../../views"
-import { LOADING_STATES, PATHS } from "../../const"
+import { LOADING_STATES } from "../../const"
 
-const VisitorsDetail = ({ baseUrl = '', api = null, linkLabel = '', pathDetail = '' }) => {
+const VisitorsDetail = ({ api = null, ...props }) => {
   const location = useLocation()
   const [data, setData] = useState({})
   const [isLoading, setLoading] = useState(null)
@@ -11,10 +11,11 @@ const VisitorsDetail = ({ baseUrl = '', api = null, linkLabel = '', pathDetail =
   useEffect(() => {
     setLoading(LOADING_STATES.loading)
     let slug = null
-
+    
     if(location) {
-      const { pathname } = location;
-      slug = pathname.replace(pathDetail, '').replace('/', '')
+      const { pathname, state } = location;
+      const startIndex = pathname.lastIndexOf('/')
+      slug = state?.slug || pathname.slice(startIndex + 1)
     }
       
     if(api && slug) {
@@ -29,7 +30,7 @@ const VisitorsDetail = ({ baseUrl = '', api = null, linkLabel = '', pathDetail =
 
   return (
     <>
-      <DetailBlock data={data} baseUrl={baseUrl} linkLabel={linkLabel} />
+      <DetailBlock data={data} {...props} />
       {isLoading === LOADING_STATES.loading && (
         <LoaderPage />
       )}

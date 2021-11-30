@@ -1,0 +1,15 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 283.5">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st3{display:none;fill-rule:evenodd;clip-rule:evenodd;}
+</style>
+	<g>
+		<path fill='none' stroke='#000000' stroke-width='4' stroke-miterlimit='10' d="M229,257.9H54.4c-15.9,0-28.8-12.9-28.8-28.8V54.4c0-15.9,12.9-28.8,28.8-28.8H229
+			c15.9,0,28.8,12.9,28.8,28.8V229C257.9,244.9,245,257.9,229,257.9z"/>
+		<path d="M235.3,117.3c0-22.7-18.4-41.1-41.1-41.1h-105c-22.7,0-41.1,18.4-41.1,41.1v48.9c0,22.7,18.4,41.1,41.1,41.1h105
+			c22.7,0,41.1-18.4,41.1-41.1V117.3z M173.5,145.4l-47.1,23.3c-1.8,1-8.1-0.3-8.1-2.4v-47.8c0-2.1,6.3-3.5,8.2-2.4l45.1,24.5
+			C173.5,141.6,175.4,144.4,173.5,145.4z"/>
+	</g>
+</svg>

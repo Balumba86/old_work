@@ -33,7 +33,10 @@
         "react-router": "^5.2.1",
         "react-router-dom": "^5.2.1",
         "react-select": "^4.3.1",
+        "react-svg": "^14.1.2",
+        "react-tooltip-lite": "^1.12.0",
         "react-yandex-maps": "^4.6.0",
+        "simple-react-lightbox": "^3.6.9-0",
         "storeon": "^3.1.4",
         "swiper": "^7.0.6",
         "yup": "^0.32.9"

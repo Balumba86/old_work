@@ -2,7 +2,6 @@
   padding: 40px 0;
   margin: 0 auto;
   width: calc(100% - 40px);
-  // position: relative;
   @media (min-width: 767.98px) {
     width: calc(100% - 100px);
   }
@@ -15,20 +14,20 @@
 }
 
 .shadow {
-  width: calc(100% + 40px);
-  height: 30px;
-  box-shadow: -10px 10px 10px var(--bgr-white);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  @media (min-width: 413.98px) {
-    height: 20px;
-  }
-  @media (min-width: 1098.98px) {
-    width: calc(100% + 20px);
-    box-shadow: -5px 10px 10px var(--bgr-white);
-    height: 30px;
-  }
+  // width: calc(100% + 40px);
+  // height: 30px;
+  // // box-shadow: -10px 10px 10px var(--bgr-white);
+  // position: relative;
+  // z-index: 1;
+  // overflow: hidden;
+  // @media (min-width: 413.98px) {
+  //   height: 20px;
+  // }
+  // @media (min-width: 1098.98px) {
+  //   width: calc(100% + 20px);
+  //   box-shadow: -5px 10px 10px var(--bgr-white);
+  //   height: 30px;
+  // }
 }
 
 .bgr {
@@ -69,27 +68,15 @@
 }
 
 .shops-list {
-  // display: grid;
-  // position: static;
   padding-bottom: 10px;
   margin: 0 auto;
-  // list-style: none;
-  // grid-template-columns: repeat(6, 1fr);
-  // justify-items: center;
-  // align-items: center;
-  // grid-gap: 10px;
-  // overflow-x: auto;
 }
 
 .shops-list__item {
-  // width: 150px !important;
   height: 100% !important;
   padding: 5px;
   transition: 0.2s;
   filter: grayscale(1);
-  // @media (max-width: 1024px) {
-  //   width: 130px;
-  // }
 }
 
 .shops-list__logo {

@@ -5,11 +5,11 @@ import gallery from './gallery.jpg'
 import gallery2 from './gallery2.jpg'
 import Icon from './icons/Icon'
 import logoNav from './logo_nav.svg'
-import planParking from './levels/parking.jpg'
-import planLevel1 from './levels/level_1.jpg'
-import planLevel2 from './levels/level_2.jpg'
-import planLevel3 from './levels/level_3.jpg'
-import planLevel4 from './levels/level_4.jpg'
+import planLevel1 from './levels/level_1.svg'
+import planLevel2 from './levels/level_2.svg'
+import planLevel3 from './levels/level_3.svg'
+import planLevel4 from './levels/level_4.svg'
+import planParking from './levels/parking.svg'
 import sale from './sale.jpg'
 import search from './search.svg'
 import serviceBgr from './service_bgr.jpg'
@@ -27,11 +27,11 @@ export {
   gallery2,
   Icon,
   logoNav,
-  planParking,
   planLevel1,
   planLevel2,
   planLevel3,
   planLevel4,
+  planParking,
   sale,
   search,
   serviceBgr,

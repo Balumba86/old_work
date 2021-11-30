@@ -22,12 +22,21 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 0 35px;
+  padding: 0 10px;
   text-decoration: none;
   text-transform: uppercase;
   color: var(--bgr-white);
   background-color: var(--active-color);
   transition: 0.2s;
+  @media (min-width: 1099.98px) {
+    padding: 0 15px;
+  }
+  @media (min-width: 1199.98px) {
+    padding: 0 20px;
+  }
+  @media (min-width: 1299.98px) {
+    padding: 0 25px;
+  }
 }
 
 .nav-link:focus, .nav-link:active {
