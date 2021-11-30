@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MailSenderController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\PagesController;
 
 use App\Http\Controllers\Email\UnsubscribeController;
 
@@ -133,6 +134,15 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         Route::get('/add', [MailSenderController::class, 'add'])->name('admin-email-sender-add');
         Route::post('/create', [MailSenderController::class, 'create'])->name('admin-email-sender-create');
         Route::get('/view/{id}', [MailSenderController::class, 'view'])->name('admin-email-sender-view');
+    });
+
+    Route::prefix('pages')->group(function () {
+        Route::get('/', [PagesController::class, 'index'])->name('admin-pages');
+        Route::get('/add', [PagesController::class, 'add'])->name('admin-pages-add');
+        Route::post('/create', [PagesController::class, 'create'])->name('admin-pages-create');
+        Route::get('/edit/{id}', [PagesController::class, 'edit'])->name('admin-pages-edit');
+        Route::put('/update/{id}', [PagesController::class, 'update'])->name('admin-pages-update');
+        Route::delete('/delete/{id}', [PagesController::class, 'delete'])->name('admin-pages-delete');
     });
 
 });

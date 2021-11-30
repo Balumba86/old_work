@@ -84,7 +84,7 @@
                 </li>
 
                 <li class="nav-header">Прочие разделы</li>
-
+                <li class="nav-item"><a href="{{route('admin-pages')}}" class="nav-link {{ request()->is('admin/pages*') ? 'active' : null }}"><i class="fas fa-paste nav-icon"></i><p>Статичные страницы</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-banners')}}" class="nav-link {{ request()->is('admin/banners*') ? 'active' : null }}"><i class="far fa-images nav-icon"></i><p>Баннеры на главной</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/contacts*') ? 'active' : null }}"><i class="far fa-address-card nav-icon"></i><p>Контакты</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-jobs')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
