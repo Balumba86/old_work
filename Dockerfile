@@ -1,6 +1,6 @@
 FROM php:7.4-fpm-alpine
 
-RUN apk add --no-cache autoconf g++ libmcrypt supervisor make libmcrypt-dev mosquitto-dev nginx tzdata 
+RUN apk add --no-cache autoconf g++ libmcrypt supervisor make libmcrypt-dev mosquitto-dev nginx tzdata
 
 ADD ./conf/php/www.conf /usr/local/etc/php-fpm.d/www.conf
 
@@ -13,7 +13,7 @@ WORKDIR /var/www/html
 RUN pecl install mcrypt-1.0.3 \
     && pecl install xdebug-2.8.1 \
     && pecl install Mosquitto-0.4.0 \
-    && docker-php-ext-enable mcrypt xdebug mosquitto 
+    && docker-php-ext-enable mcrypt xdebug mosquitto
 
 RUN apk add libpq postgresql-dev ldb-dev libldap openldap-dev && \
     docker-php-ext-install pdo pdo_pgsql pgsql ldap
@@ -47,7 +47,7 @@ RUN apk add --no-cache nodejs npm yarn
 #&&  yarn dev \
 #&&  rm -rf node_modules \
 #&&  rm -rf package-lock.json \
-&&  npm install
+RUN npm install
 ###
 
 EXPOSE 9000
