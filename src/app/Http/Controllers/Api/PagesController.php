@@ -26,7 +26,7 @@ class PagesController extends Controller
     /**
      * @OA\Get(
      *     path="/page/{pageSlug}",
-     *     tags={"page"},
+     *     tags={"pages"},
      *     summary="Получение статичной страницы",
      *     operationId="getPageBySlug",
      *     @OA\Parameter(
@@ -41,11 +41,11 @@ class PagesController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Успешный ответ",
-     *         @OA\JsonContent(ref="#/components/schemas/ItemDetailResponse")
+     *         @OA\JsonContent(ref="#/components/schemas/StaticPageResponse")
      *     )
      * )
      */
-    public function getPageBySlug($slug)
+    public function getPageBySlug($slug = '')
     {
         $page = $this->pagesService->getBySlug($slug);
 

@@ -23,4 +23,11 @@ class Pages extends Model
         'slug',
         'content'
     ];
+
+    protected $hidden = [
+        'id',
+        'deleted_at',
+        'created_at',
+        'updated_at'
+    ];
 }

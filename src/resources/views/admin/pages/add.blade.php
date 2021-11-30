@@ -17,10 +17,11 @@
                         <div class="form-group">
                             <label for="">Slug ссылки*</label>
                             <input class="form-control" type="text" placeholder="" name="slug" required>
+                            <span class="text-muted">Только латиница, нижний регистр, без пробелов и спецсимволов</span>
                         </div>
                         <div class="form-group">
                             <label for="">Текст*</label>
-                            <textarea id="editor" class="form-control" name="content['description']" required></textarea>
+                            <textarea id="editor" class="form-control" name="content[description]" required></textarea>
                         </div>
                     </div>
                     <div class="card-footer">

@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\PlanController;
+use App\Http\Controllers\Api\PagesController;
 
 
 Route::prefix('v1')->middleware('api')->group(function () {
@@ -30,6 +31,7 @@ Route::prefix('v1')->middleware('api')->group(function () {
     Route::get('/level/{id}', [LevelController::class, 'indexLevel']);
     Route::get('/opening-jobs', [JobController::class, 'indexJobs']);
     Route::get('/plans', [PlanController::class, 'indexPlans']);
+    Route::get('/page/{slug?}', [PagesController::class, 'getPageBySlug']);
 
     Route::prefix('shop')->group(function () {
         Route::get('/categories', [ShopCategoryController::class, 'index'])->name('api-shop-category-list');

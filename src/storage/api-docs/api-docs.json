@@ -167,6 +167,38 @@
                 }
             }
         },
+        "/page/{pageSlug}": {
+            "get": {
+                "tags": [
+                    "pages"
+                ],
+                "summary": "Получение статичной страницы",
+                "operationId": "getPageBySlug",
+                "parameters": [
+                    {
+                        "name": "pageSlug",
+                        "in": "path",
+                        "description": "slug страницы",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StaticPageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/plans": {
             "get": {
                 "tags": [
@@ -1617,6 +1649,34 @@
                     }
                 },
                 "type": "object"
+            },
+            "StaticPageResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
             }
         },
         "requestBodies": {
@@ -1670,6 +1730,10 @@
         {
             "name": "other",
             "description": "Прочий роутинг получения данных"
+        },
+        {
+            "name": "pages",
+            "description": "Статичные страницы, создаваемые в админ-панели"
         }
     ],
     "security": [

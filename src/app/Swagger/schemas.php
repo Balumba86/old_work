@@ -627,4 +627,30 @@
  *         type="string"
  *     )
  * )
+ * @OA\Schema(
+ *      schema="StaticPageResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *          property="data",
+ *          @OA\Property(
+ *            property="title",
+ *            type="string"
+ *          ),
+ *          @OA\Property(
+ *            property="slug",
+ *            type="string"
+ *          ),
+ *          @OA\Property(
+ *            property="content",
+ *            @OA\Property(
+ *              property="description",
+ *              type="string"
+ *            ),
+ *          ),
+ *       )
+ * )
  */
