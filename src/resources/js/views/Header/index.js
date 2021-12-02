@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 import MobileNav from '../MobileNav'
 import HeaderNav from '../HeaderNav'
 import Social from '../Social'
@@ -42,13 +43,15 @@ const Header = () => {
           </div>
           <div className={style['header-top__left']}>
             <a className={style['header-logo']}/>
+          </div>
+          <div className={style['header-top__center']}>
             <div className={style['header-contacts__block_a']}>
               <a href={PATHS.scheme.path} className={style['header-contacts__link']}><Icon name='parking' />Парковка</a>
               <a href='tel:+78001015458' className={style['header-contacts__link']}><Icon name='phone' />+7 (800) 101-54-58</a>
             </div>
             <div className={style['header-contacts__block']}>
               <div className={style['header-contacts__time']}><Icon name='time' />9:00 - 21:00</div>
-              <div className={style['header-contacts__address']}><Icon name='geo' />г. Иваново, пр. Ленина, 57А</div>
+              <Link to={PATHS.contacts.path} className={style['header-contacts__link']}><Icon name='geo' />г. Иваново, пр. Ленина, 57А</Link>
             </div>
           </div>
           <div className={style['header-top__right']}>

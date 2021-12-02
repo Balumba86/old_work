@@ -1,8 +1,11 @@
+import PersonalDataPolicy from "../components/PersonalDataPolicy"
 import { Layout } from "../views"
 
 const PersonalDataPolicyPage = () => {
   return (
-    <Layout></Layout>
+    <Layout>
+      <PersonalDataPolicy />
+    </Layout>
   )
 }
 

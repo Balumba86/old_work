@@ -119,6 +119,11 @@ class Api extends BaseApi {
     return res.data
   }
 
+  getStaticPage = async ({ pageSlug = '' }) => {
+    const res = await this.get(`/page/${pageSlug}`)
+    return res.data
+  }
+
 }
 
 const MAIN_URL = process.env.MIX_REACT_APP_API_URL;

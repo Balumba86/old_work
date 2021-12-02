@@ -96,3 +96,15 @@ export const NEWS_TYPES = {
   promotions_and_discounts: 'promotions_and_discounts',
   film: 'film'
 }
+
+export const SOCIAL_LINKS = {
+  instagram: 'https://www.instagram.com/nikolskymall/',
+  ok: 'https://ok.ru/nikolskymalll',
+  vk: 'https://vk.com/nikolskymall',
+  youtube: 'https://www.youtube.com/channel/UCiaxe3Z2cb6WM0f8q4II5fA'
+}
+
+export const SLUG_PAGES = {
+  parking: 'parking',
+  personal_data: 'personal-data-policy'
+}
