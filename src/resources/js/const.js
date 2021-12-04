@@ -106,5 +106,7 @@ export const SOCIAL_LINKS = {
 
 export const SLUG_PAGES = {
   parking: 'parking',
-  personal_data: 'personal-data-policy'
+  parkingRules: 'parking-rules',
+  personal_data: 'personal-data-policy',
+  renters: 'renters'
 }
