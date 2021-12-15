@@ -7,6 +7,7 @@ import LevelsPage from './LevelsPage'
 import NewsDetailPage from './NewsDetailPage'
 import NewsPage from './NewsPage'
 import NotFoundPage from './NotFoundPage'
+import ParkingRulesPage from './ParkingRulesPage'
 import PersonalDataPolicyPage from './PersonalDataPolicyPage'
 import RentersPage from './RentersPage'
 import ServicesCategoryPage from './ServicesCategoryPage'
@@ -27,6 +28,7 @@ export {
   NewsDetailPage,
   NewsPage,
   NotFoundPage,
+  ParkingRulesPage,
   PersonalDataPolicyPage,
   RentersPage,
   ServicesCategoryPage,

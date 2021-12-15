@@ -815,7 +815,7 @@
   
   <polygon class="fil9" points="2085,2823 1992,2823 1992,2759 2085,2759 "/>
   
-  <g class='area-U' id="_2339111752160">
+  <!-- <g class='area-U' id="_2339111752160">
    <polygon class="fil2 str0 area-U" points="2597,2328 2540,2328 2540,2385 2597,2385 "/>
    <g class='area-U'>
     <g class='area-U' transform="matrix(1 0 0 1 -937.183 -109.986)">
@@ -827,7 +827,7 @@
      </g>
     </g>
    </g>
-  </g>
+  </g> -->
   
   <rect class="fil10" transform="matrix(2.64845E-14 -1.61993 1 4.29032E-14 4981.04 2184.97)" width="217.895" height="61.6061"/>
   <rect class="fil11 str1" transform="matrix(2.64845E-14 -1.09023 1 2.88744E-14 4632.84 2123.36)" width="267" height="348"/>

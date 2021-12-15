@@ -67,6 +67,10 @@ export const PATHS = {
     path: '/vacancies',
     exact: false
   },
+  parking_rules: {
+    path: "/parking-rules",
+    exact: false
+  }
 }
 
 export const LOADING_STATES = {
@@ -105,8 +109,8 @@ export const SOCIAL_LINKS = {
 }
 
 export const SLUG_PAGES = {
-  parking: 'parking',
+  parking: 'parking-level',
   parkingRules: 'parking-rules',
   personal_data: 'personal-data-policy',
-  renters: 'renters'
+  renters: 'renters',
 }
