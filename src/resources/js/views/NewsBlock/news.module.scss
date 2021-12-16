@@ -16,11 +16,20 @@
 
 .news-list {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(1, 300px);
   grid-auto-rows: 350px;
   gap: 10px;
   list-style: none;
   justify-content: center;
+  @media (min-width: 567.98px) {
+    grid-template-columns: repeat(2, 250px);
+  }
+  @media (min-width: 767.98px) {
+    grid-template-columns: repeat(2, 300px);
+  }
+  @media (min-width: 991.98px) {
+    grid-template-columns: repeat(3, 300px);
+  }
 }
 
 .news-list__item {
