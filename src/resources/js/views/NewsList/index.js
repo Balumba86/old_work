@@ -28,14 +28,8 @@ const NewsList = ({ list = [] }) => {
                 </div>
               </a>
             </li>
-          // <li key={item.slug} className={style['news-list__item']}>
-          //   <a href={path} onClick={() => handleClick(path, { slug: item.slug })} className={style['news-list__link']}>
-          //     <img className={style['news-list__img']} width='300' height='400' src={item.main_img} alt='' />
-          //     <time className={style['news-list__date']} dateTime={item.date}>{item.date}</time>
-          //     <h3 className={style['news-list__title']}>{item.title}</h3>
-          //   </a>
-          // </li>
-        )})}
+          )}
+        )}
       </ul>
     </>
   )

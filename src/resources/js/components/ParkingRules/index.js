@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react'
-import { ReactSVG } from 'react-svg'
 import { LoaderPage } from '../../views'
-import { planParking } from '../../images'
-import { PATHS, SLUG_PAGES } from '../../const'
+import { SLUG_PAGES } from '../../const'
 import api from '../../api'
-import style from './levels.module.scss'
-import { Link } from 'react-router-dom'
+import style from './parking.module.scss'
 
-const ParkingLevel = () => {
+const ParkingRules = () => {
+
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    api.getStaticPage({pageSlug: SLUG_PAGES.parking})
+    api.getStaticPage({ pageSlug: SLUG_PAGES.parkingRules })
       .then(res => {
         setData({
           text: res.data.content.description,
@@ -22,17 +20,15 @@ const ParkingLevel = () => {
   }, [])
 
   return (
-    <>
-      <ReactSVG src={planParking} />
+    <section className={style['section']}>
       {data ? (
         <>
           <h2 className={style['page-title']}>{data.title}</h2>
           <div className={style['parking-policy']} dangerouslySetInnerHTML={{__html: data.text || ''}} />
-          <div>С полными правилами работы парковок вы можете ознакомиться <Link className={style['link']} to={PATHS.parking_rules.path}>здесь</Link>.</div>
         </>
       ) : <LoaderPage /> }
-    </>
+    </section>
   )
 }
 
-export default ParkingLevel
+export default ParkingRules

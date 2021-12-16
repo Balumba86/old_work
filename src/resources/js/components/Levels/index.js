@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Tabs } from '../../views'
+import { LoaderPage, Tabs } from '../../views'
 import CurrentLevel from './CurrentLevel'
 import api from '../../api'
 
 import style from './levels.module.scss'
+import ParkingLevel from './ParkingLevel'
 
 const tabsList = [
   {key: 'level-1', label: 'Уровень 1', value: 1},
@@ -16,7 +17,6 @@ const tabsList = [
 const Levels = () => {
   const [currentLevel, setCurrentLevel] = useState(1)
   const [levelInfo, setLevelInfo] = useState(null)
-  // const [idsList, setIdsList] = useState([])
 
   const setLevel = (level = 1) => {
     setCurrentLevel(level)
@@ -26,10 +26,7 @@ const Levels = () => {
     if(currentLevel) {
       api.getLevelInfo({id: currentLevel})
         .then(res => {
-          // console.log(res, 'res')
           setLevelInfo(res.data)
-          // const list = [...res.data].map(el => el.id)
-          // setIdsList(list)
         })
         .catch(err => console.log(err, 'err'))
     }
@@ -45,24 +42,14 @@ const Levels = () => {
       />
       <div>
         {currentLevel && levelInfo ? (
-          <CurrentLevel levelInfo={levelInfo} currentLevel={currentLevel} />
-        ) : <>Loading</>}
-{/*         
-        {currentLevel === 1 && (
-          <FirstLevel levelInfo={levelInfo} idsList={idsList} />
-        )}
-        {currentLevel === 2 && (
-          <SecondLevel />
-        )}
-        {currentLevel === 3 && (
-          <ThirdLevel />
-        )}
-        {currentLevel === 4 && (
-          <FourthLevel />
-        )}
-        {currentLevel === 5 && (
-          <ParkingLevel />
-        )} */}
+          <>
+            {currentLevel !== 5 ? (
+              <CurrentLevel levelInfo={levelInfo} currentLevel={currentLevel} />
+            ) : (
+              <ParkingLevel />
+            )}
+          </>
+        ) : <LoaderPage />}
       </div>
     </section>
   )

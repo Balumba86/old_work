@@ -1,9 +1,27 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import RentersForm from '../RentersForm'
 import LevelsPlans from './LevelsPlans'
+import { LoaderPage } from '../../views'
+import { SLUG_PAGES } from '../../const'
+import api from '../../api'
+
 import style from './renters.module.scss'
 
 const Renters = () => {
+  const [content, setContent] = useState(null)
+
+  useEffect(() => {
+    api.getStaticPage({ pageSlug: SLUG_PAGES.renters})
+      .then(res => {
+        setContent({
+          title: res.data.title,
+          text: res.data.content.description
+        })
+      })
+      .catch(err => console.log(err, 'err renters'))
+  }, [])
+
   return (
     <section className={style['section']}>
       <h2 className={style['renters-title']}>Арендаторам</h2>
@@ -37,6 +55,12 @@ const Renters = () => {
             </li>
           </ul>
         </div>
+        {content ? (
+          <div className={style['interview']}>
+            <h3 className={style['block-title']}>{content.title}</h3>
+            <div className={style['interview-text']} dangerouslySetInnerHTML={{__html: content?.text || ''}}  />
+        </div>
+        ) : <LoaderPage />}
         <LevelsPlans />
         <RentersForm />
       </div>
