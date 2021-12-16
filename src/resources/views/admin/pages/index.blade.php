@@ -9,7 +9,7 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
-                            <th class="text-center">Название</th>
+                            <th>Название</th>
                             <th class="text-center">Slug ссылки</th>
                             <th class="text-center">Создана</th>
                             <th><a href="{{route('admin-pages-add')}}" class="btn btn-outline-success btn-sm"><i class="fas fa-plus"></i></a></th>
@@ -18,7 +18,7 @@
                         <tbody>
                         @forelse($pages as $page)
                         <tr>
-                            <td class="text-center">{{$page->title}}</td>
+                            <td>{{$page->title}}</td>
                             <td class="text-center">{{$page->slug}}</td>
                             <td class="text-center">{{date('d.m.Y H:i', strtotime($page->created_at))}}</td>
                             <td>
