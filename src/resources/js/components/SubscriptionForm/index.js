@@ -5,6 +5,7 @@ import { PATHS } from '../../const'
 import api from '../../api'
 
 import style from './form.module.scss'
+import { Link } from 'react-router-dom'
 
 const SubscriptionForm = () => {
   const onSubmit = (values, actions) => {
@@ -48,7 +49,7 @@ const SubscriptionForm = () => {
             variant='btn-subscr'>ok</Button>
         </fieldset>
         <fieldset className={style['subscr-form__footer']}>
-          <div className={style['agree-text']}>Нажимая на кнопку "Отправить", вы даете <a className={style['agree-link']} href={PATHS.personal_data.path}>согласие на обработку ваших персональных данных</a> в соответствии с ФЗ от 27.07.2006 N 152-ФЗ.</div>
+          <div className={style['agree-text']}>Нажимая на кнопку "Отправить", вы даете <Link className={style['agree-link']} to={PATHS.personal_data.path}>согласие на обработку ваших персональных данных</Link> в соответствии с ФЗ от 27.07.2006 N 152-ФЗ.</div>
         </fieldset>
       </form>
     </>

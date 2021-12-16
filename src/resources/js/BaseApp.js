@@ -11,6 +11,7 @@ import {
   NewsDetailPage,
   NewsPage,
   NotFoundPage,
+  ParkingRulesPage,
   PersonalDataPolicyPage,
   RentersPage,
   ServiceDetailPage,
@@ -147,6 +148,12 @@ const App = () => {
           path={PATHS.personal_data.path}
           exact={PATHS.personal_data.exact}
           component={PersonalDataPolicyPage}
+        />
+
+        <Route
+          path={PATHS.parking_rules.path}
+          exact={PATHS.parking_rules.exact}
+          component={ParkingRulesPage}
         />
 
         <Route component={NotFoundPage} />
