@@ -23,29 +23,29 @@
                             <td class="text-center">{{date('d.m.Y H:i', strtotime($page->created_at))}}</td>
                             <td>
                                 <a href="{{route('admin-pages-edit', $page->id)}}" class="btn btn-outline-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                <span data-target="#drop_post_{{$page->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>
-                                <form onsubmit="true" action="{{route('admin-pages-delete', $page->id)}}" method="post" id="drop-form-{{$page->id}}">
-                                    @method('DELETE')
-                                    @csrf
-                                    <div class="modal fade" id="drop_post_{{$page->id}}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-danger">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Вы действительно хотите удалить страницу "{{$page->title}}"?</p>
-                                                    <p class="small">* Данное действие невозможно будет отменить!</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="submit" class="btn btn-outline-light">Удалить</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+{{--                                <span data-target="#drop_post_{{$page->id}}" data-toggle="modal" class="btn btn-outline-danger btn-sm ml-2"><i class="fas fa-times"></i></span>--}}
+{{--                                <form onsubmit="true" action="{{route('admin-pages-delete', $page->id)}}" method="post" id="drop-form-{{$page->id}}">--}}
+{{--                                    @method('DELETE')--}}
+{{--                                    @csrf--}}
+{{--                                    <div class="modal fade" id="drop_post_{{$page->id}}">--}}
+{{--                                        <div class="modal-dialog">--}}
+{{--                                            <div class="modal-content bg-danger">--}}
+{{--                                                <div class="modal-header">--}}
+{{--                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                                        <span aria-hidden="true">&times;</span>--}}
+{{--                                                    </button>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="modal-body">--}}
+{{--                                                    <p>Вы действительно хотите удалить страницу "{{$page->title}}"?</p>--}}
+{{--                                                    <p class="small">* Данное действие невозможно будет отменить!</p>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="modal-footer justify-content-between">--}}
+{{--                                                    <button type="submit" class="btn btn-outline-light">Удалить</button>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
                             </td>
                         </tr>
                         @empty
