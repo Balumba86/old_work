@@ -46,7 +46,7 @@ const Header = () => {
           </div>
           <div className={style['header-top__center']}>
             <div className={style['header-contacts__block_a']}>
-              <a href={PATHS.scheme.path} className={style['header-contacts__link']}><Icon name='parking' />Парковка</a>
+              <Link to={{ pathname: PATHS.scheme.path, state: { level: 5}}} className={style['header-contacts__link']}><Icon name='parking' />Парковка</Link>
               <a href='tel:+78001015458' className={style['header-contacts__link']}><Icon name='phone' />+7 (800) 101-54-58</a>
             </div>
             <div className={style['header-contacts__block']}>

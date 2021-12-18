@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { LoaderPage, Tabs } from '../../views'
+import { useLocation } from 'react-router'
 import CurrentLevel from './CurrentLevel'
+import ParkingLevel from './ParkingLevel'
+import { LoaderPage, Tabs } from '../../views'
 import api from '../../api'
 
 import style from './levels.module.scss'
-import ParkingLevel from './ParkingLevel'
 
 const tabsList = [
   {key: 'level-1', label: 'Уровень 1', value: 1},
@@ -17,10 +18,17 @@ const tabsList = [
 const Levels = () => {
   const [currentLevel, setCurrentLevel] = useState(1)
   const [levelInfo, setLevelInfo] = useState(null)
+  const location = useLocation();
 
   const setLevel = (level = 1) => {
     setCurrentLevel(level)
   }
+
+  useEffect(() => {
+    if(location && location.state) {
+      setCurrentLevel(location.state.level)
+    }
+  }, [location])
 
   useEffect(() => {
     if(currentLevel) {
