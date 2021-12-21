@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MailSenderController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\GalleryController;
 
 use App\Http\Controllers\Email\UnsubscribeController;
 
@@ -143,6 +144,13 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
         Route::get('/edit/{id}', [PagesController::class, 'edit'])->name('admin-pages-edit');
         Route::put('/update/{id}', [PagesController::class, 'update'])->name('admin-pages-update');
         Route::delete('/delete/{id}', [PagesController::class, 'delete'])->name('admin-pages-delete');
+    });
+
+    Route::prefix('gallery')->group(function () {
+        Route::get('/', [GalleryController::class, 'index'])->name('admin-gallery');
+        Route::get('/add', [GalleryController::class, 'add'])->name('admin-gallery-add');
+        Route::post('/create', [GalleryController::class, 'create'])->name('admin-gallery-create');
+        Route::delete('/delete/{id}', [GalleryController::class, 'delete'])->name('admin-gallery-delete');
     });
 
 });
