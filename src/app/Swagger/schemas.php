@@ -653,4 +653,36 @@
  *          ),
  *       )
  * )
+ * @OA\Schema(
+ *      schema="GalleryResponse",
+ *      @OA\Property(
+ *          property="type",
+ *          type="string",
+ *          default="success"
+ *      ),
+ *       @OA\Property(
+ *            property="data",
+ *            type="array",
+ *            @OA\Items(
+ *              ref="#/components/schemas/GalleryItem"
+ *            )
+ *       )
+ * )
+ * @OA\Schema (
+ *     schema="GalleryItem",
+ *     @OA\Property(
+ *         property="type",
+ *         type="string",
+ *         default="video | pic"
+ *     ),
+ *     @OA\Property(
+ *         property="path",
+ *         type="string",
+ *         default="https://resource.ru/media..."
+ *     ),
+ *     @OA\Property(
+ *         property="alt",
+ *         type="string"
+ *     )
+ * )
  */

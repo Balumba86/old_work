@@ -51,6 +51,14 @@ class GalleryService
 
     public function getList()
     {
-        return Gallery::orderBy('id', 'desc')->simplePaginate(9);
+        $items = Gallery::select('type', 'path', 'alt')->orderBy('id', 'desc')->simplePaginate(9);
+
+        foreach ($items->items() as $item) {
+            if ($item->type === 'pic') {
+                $item->path = Storage::url($item->path);
+            }
+        }
+
+        return $items;
     }
 }
