@@ -86,43 +86,12 @@
                 <li class="nav-header">Прочие разделы</li>
                 <li class="nav-item"><a href="{{route('admin-pages')}}" class="nav-link {{ request()->is('admin/pages*') ? 'active' : null }}"><i class="fas fa-paste nav-icon"></i><p>Статичные страницы</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-banners')}}" class="nav-link {{ request()->is('admin/banners*') ? 'active' : null }}"><i class="far fa-images nav-icon"></i><p>Баннеры на главной</p></a></li>
+                <li class="nav-item"><a href="{{route('admin-gallery')}}" class="nav-link {{ request()->is('admin/gallery*') ? 'active' : null }}"><i class="fas fa-th nav-icon"></i><p>Галлерея</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-contacts')}}" class="nav-link {{ request()->is('admin/contacts*') ? 'active' : null }}"><i class="far fa-address-card nav-icon"></i><p>Контакты</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-jobs')}}" class="nav-link {{ request()->is('admin/jobs*') ? 'active' : null }}"><i class="fas fa-user-tie nav-icon"></i><p>Вакансии</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-plans')}}" class="nav-link {{ request()->is('admin/plans*') ? 'active' : null }}"><i class="fas fa-layer-group nav-icon"></i><p>Планы уровней</p></a></li>
-
                 <li class="nav-item"><a href="{{route('admin-rent')}}" class="nav-link {{ request()->is('admin/rent*') ? 'active' : null }}"><i class="fas fa-bullhorn nav-icon"></i><p>Заявки на аренду</p></a></li>
                 <li class="nav-item"><a href="{{route('admin-email-sender')}}" class="nav-link {{ request()->is('admin/email-sender*') ? 'active' : null }}"><i class="fas fa-paper-plane nav-icon"></i><p>Рассылка писем</p></a></li>
-
-{{--                <li class="nav-item">--}}
-{{--                    <a href="#" class="nav-link">--}}
-{{--                        <i class="fas fa-tools nav-icon"></i>--}}
-{{--                        <p>--}}
-{{--                            Администратору--}}
-{{--                            <i class="fas fa-angle-left right"></i>--}}
-{{--                        </p>--}}
-{{--                    </a>--}}
-{{--                    <ul class="nav nav-treeview">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Партнёры</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Галерея</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Заявки на аренду</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-
             </ul>
         </nav>
     </div>
