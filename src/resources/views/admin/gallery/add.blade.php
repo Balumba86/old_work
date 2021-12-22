@@ -27,13 +27,10 @@
                                 <label class="custom-file-label" for="gallery_img">Выбрать файл</label>
                             </div>
                         </div>
-                        <div class="alert alert-danger alert-dismissible">
-                            Обратите внимание, что ссылка на видео должна быть короткой для вставки на сайт. <br>
-                            Видео-нструкция по получению ссылки находится <a href="#" target="_blank"> тут</a>
-                        </div>
+                        <h3 class="mb-lg-3">или</h3>
                         <div class="form-group">
-                            <label for="">Ссылка на видео с YouTube</label>
-                            <input class="form-control" type="text" placeholder="https://www.youtube.com/embed/GMppyAPbLYk" name="link" value="{{ old('link' ?? '') }}">
+                            <label for="">Ссылка на видео с YouTube (скопировать из адресной строки)</label>
+                            <input class="form-control" type="text" placeholder="https://www.youtube.com/watch?v=tSbt9Cs_Eqs" name="link" value="{{ old('link' ?? '') }}">
                         </div>
                     </div>
                     <div class="card-footer">

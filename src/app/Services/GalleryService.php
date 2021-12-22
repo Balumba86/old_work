@@ -35,6 +35,13 @@ class GalleryService
             $logo_path = $request->file('image')->store('gallery');
             $new_data['path'] = $logo_path;
             $new_data['type'] = 'pic';
+        } else {
+            if (mb_strpos($data['link'], 'youtube')) {
+                $link_list = explode('=', $data['link']);
+                if (isset($link_list[1])) {
+                    $new_data['path'] = 'https://www.youtube.com/embed/' . $link_list[1];
+                }
+            }
         }
 
         return Gallery::create($new_data);
