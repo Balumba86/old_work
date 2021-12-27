@@ -124,6 +124,16 @@ class Api extends BaseApi {
     return res.data
   }
 
+  getGalleryHome = async (params) => {
+    const res = await this.get('/gallery', params)
+    return res.data
+  }
+
+  getGallery = async (params) => {
+    const res = await this.get('/gallery', params)
+    return categoryListSerializer(res.data)
+  }
+
 }
 
 const MAIN_URL = process.env.MIX_REACT_APP_API_URL;

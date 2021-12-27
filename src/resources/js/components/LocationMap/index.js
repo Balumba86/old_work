@@ -26,7 +26,7 @@ const LocationMap = () => {
           width='100%'
           height={openMap ? 550 : 300}
           defaultState={{
-            center: [57.018219374241085, 40.96831532544931],
+            center: [57.01760418306074, 40.968554001310395],
             zoom: 16,
             controls: [],
             behaviors: ['drag', 'dblClickZoom', 'rightMouseButtonMagnifier', 'multiTouch']
@@ -34,7 +34,7 @@ const LocationMap = () => {
             <GeolocationControl options={{ float: 'left' }} />
             <ZoomControl options={{ float: 'right' }} />
             <TrafficControl options={{ float: 'right' }} />
-            <Placemark geometry={[57.018219374241085, 40.96831532544931]}/>
+            <Placemark geometry={[57.01760418306074, 40.968554001310395]}/>
           </Map>
         <button
           className={style['toggle-open-btn']}
