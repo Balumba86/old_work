@@ -3,15 +3,19 @@ version: '3'
 services:
 
   php:
-    image: builded_php
+    build: .
+    container_name: php
     restart: always
     volumes:
       - './src:/var/www/html'
     ports:
       - '80:80'
+    networks:
+      - nikolskiy
 
   postgres:
     image: postgres:11-alpine
+    container_name: postgres
     restart: always
     env_file:
       - .env
@@ -20,13 +24,8 @@ services:
       - ./dumps:/dumps
     ports:
       - '5432:5432'
+    networks:
+      - nikolskiy
 
-  phppgadmin:
-    image: 'docker.io/bitnami/phppgadmin:7-debian-10'
-    ports:
-      - '8085:8080'
-    env_file:
-      - .env
-    depends_on:
-      - postgres
-
+networks:
+  nikolskiy:

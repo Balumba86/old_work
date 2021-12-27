@@ -2,7 +2,7 @@
 /**
  * @OA\Info(
  *     description="Документация API для фронтенда",
- *     version="1.19.0",
+ *     version="1.20.0",
  *     title="API Nikolskiy",
  *     @OA\Contact(
  *         email="balumba.ru@gmail.com"
@@ -37,5 +37,9 @@
  * @OA\Tag(
  *     name="other",
  *     description="Прочий роутинг получения данных",
+ * )
+ * @OA\Tag(
+ *     name="pages",
+ *     description="Статичные страницы, создаваемые в админ-панели",
  * )
  */
