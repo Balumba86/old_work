@@ -2,6 +2,7 @@ import CafeCategoryPage from './CafeCategoryPage'
 import CafeDetailPage from './CafeDetailPage'
 import CafePage from './CafePage'
 import ContactsPage from './ContactsPage'
+import GalleryPage from './GalleryPage'
 import HomePage from './HomePage'
 import LevelsPage from './LevelsPage'
 import NewsDetailPage from './NewsDetailPage'
@@ -23,6 +24,7 @@ export {
   CafeDetailPage,
   CafePage,
   ContactsPage,
+  GalleryPage,
   HomePage,
   LevelsPage,
   NewsDetailPage,

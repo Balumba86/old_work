@@ -39,6 +39,10 @@ export const PATHS = {
     path: '/cafe/detail/:slug',
     exact: false
   },
+  gallery: {
+    path: '/gallery',
+    exact: false
+  },
   services: {
     path: '/services',
     exact: true

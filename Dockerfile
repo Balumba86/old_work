@@ -47,7 +47,7 @@ RUN apk add --no-cache nodejs npm yarn
 #&&  yarn dev \
 #&&  rm -rf node_modules \
 #&&  rm -rf package-lock.json \
-&&  npm install
+#&  npm install
 ###
 
 EXPOSE 9000

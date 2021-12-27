@@ -6,6 +6,7 @@ import {
   CafeDetailPage,
   CafePage,
   ContactsPage,
+  GalleryPage,
   HomePage,
   LevelsPage,
   NewsDetailPage,
@@ -154,6 +155,12 @@ const App = () => {
           path={PATHS.parking_rules.path}
           exact={PATHS.parking_rules.exact}
           component={ParkingRulesPage}
+        />
+
+        <Route
+          path={PATHS.gallery.path}
+          exact={PATHS.gallery.exact}
+          component={GalleryPage}
         />
 
         <Route component={NotFoundPage} />
