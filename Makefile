@@ -28,6 +28,7 @@ build:
 
 	docker-compose exec php php artisan migrate
 	docker-compose exec php php artisan key:generate
+	docker-compose exec php php artisan db:seed
 
 	docker-compose down
 
@@ -37,4 +38,4 @@ dev:
 
 # Запускает yarn production для сборки билда
 prod:
-	docker-compose exec php yarn production
+	docker-compose exec php yarn prod

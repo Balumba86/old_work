@@ -38,8 +38,4 @@ make build
 
     docker-compose exec php php artisan l5-swagger:generate
 
----
 
-Для заполнения БД базовыми данными, выполните
-
-    docker-compose exec php php artisan db:seed
