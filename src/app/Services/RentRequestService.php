@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
+use App\Jobs\RentRequestInform;
 use App\Models\RentRequest;
 use Illuminate\Http\Request;
 
 class RentRequestService
 {
+    private $email = 'manager_sity@mail.ru';
 
     public function adminIndex(Request $request)
     {
@@ -67,7 +69,11 @@ class RentRequestService
 
     public function rentRequest(Request $request)
     {
-        $result = RentRequest::create($request->all());
+        $data = $request->all();
+
+        dispatch(new RentRequestInform($this->email, $data['name'], $data['email'], $data['phone'], $data['comment']));
+
+        $result = RentRequest::create($data);
 
         return $result;
     }

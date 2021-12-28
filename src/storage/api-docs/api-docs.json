@@ -6,7 +6,7 @@
         "contact": {
             "email": "balumba.ru@gmail.com"
         },
-        "version": "1.19.0"
+        "version": "1.20.0"
     },
     "paths": {
         "/contacts": {
@@ -23,6 +23,37 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ContactsResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/gallery": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "summary": "Получение галлереи ТЦ",
+                "operationId": "gallaryList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Номер запрашиваемой страницы",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GalleryResponse"
                                 }
                             }
                         }
@@ -160,6 +191,38 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/PostResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/page/{pageSlug}": {
+            "get": {
+                "tags": [
+                    "pages"
+                ],
+                "summary": "Получение статичной страницы",
+                "operationId": "getPageBySlug",
+                "parameters": [
+                    {
+                        "name": "pageSlug",
+                        "in": "path",
+                        "description": "slug страницы",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/StaticPageResponse"
                                 }
                             }
                         }
@@ -1617,6 +1680,65 @@
                     }
                 },
                 "type": "object"
+            },
+            "StaticPageResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "GalleryResponse": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "success"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GalleryItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "GalleryItem": {
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "default": "video | pic"
+                    },
+                    "path": {
+                        "type": "string",
+                        "default": "https://resource.ru/media..."
+                    },
+                    "alt": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             }
         },
         "requestBodies": {
@@ -1670,6 +1792,10 @@
         {
             "name": "other",
             "description": "Прочий роутинг получения данных"
+        },
+        {
+            "name": "pages",
+            "description": "Статичные страницы, создаваемые в админ-панели"
         }
     ],
     "security": [
