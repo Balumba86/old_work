@@ -14,28 +14,28 @@ SwiperCore.use([Navigation, Thumbs]);
 const Gallery = ({ galleryList = [] }) => {
   const galleryClasses = classNames([style['gallery-list'], 'gallery'])
   return (
-    <section className={style['section']}>
-      <h2 className={style['title']}>Галерея</h2>
-      <Swiper
-        className={galleryClasses}
-        spaceBetween={10}
-        freeMode={true}
-        breakpoints={{
-          320: {
-            slidesPerView: 1
-          },
-          568: {
-            slidesPerView: 2
-          },
-          992: {
-            slidesPerView: 3
-          }
-        }}
-        watchSlidesProgress={true}
-        navigation={true}
-      >
-        {galleryList?.length ? (
-          <>
+    <>
+      {galleryList?.length ? (
+        <section className={style['section']}>
+          <h2 className={style['title']}>Галерея</h2>
+          <Swiper
+            className={galleryClasses}
+            spaceBetween={10}
+            freeMode={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1
+              },
+              568: {
+                slidesPerView: 2
+              },
+              992: {
+                slidesPerView: 3
+              }
+            }}
+            watchSlidesProgress={true}
+            navigation={true}
+          >
             {galleryList.map((el, idx) => {
               const key = `${el.type}-${idx}`
               if(el.type === 'video') {
@@ -67,11 +67,11 @@ const Gallery = ({ galleryList = [] }) => {
                 )
               }
             })}
-          </>
-        ) : null}
-      </Swiper>
-      <Link className={style['gallery-link']} to={PATHS.gallery.path}>Перейти в галерею</Link>
-    </section>
+          </Swiper>
+          <Link className={style['gallery-link']} to={PATHS.gallery.path}>Перейти в галерею</Link>
+        </section>
+      ) : null}
+    </>
   )
 }
 
