@@ -1,11 +1,16 @@
 import ParkingRules from "../components/ParkingRules"
+import ScrollingLayout from "../components/ScrollingLayout"
 import { Layout } from "../views"
 
 const ParkingRulesPage = () => {
   return (
-    <Layout>
-      <ParkingRules />
-    </Layout>
+    <ScrollingLayout>
+      {() => (
+        <Layout>
+          <ParkingRules />
+        </Layout>
+      )}
+    </ScrollingLayout>
   )
 }
 

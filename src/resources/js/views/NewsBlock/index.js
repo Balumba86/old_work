@@ -6,6 +6,7 @@ import style from './news.module.scss'
 const NewsBlock = ({ list = [] }) => {
   return (
     <section className={style['section']}>
+      <h2 className={style['title']}>События</h2>
       <ul className={style['news-list']}>
         {list && list.map((item) => {
           const path = `${PATHS.news.path}/${item.slug}`
