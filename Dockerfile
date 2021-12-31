@@ -13,6 +13,8 @@ WORKDIR /var/www/html
 RUN apk add libpq postgresql-dev ldb-dev libldap openldap-dev && \
     docker-php-ext-install pdo pdo_pgsql pgsql ldap
 
+RUN apk add php8-dom php8-xml php8-xmlwriter php8-fileinfo php8-tokenizer
+
 RUN apk add composer
 
 COPY ./conf/php/nginx.conf /etc/nginx/
