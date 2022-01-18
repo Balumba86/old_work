@@ -4,29 +4,46 @@ services:
 
   php:
     build: .
-    container_name: php
     restart: always
+    environment:
+      - VIRTUAL_HOST=nikolskiy37.ru
+      - LETSENCRYPT_HOST=nikolskiy37.ru
     volumes:
       - './src:/var/www/html'
-    ports:
-      - '80:80'
-      - '443:443'
-    networks:
-      - nikolskiy
 
   postgres:
     image: postgres:11-alpine
-    container_name: postgres
     restart: always
     env_file:
       - .env
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./dumps:/dumps
-    ports:
-      - '5432:5432'
-    networks:
-      - nikolskiy
 
-networks:
-  nikolskiy:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./vhost.d:/etc/nginx/vhost.d:ro
+      - ./data/certs:/etc/nginx/certs
+      - ./data/html:/usr/share/nginx/html
+      - ./proxy.conf:/etc/nginx/proxy.conf
+
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    environment:
+      - DEFAULT_EMAIL=nickolsky.nikolsky@yandex.ru
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/acme.sh
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./data/certs:/etc/nginx/certs
+      - ./data/html:/usr/share/nginx/html
+
