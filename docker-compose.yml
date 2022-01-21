@@ -6,8 +6,8 @@ services:
     build: .
     restart: always
     environment:
-      - VIRTUAL_HOST=nikolskiy37.ru
-      - LETSENCRYPT_HOST=nikolskiy37.ru
+      - VIRTUAL_HOST=nikolskiy37.ru,www.nikolskiy37.ru
+      - LETSENCRYPT_HOST=nikolskiy37.ru,www.nikolskiy37.ru
     volumes:
       - './src:/var/www/html'
 
