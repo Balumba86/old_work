@@ -313,6 +313,7 @@ a[href='#']:focus {
   background-color: white;
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
 }
+
 .gallery .swiper-button-next {
   right: 10px;
 }
@@ -333,6 +334,10 @@ a[href='#']:focus {
 .gallery .swiper-button-prev:hover {
   width: 35px;
   height: 35px;
+}
+
+.banners-slider .swiper-pagination-bullet-active {
+  background: var(--active-color) !important;
 }
 
 .banners-slider {

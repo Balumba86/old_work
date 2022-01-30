@@ -18,7 +18,7 @@ const CardsList = ({ list = [] }) => {
           >
             <img className={style['list-item__img']} src={item.logo} alt='' />
             <h3 className={style['list-item__title']}>{item.title}</h3>
-            <span className={style['list-item__level']}>{item.level}</span>
+            <span className={style['list-item__level']}>{item.level} уровень</span>
             <span className={style['list-item__category']}>{item.category.title}</span>
           </Link>
         </li>
