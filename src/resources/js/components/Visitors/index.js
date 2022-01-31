@@ -69,6 +69,7 @@ const Visitors = ({
               status={status}
               isNext={isNext}
               list={results}
+              variant={variant}
             />
           </>
         ) : null}

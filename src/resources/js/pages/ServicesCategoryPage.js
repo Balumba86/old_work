@@ -15,7 +15,7 @@ const ServicesCategoryPage = () => {
       setSlug(location.state.slug)
     } else {
       const { pathname } = location;
-      const newSlug = pathname.replace(`${PATHS.visitors_services.path}`, '').replace('/', '')
+      const newSlug = pathname.replace(`${PATHS.services.path}`, '').replace('/', '')
       setSlug(newSlug)
     }
   }, [])

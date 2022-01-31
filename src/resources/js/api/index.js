@@ -69,7 +69,7 @@ class Api extends BaseApi {
 
   getServicesList = async (params = {}) => {
     const res = await this.get('/service/list', params)
-    return res.data
+    return categoryListSerializer(res.data)
   }
 
   getCatogoriesServices = async () => {

@@ -15,7 +15,7 @@ const CafeCategoryPage = () => {
       setSlug(location.state.slug)
     } else {
       const { pathname } = location;
-      const newSlug = pathname.replace(`${PATHS.visitors_cafe.path}`, '').replace('/', '')
+      const newSlug = pathname.replace(`${PATHS.cafe.path}`, '').replace('/', '')
       setSlug(newSlug)
     }
   }, [])

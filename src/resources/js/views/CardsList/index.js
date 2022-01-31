@@ -3,7 +3,19 @@ import { Link } from 'react-router-dom';
 import { PATHS } from '../../const';
 import style from './cards.module.scss';
 
-const CardsList = ({ list = [] }) => {
+const TYPES = {
+  shops: {
+    path: PATHS.shops_detail.path
+  },
+  cafe: {
+    path: PATHS.cafe_detail.path
+  },
+  services: {
+    path: PATHS.services_detail.path
+  }
+}
+
+const CardsList = ({ list = [], variant }) => {
 
   return (
     <ul className={style['list']}>
@@ -11,7 +23,7 @@ const CardsList = ({ list = [] }) => {
         <li key={item.slug} className={style['list-item']}>
           <Link
             to={{
-              pathname: generatePath(PATHS.shops_detail.path, { slug: item.slug }),
+              pathname: generatePath(TYPES[variant].path, { slug: item.slug }),
               state: {slug: item.slug}
             }}
             className={style['list-link']}

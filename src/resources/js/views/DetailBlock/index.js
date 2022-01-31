@@ -90,7 +90,11 @@ const DetailBlock = ({ baseUrl = '/', path_category = '/', linkLabel = '', data 
             )}
           </div>
           <div className={style['detail-categories']}>
-            Категории: <Link to={generatePath(path_category, { category: data?.category?.slug || '/' })}>
+            Категории: <Link
+              to={{
+                pathname: generatePath(path_category, { category: data?.category?.slug || '/' }),
+                state: {slug: data?.category?.slug}
+              }}>
               {data?.category?.title || ''}
             </Link>
           </div>

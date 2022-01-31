@@ -92,7 +92,13 @@ const CurrentLevel = ({ levelInfo = [], currentLevel = [] }) => {
                 &#10006;
               </button>
             <span className={style['content-title']}>{content.title}</span>
-            <Link to={(generatePath(types[content.type].path, { slug: content.slug}))} className={style['content-link']}>{types[content.type].linkDisplay}</Link>
+            <Link
+              to={{
+                pathname: generatePath(types[content.type].path, { slug: content.slug}),
+                state: {slug: content.slug}
+              }}
+              className={style['content-link']}
+            >{types[content.type].linkDisplay}</Link>
           </div>
         </div>
       )}
