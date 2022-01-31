@@ -158,7 +158,7 @@ class Restaurant extends Model
         'sort',
         'category',
         'level',
-        ''
+        'point'
     ];
 
     public function category()
