@@ -29,10 +29,8 @@ const HomeBanner = ({ banners = [] }) => {
         pagination={{
           clickable: true
         }}
-        navigation={true}
-        autoplay={{
-          delay: 5000,
-        }}
+        // navigation={true}
+        autoplay={{ delay: 5000 }}
         className={style['slider']}>
         {banners && banners.map((item, idx) => (
           <SwiperSlide key={`banner-${idx}`}>
