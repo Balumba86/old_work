@@ -69,8 +69,8 @@ const RentersForm = () => {
             <h4 className={style['block-title']}>Контакты</h4>
             <div className={style['contacts']}>
               <div className={style['contacts-item']}><Icon name='geo' />г. Иваново, проспект Ленина, д. 57А</div>
-              <div className={style['contacts-item']}><Icon name='time' />c 09:00 до 21:00 </div>
-              <div className={style['contacts-item']}><Icon name='phone' />+7 (4932) 77-32-07</div>
+              <div className={style['contacts-item']}><Icon name='time' />c 09:00 до 18:00 </div>
+              <div className={style['contacts-item']}><Icon name='phone' />+7 (800) 101-54-58</div>
               <div className={style['contacts-item']}><Icon name='phone' />+7 (905) 107-31-11</div>
               <div className={classNames([style['contacts-item'], style['email']])}><Icon name='email' width="90%" />manager_sity@mail.ru</div>
             </div>
