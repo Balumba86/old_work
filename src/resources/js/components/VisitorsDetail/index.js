@@ -4,7 +4,7 @@ import { DetailBlock, LoaderPage } from "../../views"
 import { LOADING_STATES } from "../../const"
 
 const VisitorsDetail = ({ api = null, ...props }) => {
-  const location = useLocation()
+  const location = useLocation();
   const [data, setData] = useState({})
   const [isLoading, setLoading] = useState(null)
 
@@ -17,8 +17,7 @@ const VisitorsDetail = ({ api = null, ...props }) => {
       const startIndex = pathname.lastIndexOf('/')
       slug = state?.slug || pathname.slice(startIndex + 1)
     }
-      
-    if(api && slug) {
+    if(api && slug && Object.keys(data).length === 0) {
       api(slug)
         .then(res => {
           setLoading(LOADING_STATES.loaded)
@@ -26,7 +25,7 @@ const VisitorsDetail = ({ api = null, ...props }) => {
         })
         .catch(err => console.log(err))
     }
-  }, [])
+  }, [location])
 
   return (
     <>
