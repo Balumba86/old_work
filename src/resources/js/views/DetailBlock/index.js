@@ -91,10 +91,10 @@ const DetailBlock = ({ baseUrl = '/', path_category = '/', linkLabel = '', data 
           </div>
           {data.website && (
             <div className={style['detail-categories']}>
-              Сайт: <Link
-                to={data?.website || ""}>
+              Сайт: <a
+                href={data?.website || ""} target="_blank">
                 {data?.website || ""}
-              </Link>
+              </a>
             </div>
           )}
           <div className={style['detail-categories']}>
